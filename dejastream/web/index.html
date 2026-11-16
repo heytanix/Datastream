@@ -1,0 +1,158 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>DejaStream Live</title>
+<style>
+:root{--bg:#f6f7f9;--card:#fff;--ink:#1c2430;--mute:#667085;--line:#e3e7ee;
+--static:#8a94a6;--retrain:#d98a1f;--deja:#0f8f7e;--A:#3b6fd4;--B:#e07b24;--C:#2e9a55;--D:#8a4fc7;--bad:#c9423a}
+@media (prefers-color-scheme:dark){:root{--bg:#0f141b;--card:#171e28;--ink:#e6eaf0;--mute:#8d98aa;--line:#2a3442;
+--static:#7d8799;--retrain:#e8a23c;--deja:#2fc4ae;--A:#6e9bf0;--B:#f0a05a;--C:#58c47f;--D:#b384e8}}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:14px/1.45 system-ui,-apple-system,Segoe UI,Roboto,sans-serif}
+header{display:flex;flex-wrap:wrap;gap:8px 24px;align-items:baseline;padding:18px 24px 6px}
+h1{margin:0;font-size:22px}
+header .sub{color:var(--mute)}
+header .live{margin-left:auto;color:var(--mute);font-variant-numeric:tabular-nums}
+main{display:grid;grid-template-columns:repeat(12,1fr);gap:14px;padding:12px 24px 28px;max-width:1400px;margin:0 auto}
+.card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:14px 16px;min-width:0}
+.card h2{margin:0 0 10px;font-size:13px;font-weight:600;color:var(--mute);text-transform:uppercase;letter-spacing:.05em}
+.kpis{grid-column:span 12;display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.kpi .name{display:flex;align-items:center;gap:8px;font-weight:600}
+.dot{width:10px;height:10px;border-radius:50%;display:inline-block}
+.kpi .big{font-size:34px;font-weight:700;font-variant-numeric:tabular-nums;margin:2px 0}
+.kpi .meta{color:var(--mute);font-size:12.5px}
+.chart{grid-column:span 8}.bus{grid-column:span 4}
+.repo{grid-column:span 7}.events{grid-column:span 5}
+canvas{width:100%;display:block}
+.legend{display:flex;gap:16px;font-size:12.5px;color:var(--mute);margin-top:6px;flex-wrap:wrap}
+.legend span{display:inline-flex;align-items:center;gap:6px}
+table{width:100%;border-collapse:collapse;font-size:12.5px;font-variant-numeric:tabular-nums}
+td,th{padding:4px 6px;border-bottom:1px solid var(--line);text-align:left}
+th{color:var(--mute);font-weight:500}
+.concept{display:grid;grid-template-columns:70px 1fr;gap:10px;align-items:center;padding:6px 0;border-bottom:1px solid var(--line)}
+.concept:last-child{border:0}
+.concept.active{background:color-mix(in srgb,var(--deja) 10%,transparent)}
+.concept .id{font-weight:700}.concept .id small{display:block;color:var(--mute);font-weight:400}
+.ev{display:grid;grid-template-columns:54px 82px 1fr;gap:8px;padding:3px 0;border-bottom:1px solid var(--line);font-size:12.5px}
+.tag{font-weight:600}.k-drift{color:var(--bad)}.k-recall,.k-probe{color:var(--deja)}.k-new_concept{color:var(--retrain)}.k-false_alarm{color:var(--mute)}
+@media (max-width:900px){.chart,.bus,.repo,.events{grid-column:span 12}.kpis{grid-template-columns:1fr}main,header{padding-left:14px;padding-right:14px}}
+</style>
+</head>
+<body>
+<header>
+  <h1>DejaStream</h1>
+  <span class="sub">Recurrent concept drift: detect, fingerprint, recall</span>
+  <span class="live" id="live">connecting...</span>
+</header>
+<main>
+  <section class="kpis" id="kpis"></section>
+  <section class="card chart">
+    <h2>Rolling accuracy (200 samples)</h2>
+    <canvas id="acc" height="260"></canvas>
+    <div class="legend">
+      <span><i class="dot" style="background:var(--static)"></i>static</span>
+      <span><i class="dot" style="background:var(--retrain)"></i>retrain on drift</span>
+      <span><i class="dot" style="background:var(--deja)"></i>DejaStream</span>
+      <span>strips: top = true concept, bottom = concept DejaStream believes is active</span>
+    </div>
+  </section>
+  <section class="card bus">
+    <h2>Message bus (layer 2)</h2>
+    <table id="bus"></table>
+    <h2 style="margin-top:14px">Consumer groups: lag</h2>
+    <table id="lag"></table>
+  </section>
+  <section class="card repo">
+    <h2>Concept repository (fingerprints, z-scored)</h2>
+    <div id="repo"></div>
+  </section>
+  <section class="card events">
+    <h2>Event stream</h2>
+    <div id="events"></div>
+  </section>
+</main>
+<script>
+const $=id=>document.getElementById(id);
+const css=n=>getComputedStyle(document.documentElement).getPropertyValue(n).trim();
+const STRAT=[["static","static"],["retrain","retrain"],["dejastream","deja"]];
+const PAL=["--A","--B","--C","--D","--bad","--static"];
+let S=null;
+
+function fit(c,h){const r=devicePixelRatio||1,w=c.clientWidth;c.width=w*r;c.height=h*r;const g=c.getContext("2d");g.setTransform(r,0,0,r,0,0);return[g,w,h]}
+
+function drawAcc(){
+  const c=$("acc"),[g,W,H]=fit(c,260);g.clearRect(0,0,W,H);
+  const L=36,R=8,T=8,B=60,pw=W-L-R,ph=H-T-B,span=9000;
+  const t1=Math.max(S.t,span),t0=t1-span;
+  const X=t=>L+(t-t0)/span*pw,Y=a=>T+(1-(a-0.3)/0.7)*ph;
+  g.font="11px system-ui";g.fillStyle=css("--mute");g.strokeStyle=css("--line");g.lineWidth=1;
+  for(const a of[0.4,0.6,0.8,1]){g.beginPath();g.moveTo(L,Y(a));g.lineTo(W-R,Y(a));g.stroke();g.fillText(a.toFixed(1),4,Y(a)+4)}
+  for(let t=Math.ceil(t0/1500)*1500;t<=t1;t+=1500){g.fillText(t,X(t)-12,H-B+14)}
+  for(const[k,v]of STRAT){
+    const pts=(S.acc[k]||[]).filter(p=>p[0]>=t0);
+    g.strokeStyle=css("--"+v);g.lineWidth=k==="dejastream"?2.4:1.6;g.beginPath();
+    pts.forEach((p,i)=>{const x=X(p[0]),y=Y(Math.max(.3,p[1]));i?g.lineTo(x,y):g.moveTo(x,y)});g.stroke();
+  }
+  // strips
+  const y1=H-B+24,y2=y1+16,sh=12;
+  g.fillStyle=css("--mute");g.fillText("truth",L-34,y1+10);g.fillText("deja",L-30,y2+10);
+  const seg=S.segments;
+  seg.forEach((s,i)=>{const a=s[0],b=i+1<seg.length?seg[i+1][0]:t1;if(b<t0)return;
+    const x=X(Math.max(a,t0)),w=X(b)-x;g.fillStyle=css("--"+s[1]);g.fillRect(x,y1,w,sh);
+    if(w>14){g.fillStyle="#fff";g.fillText(s[1],x+w/2-4,y1+10)}});
+  const act=(S.active.dejastream||[]),ids=[];
+  act.forEach((e,i)=>{
+    const a=e[0],nxt=act.slice(i+1).find(n=>n[1]!==e[1]);const b=nxt?nxt[0]:t1;
+    if(i>0&&act[i-1][1]===e[1])return; if(b<t0)return;
+    const x=X(Math.max(a,t0)),w=X(b)-x;g.fillStyle=css(PAL[e[1]%PAL.length]);g.fillRect(x,y2,Math.max(w,1),sh);
+    if(w>20){g.fillStyle="#fff";g.fillText("#"+e[1],x+w/2-6,y2+10)}});
+}
+
+function kpis(){
+  $("kpis").innerHTML=STRAT.map(([k,v])=>{
+    const s=S.summary[k]||{acc:0,seen:0,models:0,counts:{}},c=s.counts||{};
+    const label={static:"Static model",retrain:"Retrain on drift",dejastream:"DejaStream"}[k];
+    const extra=k==="dejastream"?`${c.recall||0} recalls, ${c.false_alarm||0} false alarms`:k==="retrain"?"every drift trains a new model":"never adapts";
+    return `<div class="card kpi"><div class="name"><i class="dot" style="background:var(--${v})"></i>${label}</div>
+      <div class="big">${(s.acc*100).toFixed(1)}%</div>
+      <div class="meta">${s.models} models trained, ${c.drift||0} drifts handled<br>${extra}</div></div>`}).join("");
+}
+
+function busPanel(){
+  const b=S.bus;
+  $("bus").innerHTML="<tr><th>topic</th><th>offset</th></tr>"+Object.entries(b.topics).map(([n,t])=>`<tr><td>${n}</td><td>${t.end.toLocaleString()}</td></tr>`).join("")+
+    `<tr><td>dropped by Sender</td><td>${b.dropped}</td></tr>`;
+  $("lag").innerHTML="<tr><th>group</th><th>topic</th><th>lag</th></tr>"+Object.entries(b.lag).flatMap(([g,ts])=>Object.entries(ts).map(([t,l])=>`<tr><td>${g}</td><td>${t}</td><td>${l}</td></tr>`)).join("");
+}
+
+function repoPanel(){
+  const el=$("repo");
+  if(!S.repo.length){el.innerHTML='<div class="meta" style="color:var(--mute)">warming up...</div>';return}
+  el.innerHTML=S.repo.map(c=>{
+    const n=c.z.length,w=300,h=34,bw=w/n;
+    const bars=c.z.map((z,i)=>{const hh=Math.min(Math.abs(z),3)/3*(h/2-1);const y=z>=0?h/2-hh:h/2;
+      return `<rect x="${i*bw+1}" y="${y}" width="${bw-2}" height="${Math.max(hh,1)}" fill="${css(PAL[c.id%PAL.length])}"/>`}).join("");
+    return `<div class="concept ${c.active?"active":""}"><div class="id">#${c.id}<small>${c.active?"active":"stored"}</small></div>
+      <div><svg viewBox="0 0 ${w} ${h}" width="100%" height="${h}" preserveAspectRatio="none"><line x1="0" x2="${w}" y1="${h/2}" y2="${h/2}" stroke="${css("--line")}"/>${bars}</svg>
+      <div style="color:var(--mute);font-size:12px">created t=${c.created_t} · recalled ${Math.max(c.uses-1,0)}x · intra-concept distance ${c.d_in}</div></div></div>`}).join("");
+}
+
+function evPanel(){
+  $("events").innerHTML=S.events.map(e=>`<div class="ev"><span>t=${e.t}</span><span class="tag k-${e.kind}">${e.kind.replace("_"," ")}</span>
+    <span>${e.strategy} · concept #${e.concept}${e.why?" · by "+e.why:""}${e.kind==="recall"||e.kind==="new_concept"?" · dist "+e.dist:""}</span></div>`).join("");
+}
+
+async function tick(){
+  try{
+    S=await (await fetch("/api/state",{cache:"no-store"})).json();
+    $("live").textContent=`sample ${S.t.toLocaleString()} · ${S.rate}/s`;
+    kpis();drawAcc();busPanel();repoPanel();evPanel();
+  }catch(e){$("live").textContent="waiting for server..."}
+  setTimeout(tick,400);
+}
+tick();
+</script>
+</body>
+</html>
