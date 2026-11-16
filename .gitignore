@@ -1,0 +1,13 @@
+.venv/
+__pycache__/
+*.pyc
+results/dejastream.db*
+results/server.log
+docs/*.aux
+docs/*.log
+docs/*.fls
+docs/*.fdb_latexmk
+docs/*.out
+docs/*.bbl
+docs/*.blg
+docs/*.gf
