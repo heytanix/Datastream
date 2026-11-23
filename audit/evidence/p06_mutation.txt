@@ -1,0 +1,17 @@
+mutant                                                                         result
+M01 matcher: never return NEW_CONCEPT                                          killed by FAIL: test_false_match_rejected_for_similar_but_shifted (test_matcher.  [10s]
+M02 matcher: ignore min_samples (no INSUFFICIENT)                              killed by FAIL: test_insufficient_evidence (test_matcher.Matching.test_insuffici  [11s]
+M03 matcher: ignore completeness check                                         killed by FAIL: test_insufficient_evidence (test_matcher.Matching.test_insuffici  [10s]
+M04 matcher: protect only the caller's concept on eviction (the real ELEC2 bug) killed by FAIL: test_a_newly_added_concept_survives_even_when_everything_else_is  [10s]
+M05 similarity: drop weight renormalisation                                    killed by FAIL: test_missing_component_renormalises_weights (test_mvfp.Metrics.t  [12s]
+M06 engine: rollback does NOT restore the old model                            SURVIVED (suite still green)  [27s]
+M07 engine: false-alarm path disabled                                          SURVIVED (suite still green)  [25s]
+M08 engine: Page-Hinkley error detector disabled                               killed by FAIL: test_repeated_transitions_do_not_grow_repository (test_recall.Re  [32s]
+M09 engine: no quarantine (learn from every sample at once)                    killed by FAIL: test_delayed_labels_still_recall (test_recall.Recall.test_delaye  [13s]
+M10 engine: only the best candidate is shadow-validated                        killed by FAIL: test_similar_x_different_y_keeps_two_concepts (test_recall.Recal  [17s]
+M11 engine: label released one step early (off by one)                         SURVIVED (suite still green)  [24s]
+M12 validation: Bonferroni correction removed                                  killed by FAIL: test_pick_best_is_optimistic_and_bonferroni_split_are_conservati  [24s]
+M13 pipeline: accuracy counter counts every sample as correct                  SURVIVED (suite still green)  [24s]
+M14 legacy engine: no quarantine                                               killed by FAIL: test_dejastream_recalls_instead_of_retraining (test_dejastream.E  [8s]
+
+mutation score: 10/14 killed

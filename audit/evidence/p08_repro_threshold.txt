@@ -1,0 +1,11 @@
+== R1. python run.py bench (demo stream) reproduced into a temp file and compared with results/bench.json
+   all accuracy / post-drift / models / recalls / false alarms identical: True
+== R2. bench-mv (8 scenarios x 5 seeds x 4 strategies) reproduced and compared with results/bench_mv.json (timing fields ignored)
+   rerun took 107s
+   compared 282 metric cells; mismatches: 0 []
+== R3. research audit measurements (audit_checks) reproduced vs results/research/audit.json
+   rerun took 28s
+   identical: True
+== T1. noisy / unstable concept -> permissive legacy threshold thr_cand = max(0.32, 2.5 * intra)
+   clean                          intra=0.040 -> thr_cand=0.320, thr_high=0.180; query shifted 1 sigma: D=0.495 decision=NEW_CONCEPT
+   heavy-tailed + autocorrelated  intra=0.156 -> thr_cand=0.389, thr_high=0.233; query shifted 1 sigma: D=0.456 decision=NEW_CONCEPT
