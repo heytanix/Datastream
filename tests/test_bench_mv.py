@@ -170,3 +170,23 @@ class ArffLoader(unittest.TestCase):
                 load_arff(path, "nope")
         finally:
             os.unlink(path)
+
+
+class ArffStreamTests(unittest.TestCase):
+    def test_streams_rows_drops_high_cardinality_nominals_and_loops(self):
+        from dejastream.datasets import ArffStream
+        rows = "\n".join(f"{i % 3},{i * 0.5},'C{i % 40}',{'UP' if i % 2 == 0 else 'DOWN'}" for i in range(80))
+        text = "@relation t\n@attribute day {0,1,2}\n@attribute v numeric\n@attribute code {" + ",".join(f"'C{i}'" for i in range(40)) + "}\n@attribute class {UP,DOWN}\n@data\n" + rows + "\n"
+        with tempfile.NamedTemporaryFile("w", suffix=".arff", delete=False) as f:
+            f.write(text)
+            path = f.name
+        try:
+            s = ArffStream(path, "class", limit=50, loops=2)
+            self.assertEqual(s.names, ["day", "v"])                              # the 40-level nominal column is left out
+            self.assertEqual((s.n_features, len(s)), (2, 50))
+            out = list(s)
+            self.assertEqual(len(out), 100)                                      # two passes
+            self.assertEqual(out[0][3], "data")
+            self.assertEqual(ArffStream(path, "class", features=["code", "v"]).names, ["code", "v"])
+        finally:
+            os.unlink(path)

@@ -183,3 +183,30 @@ def load_arff(path: str, target: str, drop: tuple[str, ...] = (), max_rows: int 
     keep = [i for i, n in enumerate(names) if n != target and n not in drop]
     y = M[:, ti].astype(int)
     return M[:, keep], y, [names[i] for i in keep], [names[i] for i in keep if maps[i] is not None]
+
+
+class ArffStream:
+    """Iterate an ARFF file as a stream of (t, x, y, "data"). Nominal columns with more than ``max_levels`` observed values
+    (e.g. airport codes, whose integer codes carry no ordering) are left out unless ``features`` names them explicitly."""
+
+    def __init__(self, path: str, target: str, limit: int | None = None, features: list[str] | None = None, drop: tuple[str, ...] = (),
+                 loops: int = 0, max_levels: int = 30):
+        X, y, names, nominal = load_arff(path, target, drop=drop, max_rows=limit)
+        if features:
+            keep = [names.index(f) for f in features]
+        else:
+            keep = [i for i, n in enumerate(names) if not (n in nominal and len(np.unique(X[:, i][np.isfinite(X[:, i])])) > max_levels)]
+        self.X, self.y, self.names, self.loops = X[:, keep], y, [names[i] for i in keep], loops
+        self.n_features = self.X.shape[1]
+        self.change_points = []
+
+    def __len__(self) -> int:
+        return len(self.y)
+
+    def __iter__(self):
+        t, k = 0, 0
+        while self.loops == 0 or k < self.loops:
+            for i in range(len(self.y)):
+                yield t, self.X[i], int(self.y[i]), "data"
+                t += 1
+            k += 1

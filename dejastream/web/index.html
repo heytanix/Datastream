@@ -52,7 +52,21 @@ th{color:var(--mute);font-weight:500}
 .ev{display:grid;grid-template-columns:54px 92px 1fr;gap:8px;padding:3px 0;border-bottom:1px solid var(--line);font-size:12.5px}
 .tag{font-weight:600}.k-drift{color:var(--bad)}.k-recall,.k-probe{color:var(--deja)}.k-new_concept{color:var(--retrain)}.k-false_alarm{color:var(--mute)}
 @media (max-width:1100px){.kpis{grid-template-columns:repeat(2,1fr)}}
-@media (max-width:900px){.chart,.bus,.repo,.events,.mvmatch,.mvlog,.mvrepo{grid-column:span 12}.kpis{grid-template-columns:1fr}main,header{padding-left:14px;padding-right:14px}}
+@media (max-width:900px){.chart,.bus,.repo,.events,.mvmatch,.mvlog,.mvrepo{grid-column:span 12}.explain dl{grid-template-columns:1fr}nav.tabs{overflow-x:auto}.kpis{grid-template-columns:1fr}main,header{padding-left:14px;padding-right:14px}}
+header{position:sticky;top:0;z-index:5;background:var(--bg);border-bottom:1px solid var(--line);padding:12px 24px 0;align-items:center}
+nav.tabs{display:flex;gap:4px;width:100%;margin-top:8px}
+nav.tabs button{font:inherit;color:var(--mute);background:none;border:0;border-bottom:3px solid transparent;padding:8px 14px;cursor:pointer;font-weight:600}
+nav.tabs button:hover{color:var(--ink)}
+nav.tabs button.on{color:var(--ink);border-bottom-color:var(--mv)}
+nav.tabs small{font-weight:400;opacity:.7;margin-left:6px}
+[hidden]{display:none!important}
+.events{grid-column:span 4}.bus{grid-column:span 5}
+#events,#mvlog{max-height:330px;overflow:auto}
+.explain{margin-top:10px;font-size:12.5px;color:var(--mute)}
+.explain summary{cursor:pointer;color:var(--ink);font-weight:600}
+.explain dl{display:grid;grid-template-columns:150px 1fr;gap:4px 12px;margin:8px 0 0}
+.explain dt{display:flex;align-items:center;gap:6px;color:var(--ink);font-weight:600}.explain dd{margin:0}
+.hint{color:var(--mute);font-size:12.5px;margin:0 0 10px}
 </style>
 </head>
 <body>
@@ -60,44 +74,58 @@ th{color:var(--mute);font-weight:500}
   <h1>DejaStream</h1>
   <span class="sub">Recurrent concept drift: detect, fingerprint, recall</span>
   <span class="live" id="live">connecting...</span>
+  <nav class="tabs" id="tabs">
+    <button data-go="overview">Overview</button>
+    <button data-go="matching">How matching works<small>MV decisions</small></button>
+    <button data-go="stores">Stored concepts</button>
+    <button data-go="system">System</button>
+  </nav>
 </header>
 <main>
-  <section class="kpis" id="kpis"></section>
-  <section class="card chart">
+  <section class="kpis" id="kpis" data-tab="overview"></section>
+  <section class="card chart" data-tab="overview">
     <h2>Rolling accuracy (200 samples)</h2>
     <canvas id="acc" height="260"></canvas>
     <div class="legend">
       <span><i class="dot" style="background:var(--static)"></i>static</span>
       <span><i class="dot" style="background:var(--retrain)"></i>retrain on drift</span>
-      <span><i class="dot" style="background:var(--deja)"></i>DejaStream v1</span>
-      <span><i class="dot" style="background:var(--mv)"></i>DejaStream MV</span>
+      <span><i class="dot" style="background:var(--deja)"></i>DejaStream v1 (original)</span>
+      <span><i class="dot" style="background:var(--mv)"></i>DejaStream MV (multi-view)</span>
       <span>strips: top = true concept, bottom = concept DejaStream MV believes is active</span>
     </div>
+    <details class="explain"><summary>What do these four lines mean?</summary><dl>
+      <dt><i class="dot" style="background:var(--static)"></i>Static</dt><dd>Trains once and never adapts. The baseline.</dd>
+      <dt><i class="dot" style="background:var(--retrain)"></i>Retrain on drift</dt><dd>Detects drift, then trains a brand-new model every time. Remembers nothing.</dd>
+      <dt><i class="dot" style="background:var(--deja)"></i>DejaStream v1</dt><dd>The original method. On drift it summarises recent data as a 17-number fingerprint (nine of them use the labels) and reuses the model of a similar past concept if it finds one.</dd>
+      <dt><i class="dot" style="background:var(--mv)"></i>DejaStream MV</dt><dd>Multi-view version. Its fingerprint covers statistics, distribution and time behaviour and needs no labels; a recalled model is tested on labelled data before it is used, and rolled back if it fails.</dd>
+    </dl></details>
   </section>
-  <section class="card bus">
+  <section class="card bus" data-tab="system">
     <h2>Message bus (layer 2)</h2>
     <table id="bus"></table>
     <h2 style="margin-top:14px">Consumer groups: lag</h2>
     <table id="lag"></table>
   </section>
-  <section class="card repo">
+  <section class="card repo" data-tab="stores">
     <h2>Concept repository, v1 fingerprints (z-scored, uses labels)</h2>
     <div id="repo"></div>
   </section>
-  <section class="card events">
+  <section class="card events" data-tab="overview">
     <h2>Event stream</h2>
     <div id="events"></div>
   </section>
-  <section class="card mvmatch">
+  <section class="card mvmatch" data-tab="matching">
     <h2>DejaStream MV: latest concept match (feature-only evidence)</h2>
+    <p class="hint">What the multi-view matcher decided the last time it saw drift: which stored concept it compared against, and how sure it is.</p>
     <div id="mvmatch"></div>
   </section>
-  <section class="card mvlog">
+  <section class="card mvlog" data-tab="matching">
     <h2>Recall decisions and validation</h2>
     <div id="mvlog"></div>
   </section>
-  <section class="card mvrepo">
+  <section class="card mvrepo" data-tab="stores">
     <h2>DejaStream MV: stored concepts (global fingerprint, z-scored across concepts)</h2>
+    <p class="hint">The memory: every concept the multi-view method has learned. Same colour = same concept coming back.</p>
     <div id="mvrepo"></div>
   </section>
 </main>
@@ -107,11 +135,23 @@ const css=n=>getComputedStyle(document.documentElement).getPropertyValue(n).trim
 const STRAT=[["static","static"],["retrain","retrain"],["dejastream","deja"],["dejastream_mv","mv"]];
 const PAL=["--A","--B","--C","--D","--bad","--static"];
 let S=null;
+const TABS=["overview","matching","stores","system"];
+function showTab(t){
+  if(!TABS.includes(t))t="overview";
+  document.querySelectorAll("[data-tab]").forEach(e=>e.hidden=e.dataset.tab!==t);
+  document.querySelectorAll("#tabs button").forEach(b=>b.classList.toggle("on",b.dataset.go===t));
+  try{localStorage.setItem("dejaTab",t)}catch(e){}
+  if(location.hash!=="#"+t)history.replaceState(null,"","#"+t);
+  scrollTo(0,0);if(S)drawAcc();
+}
+document.getElementById("tabs").addEventListener("click",e=>{const b=e.target.closest("button");if(b)showTab(b.dataset.go)});
+addEventListener("keydown",e=>{const i=parseInt(e.key,10);if(i>=1&&i<=4&&!e.metaKey&&!e.ctrlKey)showTab(TABS[i-1])});
+showTab(location.hash.slice(1)||(()=>{try{return localStorage.getItem("dejaTab")}catch(e){return null}})()||"overview");
 
 function fit(c,h){const r=devicePixelRatio||1,w=c.clientWidth;c.width=w*r;c.height=h*r;c.style.height=h+"px";const g=c.getContext("2d");g.setTransform(r,0,0,r,0,0);return[g,w,h]}
 
 function drawAcc(){
-  const c=$("acc"),[g,W,H]=fit(c,260);g.clearRect(0,0,W,H);
+  const c=$("acc");if(!c.clientWidth)return;const [g,W,H]=fit(c,230);g.clearRect(0,0,W,H);
   const L=36,R=8,T=8,B=60,pw=W-L-R,ph=H-T-B,span=9000;
   const t1=Math.max(S.t,span),t0=t1-span;
   const X=t=>L+(t-t0)/span*pw,Y=a=>T+(1-(a-0.3)/0.7)*ph;
@@ -128,7 +168,7 @@ function drawAcc(){
   g.fillStyle=css("--mute");g.fillText("truth",L-34,y1+10);g.fillText("deja",L-30,y2+10);
   const seg=S.segments;
   seg.forEach((s,i)=>{const a=s[0],b=i+1<seg.length?seg[i+1][0]:t1;if(b<t0)return;
-    const x=X(Math.max(a,t0)),w=X(b)-x;g.fillStyle=css("--"+s[1]);g.fillRect(x,y1,w,sh);
+    const x=X(Math.max(a,t0)),w=X(b)-x;g.fillStyle=css("--"+s[1])||css("--static");g.fillRect(x,y1,w,sh);
     if(w>14){g.fillStyle="#fff";g.fillText(s[1],x+w/2-4,y1+10)}});
   const act=(S.active.dejastream_mv||[]),ids=[];
   act.forEach((e,i)=>{
@@ -141,7 +181,7 @@ function drawAcc(){
 function kpis(){
   $("kpis").innerHTML=STRAT.map(([k,v])=>{
     const s=S.summary[k]||{acc:0,seen:0,models:0,counts:{}},c=s.counts||{};
-    const label={static:"Static model",retrain:"Retrain on drift",dejastream:"DejaStream v1",dejastream_mv:"DejaStream MV"}[k];
+    const label={static:"Static model",retrain:"Retrain on drift",dejastream:"DejaStream v1 (original)",dejastream_mv:"DejaStream MV (multi-view)"}[k];
     const extra=k==="dejastream"?`${c.recall||0} recalls, ${c.false_alarm||0} false alarms`:
       k==="dejastream_mv"?`${c.recall||0} recalls, ${c.rollback||0} rollbacks, ${c.false_alarm||0} false alarms`+(S.mv&&S.mv.fp_ms?` · fingerprint ${S.mv.fp_ms.toFixed(2)} ms`:""):
       k==="retrain"?"every drift trains a new model":"never adapts";
