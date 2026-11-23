@@ -1,0 +1,31 @@
+== fingerprint extraction vs window size and feature count (ms, mean of 50)
+       n    d  legacy v1  multi-view
+      40    4      0.036       1.384
+     100    4      0.038       1.241
+     300    4      0.054       1.435
+    1000    4      0.108       1.975
+     100   10      0.040       3.536
+     100   30      0.044      15.361
+     100   60      0.049      46.025
+== one Level-2 compare() call (ms): two 100-sample windows
+   d=  4: 0.479 ms
+   d= 10: 0.694 ms
+   d= 30: 1.488 ms
+== repository operations (50 concepts, d=4)
+   match() (Level 1 + top-5 Level 2): 2.39 ms;  level1 only: 0.051 ms
+   update() legacy merge: 0.571 ms
+   persistence (NOT used by the pipeline): to_dict+json 3.9 ms, 213 KB for 50 concepts; load 2.9 ms (models are not included)
+   paired validation compare_paired(n=60, 400 bootstrap): 2.5 ms (opt-in path)
+   SQLite add_metric: 1 us/row (5000 rows, one commit)
+== engine throughput vs feature count d (6000 samples, 2 alternating concepts, default configs)
+   d=  4: retrain=20us  dejastream=21us  dejastream_mv=49us
+   d= 10: retrain=20us  dejastream=22us  dejastream_mv=76us
+   d= 30: retrain=21us  dejastream=22us  dejastream_mv=215us
+== MVEngine vs stability-window size (abrupt_recurring, 16,500 samples)
+   window=  50: 75 us/sample, fingerprint calls=326, models=4
+   window= 100: 51 us/sample, fingerprint calls=167, models=4
+   window= 300: 33 us/sample, fingerprint calls=59, models=4
+== memory and time vs stream length (MVEngine default, tracemalloc peak; stream = abrupt_recurring repeated)
+     16500 samples: 145 us/sample (under tracemalloc), peak 0.2 MB, current 0.2 MB, concepts=4, models=4
+     49500 samples: 145 us/sample (under tracemalloc), peak 0.2 MB, current 0.2 MB, concepts=4, models=4
+     99000 samples: 144 us/sample (under tracemalloc), peak 0.2 MB, current 0.2 MB, concepts=4, models=4
