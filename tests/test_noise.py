@@ -4,11 +4,11 @@ from dataclasses import replace
 
 import numpy as np
 
-from dejastream.mvfp import extract_feature_fp
-from dejastream.noise import EssConfig, build_profile, effective_n, effective_n_corr, lrv_factor, nu_vector
-from dejastream.research.gen import Spec, base_spec, sample
-from dejastream.similarity import SimilarityConfig, compare
-from dejastream.stream import CONCEPTS
+from datastream.mvfp import extract_feature_fp
+from datastream.noise import EssConfig, build_profile, effective_n, effective_n_corr, lrv_factor, nu_vector
+from datastream.research.gen import Spec, base_spec, sample
+from datastream.similarity import SimilarityConfig, compare
+from datastream.stream import CONCEPTS
 
 
 def w(name, n, seed):

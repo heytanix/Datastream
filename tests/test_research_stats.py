@@ -3,8 +3,8 @@ import unittest
 
 import numpy as np
 
-from dejastream.research.exp_paired import holm, sign_flip_p
-from dejastream.research.gen import auc
+from datastream.research.exp_paired import holm, sign_flip_p
+from datastream.research.gen import auc
 
 
 class SignFlip(unittest.TestCase):

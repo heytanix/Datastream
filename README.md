@@ -1,8 +1,8 @@
-# DejaStream
+# Datastream
 
 **Recurrent concept drift detection and model recall in a data stream via concept fingerprinting and pattern matching.**
 
-A data stream sometimes changes the rule it follows (a *concept drift*). Often the old rule comes back: seasons, shifts, customer segments. Most systems retrain from scratch each time. DejaStream keeps a **repository of concepts**. Each concept is stored as a *fingerprint* (a short numeric signature of the data) plus the model trained for it. When drift is detected, the new data is fingerprinted and matched against the repository. A match recalls the old model right away. No match means a genuinely new concept: train a model and store it.
+A data stream sometimes changes the rule it follows (a *concept drift*). Often the old rule comes back: seasons, shifts, customer segments. Most systems retrain from scratch each time. Datastream keeps a **repository of concepts**. Each concept is stored as a *fingerprint* (a short numeric signature of the data) plus the model trained for it. When drift is detected, the new data is fingerprinted and matched against the repository. A match recalls the old model right away. No match means a genuinely new concept: train a model and store it.
 
 ![status](https://img.shields.io/badge/status-runs%20end%20to%20end-2F7D4F) ![python](https://img.shields.io/badge/python-3.10%2B%20(tested%20on%203.14)-3B6FD4) ![deps](https://img.shields.io/badge/dependency-numpy%20only-8A94A6)
 
@@ -42,7 +42,7 @@ flowchart LR
     B2["Kafka / Redpanda<br/>(not built)"]
   end
   subgraph L3["Layer 3: Stream processor"]
-    P1["Workers: proc-static,<br/>proc-retrain, proc-dejastream"]
+    P1["Workers: proc-static,<br/>proc-retrain, proc-datastream"]
     P2["Prequential loop<br/>predict, score, learn"]
     P3["Page-Hinkley<br/>error detector"]
     P4["Fingerprint-shift<br/>detector"]
@@ -110,7 +110,7 @@ flowchart LR
   SND1 -->|publish| RAW(["ds.raw"])
   RAW --> G1["proc-static"]
   RAW --> G2["proc-retrain"]
-  RAW --> G3["proc-dejastream"]
+  RAW --> G3["proc-datastream"]
   RAW --> G5["dashboard"]
   G1 & G2 & G3 --> SND2["Sender"]
   SND2 --> EV(["ds.events"])
@@ -169,12 +169,12 @@ A window of labelled samples becomes 17 numbers: per-feature **mean** (4), **std
 |---|---|---|
 | `static` | no | never adapts (trained once on the first 150 samples) |
 | `retrain` | Page-Hinkley on errors | trains a fresh model from 80 buffered samples, keeps no memory |
-| `dejastream` (v1) | Page-Hinkley **and** fingerprint shift | probe at 30 samples, verify at 80, recall or train |
-| `dejastream_mv` | Page-Hinkley **and** label-free feature shift | multi-view match at 40 samples, shadow validation, provisional activation, rollback ([below](#multi-view-concept-fingerprinting-schema-20)) |
+| `datastream` (v1) | Page-Hinkley **and** fingerprint shift | probe at 30 samples, verify at 80, recall or train |
+| `datastream_mv` | Page-Hinkley **and** label-free feature shift | multi-view match at 40 samples, shadow validation, provisional activation, rollback ([below](#multi-view-concept-fingerprinting-schema-20)) |
 
 ## Multi-view concept fingerprinting (schema 2.0)
 
-`dejastream_mv` is a second recall engine next to the original (`dejastream`, "v1"). v1 is unchanged and kept as the comparison baseline.
+`datastream_mv` is a second recall engine next to the original (`datastream`, "v1"). v1 is unchanged and kept as the comparison baseline.
 
 ### What v1 did (verified in the source)
 
@@ -253,14 +253,14 @@ Candidate models (up to 3, **including the currently active concept**) are score
 .venv/bin/python run.py bench-mv --seeds 3 --scenarios gradual sea
 ```
 
-Eight synthetic scenarios (abrupt, noisy, gradual, incremental, similar-X-different-Y, temporal-only, SEA, hyperplane), 5 seeds, mean±std. Retrieval metrics compare engine decisions with the true concept of each sample (definitions in `dejastream/bench_mv.py`). The demo stream (`run.py bench`, one seed):
+Eight synthetic scenarios (abrupt, noisy, gradual, incremental, similar-X-different-Y, temporal-only, SEA, hyperplane), 5 seeds, mean±std. Retrieval metrics compare engine decisions with the true concept of each sample (definitions in `datastream/bench_mv.py`). The demo stream (`run.py bench`, one seed):
 
 | strategy | accuracy | first 300 after drift | detected | delay | trained | recalls | false alarms |
 |---|---|---|---|---|---|---|---|
 | static | 58.7% | 56.4% | 0/10 | n/a | 1 | 0 | 0 |
 | retrain | 90.6% | 76.7% | 10/10 | 13.0 | 11 | 0 | 0 |
-| DejaStream v1 | 91.8% | 83.2% | 10/10 | 13.5 | 4 | 7 | 2 |
-| **DejaStream MV** | 91.6% | 82.4% | 10/10 | 13.5 | 4 | 7 | 1 |
+| Datastream v1 | 91.8% | 83.2% | 10/10 | 13.5 | 4 | 7 | 2 |
+| **Datastream MV** | 91.6% | 82.4% | 10/10 | 13.5 | 4 | 7 | 1 |
 
 Multi-seed comparison of the two recall engines (full table with all four strategies: [`results/bench_mv.md`](results/bench_mv.md)):
 
@@ -357,14 +357,14 @@ A second, research-style pass tested whether the schema-2.0 matcher could be mad
 | Mergeable fingerprint memory | Yes (exact std/skew), 2x update cost | merge error 0.01 sigma vs up to 0.72 sigma |
 | Recurrence-aware eviction beats least-used | **No** | 64.0 vs 64.0 re-creations; LRU 83.7 |
 
-**How to use it.** Every new option is off by default, so schema 2.0 behaviour is unchanged (a regression freeze and identical benchmark output verify this). The configurations that were evaluated are in `dejastream/research/presets.py` (`improved_similarity`, `improved_match`, `ablation_variants`). `MatchResult.explanation()` returns a structured account of any decision (similarity, evidence quality, confidence score, margin, thresholds, views used and missing, noise status, why alternatives lost, what evidence would help).
+**How to use it.** Every new option is off by default, so schema 2.0 behaviour is unchanged (a regression freeze and identical benchmark output verify this). The configurations that were evaluated are in `datastream/research/presets.py` (`improved_similarity`, `improved_match`, `ablation_variants`). `MatchResult.explanation()` returns a structured account of any decision (similarity, evidence quality, confidence score, margin, thresholds, views used and missing, noise status, why alternatives lost, what evidence would help).
 
 **Real data.** ELEC2, Airlines, Intel Berkeley and UCI load diagrams were downloaded (with your approval) and run once each; no variant wins consistently, adaptation *hurts* on Airlines, and the run exposed an eviction bug that no synthetic scenario triggered (fixed). See `docs/RESEARCH.md` section 9. **Not done:** spectral temporal features and a KLL sketch. The empirical noise profile and the calibrated probability are not applied inside the engine.
 
 ```bash
-.venv/bin/python -m dejastream.research.exp_ablation      # ~9 min, seeds 1-5
-.venv/bin/python -m dejastream.research.exp_paired        # ~8 min, seeds 11-20, exact paired tests
-.venv/bin/python -m dejastream.research.build_report      # regenerate docs/RESEARCH.md
+.venv/bin/python -m datastream.research.exp_ablation      # ~9 min, seeds 1-5
+.venv/bin/python -m datastream.research.exp_paired        # ~8 min, seeds 11-20, exact paired tests
+.venv/bin/python -m datastream.research.build_report      # regenerate docs/RESEARCH.md
 ```
 
 ## Measured results (demo stream, one seed)
@@ -375,8 +375,8 @@ A second, research-style pass tested whether the schema-2.0 matcher could be mad
 |---|---|---|---|---|---|---|---|
 | static | 58.7% | 56.4% | 0/10 | n/a | 1 | 0 | 0 |
 | retrain | 90.6% | 76.7% | 10/10 | 13.0 | 11 | 0 | 0 |
-| DejaStream v1 | 91.8% | 83.2% | 10/10 | 13.5 | 4 | 7 | 2 |
-| **DejaStream MV** | 91.6% | 82.4% | 10/10 | 13.5 | 4 | 7 | 1 |
+| Datastream v1 | 91.8% | 83.2% | 10/10 | 13.5 | 4 | 7 | 2 |
+| **Datastream MV** | 91.6% | 82.4% | 10/10 | 13.5 | 4 | 7 | 1 |
 
 Both recall engines train exactly one model per concept (4) and recall all 7 revisits. Their gain over retraining is in the recovery window: they switch to a stored, fully trained model instead of waiting for 80 samples and training a weak one. Steady-state accuracy is about the same because both models converge once they have data. MV is marginally *slower* than v1 to recover on this clean stream (it decides at 40 samples, v1 probes at 30). The multi-seed comparison above is the better evidence.
 
@@ -402,18 +402,18 @@ Both recall engines train exactly one model per concept (4) and recall all 7 rev
 
 ```
 run.py                     entry point (bench | bench-mv | serve)
-dejastream/
+datastream/
   stream.py                L1  recurring-concept generator
   bus.py                   L2  topics, offsets, consumer groups, Sender
   pipeline.py              L2-5 wires source, workers, store, dashboard state
   detector.py              L3  Page-Hinkley
-  engine.py                L3-4 v1 state machine, repository, matching (static / retrain / dejastream)
+  engine.py                L3-4 v1 state machine, repository, matching (static / retrain / datastream)
   fingerprint.py           L4  v1 fingerprint (17 numbers, uses labels) + scaler
   mvfp.py                  L4  schema 2.0 feature + predictive fingerprints, serialisation, v1 migration
   similarity.py            L4  per-view distances, noise floors, weighted combination
   matcher.py               L4  repository, hierarchical retrieval, decisions, confidence
   mv_engine.py             L3-4 multi-view engine: shadow validation, provisional activation, rollback
-  strategies.py            registry: static, retrain, dejastream, dejastream_mv
+  strategies.py            registry: static, retrain, datastream, datastream_mv
   scenarios.py, datasets.py  18 synthetic scenarios with ground truth; CSV and sensor-data loaders
   noise.py, validation.py, memory.py  uncertainty models, paired validation, mergeable concept memory (research milestones)
   research/                experiments, ablation, paired tests, scaling, report builder
@@ -426,7 +426,7 @@ docs/architecture.tex      LaTeX/TikZ source for the architecture PDF
 docs/architecture.pdf      12 pages: layers, pub/sub, v1 state machine and fingerprint, multi-view fingerprint, matching, safe recall, results, code map
 docs/PRESENTATION.md       slide-by-slide talk outline
 docs/AUDIT.md, docs/RESEARCH.md  audit of the matcher; research report (tables generated from results/research/)
-results/                   bench.json, bench_rolling.csv, bench_mv.json/.md, dejastream.db (generated)
+results/                   bench.json, bench_rolling.csv, bench_mv.json/.md, datastream.db (generated)
 ```
 
 ## Architecture PDF

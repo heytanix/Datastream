@@ -1,7 +1,7 @@
-# DejaStream: repository audit and technical review
+# Datastream: repository audit and technical review
 
 **Audited:** working tree of `/run/media/heytanix/Shared/final_year_project`, branch `research-matching`, base commit `117e95a`, plus uncommitted edits to `cli.py`, `datasets.py`, `pipeline.py`, `server.py`, `web/index.html`, `tests/test_bench_mv.py` (the real-data stream source and the tabbed dashboard). Local `origin/main` carries only the first commit.
-**Date:** 2026-11-23. **Mode:** audit only. No file under `dejastream/`, `tests/`, `docs/` or `results/` was modified by the audit (verified: no file in those trees is newer than the first probe; the only tracked `results/` change, `bench.json` wall-clock `seconds` 1.64 to 1.63, dates from 15:55, before the audit began at 16:44). Everything the audit created is in `audit/` (`probes/` = scripts, `evidence/` = their raw output, this report).
+**Date:** 2026-11-23. **Mode:** audit only. No file under `datastream/`, `tests/`, `docs/` or `results/` was modified by the audit (verified: no file in those trees is newer than the first probe; the only tracked `results/` change, `bench.json` wall-clock `seconds` 1.64 to 1.63, dates from 15:55, before the audit began at 16:44). Everything the audit created is in `audit/` (`probes/` = scripts, `evidence/` = their raw output, this report).
 
 **Evidence classes used below.** *[src]* read from source with `file:line`. *[run]* executed in this audit, output in `audit/evidence/pNN_*.txt`. *[stored]* a result file produced by earlier work and **not** re-run here. *[doc]* a claim from README/docs. Anything not marked is inference and is said to be so.
 
@@ -11,7 +11,7 @@
 
 ## 1. Executive Summary
 
-DejaStream is a working research prototype: the default live pipeline runs end to end (16,499 samples through four strategies in 10 s *[run p02]*), 186 tests pass *[run p03]*, and the headline benchmarks reproduce exactly *[run p08]*. It is not production software, and parts of the "safe recall" story are weaker than the documentation suggests.
+Datastream is a working research prototype: the default live pipeline runs end to end (16,499 samples through four strategies in 10 s *[run p02]*), 186 tests pass *[run p03]*, and the headline benchmarks reproduce exactly *[run p08]*. It is not production software, and parts of the "safe recall" story are weaker than the documentation suggests.
 
 | Dimension | Assessment | Basis |
 |---|---|---|
@@ -47,8 +47,8 @@ flowchart TB
   PIPE --> BUS["Bus / Sender / Consumer<br/>bus.py"]
   PIPE --> STR["strategies.make_engine<br/>strategies.py"]
   PIPE --> STO[("Store (SQLite)<br/>store.py")]
-  STR --> E0["static, retrain, dejastream (v1)<br/>engine.py:34 Engine"]
-  STR --> E1["dejastream_mv<br/>mv_engine.py:95 MVEngine"]
+  STR --> E0["static, retrain, datastream (v1)<br/>engine.py:34 Engine"]
+  STR --> E1["datastream_mv<br/>mv_engine.py:95 MVEngine"]
   E0 --> FP1["fingerprint.py (17-d, uses y)"]
   E0 --> DET["detector.py PageHinkley"]
   E1 --> DET
@@ -74,7 +74,7 @@ flowchart TB
   end
 ```
 
-**Two implementations are live side by side.** `engine.py` (v1: `Engine`, strategies `static`, `retrain`, `dejastream`) and `mv_engine.py` (`MVEngine`, strategy `dejastream_mv`) are both instantiated by the default pipeline (`pipeline.py:34`, `strategies.py`). v1 is kept as a baseline; nothing is marked deprecated. There is no third "experimental" engine; the experimental surface is configuration (`SimilarityConfig`, `MatchConfig`, `RecallPolicy`) and `research/`.
+**Two implementations are live side by side.** `engine.py` (v1: `Engine`, strategies `static`, `retrain`, `datastream`) and `mv_engine.py` (`MVEngine`, strategy `datastream_mv`) are both instantiated by the default pipeline (`pipeline.py:34`, `strategies.py`). v1 is kept as a baseline; nothing is marked deprecated. There is no third "experimental" engine; the experimental surface is configuration (`SimilarityConfig`, `MatchConfig`, `RecallPolicy`) and `research/`.
 
 ### 2.2 Module responsibilities
 
@@ -160,7 +160,7 @@ sequenceDiagram
 * **Out of order?** Labels are released by `t - t_oldest >= label_delay` (`mv_engine.py:180`). With decreasing timestamps and `label_delay=5`, **no label is ever released**: warm-up never ends and the delay queue grows without bound (400 entries after 400 samples) *[p04-C]*.
 * **Labels delayed indefinitely / missing?** Warm-up never finishes if `label_delay` exceeds the stream (state `WARMUP`, constant prediction 0, `_wu_X` grows) *[p04-B]*. After a drift, with labels gone, the engine stays in `RECOVERING` forever *[p04-A]*.
 * **Repeated drift?** No cooldown or hysteresis; `_resume` just resets the detector (`mv_engine.py:158-167`). On a stationary single-concept stream the measured false drift rate was about 0.6 per 10,000 samples, all from the error detector *[p04-E]*; on ELEC2 the multi-view engine raised 279 drifts in 45,312 samples *[stored e14]* (no ground truth, so not classifiable).
-* **Exception during recovery?** There is no `try/except` in `Pipeline._process` (`pipeline.py:87-107`). Injecting a fault in `match()` killed that worker thread; the other threads kept running, `proc-dejastream_mv` lag grew to 13,425, the traceback went only to stderr, and `/api/state` kept reporting the stale accuracy with no alert *[p04-F]*.
+* **Exception during recovery?** There is no `try/except` in `Pipeline._process` (`pipeline.py:87-107`). Injecting a fault in `match()` killed that worker thread; the other threads kept running, `proc-datastream_mv` lag grew to 13,425, the traceback went only to stderr, and `/api/state` kept reporting the stale accuracy with no alert *[p04-F]*.
 * **Stuck in recovery?** Yes (A). Stage `validating` or `await_train` has no timeout (`mv_engine.py:250`, `:268-276`, `:304-308`).
 
 ---
@@ -223,7 +223,7 @@ Reproduce any probe with `cd` to the project root and `.venv/bin/python audit/pr
 **F-02 A worker exception is swallowed silently and the dashboard goes stale.**
 * *Where:* `pipeline.py:87-107` (no `try/except`), `_spawn` `pipeline.py:60-63` (daemon threads, no supervision).
 * *Behaviour:* an exception ends the thread; nothing restarts it or reports it.
-* *Reproduction:* `p04-F`: a fault injected into `ConceptRepository.match` (in memory) killed `proc-dejastream_mv`; lag reached 13,425; `/api/state` still reported `acc=0.899, seen=3050`.
+* *Reproduction:* `p04-F`: a fault injected into `ConceptRepository.match` (in memory) killed `proc-datastream_mv`; lag reached 13,425; `/api/state` still reported `acc=0.899, seen=3050`.
 * *Impact:* a failed engine looks healthy. Unacceptable for deployment; misleading in a demo.
 * *Fix:* catch and log per observation or restart the worker with backoff; add a heartbeat and `state: "failed"` to the API.
 * *Test:* a pipeline test with an injected exception must produce a failed-state flag within a bounded time.
@@ -298,7 +298,7 @@ Reproduce any probe with `cd` to the project root and `.venv/bin/python audit/pr
 **F-16 Some tests assert nothing.** `tests/test_recall.py:81` compares `e.state` with itself (`"RECOVERING" if e.rec else e.state`); `tests/test_validation.py:48` compares a function's result with itself; `:90` contains `p if False else ...`; `tests/test_noise.py:128` accepts either of two values. Mutants M06, M07, M11 survive *[p06]*.
 **F-17 Events can be dropped silently.** `Sender.send` returns False and only counts the drop when its queue is full (`bus.py:112-121`); consumers cannot distinguish a dropped event from none.
 **F-18 Confidence is uncalibrated and includes similarity.** `matcher.py:592-599`: `conf = (1 - D/thr) * (...)`; the stored calibration test gave Brier 0.426 vs 0.249 for the base rate and a score of 0-0.1 was correct 45% of the time *[stored e8]*. It is correctly named a score; it contains no term for repository size.
-**F-19 No logging, CI, packaging or health signal.** No `logging` import in `dejastream/`; no `.github/`, `pyproject.toml`, `setup.py`.
+**F-19 No logging, CI, packaging or health signal.** No `logging` import in `datastream/`; no `.github/`, `pyproject.toml`, `setup.py`.
 **F-20 The SQLite store is never closed and recreated on every start.** `store.py:10-15`; no `close()`. Single connection with `check_same_thread=False` guarded by a lock (`store.py:11-12`) is adequate for the writes done.
 **F-21 The empirical-threshold calibration double counts samples.** `mv_engine.py:223-225` records a 40-sample sub-window and `matcher.update` (`:398-400`) records the whole window of the same samples as two same-concept observations (opt-in mode only).
 
@@ -409,7 +409,7 @@ $ .venv/bin/python -m unittest discover -s tests
 Ran 186 tests in 25.747s
 OK
 ```
-Failures 0, errors 0, skipped 0. Test methods per file: `test_mvfp` 32, `test_memory` 25, `test_validation` 22, `test_thresholds` 17, `test_matcher` 16, `test_dist_time` 15, `test_retrieval` 14, `test_noise` 13, `test_bench_mv` 11, `test_recall` 11, `test_dejastream` 5, `test_research_stats` 5 (186).
+Failures 0, errors 0, skipped 0. Test methods per file: `test_mvfp` 32, `test_memory` 25, `test_validation` 22, `test_thresholds` 17, `test_matcher` 16, `test_dist_time` 15, `test_retrieval` 14, `test_noise` 13, `test_bench_mv` 11, `test_recall` 11, `test_datastream` 5, `test_research_stats` 5 (186).
 
 **Statement coverage** (stdlib `sys.monitoring`, no package installed): 2,429 of 2,708 statements, **89.7%**. Modules at 0%: `cli.py` (25), `pipeline.py` (106), `server.py` (28), `store.py` (17). Highest: `scenarios`, `stream`, `detector`, `strategies` 100%; `memory` 98.9%; `similarity` 97.7%; `matcher` 97.3%; `mv_engine` 96.0%. Uncovered in the engine: `mv_engine.py:134, 223-224, 272-274, 307-312, 420`: the empirical-threshold sub-window path, the INSUFFICIENT time-out, the empty-candidate and `mode="none"` branches.
 
@@ -534,7 +534,7 @@ Optimise only after Stages 1-3. Measured targets: correlation pair cap and extra
 
 ## 14. Final Verdict
 
-1. **Is DejaStream achieving its stated objective?** Partly. It detects drift, fingerprints concepts, recognises recurrences and recalls models on synthetic streams, and the validated-recall design does reduce harm (the ablation shows it). It does not demonstrate the objective on real data (single, mixed runs, no ground truth) and it does not do it robustly (stalls, silent failure, no persistence).
+1. **Is Datastream achieving its stated objective?** Partly. It detects drift, fingerprints concepts, recognises recurrences and recalls models on synthetic streams, and the validated-recall design does reduce harm (the ablation shows it). It does not demonstrate the objective on real data (single, mixed runs, no ground truth) and it does not do it robustly (stalls, silent failure, no persistence).
 2. **What genuinely works.** Label-free multi-view fingerprints; the decision logic and its ordering; shadow validation including the active concept; noise correction; the experimental tooling and its reproducibility (benchmarks and audit measurements reproduce exactly); the honest negative results.
 3. **Single biggest technical weakness.** The recovery/validation path has no termination guarantee and no failure signalling (F-01, F-02), so the project cannot currently be trusted to run unattended.
 4. **Single biggest research weakness.** No natural-recurrence ground truth and no external baselines; the claim that fingerprint matching recognises recurring concepts better than alternatives rests on synthetic streams whose thresholds were tuned on the same families.

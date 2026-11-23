@@ -5,7 +5,7 @@ from statistics import mean
 
 root = Path(__file__).resolve().parent
 r = json.loads((root.parent / "results" / "bench.json").read_text())
-names = {"static": "Static model", "retrain": "Retrain on drift", "dejastream": "DejaStream v1", "dejastream_mv": "DejaStream MV"}
+names = {"static": "Static model", "retrain": "Retrain on drift", "datastream": "Datastream v1", "datastream_mv": "Datastream MV"}
 rows = []
 for k, v in r["strategies"].items():
     rows.append(f"{names[k]} & {v['accuracy']*100:.1f}\\% & {v['post_drift_300_acc']*100:.1f}\\% & "
@@ -35,7 +35,7 @@ if mv_path.exists():
               "incremental": "incremental drift", "similar_x_different_y": "similar $X$, different $Y$", "sea": "SEA"}
     rows = []
     for sc in shown:
-        for key, label in (("dejastream", "v1"), ("dejastream_mv", "MV")):
+        for key, label in (("datastream", "v1"), ("datastream_mv", "MV")):
             d = m["scenarios"][sc][key]
             name = pretty[sc] if label == "v1" else ""
             rows.append(f"{name} & {label} & {cell(d['accuracy'], True)} & {cell(d['post_drift_acc'], True)} & "
@@ -52,8 +52,8 @@ if mv_path.exists():
             f"Fingerprint time, 100 samples, 4 features & {lat['n100_d4']['legacy_ms']:.3f} ms & {lat['n100_d4']['multiview_ms']:.3f} ms\\\\\n"
             f"Fingerprint time, 300 samples, 4 features & {lat['n300_d4']['legacy_ms']:.3f} ms & {lat['n300_d4']['multiview_ms']:.3f} ms\\\\\n"
             f"Fingerprint time, 100 samples, 10 features & {lat['n100_d10']['legacy_ms']:.3f} ms & {lat['n100_d10']['multiview_ms']:.3f} ms\\\\\n"
-            f"Whole engine, per sample (abrupt scenario) & {a['dejastream']['us_per_sample']['mean']:.1f} $\\mu$s & {a['dejastream_mv']['us_per_sample']['mean']:.1f} $\\mu$s\\\\\n"
-            f"Memory per stored concept (fingerprint only) & {a['dejastream']['bytes_per_concept']['mean']:.0f} B & {a['dejastream_mv']['bytes_per_concept']['mean']:.0f} B\\\\\n"
+            f"Whole engine, per sample (abrupt scenario) & {a['datastream']['us_per_sample']['mean']:.1f} $\\mu$s & {a['datastream_mv']['us_per_sample']['mean']:.1f} $\\mu$s\\\\\n"
+            f"Memory per stored concept (fingerprint only) & {a['datastream']['bytes_per_concept']['mean']:.0f} B & {a['datastream_mv']['bytes_per_concept']['mean']:.0f} B\\\\\n"
             "\\bottomrule\\end{tabular}\n")
     (root / "results_mv_cost.tex").write_text(cost)
     (root / "results_mv_meta.tex").write_text(f"\\newcommand{{\\mvseeds}}{{{len(m['seeds'])}}}\n")

@@ -3,12 +3,12 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>DejaStream Live</title>
+<title>Datastream Live</title>
 <style>
 :root{--bg:#f6f7f9;--card:#fff;--ink:#1c2430;--mute:#667085;--line:#e3e7ee;
---static:#8a94a6;--retrain:#d98a1f;--deja:#0f8f7e;--mv:#b4338c;--A:#3b6fd4;--B:#e07b24;--C:#2e9a55;--D:#8a4fc7;--bad:#c9423a}
+--static:#8a94a6;--retrain:#d98a1f;--data:#0f8f7e;--mv:#b4338c;--A:#3b6fd4;--B:#e07b24;--C:#2e9a55;--D:#8a4fc7;--bad:#c9423a}
 @media (prefers-color-scheme:dark){:root{--bg:#0f141b;--card:#171e28;--ink:#e6eaf0;--mute:#8d98aa;--line:#2a3442;
---static:#7d8799;--retrain:#e8a23c;--deja:#2fc4ae;--mv:#ec7fcf;--A:#6e9bf0;--B:#f0a05a;--C:#58c47f;--D:#b384e8}}
+--static:#7d8799;--retrain:#e8a23c;--data:#2fc4ae;--mv:#ec7fcf;--A:#6e9bf0;--B:#f0a05a;--C:#58c47f;--D:#b384e8}}
 *{box-sizing:border-box}
 body{margin:0;background:var(--bg);color:var(--ink);font:14px/1.45 system-ui,-apple-system,Segoe UI,Roboto,sans-serif}
 header{display:flex;flex-wrap:wrap;gap:8px 24px;align-items:baseline;padding:18px 24px 6px}
@@ -27,7 +27,7 @@ main{display:grid;grid-template-columns:repeat(12,1fr);gap:14px;padding:12px 24p
 .repo{grid-column:span 7}.events{grid-column:span 5}
 .mvmatch{grid-column:span 7}.mvlog{grid-column:span 5}.mvrepo{grid-column:span 12}
 .badge{display:inline-block;padding:1px 8px;border-radius:10px;font-size:11.5px;font-weight:700;border:1px solid currentColor}
-.b-HIGH_CONFIDENCE_MATCH{color:var(--deja)}.b-CANDIDATE_MATCH{color:var(--A)}.b-NEW_CONCEPT{color:var(--retrain)}.b-INSUFFICIENT_EVIDENCE{color:var(--mute)}
+.b-HIGH_CONFIDENCE_MATCH{color:var(--data)}.b-CANDIDATE_MATCH{color:var(--A)}.b-NEW_CONCEPT{color:var(--retrain)}.b-INSUFFICIENT_EVIDENCE{color:var(--mute)}
 .cand{display:grid;grid-template-columns:84px 1fr 118px;gap:10px;align-items:center;padding:7px 0;border-bottom:1px solid var(--line)}
 .cand:last-child{border:0}.cand .nm{font-weight:700}.cand .nm small{display:block;color:var(--mute);font-weight:400}
 .meters{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}
@@ -47,10 +47,10 @@ td,th{padding:4px 6px;border-bottom:1px solid var(--line);text-align:left}
 th{color:var(--mute);font-weight:500}
 .concept{display:grid;grid-template-columns:70px 1fr;gap:10px;align-items:center;padding:6px 0;border-bottom:1px solid var(--line)}
 .concept:last-child{border:0}
-.concept.active{background:color-mix(in srgb,var(--deja) 10%,transparent)}
+.concept.active{background:color-mix(in srgb,var(--data) 10%,transparent)}
 .concept .id{font-weight:700}.concept .id small{display:block;color:var(--mute);font-weight:400}
 .ev{display:grid;grid-template-columns:54px 92px 1fr;gap:8px;padding:3px 0;border-bottom:1px solid var(--line);font-size:12.5px}
-.tag{font-weight:600}.k-drift{color:var(--bad)}.k-recall,.k-probe{color:var(--deja)}.k-new_concept{color:var(--retrain)}.k-false_alarm{color:var(--mute)}
+.tag{font-weight:600}.k-drift{color:var(--bad)}.k-recall,.k-probe{color:var(--data)}.k-new_concept{color:var(--retrain)}.k-false_alarm{color:var(--mute)}
 @media (max-width:1100px){.kpis{grid-template-columns:repeat(2,1fr)}}
 @media (max-width:900px){.chart,.bus,.repo,.events,.mvmatch,.mvlog,.mvrepo{grid-column:span 12}.explain dl{grid-template-columns:1fr}nav.tabs{overflow-x:auto}.kpis{grid-template-columns:1fr}main,header{padding-left:14px;padding-right:14px}}
 header{position:sticky;top:0;z-index:5;background:var(--bg);border-bottom:1px solid var(--line);padding:12px 24px 0;align-items:center}
@@ -71,7 +71,7 @@ nav.tabs small{font-weight:400;opacity:.7;margin-left:6px}
 </head>
 <body>
 <header>
-  <h1>DejaStream</h1>
+  <h1>Datastream</h1>
   <span class="sub">Recurrent concept drift: detect, fingerprint, recall</span>
   <span class="live" id="live">connecting...</span>
   <nav class="tabs" id="tabs">
@@ -89,15 +89,15 @@ nav.tabs small{font-weight:400;opacity:.7;margin-left:6px}
     <div class="legend">
       <span><i class="dot" style="background:var(--static)"></i>static</span>
       <span><i class="dot" style="background:var(--retrain)"></i>retrain on drift</span>
-      <span><i class="dot" style="background:var(--deja)"></i>DejaStream v1 (original)</span>
-      <span><i class="dot" style="background:var(--mv)"></i>DejaStream MV (multi-view)</span>
-      <span>strips: top = true concept, bottom = concept DejaStream MV believes is active</span>
+      <span><i class="dot" style="background:var(--data)"></i>Datastream v1 (original)</span>
+      <span><i class="dot" style="background:var(--mv)"></i>Datastream MV (multi-view)</span>
+      <span>strips: top = true concept, bottom = concept Datastream MV believes is active</span>
     </div>
     <details class="explain"><summary>What do these four lines mean?</summary><dl>
       <dt><i class="dot" style="background:var(--static)"></i>Static</dt><dd>Trains once and never adapts. The baseline.</dd>
       <dt><i class="dot" style="background:var(--retrain)"></i>Retrain on drift</dt><dd>Detects drift, then trains a brand-new model every time. Remembers nothing.</dd>
-      <dt><i class="dot" style="background:var(--deja)"></i>DejaStream v1</dt><dd>The original method. On drift it summarises recent data as a 17-number fingerprint (nine of them use the labels) and reuses the model of a similar past concept if it finds one.</dd>
-      <dt><i class="dot" style="background:var(--mv)"></i>DejaStream MV</dt><dd>Multi-view version. Its fingerprint covers statistics, distribution and time behaviour and needs no labels; a recalled model is tested on labelled data before it is used, and rolled back if it fails.</dd>
+      <dt><i class="dot" style="background:var(--data)"></i>Datastream v1</dt><dd>The original method. On drift it summarises recent data as a 17-number fingerprint (nine of them use the labels) and reuses the model of a similar past concept if it finds one.</dd>
+      <dt><i class="dot" style="background:var(--mv)"></i>Datastream MV</dt><dd>Multi-view version. Its fingerprint covers statistics, distribution and time behaviour and needs no labels; a recalled model is tested on labelled data before it is used, and rolled back if it fails.</dd>
     </dl></details>
   </section>
   <section class="card bus" data-tab="system">
@@ -115,7 +115,7 @@ nav.tabs small{font-weight:400;opacity:.7;margin-left:6px}
     <div id="events"></div>
   </section>
   <section class="card mvmatch" data-tab="matching">
-    <h2>DejaStream MV: latest concept match (feature-only evidence)</h2>
+    <h2>Datastream MV: latest concept match (feature-only evidence)</h2>
     <p class="hint">What the multi-view matcher decided the last time it saw drift: which stored concept it compared against, and how sure it is.</p>
     <div id="mvmatch"></div>
   </section>
@@ -124,7 +124,7 @@ nav.tabs small{font-weight:400;opacity:.7;margin-left:6px}
     <div id="mvlog"></div>
   </section>
   <section class="card mvrepo" data-tab="stores">
-    <h2>DejaStream MV: stored concepts (global fingerprint, z-scored across concepts)</h2>
+    <h2>Datastream MV: stored concepts (global fingerprint, z-scored across concepts)</h2>
     <p class="hint">The memory: every concept the multi-view method has learned. Same colour = same concept coming back.</p>
     <div id="mvrepo"></div>
   </section>
@@ -132,7 +132,7 @@ nav.tabs small{font-weight:400;opacity:.7;margin-left:6px}
 <script>
 const $=id=>document.getElementById(id);
 const css=n=>getComputedStyle(document.documentElement).getPropertyValue(n).trim();
-const STRAT=[["static","static"],["retrain","retrain"],["dejastream","deja"],["dejastream_mv","mv"]];
+const STRAT=[["static","static"],["retrain","retrain"],["datastream","data"],["datastream_mv","mv"]];
 const PAL=["--A","--B","--C","--D","--bad","--static"];
 let S=null;
 const TABS=["overview","matching","stores","system"];
@@ -140,13 +140,13 @@ function showTab(t){
   if(!TABS.includes(t))t="overview";
   document.querySelectorAll("[data-tab]").forEach(e=>e.hidden=e.dataset.tab!==t);
   document.querySelectorAll("#tabs button").forEach(b=>b.classList.toggle("on",b.dataset.go===t));
-  try{localStorage.setItem("dejaTab",t)}catch(e){}
+  try{localStorage.setItem("dataTab",t)}catch(e){}
   if(location.hash!=="#"+t)history.replaceState(null,"","#"+t);
   scrollTo(0,0);if(S)drawAcc();
 }
 document.getElementById("tabs").addEventListener("click",e=>{const b=e.target.closest("button");if(b)showTab(b.dataset.go)});
 addEventListener("keydown",e=>{const i=parseInt(e.key,10);if(i>=1&&i<=4&&!e.metaKey&&!e.ctrlKey)showTab(TABS[i-1])});
-showTab(location.hash.slice(1)||(()=>{try{return localStorage.getItem("dejaTab")}catch(e){return null}})()||"overview");
+showTab(location.hash.slice(1)||(()=>{try{return localStorage.getItem("dataTab")}catch(e){return null}})()||"overview");
 
 function fit(c,h){const r=devicePixelRatio||1,w=c.clientWidth;c.width=w*r;c.height=h*r;c.style.height=h+"px";const g=c.getContext("2d");g.setTransform(r,0,0,r,0,0);return[g,w,h]}
 
@@ -160,17 +160,17 @@ function drawAcc(){
   for(let t=Math.ceil(t0/1500)*1500;t<=t1;t+=1500){g.fillText(t,X(t)-12,H-B+14)}
   for(const[k,v]of STRAT){
     const pts=(S.acc[k]||[]).filter(p=>p[0]>=t0);
-    g.strokeStyle=css("--"+v);g.lineWidth=k==="dejastream"?2.4:1.6;g.beginPath();
+    g.strokeStyle=css("--"+v);g.lineWidth=k==="datastream"?2.4:1.6;g.beginPath();
     pts.forEach((p,i)=>{const x=X(p[0]),y=Y(Math.max(.3,p[1]));i?g.lineTo(x,y):g.moveTo(x,y)});g.stroke();
   }
   // strips
   const y1=H-B+24,y2=y1+16,sh=12;
-  g.fillStyle=css("--mute");g.fillText("truth",L-34,y1+10);g.fillText("deja",L-30,y2+10);
+  g.fillStyle=css("--mute");g.fillText("truth",L-34,y1+10);g.fillText("data",L-30,y2+10);
   const seg=S.segments;
   seg.forEach((s,i)=>{const a=s[0],b=i+1<seg.length?seg[i+1][0]:t1;if(b<t0)return;
     const x=X(Math.max(a,t0)),w=X(b)-x;g.fillStyle=css("--"+s[1])||css("--static");g.fillRect(x,y1,w,sh);
     if(w>14){g.fillStyle="#fff";g.fillText(s[1],x+w/2-4,y1+10)}});
-  const act=(S.active.dejastream_mv||[]),ids=[];
+  const act=(S.active.datastream_mv||[]),ids=[];
   act.forEach((e,i)=>{
     const a=e[0],nxt=act.slice(i+1).find(n=>n[1]!==e[1]);const b=nxt?nxt[0]:t1;
     if(i>0&&act[i-1][1]===e[1])return; if(b<t0)return;
@@ -181,9 +181,9 @@ function drawAcc(){
 function kpis(){
   $("kpis").innerHTML=STRAT.map(([k,v])=>{
     const s=S.summary[k]||{acc:0,seen:0,models:0,counts:{}},c=s.counts||{};
-    const label={static:"Static model",retrain:"Retrain on drift",dejastream:"DejaStream v1 (original)",dejastream_mv:"DejaStream MV (multi-view)"}[k];
-    const extra=k==="dejastream"?`${c.recall||0} recalls, ${c.false_alarm||0} false alarms`:
-      k==="dejastream_mv"?`${c.recall||0} recalls, ${c.rollback||0} rollbacks, ${c.false_alarm||0} false alarms`+(S.mv&&S.mv.fp_ms?` · fingerprint ${S.mv.fp_ms.toFixed(2)} ms`:""):
+    const label={static:"Static model",retrain:"Retrain on drift",datastream:"Datastream v1 (original)",datastream_mv:"Datastream MV (multi-view)"}[k];
+    const extra=k==="datastream"?`${c.recall||0} recalls, ${c.false_alarm||0} false alarms`:
+      k==="datastream_mv"?`${c.recall||0} recalls, ${c.rollback||0} rollbacks, ${c.false_alarm||0} false alarms`+(S.mv&&S.mv.fp_ms?` · fingerprint ${S.mv.fp_ms.toFixed(2)} ms`:""):
       k==="retrain"?"every drift trains a new model":"never adapts";
     return `<div class="card kpi"><div class="name"><i class="dot" style="background:var(--${v})"></i>${label}</div>
       <div class="big">${(s.acc*100).toFixed(1)}%</div>
@@ -212,7 +212,7 @@ function repoPanel(){
 const COMPS=[["stat","statistics"],["dist","distribution"],["time","temporal"],["pred","predictive"]];
 function meters(c){
   return `<div class="meters">`+COMPS.map(([k,n])=>{const v=c[k];
-    return `<div class="meter"><small>${n}</small><div class="bar ${v==null?"na":""}" title="${v==null?"unavailable":"distance "+v}"><i style="width:${v==null?0:Math.round(v*100)}%;background:${v>0.5?"var(--bad)":v>0.25?"var(--retrain)":"var(--deja)"}"></i></div></div>`}).join("")+`</div>`;
+    return `<div class="meter"><small>${n}</small><div class="bar ${v==null?"na":""}" title="${v==null?"unavailable":"distance "+v}"><i style="width:${v==null?0:Math.round(v*100)}%;background:${v>0.5?"var(--bad)":v>0.25?"var(--retrain)":"var(--data)"}"></i></div></div>`}).join("")+`</div>`;
 }
 function mvPanel(){
   const el=$("mvmatch"),log=(S.mv&&S.mv.log)||[],m=log.find(e=>e.kind==="match");

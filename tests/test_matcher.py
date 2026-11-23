@@ -3,9 +3,9 @@ import unittest
 
 import numpy as np
 
-from dejastream.matcher import ConceptRepository, Decision, MatchConfig
-from dejastream.mvfp import extract_feature_fp
-from dejastream.stream import CONCEPTS
+from datastream.matcher import ConceptRepository, Decision, MatchConfig
+from datastream.mvfp import extract_feature_fp
+from datastream.stream import CONCEPTS
 
 
 def fp(name, n, seed, shift=0.0):

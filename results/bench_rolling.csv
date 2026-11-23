@@ -1,4 +1,4 @@
-t,static,retrain,dejastream,dejastream_mv
+t,static,retrain,datastream,datastream_mv
 100,0.61,0.61,0.61,0.61
 150,0.57,0.57,0.57,0.57
 200,0.77,0.77,0.77,0.77

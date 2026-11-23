@@ -1,7 +1,7 @@
 # Audit of the schema-2.0 matcher (Milestone 1)
 
-Scope: `dejastream/mvfp.py`, `similarity.py`, `matcher.py`, `mv_engine.py`, plus `bench_mv.py`, `store.py`, `models.py`, tests.
-Nothing was changed during the audit. Every "confirmed" item below was reproduced by `python -m dejastream.research.audit_checks`
+Scope: `datastream/mvfp.py`, `similarity.py`, `matcher.py`, `mv_engine.py`, plus `bench_mv.py`, `store.py`, `models.py`, tests.
+Nothing was changed during the audit. Every "confirmed" item below was reproduced by `python -m datastream.research.audit_checks`
 (raw numbers in `results/research/audit.json`, seed 12345). Baseline benchmark results are frozen in `results/baseline/`.
 
 ## 1. Current execution flow

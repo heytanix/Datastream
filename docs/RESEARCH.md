@@ -1,6 +1,6 @@
-# DejaStream: research report on uncertainty-aware multi-view matching
+# Datastream: research report on uncertainty-aware multi-view matching
 
-All numbers below are produced by code in `dejastream/research/` and stored in `results/research/`; the appendix tables are generated from those files. Sections 1-8 use synthetic data; section 9 adds four real datasets (single deterministic runs, no significance tests).
+All numbers below are produced by code in `datastream/research/` and stored in `results/research/`; the appendix tables are generated from those files. Sections 1-8 use synthetic data; section 9 adds four real datasets (single deterministic runs, no significance tests).
 
 ## 1. Verdict on the central hypothesis
 
@@ -65,7 +65,7 @@ drift signal (error alarm | label-free feature shift)
  -> repository update: legacy averaging | mergeable moments + sketches + per-window history; eviction policy; versioned records
 ```
 
-Every stage is configuration; all defaults reproduce schema 2.0 exactly (verified by a regression freeze in `tests/test_noise.py` and by identical benchmark output). The improved configuration used in the ablation is `dejastream.research.presets.ablation_variants()["D full multi-view (improved)"]`.
+Every stage is configuration; all defaults reproduce schema 2.0 exactly (verified by a regression freeze in `tests/test_noise.py` and by identical benchmark output). The improved configuration used in the ablation is `datastream.research.presets.ablation_variants()["D full multi-view (improved)"]`.
 
 ## 4. Defects found by this work and fixed
 
@@ -139,18 +139,18 @@ No variant wins consistently on real data, and the synthetic conclusions neither
 
 ```bash
 .venv/bin/python -m unittest discover -s tests                      # 185 tests
-.venv/bin/python -m dejastream.research.audit_checks                # M1
-.venv/bin/python -m dejastream.research.exp_noise                   # M2
-.venv/bin/python -m dejastream.research.exp_dist_time               # M3
-.venv/bin/python -m dejastream.research.exp_retrieval               # M4
-.venv/bin/python -m dejastream.research.exp_thresholds              # M5
-.venv/bin/python -m dejastream.research.exp_validation              # M6
-.venv/bin/python -m dejastream.research.exp_memory                  # M7
-.venv/bin/python -m dejastream.research.exp_ablation                # M8, about 9 minutes
-.venv/bin/python -m dejastream.research.exp_paired                  # M8 confirmation, about 8 minutes
-.venv/bin/python -m dejastream.research.exp_scaling                 # M8 scaling
-.venv/bin/python -m dejastream.research.exp_real                    # real data (needs data/ populated), about 4 minutes
-.venv/bin/python -m dejastream.research.build_report                # regenerate docs/RESEARCH.md
+.venv/bin/python -m datastream.research.audit_checks                # M1
+.venv/bin/python -m datastream.research.exp_noise                   # M2
+.venv/bin/python -m datastream.research.exp_dist_time               # M3
+.venv/bin/python -m datastream.research.exp_retrieval               # M4
+.venv/bin/python -m datastream.research.exp_thresholds              # M5
+.venv/bin/python -m datastream.research.exp_validation              # M6
+.venv/bin/python -m datastream.research.exp_memory                  # M7
+.venv/bin/python -m datastream.research.exp_ablation                # M8, about 9 minutes
+.venv/bin/python -m datastream.research.exp_paired                  # M8 confirmation, about 8 minutes
+.venv/bin/python -m datastream.research.exp_scaling                 # M8 scaling
+.venv/bin/python -m datastream.research.exp_real                    # real data (needs data/ populated), about 4 minutes
+.venv/bin/python -m datastream.research.build_report                # regenerate docs/RESEARCH.md
 ```
 
 

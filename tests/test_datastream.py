@@ -2,10 +2,10 @@ import unittest
 
 import numpy as np
 
-from dejastream.bench import run
-from dejastream.bus import Bus
-from dejastream.fingerprint import fingerprint
-from dejastream.stream import CONCEPTS
+from datastream.bench import run
+from datastream.bus import Bus
+from datastream.fingerprint import fingerprint
+from datastream.stream import CONCEPTS
 
 
 class BusTests(unittest.TestCase):
@@ -52,14 +52,14 @@ class FingerprintTests(unittest.TestCase):
 
 
 class EndToEnd(unittest.TestCase):
-    def test_dejastream_recalls_instead_of_retraining(self):
+    def test_datastream_recalls_instead_of_retraining(self):
         res, events, _ = run(out=None, verbose=False)
         s = res["strategies"]
-        self.assertEqual(s["dejastream"]["detected_changes"], s["dejastream"]["true_changes"])
-        self.assertEqual(s["dejastream"]["models_trained"], 4)          # A, B, C, D once each
-        self.assertGreaterEqual(s["dejastream"]["recalls"], 6)
-        self.assertGreater(s["dejastream"]["post_drift_300_acc"], s["retrain"]["post_drift_300_acc"])
-        self.assertGreater(s["dejastream"]["accuracy"], s["static"]["accuracy"] + 0.2)
+        self.assertEqual(s["datastream"]["detected_changes"], s["datastream"]["true_changes"])
+        self.assertEqual(s["datastream"]["models_trained"], 4)          # A, B, C, D once each
+        self.assertGreaterEqual(s["datastream"]["recalls"], 6)
+        self.assertGreater(s["datastream"]["post_drift_300_acc"], s["retrain"]["post_drift_300_acc"])
+        self.assertGreater(s["datastream"]["accuracy"], s["static"]["accuracy"] + 0.2)
 
 
 if __name__ == "__main__":

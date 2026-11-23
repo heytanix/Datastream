@@ -1,4 +1,4 @@
-# DejaStream: presentation outline
+# Datastream: presentation outline
 
 About 12 minutes. Every claim below comes from the code or from `python run.py bench`. Figures: `docs/architecture.pdf` page numbers in brackets.
 
@@ -34,7 +34,7 @@ About 12 minutes. Every claim below comes from the code or from `python run.py b
 
 ## 7. Live demo (2 min)
 - `python run.py serve`, open http://127.0.0.1:8000.
-- Point at: the two strips (true concept vs concept DejaStream believes), the accuracy dips and recoveries, the repository growing to 4 and staying at 4, the event log showing `probe` then `recall`.
+- Point at: the two strips (true concept vs concept Datastream believes), the accuracy dips and recoveries, the repository growing to 4 and staying at 4, the event log showing `probe` then `recall`.
 - Bus panel: lag stays 0, dropped stays 0.
 
 ## 8. Results (1 min) [p5]
@@ -42,7 +42,7 @@ About 12 minutes. Every claim below comes from the code or from `python run.py b
 |---|---|---|---|
 | static | 58.7% | 56.4% | 1 |
 | retrain | 90.6% | 76.7% | 11 |
-| DejaStream | 91.8% | 83.2% | 4 |
+| Datastream | 91.8% | 83.2% | 4 |
 - Honest framing: gain is in recovery speed and model count, not steady state.
 
 ## 9. Limits and next steps (0.5 min)

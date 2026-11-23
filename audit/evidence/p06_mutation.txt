@@ -12,6 +12,6 @@ M10 engine: only the best candidate is shadow-validated                        k
 M11 engine: label released one step early (off by one)                         SURVIVED (suite still green)  [24s]
 M12 validation: Bonferroni correction removed                                  killed by FAIL: test_pick_best_is_optimistic_and_bonferroni_split_are_conservati  [24s]
 M13 pipeline: accuracy counter counts every sample as correct                  SURVIVED (suite still green)  [24s]
-M14 legacy engine: no quarantine                                               killed by FAIL: test_dejastream_recalls_instead_of_retraining (test_dejastream.E  [8s]
+M14 legacy engine: no quarantine                                               killed by FAIL: test_datastream_recalls_instead_of_retraining (test_datastream.E  [8s]
 
 mutation score: 10/14 killed

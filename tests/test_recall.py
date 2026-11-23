@@ -3,9 +3,9 @@ import unittest
 
 import numpy as np
 
-from dejastream.mv_engine import MVEngine, RecallPolicy
-from dejastream.scenarios import _segments, abrupt_recurring, similar_x_different_y
-from dejastream.stream import CONCEPTS, Concept
+from datastream.mv_engine import MVEngine, RecallPolicy
+from datastream.scenarios import _segments, abrupt_recurring, similar_x_different_y
+from datastream.stream import CONCEPTS, Concept
 
 
 def run(engine, scenario, drop_labels_after=None):

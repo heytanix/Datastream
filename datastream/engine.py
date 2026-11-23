@@ -3,7 +3,7 @@
 strategies
   static       train once on the first window, never adapt
   retrain      on drift, train a fresh model on the post-drift buffer (no memory)
-  dejastream   on drift, fingerprint the post-drift buffer and look it up in the concept
+  datastream   on drift, fingerprint the post-drift buffer and look it up in the concept
                repository: recall the stored model on a match, train and store a new
                concept otherwise
 """
@@ -19,7 +19,7 @@ from .fingerprint import Scaler, fingerprint
 from .models import LogReg
 from .stream import D
 
-STRATEGIES = ("static", "retrain", "dejastream")
+STRATEGIES = ("static", "retrain", "datastream")
 
 
 @dataclass
@@ -122,7 +122,7 @@ class Engine:
                 self.win_X.append(x), self.win_y.append(y)
                 self._since_win += 1
                 drift, why = self.detector.update(err), "error"
-                if not drift and self.strategy == "dejastream" and self._since_win >= self.window \
+                if not drift and self.strategy == "datastream" and self._since_win >= self.window \
                         and len(self.win_X) == self.window:
                     self._since_win = 0
                     fp = fingerprint(np.array(self.win_X), np.array(self.win_y))
@@ -141,7 +141,7 @@ class Engine:
                     events.append(self._ev("drift", self.active, 0.0, why=why))
         else:  # RECOVERING: keep predicting with the stale model while the buffer fills
             self.buf_X.append(x), self.buf_y.append(y)
-            if self.strategy == "dejastream" and len(self.buf_X) == self.probe_n:
+            if self.strategy == "datastream" and len(self.buf_X) == self.probe_n:
                 events.extend(self._probe())
             if len(self.buf_X) >= self.buffer_n:
                 events.extend(self._recover(t))

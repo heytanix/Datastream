@@ -5,11 +5,11 @@ import unittest
 
 import numpy as np
 
-from dejastream.matcher import ConceptRecord
-from dejastream.models import LogReg
-from dejastream.mvfp import (FeatureFingerprint, PredictiveAccumulator, extract_feature_fp, migrate_v1, predictive_fp)
-from dejastream.similarity import SimilarityConfig, compare, psi, wasserstein1
-from dejastream.stream import CONCEPTS
+from datastream.matcher import ConceptRecord
+from datastream.models import LogReg
+from datastream.mvfp import (FeatureFingerprint, PredictiveAccumulator, extract_feature_fp, migrate_v1, predictive_fp)
+from datastream.similarity import SimilarityConfig, compare, psi, wasserstein1
+from datastream.stream import CONCEPTS
 
 
 def window(name, n, seed, noise=0.0):

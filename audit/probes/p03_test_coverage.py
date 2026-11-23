@@ -1,7 +1,7 @@
 """Run the existing suite (python -m unittest discover -s tests) in-process and measure STATEMENT coverage with sys.monitoring."""
 import ast, os, sys, unittest, time, collections
 sys.path.insert(0, os.getcwd())
-ROOT = os.path.abspath("dejastream") + os.sep
+ROOT = os.path.abspath("datastream") + os.sep
 mon = sys.monitoring; TOOL = mon.COVERAGE_ID
 hits = collections.defaultdict(set)
 def on_line(code, line):
@@ -17,9 +17,9 @@ res = unittest.TextTestRunner(verbosity=0, stream=open(os.devnull, "w")).run(sui
 mon.set_events(TOOL, 0)
 print(f"tests run={res.testsRun} failures={len(res.failures)} errors={len(res.errors)} skipped={len(res.skipped)} seconds={time.time()-t0:.1f}")
 rows = []
-for f in sorted(os.listdir("dejastream")):
+for f in sorted(os.listdir("datastream")):
     if not f.endswith(".py"): continue
-    path = os.path.abspath(f"dejastream/{f}")
+    path = os.path.abspath(f"datastream/{f}")
     tree = ast.parse(open(path).read())
     stmts = {n.lineno for n in ast.walk(tree) if isinstance(n, ast.stmt) and not isinstance(n, (ast.FunctionDef, ast.ClassDef, ast.Import, ast.ImportFrom)) and not (isinstance(n, ast.Expr) and isinstance(getattr(n, "value", None), ast.Constant))}
     cov = stmts & hits[path]
@@ -31,7 +31,7 @@ for f, n, c in rows:
 print(f"{'TOTAL':16} {tot:6d} {totc:5d} {100*totc/tot:6.1f}%")
 print("\nUNCOVERED STATEMENT LINES (modules in the main path):")
 for f in ("mv_engine.py", "matcher.py", "pipeline.py", "store.py", "server.py", "bus.py", "engine.py", "detector.py"):
-    path = os.path.abspath(f"dejastream/{f}"); tree = ast.parse(open(path).read())
+    path = os.path.abspath(f"datastream/{f}"); tree = ast.parse(open(path).read())
     stmts = sorted({n.lineno for n in ast.walk(tree) if isinstance(n, ast.stmt) and not isinstance(n, (ast.FunctionDef, ast.ClassDef, ast.Import, ast.ImportFrom)) and not (isinstance(n, ast.Expr) and isinstance(getattr(n, "value", None), ast.Constant))})
     miss = [l for l in stmts if l not in hits[path]]
     # compress to ranges

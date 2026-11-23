@@ -1,4 +1,4 @@
-"""Layers 3+4: DejaStream with multi-view fingerprints and safe model recall.
+"""Layers 3+4: Datastream with multi-view fingerprints and safe model recall.
 
 Per sample: predict with the active model, learn online (30 samples late), and watch for drift
 with a Page-Hinkley error test (needs labels) and a label-free feature-shift test (needs X only).
@@ -93,7 +93,7 @@ def _f(v, nd=4):
 
 
 class MVEngine:
-    strategy = "dejastream_mv"
+    strategy = "datastream_mv"
 
     def __init__(self, n_features: int = 4, *, warmup: int = 150, window: int = 100, buffer_min: int = 40,
                  train_min: int = 80, max_wait: int = 200, quarantine: int = 30, label_delay: int = 0,

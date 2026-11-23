@@ -2,10 +2,10 @@
 import os, sys, warnings
 sys.path.insert(0, os.getcwd()); warnings.simplefilter("ignore")
 import numpy as np
-from dejastream.mvfp import extract_feature_fp
-from dejastream.similarity import compare, SimilarityConfig
-from dejastream.matcher import ConceptRepository, MatchConfig, Decision
-from dejastream.research.gen import Spec, sample
+from datastream.mvfp import extract_feature_fp
+from datastream.similarity import compare, SimilarityConfig
+from datastream.matcher import ConceptRepository, MatchConfig, Decision
+from datastream.research.gen import Spec, sample
 rng = np.random.default_rng(0)
 fp = lambda X: extract_feature_fp(X, t=np.arange(len(X)))
 Z4, O4 = (0.0,)*4, (1.0,)*4

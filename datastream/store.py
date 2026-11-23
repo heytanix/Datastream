@@ -7,7 +7,7 @@ import threading
 
 
 class Store:
-    def __init__(self, path: str = "results/dejastream.db", fresh: bool = True):
+    def __init__(self, path: str = "results/datastream.db", fresh: bool = True):
         self.lock = threading.Lock()
         self.db = sqlite3.connect(path, check_same_thread=False)
         if fresh:

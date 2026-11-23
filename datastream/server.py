@@ -45,7 +45,7 @@ def serve(rate: int = 600, port: int = 8000, seed: int = 7, loops: int = 0, arff
     pipe = Pipeline(rate=rate, seed=seed, loops=loops, stream=stream, n_features=nf)
     pipe.start()
     srv = ThreadingHTTPServer(("127.0.0.1", port), make_handler(pipe))
-    print(f"DejaStream dashboard on http://127.0.0.1:{port}  ({rate} samples/s)  Ctrl+C to stop")
+    print(f"Datastream dashboard on http://127.0.0.1:{port}  ({rate} samples/s)  Ctrl+C to stop")
     try:
         srv.serve_forever()
     except KeyboardInterrupt:

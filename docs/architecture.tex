@@ -23,7 +23,7 @@
 \definecolor{ink}{HTML}{1C2430}
 \definecolor{cstatic}{HTML}{8A94A6}
 \definecolor{cretrain}{HTML}{D98A1F}
-\definecolor{cdeja}{HTML}{0F8F7E}
+\definecolor{cdata}{HTML}{0F8F7E}
 \definecolor{bad}{HTML}{C9423A}
 
 \tikzset{
@@ -38,7 +38,7 @@
   mono/.style={font=\ttfamily\footnotesize},
 }
 \newcommand{\pagetitle}[2]{%
-  {\Huge\bfseries DejaStream}\hfill{\large #1}\par\vspace{2pt}
+  {\Huge\bfseries Datastream}\hfill{\large #1}\par\vspace{2pt}
   {\large\color{ink!70} #2}\par\vspace{8pt}\hrule\vspace{14pt}}
 \newcommand{\legend}{%
   \begin{tikzpicture}[baseline]
@@ -74,7 +74,7 @@
   \node[todo,anchor=north] (b3) at ($(b2.south)+(0,-1.45)$) {\textbf{Kafka / Redpanda broker}\\drop-in replacement for \texttt{bus.py} (not built)};
 
   % ---- layer 3
-  \node[ok,anchor=north] (p1) at ($(c3)+(0,-1.4)$) {\textbf{Processor workers}\\one consumer group each:\\\texttt{proc-static}, \texttt{proc-retrain}, \texttt{proc-dejastream}};
+  \node[ok,anchor=north] (p1) at ($(c3)+(0,-1.4)$) {\textbf{Processor workers}\\one consumer group each:\\\texttt{proc-static}, \texttt{proc-retrain}, \texttt{proc-datastream}};
   \node[ok,anchor=north] (p2) at ($(p1.south)+(0,-1.45)$) {\textbf{Prequential loop}\\predict $\rightarrow$ score $\rightarrow$ learn, per sample};
   \node[ok,anchor=north] (p3) at ($(p2.south)+(0,-1.45)$) {\textbf{Page--Hinkley detector}\\watches the 0/1 error stream};
   \node[ok,anchor=north] (p4) at ($(p3.south)+(0,-1.45)$) {\textbf{Fingerprint-shift detector}\\every 100 samples, label-free covariate check};
@@ -168,7 +168,7 @@
   % consumer groups
   \node[ok,text width=6.6cm,anchor=west] (g1) at (23.5,7.0) {\textbf{proc-static}\\reads \texttt{ds.raw}};
   \node[ok,text width=6.6cm,anchor=west] (g2) at (23.5,4.8) {\textbf{proc-retrain}\\reads \texttt{ds.raw}};
-  \node[ok,text width=6.6cm,anchor=west] (g3) at (23.5,2.6) {\textbf{proc-dejastream}\\reads \texttt{ds.raw}};
+  \node[ok,text width=6.6cm,anchor=west] (g3) at (23.5,2.6) {\textbf{proc-datastream}\\reads \texttt{ds.raw}};
   \node[ok,text width=6.6cm,anchor=west] (g4) at (23.5,0.2) {\textbf{store}\\reads \texttt{ds.events}, \texttt{ds.metrics}};
   \node[ok,text width=6.6cm,anchor=west] (g5) at (23.5,-2.3) {\textbf{dashboard}\\reads all three topics};
   \begin{scope}[on background layer]
@@ -199,7 +199,7 @@
 \clearpage
 
 %% ============================================================ PAGE 3
-\pagetitle{3. Drift handling state machine}{\texttt{engine.py}: what one DejaStream engine does for every incoming sample}
+\pagetitle{3. Drift handling state machine}{\texttt{engine.py}: what one Datastream engine does for every incoming sample}
 
 \begin{center}
 \begin{adjustbox}{max width=\textwidth,max height=0.74\textheight}
@@ -466,9 +466,9 @@
   \pgfplotsinvokeforeach{1500,3000,4500,6000,7500,9000,10500,12000,13500,15000}{\draw[bad!50,dashed] (axis cs:#1,0.1) -- (axis cs:#1,1.02);}
   \addplot[cstatic] table[col sep=comma,x=t,y=static] {../results/bench_rolling.csv};
   \addplot[cretrain] table[col sep=comma,x=t,y=retrain] {../results/bench_rolling.csv};
-  \addplot[cdeja,line width=1.5pt] table[col sep=comma,x=t,y=dejastream] {../results/bench_rolling.csv};
-  \addplot[magenta!70!black,dashed,line width=0.9pt] table[col sep=comma,x=t,y=dejastream_mv] {../results/bench_rolling.csv};
-  \legend{static model,retrain on drift,DejaStream v1,DejaStream MV}
+  \addplot[cdata,line width=1.5pt] table[col sep=comma,x=t,y=datastream] {../results/bench_rolling.csv};
+  \addplot[magenta!70!black,dashed,line width=0.9pt] table[col sep=comma,x=t,y=datastream_mv] {../results/bench_rolling.csv};
+  \legend{static model,retrain on drift,Datastream v1,Datastream MV}
   \node[font=\small\bfseries,text=bad!80!black] at (axis cs:750,0.13) {A}; \node[font=\small\bfseries,text=bad!80!black] at (axis cs:2250,0.13) {B}; \node[font=\small\bfseries,text=bad!80!black] at (axis cs:3750,0.13) {C}; \node[font=\small\bfseries,text=bad!80!black] at (axis cs:5250,0.13) {A}; \node[font=\small\bfseries,text=bad!80!black] at (axis cs:6750,0.13) {B}; \node[font=\small\bfseries,text=bad!80!black] at (axis cs:8250,0.13) {D}; \node[font=\small\bfseries,text=bad!80!black] at (axis cs:9750,0.13) {C}; \node[font=\small\bfseries,text=bad!80!black] at (axis cs:11250,0.13) {A}; \node[font=\small\bfseries,text=bad!80!black] at (axis cs:12750,0.13) {D}; \node[font=\small\bfseries,text=bad!80!black] at (axis cs:14250,0.13) {B}; \node[font=\small\bfseries,text=bad!80!black] at (axis cs:15750,0.13) {A};
 \end{axis}
 \end{tikzpicture}
@@ -521,26 +521,26 @@
 \toprule
 \textbf{File} & \textbf{Layer} & \textbf{Responsibility} & \textbf{Status}\\
 \midrule
-\texttt{dejastream/stream.py} & 1 & Recurring-concept generator, segment schedule, label noise & \textcolor{okline}{built, tested}\\
-\texttt{dejastream/bus.py} & 2 & Topics, offsets, consumer groups, retention, \texttt{Sender} with drop counting & \textcolor{okline}{built, tested}\\
-\texttt{dejastream/pipeline.py} & 2--5 & Starts the source, one worker per strategy, the store and the dashboard consumers & \textcolor{okline}{built, run live}\\
-\texttt{dejastream/detector.py} & 3 & Page--Hinkley drift detector on the error stream & \textcolor{okline}{built, tested}\\
-\texttt{dejastream/engine.py} & 3--4 & State machine, quarantine, early probe, repository, matching, three strategies & \textcolor{okline}{built, tested}\\
-\texttt{dejastream/fingerprint.py} & 4 & v1: 17-d fingerprint (uses labels) and running scaler, kept as baseline & \textcolor{okline}{built, tested}\\
-\texttt{dejastream/mvfp.py} & 4 & schema 2.0 feature and predictive fingerprints, serialisation, v1 migration & \textcolor{okline}{built, tested}\\
-\texttt{dejastream/similarity.py} & 4 & per-view distances, noise floors, weighted combination & \textcolor{okline}{built, tested}\\
-\texttt{dejastream/matcher.py} & 4 & bounded repository, hierarchical retrieval, four-way decision, confidence score & \textcolor{okline}{built, tested}\\
-\texttt{dejastream/noise.py} & 4 & statistic-specific effective sample size, empirical same-concept noise profile & \textcolor{okline}{built, tested; profile not used by engine}\\
-\texttt{dejastream/validation.py} & 3--4 & task-aware metrics, paired bootstrap, Bonferroni / split-confirm selection & \textcolor{okline}{built, tested; engine uses classification only}\\
-\texttt{dejastream/memory.py} & 4--5 & mergeable moments, t-digest-style sketch, per-window history, composed fingerprints & \textcolor{okline}{built, tested}\\
-\texttt{dejastream/research/} & 6 & audit, calibration, ablation, paired tests, scaling experiments and report builder & \textcolor{okline}{built, run}\\
-\texttt{dejastream/mv\_engine.py} & 3--4 & drift handling with shadow validation, provisional activation, rollback & \textcolor{okline}{built, tested}\\
-\texttt{dejastream/scenarios.py}, \texttt{bench\_mv.py} & 6 & eight synthetic scenarios, multi-seed benchmark with retrieval metrics & \textcolor{okline}{built, tested}\\
-\texttt{dejastream/datasets.py} & 1 & CSV loader (numeric, categorical, missing); no dataset bundled & \textcolor{okline}{built, loader tested only}\\
-\texttt{dejastream/models.py} & 4 & numpy logistic regression with batch fit and online SGD & \textcolor{okline}{built, tested}\\
-\texttt{dejastream/store.py} & 5 & SQLite tables for events, metrics, concept snapshots & \textcolor{okline}{built, run live}\\
-\texttt{dejastream/server.py}, \texttt{web/index.html} & 6 & HTTP server, canvas charts, repository, bus and event panels & \textcolor{okline}{built, run live}\\
-\texttt{dejastream/bench.py}, \texttt{run.py} & 6 & Offline comparison, JSON and CSV export, CLI & \textcolor{okline}{built, tested}\\
+\texttt{datastream/stream.py} & 1 & Recurring-concept generator, segment schedule, label noise & \textcolor{okline}{built, tested}\\
+\texttt{datastream/bus.py} & 2 & Topics, offsets, consumer groups, retention, \texttt{Sender} with drop counting & \textcolor{okline}{built, tested}\\
+\texttt{datastream/pipeline.py} & 2--5 & Starts the source, one worker per strategy, the store and the dashboard consumers & \textcolor{okline}{built, run live}\\
+\texttt{datastream/detector.py} & 3 & Page--Hinkley drift detector on the error stream & \textcolor{okline}{built, tested}\\
+\texttt{datastream/engine.py} & 3--4 & State machine, quarantine, early probe, repository, matching, three strategies & \textcolor{okline}{built, tested}\\
+\texttt{datastream/fingerprint.py} & 4 & v1: 17-d fingerprint (uses labels) and running scaler, kept as baseline & \textcolor{okline}{built, tested}\\
+\texttt{datastream/mvfp.py} & 4 & schema 2.0 feature and predictive fingerprints, serialisation, v1 migration & \textcolor{okline}{built, tested}\\
+\texttt{datastream/similarity.py} & 4 & per-view distances, noise floors, weighted combination & \textcolor{okline}{built, tested}\\
+\texttt{datastream/matcher.py} & 4 & bounded repository, hierarchical retrieval, four-way decision, confidence score & \textcolor{okline}{built, tested}\\
+\texttt{datastream/noise.py} & 4 & statistic-specific effective sample size, empirical same-concept noise profile & \textcolor{okline}{built, tested; profile not used by engine}\\
+\texttt{datastream/validation.py} & 3--4 & task-aware metrics, paired bootstrap, Bonferroni / split-confirm selection & \textcolor{okline}{built, tested; engine uses classification only}\\
+\texttt{datastream/memory.py} & 4--5 & mergeable moments, t-digest-style sketch, per-window history, composed fingerprints & \textcolor{okline}{built, tested}\\
+\texttt{datastream/research/} & 6 & audit, calibration, ablation, paired tests, scaling experiments and report builder & \textcolor{okline}{built, run}\\
+\texttt{datastream/mv\_engine.py} & 3--4 & drift handling with shadow validation, provisional activation, rollback & \textcolor{okline}{built, tested}\\
+\texttt{datastream/scenarios.py}, \texttt{bench\_mv.py} & 6 & eight synthetic scenarios, multi-seed benchmark with retrieval metrics & \textcolor{okline}{built, tested}\\
+\texttt{datastream/datasets.py} & 1 & CSV loader (numeric, categorical, missing); no dataset bundled & \textcolor{okline}{built, loader tested only}\\
+\texttt{datastream/models.py} & 4 & numpy logistic regression with batch fit and online SGD & \textcolor{okline}{built, tested}\\
+\texttt{datastream/store.py} & 5 & SQLite tables for events, metrics, concept snapshots & \textcolor{okline}{built, run live}\\
+\texttt{datastream/server.py}, \texttt{web/index.html} & 6 & HTTP server, canvas charts, repository, bus and event panels & \textcolor{okline}{built, run live}\\
+\texttt{datastream/bench.py}, \texttt{run.py} & 6 & Offline comparison, JSON and CSV export, CLI & \textcolor{okline}{built, tested}\\
 \midrule
 Kafka / Redpanda adapter & 2 & Replace \texttt{bus.py} with a real broker client & \textcolor{todoline}{not built}\\
 Spark Structured Streaming processor & 3 & Alternative to the Python worker threads & \textcolor{todoline}{not built}\\

@@ -4,9 +4,9 @@ import unittest
 
 import numpy as np
 
-from dejastream.mv_engine import MVEngine, RecallPolicy
-from dejastream.scenarios import abrupt_recurring, similar_x_different_y
-from dejastream.validation import (METRICS, Pred, ValidationConfig, compare_paired, select_candidate, trivial_prediction)
+from datastream.mv_engine import MVEngine, RecallPolicy
+from datastream.scenarios import abrupt_recurring, similar_x_different_y
+from datastream.validation import (METRICS, Pred, ValidationConfig, compare_paired, select_candidate, trivial_prediction)
 
 
 def preds(y, acc, rng):

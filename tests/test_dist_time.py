@@ -4,10 +4,10 @@ import unittest
 
 import numpy as np
 
-from dejastream.mvfp import extract_feature_fp
-from dejastream.research.exp_dist_time import ar, fpw, shape_family, temporal_family
-from dejastream.research.gen import auc
-from dejastream.similarity import (DIST_METRICS, SimilarityConfig, compare, energy_distance, js_divergence, psi, wasserstein1)
+from datastream.mvfp import extract_feature_fp
+from datastream.research.exp_dist_time import ar, fpw, shape_family, temporal_family
+from datastream.research.gen import auc
+from datastream.similarity import (DIST_METRICS, SimilarityConfig, compare, energy_distance, js_divergence, psi, wasserstein1)
 
 
 def sk(x):
@@ -99,7 +99,7 @@ class Temporal(unittest.TestCase):
         self.assertTrue(d.components["time"] is not None and np.isfinite(d.components["time"]))
 
     def test_each_statistic_is_transformed_to_comparable_units(self):
-        from dejastream.similarity import _time_transform
+        from datastream.similarity import _time_transform
         for key, v in (("acf1", np.array([0.2, 0.9, np.nan])), ("volatility", np.array([0.5, 2.0, np.nan])), ("abrupt", np.array([0.0, 0.05, np.nan]))):
             out = _time_transform(key, v)
             self.assertTrue(np.isfinite(out[:2]).all() and np.isnan(out[2]))

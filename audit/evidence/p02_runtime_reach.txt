@@ -1,20 +1,20 @@
-samples processed: 16499 | strategies: ['static', 'retrain', 'dejastream', 'dejastream_mv']
+samples processed: 16499 | strategies: ['static', 'retrain', 'datastream', 'datastream_mv']
 
 DEFINED but NOT executed by the default pipeline (module-level + methods; research/ excluded):
-  dejastream/bench.py: run@14
-  dejastream/bench_mv.py: run_one@36, _agg@129, fingerprint_latency@137, run@157, _fmt@183, to_markdown@190
-  dejastream/cli.py: main@4
-  dejastream/datasets.py: load_csv_stream@13, load_intel_berkeley@65, load_uci_electricity@98, replay_stream@128, load_arff@138, cell@35, conv@177, __init__@192, __len__@203, __iter__@206
-  dejastream/fingerprint.py: fingerprint_names@15
-  dejastream/matcher.py: conformal_quantile@199, match_features@214, values@185, summary@190, fit@235, predict@254, to_dict@285, from_dict@295, __contains__@336, _evict@361, observe_same@421, replace_model@458, to_dict@622, load_dict@627
-  dejastream/memory.py: _nl@27, __init__@38, from_values@47, from_quantiles@58, _compress@70, merge@93, quantiles@103, to_dict@112, from_dict@117, nbytes@125, from_window@139, from_fp@153, merge@161, to_dict@174, from_dict@178, from_window@197, from_fp@214, _push_history@224, merge_window@228, compose@242, nbytes@286, to_dict@290, from_dict@298
-  dejastream/models.py: to_dict@48
-  dejastream/mv_engine.py: _vcfg@301, _resolve_paired@328
-  dejastream/mvfp.py: _nan_list@37, _arr@41, migrate_v1@461, view_available@68, l1_unit@96, to_dict@148, from_dict@164, to_dict@343, from_dict@351, reveal@429, n_labeled@442, n_unlabeled@446
-  dejastream/noise.py: lrv_factor@40, effective_n@56, effective_n_corr@77, nu_vector@86, build_profile@125, quantile@108, power@112, pvalue@119, boot@152
-  dejastream/scenarios.py: _gen@38, _segments@57, abrupt_recurring@95, noisy_recurring@99, gradual@103, incremental@107, similar_x_different_y@111, temporal_only@120, sea@129, hyperplane@145, custom_stream@188, aba@215, abca@219, aba_noisy@223, ab_gradual@228, diff_x_same_y@234, same_marginal_diff_corr@241, varied_sizes@248, overlapping@253, imbalanced@261, feature_availability@267, __len__@30, __iter__@33
-  dejastream/server.py: make_handler@13, serve@37, log_message@15, _send@18, do_GET@26
-  dejastream/similarity.py: js_divergence@183, energy_distance@195, _time_transform@326, _apply_profile@381
-  dejastream/store.py: query@42
-  dejastream/stream.py: change_points@44
-  dejastream/validation.py: _acc@28, _balanced_acc@32, _macro_f1@38, _neg_logloss@49, _neg_ece@57, _neg_mae@66, _neg_rmse@70, _neg_rel_err@74, _r2@80, _precision@86, _recall@91, _f1@96, _avg_precision@103, trivial_prediction@120, _t_crit@211, _block_indices@217, _subset@223, compare_paired@227, select_candidate@293, __post_init__@154, as_dict@189
+  datastream/bench.py: run@14
+  datastream/bench_mv.py: run_one@36, _agg@129, fingerprint_latency@137, run@157, _fmt@183, to_markdown@190
+  datastream/cli.py: main@4
+  datastream/datasets.py: load_csv_stream@13, load_intel_berkeley@65, load_uci_electricity@98, replay_stream@128, load_arff@138, cell@35, conv@177, __init__@192, __len__@203, __iter__@206
+  datastream/fingerprint.py: fingerprint_names@15
+  datastream/matcher.py: conformal_quantile@199, match_features@214, values@185, summary@190, fit@235, predict@254, to_dict@285, from_dict@295, __contains__@336, _evict@361, observe_same@421, replace_model@458, to_dict@622, load_dict@627
+  datastream/memory.py: _nl@27, __init__@38, from_values@47, from_quantiles@58, _compress@70, merge@93, quantiles@103, to_dict@112, from_dict@117, nbytes@125, from_window@139, from_fp@153, merge@161, to_dict@174, from_dict@178, from_window@197, from_fp@214, _push_history@224, merge_window@228, compose@242, nbytes@286, to_dict@290, from_dict@298
+  datastream/models.py: to_dict@48
+  datastream/mv_engine.py: _vcfg@301, _resolve_paired@328
+  datastream/mvfp.py: _nan_list@37, _arr@41, migrate_v1@461, view_available@68, l1_unit@96, to_dict@148, from_dict@164, to_dict@343, from_dict@351, reveal@429, n_labeled@442, n_unlabeled@446
+  datastream/noise.py: lrv_factor@40, effective_n@56, effective_n_corr@77, nu_vector@86, build_profile@125, quantile@108, power@112, pvalue@119, boot@152
+  datastream/scenarios.py: _gen@38, _segments@57, abrupt_recurring@95, noisy_recurring@99, gradual@103, incremental@107, similar_x_different_y@111, temporal_only@120, sea@129, hyperplane@145, custom_stream@188, aba@215, abca@219, aba_noisy@223, ab_gradual@228, diff_x_same_y@234, same_marginal_diff_corr@241, varied_sizes@248, overlapping@253, imbalanced@261, feature_availability@267, __len__@30, __iter__@33
+  datastream/server.py: make_handler@13, serve@37, log_message@15, _send@18, do_GET@26
+  datastream/similarity.py: js_divergence@183, energy_distance@195, _time_transform@326, _apply_profile@381
+  datastream/store.py: query@42
+  datastream/stream.py: change_points@44
+  datastream/validation.py: _acc@28, _balanced_acc@32, _macro_f1@38, _neg_logloss@49, _neg_ece@57, _neg_mae@66, _neg_rmse@70, _neg_rel_err@74, _r2@80, _precision@86, _recall@91, _f1@96, _avg_precision@103, trivial_prediction@120, _t_crit@211, _block_indices@217, _subset@223, compare_paired@227, select_candidate@293, __post_init__@154, as_dict@189
