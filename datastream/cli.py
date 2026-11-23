@@ -2,7 +2,7 @@ import argparse
 
 
 def main(argv=None):
-    p = argparse.ArgumentParser(prog="dejastream")
+    p = argparse.ArgumentParser(prog="datastream")
     sub = p.add_subparsers(dest="cmd", required=True)
     b = sub.add_parser("bench", help="offline benchmark of all strategies")
     b.add_argument("--seed", type=int, default=7)

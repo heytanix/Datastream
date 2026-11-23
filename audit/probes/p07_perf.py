@@ -2,15 +2,15 @@
 import os, sys, time, json, tempfile, tracemalloc, warnings
 sys.path.insert(0, os.getcwd()); warnings.simplefilter("ignore")
 import numpy as np
-from dejastream.mvfp import extract_feature_fp
-from dejastream.fingerprint import fingerprint as legacy_fp
-from dejastream.similarity import compare
-from dejastream.matcher import ConceptRepository, MatchConfig
-from dejastream.mv_engine import MVEngine
-from dejastream.strategies import make_engine
-from dejastream.scenarios import abrupt_recurring
-from dejastream.validation import compare_paired, ValidationConfig, Pred
-from dejastream.research.gen import Spec, sample
+from datastream.mvfp import extract_feature_fp
+from datastream.fingerprint import fingerprint as legacy_fp
+from datastream.similarity import compare
+from datastream.matcher import ConceptRepository, MatchConfig
+from datastream.mv_engine import MVEngine
+from datastream.strategies import make_engine
+from datastream.scenarios import abrupt_recurring
+from datastream.validation import compare_paired, ValidationConfig, Pred
+from datastream.research.gen import Spec, sample
 rng = np.random.default_rng(0)
 ms = lambda f, r=50: (lambda t0: [f() for _ in range(r)] and (time.perf_counter() - t0) * 1000 / r)(time.perf_counter())
 
@@ -36,7 +36,7 @@ t0 = time.perf_counter(); blob = json.dumps(repo.to_dict()); t1 = time.perf_coun
 print(f"   persistence (NOT used by the pipeline): to_dict+json {1000*(t1-t0):.1f} ms, {len(blob)/1024:.0f} KB for 50 concepts; load {1000*(t2-t1):.1f} ms (models are not included)")
 y = rng.integers(0, 2, 60); p1, p0 = Pred(np.where(rng.random(60) < .8, y, 1-y)), Pred(np.where(rng.random(60) < .5, y, 1-y))
 print(f"   paired validation compare_paired(n=60, 400 bootstrap): {ms(lambda: compare_paired(y, p1, p0, ValidationConfig()), 10):.1f} ms (opt-in path)")
-from dejastream.store import Store
+from datastream.store import Store
 st = Store(os.path.join(tempfile.mkdtemp(), "x.db")); t0 = time.perf_counter()
 for i in range(5000): st.add_metric({"t": i, "strategy": "s", "acc": .9, "models": 1})
 st.commit(); print(f"   SQLite add_metric: {1e6*(time.perf_counter()-t0)/5000:.0f} us/row (5000 rows, one commit)")
@@ -48,7 +48,7 @@ for d in (4, 10, 30):
         sp = Spec("s", tuple(rng.normal(0, 3, d)), (1.0,)*d); X = sample(sp, 1500, rng); w = rng.normal(0, 1, d); yy = ((X - X.mean(0)) @ w > 0).astype(int); segs.append((X, yy))
     X = np.vstack([s[0] for s in segs]); Y = np.concatenate([s[1] for s in segs])
     row = []
-    for strat in ("retrain", "dejastream", "dejastream_mv"):
+    for strat in ("retrain", "datastream", "datastream_mv"):
         e = make_engine(strat, n_features=d); t0 = time.perf_counter()
         for t in range(len(Y)): e.process(t, X[t], int(Y[t]))
         row.append(f"{strat}={1e6*(time.perf_counter()-t0)/len(Y):.0f}us")

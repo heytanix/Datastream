@@ -6,9 +6,9 @@ import unittest
 
 import numpy as np
 
-from dejastream.bench_mv import run, run_one, to_markdown
-from dejastream.datasets import load_csv_stream
-from dejastream.scenarios import SCENARIOS, abrupt_recurring, similar_x_different_y
+from datastream.bench_mv import run, run_one, to_markdown
+from datastream.datasets import load_csv_stream
+from datastream.scenarios import SCENARIOS, abrupt_recurring, similar_x_different_y
 
 
 class Scenarios(unittest.TestCase):
@@ -42,7 +42,7 @@ class Scenarios(unittest.TestCase):
 class Bench(unittest.TestCase):
     def test_run_one_reports_all_metrics_for_every_strategy(self):
         d = abrupt_recurring(seed=1)
-        mv = run_one(d, "dejastream_mv")
+        mv = run_one(d, "datastream_mv")
         for k in ("accuracy", "post_drift_acc", "detection_delay", "models_trained", "recalls", "retrieval_precision",
                   "retrieval_recall", "false_match_rate", "missed_match_rate", "recall_success_rate", "fp_ms",
                   "bytes_per_concept", "us_per_sample"):
@@ -59,7 +59,7 @@ class Bench(unittest.TestCase):
             with open(out) as fh:
                 self.assertEqual(json.load(fh)["seeds"], [1, 2])
             self.assertTrue(os.path.exists(out.replace(".json", ".md")))
-            cell = r["scenarios"]["similar_x_different_y"]["dejastream_mv"]["accuracy"]
+            cell = r["scenarios"]["similar_x_different_y"]["datastream_mv"]["accuracy"]
             self.assertEqual(cell["n"], 2)
             self.assertGreater(cell["std"] + 1, 0)
             self.assertIn("±", to_markdown(r))
@@ -91,7 +91,7 @@ class RealDatasetLoaders(unittest.TestCase):
     """The loaders are exercised on tiny files in the documented layouts only; no real data is bundled."""
 
     def test_intel_berkeley_layout(self):
-        from dejastream.datasets import load_intel_berkeley
+        from datastream.datasets import load_intel_berkeley
         rows = []
         for i in range(60):
             rows.append(f"2004-02-28 00:{i % 60:02d}:16.0 {i + 1} {1 + i % 2} {19.0 + 0.1 * i:.4f} 37.1 45.0 2.7")
@@ -113,7 +113,7 @@ class RealDatasetLoaders(unittest.TestCase):
             os.unlink(path)
 
     def test_uci_electricity_layout(self):
-        from dejastream.datasets import load_uci_electricity
+        from datastream.datasets import load_uci_electricity
         header = '"";"MT_001";"MT_002";"MT_003"'
         comma = lambda v: str(v).replace(".", ",")                                  # the file uses a decimal comma
         rows = [f"2011-01-01 {i // 4:02d}:{(i % 4) * 15:02d}:00;{comma(1 + i * 0.5)};{comma(2.5 + i)};{comma(i / 10)}" for i in range(12)]
@@ -131,7 +131,7 @@ class RealDatasetLoaders(unittest.TestCase):
             os.unlink(path)
 
     def test_replay_stream_is_labelled_as_constructed_recurrence(self):
-        from dejastream.datasets import replay_stream
+        from datastream.datasets import replay_stream
         X, y = np.arange(40.0)[:, None], np.arange(40) % 2
         Xr, yr, truth = replay_stream(X, y, [(0, 10), (10, 25)], [0, 1, 0])
         self.assertEqual(len(Xr), 35)
@@ -141,7 +141,7 @@ class RealDatasetLoaders(unittest.TestCase):
 
 class ArffLoader(unittest.TestCase):
     def test_numeric_nominal_missing_and_quoting(self):
-        from dejastream.datasets import load_arff
+        from datastream.datasets import load_arff
         text = """% comment
 @relation toy
 @attribute date numeric
@@ -174,7 +174,7 @@ class ArffLoader(unittest.TestCase):
 
 class ArffStreamTests(unittest.TestCase):
     def test_streams_rows_drops_high_cardinality_nominals_and_loops(self):
-        from dejastream.datasets import ArffStream
+        from datastream.datasets import ArffStream
         rows = "\n".join(f"{i % 3},{i * 0.5},'C{i % 40}',{'UP' if i % 2 == 0 else 'DOWN'}" for i in range(80))
         text = "@relation t\n@attribute day {0,1,2}\n@attribute v numeric\n@attribute code {" + ",".join(f"'C{i}'" for i in range(40)) + "}\n@attribute class {UP,DOWN}\n@data\n" + rows + "\n"
         with tempfile.NamedTemporaryFile("w", suffix=".arff", delete=False) as f:

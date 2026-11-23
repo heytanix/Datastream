@@ -1,7 +1,7 @@
 """Static reachability: which definitions are referenced by the production path (cli -> server -> pipeline -> strategies -> engines)?
 Name-based and approximate: a name counts as 'referenced' if it appears as an identifier/attribute in a reachable module."""
 import ast, os, sys, collections
-ROOT = "dejastream"
+ROOT = "datastream"
 mods = {f[:-3]: os.path.join(ROOT, f) for f in os.listdir(ROOT) if f.endswith(".py")}
 def imports(path):
     t = ast.parse(open(path).read()); out = set()

@@ -5,10 +5,10 @@ import unittest
 
 import numpy as np
 
-from dejastream.matcher import ConceptRecord, ConceptRepository, MatchConfig
-from dejastream.memory import ConceptSummaries, Moments, QuantileSketch
-from dejastream.mvfp import extract_feature_fp
-from dejastream.research.gen import Spec, sample
+from datastream.matcher import ConceptRecord, ConceptRepository, MatchConfig
+from datastream.memory import ConceptSummaries, Moments, QuantileSketch
+from datastream.mvfp import extract_feature_fp
+from datastream.research.gen import Spec, sample
 
 Z4, O4 = (0.0,) * 4, (1.0,) * 4
 
@@ -276,8 +276,8 @@ class Eviction(unittest.TestCase):
         self.assertEqual(len(r), 3)
 
     def test_engine_never_references_an_evicted_concept_with_a_tiny_cap(self):
-        from dejastream.mv_engine import MVEngine
-        from dejastream.scenarios import abrupt_recurring
+        from datastream.mv_engine import MVEngine
+        from datastream.scenarios import abrupt_recurring
         e = MVEngine(match=MatchConfig(max_concepts=2))
         for t, x, y, _ in abrupt_recurring():
             e.process(t, x, y)

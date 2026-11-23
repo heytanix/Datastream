@@ -1,4 +1,4 @@
-"""Multi-seed, multi-scenario benchmark: static vs retrain vs DejaStream v1 vs DejaStream MV.
+"""Multi-seed, multi-scenario benchmark: static vs retrain vs Datastream v1 vs Datastream MV.
 
 Retrieval metrics (computed from engine events and the ground-truth concept of each sample)
   A *resolution* is a ``recall`` or ``new_concept`` event after warm-up. Its true concept is the
@@ -29,7 +29,7 @@ SUCCESS_MARGIN, SUCCESS_WINDOW = 0.08, 200
 from .similarity import SimilarityConfig
 
 # extra, explicitly labelled rows: same engine, non-default configuration
-VARIANTS = {"temporal_only": {"dejastream_mv[time-weighted]": {
+VARIANTS = {"temporal_only": {"datastream_mv[time-weighted]": {
     "sim": SimilarityConfig(weights={"stat": 0.2, "dist": 0.2, "time": 0.5, "pred": 0.1})}}}
 
 
@@ -119,9 +119,9 @@ def run_one(scenario, strategy: str, **engine_kw) -> dict:
         res["match_ms"] = 1000 * eng.match_seconds / eng.match_calls
     if hasattr(eng, "fp_calls") and eng.fp_calls:
         res["fp_ms"] = 1000 * eng.fp_seconds / eng.fp_calls
-    if strategy == "dejastream_mv":
+    if strategy == "datastream_mv":
         res["bytes_per_concept"] = eng.repo.memory_per_concept()
-    elif strategy == "dejastream":
+    elif strategy == "datastream":
         res["bytes_per_concept"] = float(8 * (4 * n_feat + 1))      # one 17-d float64 vector (model not counted)
     return res
 
@@ -165,7 +165,7 @@ def run(seeds=(1, 2, 3, 4, 5), scenarios=None, strategies=STRATEGIES, out="resul
             for s in strategies:
                 per[s].append(run_one(data, s))
         for vname, kw in VARIANTS.get(sc, {}).items():
-            per[vname] = [run_one(SCENARIOS[sc](seed=seed), "dejastream_mv", **kw) for seed in seeds]
+            per[vname] = [run_one(SCENARIOS[sc](seed=seed), "datastream_mv", **kw) for seed in seeds]
         results["scenarios"][sc] = {s: _agg(rows) for s, rows in per.items()}
         results["scenarios"][sc]["_notes"] = data.notes
         if verbose:
@@ -204,7 +204,7 @@ def to_markdown(r: dict) -> str:
     if a:
         L.append("### Memory per stored concept (fingerprint only, models excluded)\n")
         L.append("| strategy | bytes per concept |\n|---|---|")
-        for s in ("dejastream", "dejastream_mv"):
+        for s in ("datastream", "datastream_mv"):
             if a[s].get("bytes_per_concept"):
                 L.append(f"| {LABELS[s]} | {a[s]['bytes_per_concept']['mean']:.0f} |")
         L.append("")

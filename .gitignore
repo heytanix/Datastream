@@ -1,7 +1,7 @@
 .venv/
 __pycache__/
 *.pyc
-results/dejastream.db*
+results/datastream.db*
 results/server.log
 docs/*.aux
 docs/*.log

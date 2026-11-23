@@ -12,8 +12,8 @@
 == E. repeated drift on a STATIONARY stream (single concept, 30,000 samples, 5 seeds)
    (drifts, by_error, by_feature_shift, models_trained) per seed: [(2, 2, 0, 1), (0, 0, 0, 1), (2, 2, 0, 1), (2, 2, 0, 1), (3, 3, 0, 1)]  -> false drift alarms per 10k samples ~ 0.60
 == F. an exception inside recovery in a live Pipeline: does the system notice?
-   threads alive: {'source': False, 'store': True, 'dashboard': True, 'proc-static': True, 'proc-retrain': True, 'proc-dejastream': True, 'proc-dejastream_mv': False}
-   consumer lag proc-dejastream_mv on ds.raw: 13425   (others: {'proc-static': 0, 'proc-retrain': 0, 'proc-dejastream': 0})
+   threads alive: {'source': False, 'store': True, 'dashboard': True, 'proc-static': True, 'proc-retrain': True, 'proc-datastream': True, 'proc-datastream_mv': False}
+   consumer lag proc-datastream_mv on ds.raw: 13425   (others: {'proc-static': 0, 'proc-retrain': 0, 'proc-datastream': 0})
    traceback printed to stderr only: True; dashboard 'summary' for MV still reports accuracy=0.899 with seen=3050 (stale, no alert in API: keys=['t', 'rate', 'acc', 'summary', 'segments', 'active'])
 == G. model objects vs repository when the repository cap evicts concepts (cap=2)
    concepts in repo=2  models held by engine=11 (models of evicted concepts are never released)

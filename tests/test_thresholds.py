@@ -3,10 +3,10 @@ import unittest
 
 import numpy as np
 
-from dejastream.matcher import (ConceptRepository, Decision, MatchCalibrator, MatchConfig, VariabilityTracker, conformal_quantile,
+from datastream.matcher import (ConceptRepository, Decision, MatchCalibrator, MatchConfig, VariabilityTracker, conformal_quantile,
                                 match_features)
-from dejastream.mvfp import extract_feature_fp
-from dejastream.research.gen import Spec, sample
+from datastream.mvfp import extract_feature_fp
+from datastream.research.gen import Spec, sample
 
 Z4, O4 = (0.0,) * 4, (1.0,) * 4
 

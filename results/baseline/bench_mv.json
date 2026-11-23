@@ -100,7 +100,7 @@
     },
     "recall_success_rate": null
    },
-   "dejastream": {
+   "datastream": {
     "accuracy": {
      "mean": 0.9149818181818181,
      "std": 0.0018931610521858455,
@@ -167,7 +167,7 @@
      "n": 5
     }
    },
-   "dejastream_mv": {
+   "datastream_mv": {
     "accuracy": {
      "mean": 0.9139878787878789,
      "std": 0.002271037755855584,
@@ -334,7 +334,7 @@
     },
     "recall_success_rate": null
    },
-   "dejastream": {
+   "datastream": {
     "accuracy": {
      "mean": 0.7385818181818182,
      "std": 0.003859916212567849,
@@ -401,7 +401,7 @@
      "n": 5
     }
    },
-   "dejastream_mv": {
+   "datastream_mv": {
     "accuracy": {
      "mean": 0.7429454545454546,
      "std": 0.001745454545454568,
@@ -568,7 +568,7 @@
     },
     "recall_success_rate": null
    },
-   "dejastream": {
+   "datastream": {
     "accuracy": {
      "mean": 0.8589454545454546,
      "std": 0.0053622631352860505,
@@ -635,7 +635,7 @@
      "n": 5
     }
    },
-   "dejastream_mv": {
+   "datastream_mv": {
     "accuracy": {
      "mean": 0.8838181818181818,
      "std": 0.005915722774203561,
@@ -802,7 +802,7 @@
     },
     "recall_success_rate": null
    },
-   "dejastream": {
+   "datastream": {
     "accuracy": {
      "mean": 0.8559878787878787,
      "std": 0.00577069000876214,
@@ -869,7 +869,7 @@
      "n": 5
     }
    },
-   "dejastream_mv": {
+   "datastream_mv": {
     "accuracy": {
      "mean": 0.8775151515151516,
      "std": 0.004267802879016479,
@@ -1036,7 +1036,7 @@
     },
     "recall_success_rate": null
    },
-   "dejastream": {
+   "datastream": {
     "accuracy": {
      "mean": 0.91052,
      "std": 0.002420798766247758,
@@ -1103,7 +1103,7 @@
      "n": 5
     }
    },
-   "dejastream_mv": {
+   "datastream_mv": {
     "accuracy": {
      "mean": 0.90852,
      "std": 0.0017964904057015615,
@@ -1270,7 +1270,7 @@
     },
     "recall_success_rate": null
    },
-   "dejastream": {
+   "datastream": {
     "accuracy": {
      "mean": 0.9321833333333333,
      "std": 0.0020016659728003374,
@@ -1317,7 +1317,7 @@
      "n": 5
     }
    },
-   "dejastream_mv": {
+   "datastream_mv": {
     "accuracy": {
      "mean": 0.9310166666666666,
      "std": 0.0037610577708346213,
@@ -1389,7 +1389,7 @@
      "n": 5
     }
    },
-   "dejastream_mv[time-weighted]": {
+   "datastream_mv[time-weighted]": {
     "accuracy": {
      "mean": 0.9319166666666667,
      "std": 0.0026362852652928254,
@@ -1548,7 +1548,7 @@
     },
     "recall_success_rate": null
    },
-   "dejastream": {
+   "datastream": {
     "accuracy": {
      "mean": 0.8573833333333333,
      "std": 0.003447462835187635,
@@ -1607,7 +1607,7 @@
      "n": 5
     }
    },
-   "dejastream_mv": {
+   "datastream_mv": {
     "accuracy": {
      "mean": 0.8582833333333335,
      "std": 0.00288992502786257,
@@ -1738,7 +1738,7 @@
     },
     "recall_success_rate": null
    },
-   "dejastream": {
+   "datastream": {
     "accuracy": {
      "mean": 0.8964000000000001,
      "std": 0.0024865862364115273,
@@ -1773,7 +1773,7 @@
      "n": 5
     }
    },
-   "dejastream_mv": {
+   "datastream_mv": {
     "accuracy": {
      "mean": 0.8965866666666666,
      "std": 0.0022609339269917222,
@@ -1819,8 +1819,8 @@
  "strategies": [
   "static",
   "retrain",
-  "dejastream",
-  "dejastream_mv"
+  "datastream",
+  "datastream_mv"
  ],
  "fingerprint_latency": {
   "n100_d4": {

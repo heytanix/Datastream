@@ -23,7 +23,7 @@ ROLL = 200
 
 class Pipeline:
     def __init__(self, rate: int = 600, seed: int = 7, loops: int = 0, seg_len: int = 1500,
-                 db_path: str = "results/dejastream.db", stream=None, n_features: int = 4):
+                 db_path: str = "results/datastream.db", stream=None, n_features: int = 4):
         self.rate, self.loops = rate, loops
         self.stream = stream if stream is not None else ConceptStream(seed=seed, seg_len=seg_len, loops=loops)
         self.n_features = n_features
@@ -115,8 +115,8 @@ class Pipeline:
                     self.store.add_event(rec.value)
                 else:
                     self.store.add_metric(rec.value)
-                    if rec.value["strategy"] == "dejastream" and rec.value["t"] % 500 < METRIC_EVERY:
-                        self.store.save_concepts("dejastream", rec.value["repo"])
+                    if rec.value["strategy"] == "datastream" and rec.value["t"] % 500 < METRIC_EVERY:
+                        self.store.save_concepts("datastream", rec.value["repo"])
             if time.time() - last > 1:
                 self.store.commit()
                 last = time.time()
@@ -148,9 +148,9 @@ class Pipeline:
                         tot[0] += v["acc"] * METRIC_EVERY
                         tot[1] += METRIC_EVERY
                         s["models"][st] = v["models"]
-                        if st == "dejastream":
+                        if st == "datastream":
                             s["repo"] = v["repo"]
-                        elif st == "dejastream_mv":
+                        elif st == "datastream_mv":
                             s["repo_mv"], s["mv"] = v["repo"], v["mv"]
                 now = time.time()
                 if now - mark >= 1:

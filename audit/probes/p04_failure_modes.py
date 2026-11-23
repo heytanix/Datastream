@@ -2,10 +2,10 @@
 import os, sys, time, threading, tempfile, hashlib, io, contextlib
 sys.path.insert(0, os.getcwd())
 import numpy as np
-from dejastream.mv_engine import MVEngine, RecallPolicy
-from dejastream.matcher import MatchConfig
-from dejastream.scenarios import abrupt_recurring
-from dejastream.research.gen import Spec, sample
+from datastream.mv_engine import MVEngine, RecallPolicy
+from datastream.matcher import MatchConfig
+from datastream.scenarios import abrupt_recurring
+from datastream.research.gen import Spec, sample
 sc = abrupt_recurring(seed=1)
 
 def run(e, data, mask_after=None, limit=None):
@@ -58,8 +58,8 @@ for seed in range(1, 6):
 print("   (drifts, by_error, by_feature_shift, models_trained) per seed:", rows, " -> false drift alarms per 10k samples ~ %.2f" % (np.mean([r[0] for r in rows]) / 3))
 
 print("== F. an exception inside recovery in a live Pipeline: does the system notice?")
-from dejastream.pipeline import Pipeline
-import dejastream.matcher as M
+from datastream.pipeline import Pipeline
+import datastream.matcher as M
 orig = M.ConceptRepository.match
 state = {"n": 0}
 def boom(self, *a, **k):
@@ -74,8 +74,8 @@ M.ConceptRepository.match = orig
 alive = {t.name: t.is_alive() for t in p.threads}
 lag = p.bus.stats()["lag"]
 print(f"   threads alive: {alive}")
-print(f"   consumer lag proc-dejastream_mv on ds.raw: {lag.get('proc-dejastream_mv', {}).get('ds.raw')}   (others: { {k: v.get('ds.raw') for k, v in lag.items() if k.startswith('proc-') and k != 'proc-dejastream_mv'} })")
-print(f"   traceback printed to stderr only: {'RuntimeError' in err.getvalue()}; dashboard 'summary' for MV still reports accuracy={snap['summary']['dejastream_mv']['acc']:.3f} with seen={snap['summary']['dejastream_mv']['seen']} (stale, no alert in API: keys={list(snap)[:6]})")
+print(f"   consumer lag proc-datastream_mv on ds.raw: {lag.get('proc-datastream_mv', {}).get('ds.raw')}   (others: { {k: v.get('ds.raw') for k, v in lag.items() if k.startswith('proc-') and k != 'proc-datastream_mv'} })")
+print(f"   traceback printed to stderr only: {'RuntimeError' in err.getvalue()}; dashboard 'summary' for MV still reports accuracy={snap['summary']['datastream_mv']['acc']:.3f} with seen={snap['summary']['datastream_mv']['seen']} (stale, no alert in API: keys={list(snap)[:6]})")
 
 print("== G. model objects vs repository when the repository cap evicts concepts (cap=2)")
 e = MVEngine(match=MatchConfig(max_concepts=2)); run(e, sc)

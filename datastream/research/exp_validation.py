@@ -69,7 +69,7 @@ def exp_streams(seeds=(1, 2, 3, 4, 5), scenarios=("abrupt_recurring", "noisy_rec
         for seed in seeds:
             data = SCENARIOS[sc](seed=seed)
             for v, pol in VARIANTS.items():
-                per[v].append(run_one(data, "dejastream_mv", recall=pol))
+                per[v].append(run_one(data, "datastream_mv", recall=pol))
         res[sc] = {v: _agg(rows) for v, rows in per.items()}
     return res
 

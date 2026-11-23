@@ -18,9 +18,9 @@
    paired validation compare_paired(n=60, 400 bootstrap): 2.5 ms (opt-in path)
    SQLite add_metric: 1 us/row (5000 rows, one commit)
 == engine throughput vs feature count d (6000 samples, 2 alternating concepts, default configs)
-   d=  4: retrain=20us  dejastream=21us  dejastream_mv=49us
-   d= 10: retrain=20us  dejastream=22us  dejastream_mv=76us
-   d= 30: retrain=21us  dejastream=22us  dejastream_mv=215us
+   d=  4: retrain=20us  datastream=21us  datastream_mv=49us
+   d= 10: retrain=20us  datastream=22us  datastream_mv=76us
+   d= 30: retrain=21us  datastream=22us  datastream_mv=215us
 == MVEngine vs stability-window size (abrupt_recurring, 16,500 samples)
    window=  50: 75 us/sample, fingerprint calls=326, models=4
    window= 100: 51 us/sample, fingerprint calls=167, models=4

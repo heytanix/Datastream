@@ -3,11 +3,11 @@ import unittest
 
 import numpy as np
 
-from dejastream.matcher import ConceptRepository, Decision, MatchConfig
-from dejastream.mvfp import extract_feature_fp
-from dejastream.research.gen import Spec, sample
-from dejastream.research.presets import improved_similarity
-from dejastream.similarity import SimilarityConfig, _agg_groups, compare
+from datastream.matcher import ConceptRepository, Decision, MatchConfig
+from datastream.mvfp import extract_feature_fp
+from datastream.research.gen import Spec, sample
+from datastream.research.presets import improved_similarity
+from datastream.similarity import SimilarityConfig, _agg_groups, compare
 
 
 def fp(spec, n, rng, **kw):

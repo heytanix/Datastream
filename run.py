@@ -1,3 +1,3 @@
 import sys
-from dejastream.cli import main
+from datastream.cli import main
 sys.exit(main())

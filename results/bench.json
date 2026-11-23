@@ -1,6 +1,6 @@
 {
  "samples": 16500,
- "seconds": 1.63,
+ "seconds": 1.68,
  "change_points": [
   [
    0,
@@ -100,7 +100,7 @@
    "new_concepts": 11,
    "repository_size": 11
   },
-  "dejastream": {
+  "datastream": {
    "accuracy": 0.9176,
    "post_drift_300_acc": 0.8317,
    "segment_acc": [
@@ -126,7 +126,7 @@
    "new_concepts": 4,
    "repository_size": 4
   },
-  "dejastream_mv": {
+  "datastream_mv": {
    "accuracy": 0.9161,
    "post_drift_300_acc": 0.8237,
    "segment_acc": [

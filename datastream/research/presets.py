@@ -34,16 +34,16 @@ def ablation_variants() -> dict[str, tuple[str, dict]]:
     sim = lambda w, **kw: improved_similarity(weights=w, group_agg="mean", **kw)
     full = W(0.4, 0.2, 0.4, 0.2)
     return {
-        "v1 (legacy engine)": ("dejastream", {}),
-        "MV schema 2.0 (baseline)": ("dejastream_mv", {}),
-        "A statistical only": ("dejastream_mv", dict(sim=sim(W(1, 0, 0, 0)), match=improved_match())),
-        "B stat + distribution": ("dejastream_mv", dict(sim=sim(W(0.5, 0.5, 0, 0)), match=improved_match())),
-        "C stat + dist + temporal": ("dejastream_mv", dict(sim=sim(W(0.4, 0.2, 0.4, 0)), match=improved_match())),
-        "D full multi-view (improved)": ("dejastream_mv", dict(sim=sim(full), match=improved_match())),
-        "E = D without noise correction": ("dejastream_mv", dict(sim=sim(full, noise_mode="none"), match=improved_match())),
-        "F = D without adaptive thresholds": ("dejastream_mv", dict(sim=sim(full), match=improved_match(threshold_mode="legacy"))),
-        "G = D without confidence gating": ("dejastream_mv", dict(sim=sim(full), match=improved_match(conf_high=0.0, min_margin=0.0))),
-        "H = D without predictive validation": ("dejastream_mv", dict(sim=sim(full), match=improved_match(), recall=_RP(mode="none"))),
-        "J = D + paired validation": ("dejastream_mv", dict(sim=sim(full), match=improved_match(), recall=_RP(mode="paired"))),
-        "K = D with legacy fingerprint merge": ("dejastream_mv", dict(sim=sim(full), match=improved_match(merge_mode="legacy"))),
+        "v1 (legacy engine)": ("datastream", {}),
+        "MV schema 2.0 (baseline)": ("datastream_mv", {}),
+        "A statistical only": ("datastream_mv", dict(sim=sim(W(1, 0, 0, 0)), match=improved_match())),
+        "B stat + distribution": ("datastream_mv", dict(sim=sim(W(0.5, 0.5, 0, 0)), match=improved_match())),
+        "C stat + dist + temporal": ("datastream_mv", dict(sim=sim(W(0.4, 0.2, 0.4, 0)), match=improved_match())),
+        "D full multi-view (improved)": ("datastream_mv", dict(sim=sim(full), match=improved_match())),
+        "E = D without noise correction": ("datastream_mv", dict(sim=sim(full, noise_mode="none"), match=improved_match())),
+        "F = D without adaptive thresholds": ("datastream_mv", dict(sim=sim(full), match=improved_match(threshold_mode="legacy"))),
+        "G = D without confidence gating": ("datastream_mv", dict(sim=sim(full), match=improved_match(conf_high=0.0, min_margin=0.0))),
+        "H = D without predictive validation": ("datastream_mv", dict(sim=sim(full), match=improved_match(), recall=_RP(mode="none"))),
+        "J = D + paired validation": ("datastream_mv", dict(sim=sim(full), match=improved_match(), recall=_RP(mode="paired"))),
+        "K = D with legacy fingerprint merge": ("datastream_mv", dict(sim=sim(full), match=improved_match(merge_mode="legacy"))),
     }
