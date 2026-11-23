@@ -23,14 +23,15 @@ ROLL = 200
 
 class Pipeline:
     def __init__(self, rate: int = 600, seed: int = 7, loops: int = 0, seg_len: int = 1500,
-                 db_path: str = "results/dejastream.db"):
+                 db_path: str = "results/dejastream.db", stream=None, n_features: int = 4):
         self.rate, self.loops = rate, loops
-        self.stream = ConceptStream(seed=seed, seg_len=seg_len, loops=loops)
+        self.stream = stream if stream is not None else ConceptStream(seed=seed, seg_len=seg_len, loops=loops)
+        self.n_features = n_features
         self.bus = Bus()
         for t in ("ds.raw", "ds.events", "ds.metrics"):
             self.bus.create_topic(t, retention=100_000 if t == "ds.raw" else 20_000)
         self.store = Store(db_path)
-        self.engines = {s: make_engine(s) for s in STRATEGIES}
+        self.engines = {s: make_engine(s, n_features=n_features) for s in STRATEGIES}
         self.stop = threading.Event()
         self.threads: list[threading.Thread] = []
         self.lock = threading.Lock()

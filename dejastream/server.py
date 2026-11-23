@@ -34,8 +34,15 @@ def make_handler(pipe: Pipeline):
     return H
 
 
-def serve(rate: int = 600, port: int = 8000, seed: int = 7, loops: int = 0):
-    pipe = Pipeline(rate=rate, seed=seed, loops=loops)
+def serve(rate: int = 600, port: int = 8000, seed: int = 7, loops: int = 0, arff: str | None = None, target: str | None = None,
+          limit: int | None = None, features: list[str] | None = None):
+    stream, nf = None, 4
+    if arff:
+        from .datasets import ArffStream
+        stream = ArffStream(arff, target or "class", limit=limit, features=features, loops=loops)
+        nf = stream.n_features
+        print(f"data source: {arff}  target={target}  rows={len(stream)}  features={stream.names}")
+    pipe = Pipeline(rate=rate, seed=seed, loops=loops, stream=stream, n_features=nf)
     pipe.start()
     srv = ThreadingHTTPServer(("127.0.0.1", port), make_handler(pipe))
     print(f"DejaStream dashboard on http://127.0.0.1:{port}  ({rate} samples/s)  Ctrl+C to stop")
