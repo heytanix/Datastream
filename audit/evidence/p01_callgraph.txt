@@ -1,0 +1,87 @@
+MODULES REACHABLE FROM cli.main: ['bench', 'bench_mv', 'bus', 'cli', 'datasets', 'detector', 'engine', 'fingerprint', 'matcher', 'memory', 'models', 'mv_engine', 'mvfp', 'noise', 'pipeline', 'scenarios', 'server', 'similarity', 'store', 'strategies', 'stream', 'validation']
+MODULES NOT REACHABLE FROM cli.main: []
+  via server: ['bus', 'datasets', 'detector', 'engine', 'fingerprint', 'matcher', 'memory', 'models', 'mv_engine', 'mvfp', 'noise', 'pipeline', 'server', 'similarity', 'store', 'strategies', 'stream', 'validation']
+  via bench: ['bench', 'detector', 'engine', 'fingerprint', 'matcher', 'memory', 'models', 'mv_engine', 'mvfp', 'noise', 'similarity', 'strategies', 'stream', 'validation']
+  via bench_mv: ['bench_mv', 'detector', 'engine', 'fingerprint', 'matcher', 'memory', 'models', 'mv_engine', 'mvfp', 'noise', 'scenarios', 'similarity', 'strategies', 'stream', 'validation']
+  via pipeline: ['bus', 'detector', 'engine', 'fingerprint', 'matcher', 'memory', 'models', 'mv_engine', 'mvfp', 'noise', 'pipeline', 'similarity', 'store', 'strategies', 'stream', 'validation']
+
+DEFINITIONS in reachable modules never referenced by another reachable module (excluding own module), and whether tests reference them:
+  bench_mv.py:36   run_one                          tests-reference=yes
+  bench_mv.py:137  fingerprint_latency              tests-reference=NO
+  bus.py:17   Topic                            tests-reference=NO
+  bus.py:71   Consumer                         tests-reference=NO
+  bus.py:103  Sender                           tests-reference=NO
+  bus.py:49   publish                          tests-reference=yes
+  cli.py:4    main                             tests-reference=yes
+  datasets.py:13   load_csv_stream                  tests-reference=yes
+  datasets.py:65   load_intel_berkeley              tests-reference=yes
+  datasets.py:98   load_uci_electricity             tests-reference=yes
+  datasets.py:128  replay_stream                    tests-reference=yes
+  datasets.py:138  load_arff                        tests-reference=yes
+  datasets.py:177  conv                             tests-reference=NO
+  engine.py:26   StoredConcept                    tests-reference=NO
+  fingerprint.py:15   fingerprint_names                tests-reference=NO
+  matcher.py:91   Candidate                        tests-reference=NO
+  matcher.py:176  VariabilityTracker               tests-reference=yes
+  matcher.py:199  conformal_quantile               tests-reference=yes
+  matcher.py:214  match_features                   tests-reference=yes
+  matcher.py:223  MatchCalibrator                  tests-reference=yes
+  matcher.py:263  ConceptRecord                    tests-reference=yes
+  matcher.py:458  replace_model                    tests-reference=yes
+  matcher.py:488  level1_scores                    tests-reference=NO
+  matcher.py:517  level1                           tests-reference=yes
+  matcher.py:627  load_dict                        tests-reference=yes
+  memory.py:31   QuantileSketch                   tests-reference=yes
+  memory.py:130  Moments                          tests-reference=yes
+  memory.py:47   from_values                      tests-reference=yes
+  memory.py:58   from_quantiles                   tests-reference=yes
+  memory.py:93   merge                            tests-reference=yes
+  memory.py:103  quantiles                        tests-reference=yes
+  memory.py:161  merge                            tests-reference=yes
+  mv_engine.py:31   RecallPolicy                     tests-reference=yes
+  mvfp.py:31   FPConfig                         tests-reference=NO
+  mvfp.py:359  predictive_fp                    tests-reference=yes
+  mvfp.py:68   view_available                   tests-reference=yes
+  mvfp.py:424  record                           tests-reference=yes
+  mvfp.py:429  reveal                           tests-reference=yes
+  mvfp.py:446  n_unlabeled                      tests-reference=yes
+  noise.py:40   lrv_factor                       tests-reference=yes
+  noise.py:125  build_profile                    tests-reference=yes
+  noise.py:152  boot                             tests-reference=yes
+  pipeline.py:40   reset_state                      tests-reference=NO
+  scenarios.py:21   ScenarioData                     tests-reference=NO
+  scenarios.py:95   abrupt_recurring                 tests-reference=yes
+  scenarios.py:99   noisy_recurring                  tests-reference=NO
+  scenarios.py:103  gradual                          tests-reference=NO
+  scenarios.py:107  incremental                      tests-reference=NO
+  scenarios.py:111  similar_x_different_y            tests-reference=yes
+  scenarios.py:120  temporal_only                    tests-reference=NO
+  scenarios.py:129  sea                              tests-reference=yes
+  scenarios.py:145  hyperplane                       tests-reference=NO
+  scenarios.py:174  GSpec                            tests-reference=NO
+  scenarios.py:188  custom_stream                    tests-reference=NO
+  scenarios.py:215  aba                              tests-reference=NO
+  scenarios.py:219  abca                             tests-reference=NO
+  scenarios.py:223  aba_noisy                        tests-reference=NO
+  scenarios.py:228  ab_gradual                       tests-reference=NO
+  scenarios.py:234  diff_x_same_y                    tests-reference=NO
+  scenarios.py:241  same_marginal_diff_corr          tests-reference=NO
+  scenarios.py:248  varied_sizes                     tests-reference=NO
+  scenarios.py:253  overlapping                      tests-reference=yes
+  scenarios.py:261  imbalanced                       tests-reference=NO
+  scenarios.py:267  feature_availability             tests-reference=yes
+  server.py:13   make_handler                     tests-reference=NO
+  server.py:15   log_message                      tests-reference=NO
+  server.py:26   do_GET                           tests-reference=NO
+  similarity.py:177  psi                              tests-reference=yes
+  similarity.py:183  js_divergence                    tests-reference=yes
+  similarity.py:190  wasserstein1                     tests-reference=yes
+  similarity.py:195  energy_distance                  tests-reference=yes
+  similarity.py:223  d_stat                           tests-reference=yes
+  similarity.py:285  d_dist                           tests-reference=NO
+  similarity.py:335  d_time                           tests-reference=yes
+  similarity.py:361  d_pred                           tests-reference=NO
+  store.py:42   query                            tests-reference=NO
+  validation.py:120  trivial_prediction               tests-reference=yes
+  validation.py:174  Comparison                       tests-reference=NO
+  validation.py:197  Selection                        tests-reference=NO
