@@ -23,7 +23,7 @@ def fingerprint(X: np.ndarray, y: np.ndarray) -> np.ndarray:
     y = np.asarray(y, float)
     mean, std = X.mean(0), X.std(0) + 1e-9
     pos, neg = y == 1, y == 0
-    gap = (X[pos].mean(0) - X[neg].mean(0)) if pos.any() and neg.any() else np.zeros(D)
+    gap = (X[pos].mean(0) - X[neg].mean(0)) if pos.any() and neg.any() else np.zeros(X.shape[1])
     yc = y - y.mean()
     corr = ((X - mean) * yc[:, None]).mean(0) / (std * (y.std() + 1e-9))
     return np.concatenate([mean, std, gap, corr, [y.mean()]])

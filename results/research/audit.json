@@ -1,0 +1,141 @@
+{
+ "merge_vs_truth": {
+  "pooled_std_true": 2.3562953998556604,
+  "merged_std": 0.9878459781185052,
+  "pooled_mean_true": 1.2298590761805375,
+  "merged_mean": 1.229859076180537,
+  "q10_true": -1.1496193972416384,
+  "q10_merged": -0.006286506594881444,
+  "q25_true": -0.4283432085574591,
+  "q25_merged": 0.499429279818095,
+  "q50_true": 0.45760032530823946,
+  "q50_merged": 1.25684280477375,
+  "q75_true": 2.508024976847289,
+  "q75_merged": 1.9126263510048596,
+  "q90_true": 5.239694469963878,
+  "q90_merged": 2.4768043525903245
+ },
+ "ess_by_statistic": {
+  "rho=0.0": {
+   "AR1_predicted_se_inflation": 1.0,
+   "mean_observed_inflation": 1.01539277534137,
+   "median_observed_inflation": 1.0565296785032128,
+   "q90_observed_inflation": 0.9202058164231709,
+   "std_scale_observed_inflation": 0.9720371380083519,
+   "acf1_observed_inflation": 0.9948429102355951,
+   "spearman_observed_inflation": 0.975323096419807
+  },
+  "rho=0.5": {
+   "AR1_predicted_se_inflation": 1.7320508075688772,
+   "mean_observed_inflation": 1.615672573620195,
+   "median_observed_inflation": 1.3726834893410746,
+   "q90_observed_inflation": 1.3614738149990773,
+   "std_scale_observed_inflation": 1.2817655734872537,
+   "acf1_observed_inflation": 0.9100273999165749,
+   "spearman_observed_inflation": 1.2896923780492948
+  },
+  "rho=0.9": {
+   "AR1_predicted_se_inflation": 4.358898943540674,
+   "mean_observed_inflation": 4.253460561517715,
+   "median_observed_inflation": 3.5731086594013006,
+   "q90_observed_inflation": 2.908109670753637,
+   "std_scale_observed_inflation": 2.865010922083845,
+   "acf1_observed_inflation": 0.5379198099064771,
+   "spearman_observed_inflation": 2.7256602959783307
+  },
+  "rho=-0.5": {
+   "AR1_predicted_se_inflation": 0.5773502691896257,
+   "mean_observed_inflation": 0.5567299775532825,
+   "median_observed_inflation": 0.6963620845891241,
+   "q90_observed_inflation": 1.0292205056374415,
+   "std_scale_observed_inflation": 1.3709764130916258,
+   "acf1_observed_inflation": 0.8600934446778832,
+   "spearman_observed_inflation": 1.2359215193701207
+  }
+ },
+ "intra_single_window": {
+  "intra_after_1_update": {
+   "mean": 0.044191377081040574,
+   "sd": 0.02739585485126807
+  },
+  "intra_after_20_updates": {
+   "mean": 0.03322547266013017,
+   "sd": 0.007461525452813154
+  },
+  "relative_sd_1": 0.6199366632324683,
+  "relative_sd_20": 0.22457243962000334
+ },
+ "level1_blindspot": {
+  "base": {
+   "mean_level1_rank_of_true_concept(0=best)": 0.23333333333333334
+  },
+  "heavy_tail": {
+   "mean_level1_rank_of_true_concept(0=best)": 0.35
+  },
+  "bimodal": {
+   "mean_level1_rank_of_true_concept(0=best)": 0.0
+  },
+  "heavy_tail_query_vs_base: level2_D": 0.09360161613548375
+ },
+ "group_aggregation": {
+  "legacy 0.7 mean + 0.3 worst": {
+   "D_same_mean": 0.22277075982470168,
+   "D_same_q95": 0.302604637030956,
+   "D_diff_mean": 0.3622519407728849,
+   "AUC": 0.955625
+  },
+  "mean only": {
+   "D_same_mean": 0.08832410713207917,
+   "D_same_q95": 0.11487851794087615,
+   "D_diff_mean": 0.268815811838295,
+   "AUC": 1.0
+  }
+ },
+ "selection_bias": {
+  "true_accuracy": 0.8,
+  "mean_accuracy_of_selected_on_selection_set": 0.8604,
+  "optimism": 0.06040000000000001,
+  "n": 30,
+  "candidates": 3
+ },
+ "noise_floor_power": {
+  "shift=0.2 kappa=1.0": {
+   "AUC": 0.6640777777777778,
+   "D_same_q95": 0.17044861654644525,
+   "D_diff_median": 0.10888032120273392
+  },
+  "shift=0.2 kappa=0.0": {
+   "AUC": 0.6509777777777778,
+   "D_same_q95": 0.4701809415237692,
+   "D_diff_median": 0.42778119329036557
+  },
+  "shift=0.4 kappa=1.0": {
+   "AUC": 0.9170444444444444,
+   "D_same_q95": 0.17183265123007824,
+   "D_diff_median": 0.1893943962114545
+  },
+  "shift=0.4 kappa=0.0": {
+   "AUC": 0.9016222222222222,
+   "D_same_q95": 0.4738098202139099,
+   "D_diff_median": 0.49037307757664067
+  },
+  "shift=0.8 kappa=1.0": {
+   "AUC": 0.9998777777777778,
+   "D_same_q95": 0.1521091656963086,
+   "D_diff_median": 0.3924220037447102
+  },
+  "shift=0.8 kappa=0.0": {
+   "AUC": 0.9999222222222223,
+   "D_same_q95": 0.4712468000010714,
+   "D_diff_median": 0.6155238021264031
+  }
+ },
+ "eviction": {
+  "survivors": [
+   "m0",
+   "m3",
+   "m4"
+  ],
+  "note": "policy = min(uses, last_used_t); ignores model performance and recurrence period"
+ }
+}

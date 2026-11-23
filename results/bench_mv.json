@@ -1,0 +1,1840 @@
+{
+ "seeds": [
+  1,
+  2,
+  3,
+  4,
+  5
+ ],
+ "scenarios": {
+  "abrupt_recurring": {
+   "static": {
+    "accuracy": {
+     "mean": 0.5891030303030302,
+     "std": 0.007732478341641085,
+     "n": 5
+    },
+    "us_per_sample": {
+     "mean": 5.361226375754829,
+     "std": 0.3959771350697852,
+     "n": 5
+    },
+    "models_trained": {
+     "mean": 1.0,
+     "std": 0.0,
+     "n": 5
+    },
+    "post_drift_acc": {
+     "mean": 0.558,
+     "std": 0.006411794687223802,
+     "n": 5
+    },
+    "detection_delay": null,
+    "detection_rate": {
+     "mean": 0.0,
+     "std": 0.0,
+     "n": 5
+    },
+    "recalls": {
+     "mean": 0.0,
+     "std": 0.0,
+     "n": 5
+    },
+    "retrieval_precision": null,
+    "retrieval_recall": null,
+    "false_match_rate": null,
+    "missed_match_rate": null,
+    "recall_success_rate": null
+   },
+   "retrain": {
+    "accuracy": {
+     "mean": 0.9028363636363637,
+     "std": 0.0025887799154954306,
+     "n": 5
+    },
+    "us_per_sample": {
+     "mean": 12.102743915153097,
+     "std": 0.11082437963746061,
+     "n": 5
+    },
+    "models_trained": {
+     "mean": 11.4,
+     "std": 0.48989794855663565,
+     "n": 5
+    },
+    "post_drift_acc": {
+     "mean": 0.7646,
+     "std": 0.00702819717676988,
+     "n": 5
+    },
+    "detection_delay": {
+     "mean": 17.18,
+     "std": 2.131103000795598,
+     "n": 5
+    },
+    "detection_rate": {
+     "mean": 1.0,
+     "std": 0.0,
+     "n": 5
+    },
+    "recalls": {
+     "mean": 0.0,
+     "std": 0.0,
+     "n": 5
+    },
+    "retrieval_precision": null,
+    "retrieval_recall": {
+     "mean": 0.0,
+     "std": 0.0,
+     "n": 5
+    },
+    "false_match_rate": {
+     "mean": 0.0,
+     "std": 0.0,
+     "n": 5
+    },
+    "missed_match_rate": {
+     "mean": 1.0,
+     "std": 0.0,
+     "n": 5
+    },
+    "recall_success_rate": null
+   },
+   "dejastream": {
+    "accuracy": {
+     "mean": 0.9149818181818181,
+     "std": 0.0018931610521858455,
+     "n": 5
+    },
+    "us_per_sample": {
+     "mean": 11.617550363635846,
+     "std": 0.05722554091720945,
+     "n": 5
+    },
+    "models_trained": {
+     "mean": 4.0,
+     "std": 0.0,
+     "n": 5
+    },
+    "post_drift_acc": {
+     "mean": 0.8244,
+     "std": 0.005539354154090921,
+     "n": 5
+    },
+    "detection_delay": {
+     "mean": 17.240000000000002,
+     "std": 2.4121359828998035,
+     "n": 5
+    },
+    "detection_rate": {
+     "mean": 1.0,
+     "std": 0.0,
+     "n": 5
+    },
+    "recalls": {
+     "mean": 7.0,
+     "std": 0.0,
+     "n": 5
+    },
+    "retrieval_precision": {
+     "mean": 1.0,
+     "std": 0.0,
+     "n": 5
+    },
+    "retrieval_recall": {
+     "mean": 1.0,
+     "std": 0.0,
+     "n": 5
+    },
+    "false_match_rate": {
+     "mean": 0.0,
+     "std": 0.0,
+     "n": 5
+    },
+    "missed_match_rate": {
+     "mean": 0.0,
+     "std": 0.0,
+     "n": 5
+    },
+    "recall_success_rate": {
+     "mean": 1.0,
+     "std": 0.0,
+     "n": 5
+    },
+    "bytes_per_concept": {
+     "mean": 136.0,
+     "std": 0.0,
+     "n": 5
+    }
+   },
+   "dejastream_mv": {
+    "accuracy": {
+     "mean": 0.9139878787878789,
+     "std": 0.002271037755855584,
+     "n": 5
+    },
+    "us_per_sample": {
+     "mean": 37.97977127272437,
+     "std": 0.16048136627970935,
+     "n": 5
+    },
+    "models_trained": {
+     "mean": 4.0,
+     "std": 0.0,
+     "n": 5
+    },
+    "post_drift_acc": {
+     "mean": 0.8189333333333334,
+     "std": 0.004606275912033291,
+     "n": 5
+    },
+    "detection_delay": {
+     "mean": 16.92,
+     "std": 2.5458986625551305,
+     "n": 5
+    },
+    "detection_rate": {
+     "mean": 1.0,
+     "std": 0.0,
+     "n": 5
+    },
+    "recalls": {
+     "mean": 7.0,
+     "std": 0.0,
+     "n": 5
+    },
+    "retrieval_precision": {
+     "mean": 1.0,
+     "std": 0.0,
+     "n": 5
+    },
+    "retrieval_recall": {
+     "mean": 1.0,
+     "std": 0.0,
+     "n": 5
+    },
+    "false_match_rate": {
+     "mean": 0.0,
+     "std": 0.0,
+     "n": 5
+    },
+    "missed_match_rate": {
+     "mean": 0.0,
+     "std": 0.0,
+     "n": 5
+    },
+    "recall_success_rate": {
+     "mean": 1.0,
+     "std": 0.0,
+     "n": 5
+    },
+    "fp_ms": {
+     "mean": 1.3072104754491067,
+     "std": 0.005072980089157167,
+     "n": 5
+    },
+    "bytes_per_concept": {
+     "mean": 1456.0,
+     "std": 0.0,
+     "n": 5
+    }
+   },
+   "_notes": ""
+  },
+  "noisy_recurring": {
+   "static": {
+    "accuracy": {
+     "mean": 0.5361090909090909,
+     "std": 0.010266416225345102,
+     "n": 5
+    },
+    "us_per_sample": {
+     "mean": 5.13235975757363,
+     "std": 0.0252159921522533,
+     "n": 5
+    },
+    "models_trained": {
+     "mean": 1.0,
+     "std": 0.0,
+     "n": 5
+    },
+    "post_drift_acc": {
+     "mean": 0.5096,
+     "std": 0.011453092740973206,
+     "n": 5
+    },
+    "detection_delay": null,
+    "detection_rate": {
+     "mean": 0.0,
+     "std": 0.0,
+     "n": 5
+    },
+    "recalls": {
+     "mean": 0.0,
+     "std": 0.0,
+     "n": 5
+    },
+    "retrieval_precision": null,
+    "retrieval_recall": null,
+    "false_match_rate": null,
+    "missed_match_rate": null,
+    "recall_success_rate": null
+   },
+   "retrain": {
+    "accuracy": {
+     "mean": 0.7379030303030303,
+     "std": 0.0019904639509743917,
+     "n": 5
+    },
+    "us_per_sample": {
+     "mean": 13.060576206060597,
+     "std": 0.2954998062978285,
+     "n": 5
+    },
+    "models_trained": {
+     "mean": 19.8,
+     "std": 2.481934729198171,
+     "n": 5
+    },
+    "post_drift_acc": {
+     "mean": 0.651,
+     "std": 0.009099450532861873,
+     "n": 5
+    },
+    "detection_delay": {
+     "mean": 27.79555555555556,
+     "std": 5.330603931226268,
+     "n": 5
+    },
+    "detection_rate": {
+     "mean": 0.96,
+     "std": 0.04898979485566354,
+     "n": 5
+    },
+    "recalls": {
+     "mean": 0.0,
+     "std": 0.0,
+     "n": 5
+    },
+    "retrieval_precision": null,
+    "retrieval_recall": {
+     "mean": 0.0,
+     "std": 0.0,
+     "n": 5
+    },
+    "false_match_rate": {
+     "mean": 0.0,
+     "std": 0.0,
+     "n": 5
+    },
+    "missed_match_rate": {
+     "mean": 1.0,
+     "std": 0.0,
+     "n": 5
+    },
+    "recall_success_rate": null
+   },
+   "dejastream": {
+    "accuracy": {
+     "mean": 0.7385818181818182,
+     "std": 0.003859916212567849,
+     "n": 5
+    },
+    "us_per_sample": {
+     "mean": 12.279319830304303,
+     "std": 0.5171750073875285,
+     "n": 5
+    },
+    "models_trained": {
+     "mean": 10.4,
+     "std": 3.3823069050575527,
+     "n": 5
+    },
+    "post_drift_acc": {
+     "mean": 0.6500666666666666,
+     "std": 0.011831032640193953,
+     "n": 5
+    },
+    "detection_delay": {
+     "mean": 33.41777777777777,
+     "std": 13.25493357952166,
+     "n": 5
+    },
+    "detection_rate": {
+     "mean": 0.96,
+     "std": 0.04898979485566354,
+     "n": 5
+    },
+    "recalls": {
+     "mean": 4.6,
+     "std": 1.3564659966250536,
+     "n": 5
+    },
+    "retrieval_precision": {
+     "mean": 0.96,
+     "std": 0.07999999999999999,
+     "n": 5
+    },
+    "retrieval_recall": {
+     "mean": 0.4470695970695971,
+     "std": 0.18324027088415956,
+     "n": 5
+    },
+    "false_match_rate": {
+     "mean": 0.016666666666666666,
+     "std": 0.03333333333333333,
+     "n": 5
+    },
+    "missed_match_rate": {
+     "mean": 0.552930402930403,
+     "std": 0.18324027088415956,
+     "n": 5
+    },
+    "recall_success_rate": {
+     "mean": 0.6666666666666667,
+     "std": 0.1801234144814173,
+     "n": 5
+    },
+    "bytes_per_concept": {
+     "mean": 136.0,
+     "std": 0.0,
+     "n": 5
+    }
+   },
+   "dejastream_mv": {
+    "accuracy": {
+     "mean": 0.7429454545454546,
+     "std": 0.001745454545454568,
+     "n": 5
+    },
+    "us_per_sample": {
+     "mean": 40.81585198788216,
+     "std": 0.981271411497839,
+     "n": 5
+    },
+    "models_trained": {
+     "mean": 6.6,
+     "std": 1.624807680927192,
+     "n": 5
+    },
+    "post_drift_acc": {
+     "mean": 0.6739333333333333,
+     "std": 0.005178588396250175,
+     "n": 5
+    },
+    "detection_delay": {
+     "mean": 29.580000000000002,
+     "std": 9.138358714780242,
+     "n": 5
+    },
+    "detection_rate": {
+     "mean": 1.0,
+     "std": 0.0,
+     "n": 5
+    },
+    "recalls": {
+     "mean": 6.4,
+     "std": 0.8,
+     "n": 5
+    },
+    "retrieval_precision": {
+     "mean": 1.0,
+     "std": 0.0,
+     "n": 5
+    },
+    "retrieval_recall": {
+     "mean": 0.7305555555555555,
+     "std": 0.14948471163415233,
+     "n": 5
+    },
+    "false_match_rate": {
+     "mean": 0.0,
+     "std": 0.0,
+     "n": 5
+    },
+    "missed_match_rate": {
+     "mean": 0.26944444444444443,
+     "std": 0.14948471163415233,
+     "n": 5
+    },
+    "recall_success_rate": {
+     "mean": 0.8238095238095238,
+     "std": 0.10605265453009564,
+     "n": 5
+    },
+    "fp_ms": {
+     "mean": 1.2998053713615625,
+     "std": 0.002900743326463276,
+     "n": 5
+    },
+    "bytes_per_concept": {
+     "mean": 1456.0,
+     "std": 0.0,
+     "n": 5
+    }
+   },
+   "_notes": ""
+  },
+  "gradual": {
+   "static": {
+    "accuracy": {
+     "mean": 0.5861454545454545,
+     "std": 0.0099384034983241,
+     "n": 5
+    },
+    "us_per_sample": {
+     "mean": 5.126694351516067,
+     "std": 0.01316698715160225,
+     "n": 5
+    },
+    "models_trained": {
+     "mean": 1.0,
+     "std": 0.0,
+     "n": 5
+    },
+    "post_drift_acc": {
+     "mean": 0.5524666666666668,
+     "std": 0.016216041440499634,
+     "n": 5
+    },
+    "detection_delay": null,
+    "detection_rate": {
+     "mean": 0.0,
+     "std": 0.0,
+     "n": 5
+    },
+    "recalls": {
+     "mean": 0.0,
+     "std": 0.0,
+     "n": 5
+    },
+    "retrieval_precision": null,
+    "retrieval_recall": null,
+    "false_match_rate": null,
+    "missed_match_rate": null,
+    "recall_success_rate": null
+   },
+   "retrain": {
+    "accuracy": {
+     "mean": 0.8517090909090909,
+     "std": 0.0039034067200380924,
+     "n": 5
+    },
+    "us_per_sample": {
+     "mean": 12.138441006057594,
+     "std": 0.07011732888050966,
+     "n": 5
+    },
+    "models_trained": {
+     "mean": 11.8,
+     "std": 0.4,
+     "n": 5
+    },
+    "post_drift_acc": {
+     "mean": 0.7128666666666666,
+     "std": 0.010003554923681466,
+     "n": 5
+    },
+    "detection_delay": {
+     "mean": 135.44,
+     "std": 5.675773075097348,
+     "n": 5
+    },
+    "detection_rate": {
+     "mean": 1.0,
+     "std": 0.0,
+     "n": 5
+    },
+    "recalls": {
+     "mean": 0.0,
+     "std": 0.0,
+     "n": 5
+    },
+    "retrieval_precision": null,
+    "retrieval_recall": {
+     "mean": 0.0,
+     "std": 0.0,
+     "n": 5
+    },
+    "false_match_rate": {
+     "mean": 0.0,
+     "std": 0.0,
+     "n": 5
+    },
+    "missed_match_rate": {
+     "mean": 1.0,
+     "std": 0.0,
+     "n": 5
+    },
+    "recall_success_rate": null
+   },
+   "dejastream": {
+    "accuracy": {
+     "mean": 0.8589454545454546,
+     "std": 0.0053622631352860505,
+     "n": 5
+    },
+    "us_per_sample": {
+     "mean": 12.400375987881214,
+     "std": 0.22916255224003923,
+     "n": 5
+    },
+    "models_trained": {
+     "mean": 9.2,
+     "std": 1.469693845669907,
+     "n": 5
+    },
+    "post_drift_acc": {
+     "mean": 0.7218,
+     "std": 0.01181637282192241,
+     "n": 5
+    },
+    "detection_delay": {
+     "mean": 131.7,
+     "std": 5.6811970569590295,
+     "n": 5
+    },
+    "detection_rate": {
+     "mean": 1.0,
+     "std": 0.0,
+     "n": 5
+    },
+    "recalls": {
+     "mean": 2.4,
+     "std": 1.019803902718557,
+     "n": 5
+    },
+    "retrieval_precision": {
+     "mean": 1.0,
+     "std": 0.0,
+     "n": 5
+    },
+    "retrieval_recall": {
+     "mean": 0.325,
+     "std": 0.15665508713900936,
+     "n": 5
+    },
+    "false_match_rate": {
+     "mean": 0.0,
+     "std": 0.0,
+     "n": 5
+    },
+    "missed_match_rate": {
+     "mean": 0.6749999999999999,
+     "std": 0.15665508713900936,
+     "n": 5
+    },
+    "recall_success_rate": {
+     "mean": 0.8,
+     "std": 0.2449489742783178,
+     "n": 5
+    },
+    "bytes_per_concept": {
+     "mean": 136.0,
+     "std": 0.0,
+     "n": 5
+    }
+   },
+   "dejastream_mv": {
+    "accuracy": {
+     "mean": 0.8838181818181818,
+     "std": 0.005915722774203561,
+     "n": 5
+    },
+    "us_per_sample": {
+     "mean": 41.79195886060894,
+     "std": 0.9145312926543493,
+     "n": 5
+    },
+    "models_trained": {
+     "mean": 13.0,
+     "std": 0.6324555320336759,
+     "n": 5
+    },
+    "post_drift_acc": {
+     "mean": 0.7256666666666668,
+     "std": 0.012348639151294728,
+     "n": 5
+    },
+    "detection_delay": {
+     "mean": 110.44000000000001,
+     "std": 4.03613676676101,
+     "n": 5
+    },
+    "detection_rate": {
+     "mean": 1.0,
+     "std": 0.0,
+     "n": 5
+    },
+    "recalls": {
+     "mean": 6.2,
+     "std": 0.7483314773547882,
+     "n": 5
+    },
+    "retrieval_precision": {
+     "mean": 1.0,
+     "std": 0.0,
+     "n": 5
+    },
+    "retrieval_recall": {
+     "mean": 0.40699579831932775,
+     "std": 0.028117658360413016,
+     "n": 5
+    },
+    "false_match_rate": {
+     "mean": 0.0,
+     "std": 0.0,
+     "n": 5
+    },
+    "missed_match_rate": {
+     "mean": 0.5930042016806722,
+     "std": 0.028117658360413047,
+     "n": 5
+    },
+    "recall_success_rate": {
+     "mean": 0.880952380952381,
+     "std": 0.10858813572372743,
+     "n": 5
+    },
+    "fp_ms": {
+     "mean": 1.298232296296573,
+     "std": 0.004801937189459835,
+     "n": 5
+    },
+    "bytes_per_concept": {
+     "mean": 1456.0,
+     "std": 0.0,
+     "n": 5
+    }
+   },
+   "_notes": ""
+  },
+  "incremental": {
+   "static": {
+    "accuracy": {
+     "mean": 0.586509090909091,
+     "std": 0.008947113256744731,
+     "n": 5
+    },
+    "us_per_sample": {
+     "mean": 5.154550969696588,
+     "std": 0.016107538528691307,
+     "n": 5
+    },
+    "models_trained": {
+     "mean": 1.0,
+     "std": 0.0,
+     "n": 5
+    },
+    "post_drift_acc": {
+     "mean": 0.5530666666666667,
+     "std": 0.007534808115229795,
+     "n": 5
+    },
+    "detection_delay": null,
+    "detection_rate": {
+     "mean": 0.0,
+     "std": 0.0,
+     "n": 5
+    },
+    "recalls": {
+     "mean": 0.0,
+     "std": 0.0,
+     "n": 5
+    },
+    "retrieval_precision": null,
+    "retrieval_recall": null,
+    "false_match_rate": null,
+    "missed_match_rate": null,
+    "recall_success_rate": null
+   },
+   "retrain": {
+    "accuracy": {
+     "mean": 0.8616969696969697,
+     "std": 0.005023507640826997,
+     "n": 5
+    },
+    "us_per_sample": {
+     "mean": 12.661708715150974,
+     "std": 0.24805851024359252,
+     "n": 5
+    },
+    "models_trained": {
+     "mean": 16.0,
+     "std": 1.8973665961010275,
+     "n": 5
+    },
+    "post_drift_acc": {
+     "mean": 0.7505333333333333,
+     "std": 0.009117991981668835,
+     "n": 5
+    },
+    "detection_delay": {
+     "mean": 142.73999999999998,
+     "std": 12.249179564362667,
+     "n": 5
+    },
+    "detection_rate": {
+     "mean": 1.0,
+     "std": 0.0,
+     "n": 5
+    },
+    "recalls": {
+     "mean": 0.0,
+     "std": 0.0,
+     "n": 5
+    },
+    "retrieval_precision": null,
+    "retrieval_recall": {
+     "mean": 0.0,
+     "std": 0.0,
+     "n": 5
+    },
+    "false_match_rate": {
+     "mean": 0.0,
+     "std": 0.0,
+     "n": 5
+    },
+    "missed_match_rate": {
+     "mean": 1.0,
+     "std": 0.0,
+     "n": 5
+    },
+    "recall_success_rate": null
+   },
+   "dejastream": {
+    "accuracy": {
+     "mean": 0.8559878787878787,
+     "std": 0.00577069000876214,
+     "n": 5
+    },
+    "us_per_sample": {
+     "mean": 12.424172630300856,
+     "std": 0.36298306305906425,
+     "n": 5
+    },
+    "models_trained": {
+     "mean": 10.2,
+     "std": 2.4,
+     "n": 5
+    },
+    "post_drift_acc": {
+     "mean": 0.7473333333333333,
+     "std": 0.01279235883035043,
+     "n": 5
+    },
+    "detection_delay": {
+     "mean": 146.11999999999998,
+     "std": 10.919963369901932,
+     "n": 5
+    },
+    "detection_rate": {
+     "mean": 1.0,
+     "std": 0.0,
+     "n": 5
+    },
+    "recalls": {
+     "mean": 3.8,
+     "std": 0.9797958971132712,
+     "n": 5
+    },
+    "retrieval_precision": {
+     "mean": 0.76,
+     "std": 0.248014336503177,
+     "n": 5
+    },
+    "retrieval_recall": {
+     "mean": 0.33454545454545453,
+     "std": 0.12061180968512299,
+     "n": 5
+    },
+    "false_match_rate": {
+     "mean": 0.07261904761904761,
+     "std": 0.066538993392772,
+     "n": 5
+    },
+    "missed_match_rate": {
+     "mean": 0.6654545454545454,
+     "std": 0.12061180968512297,
+     "n": 5
+    },
+    "recall_success_rate": {
+     "mean": 0.5066666666666666,
+     "std": 0.1436043948569201,
+     "n": 5
+    },
+    "bytes_per_concept": {
+     "mean": 136.0,
+     "std": 0.0,
+     "n": 5
+    }
+   },
+   "dejastream_mv": {
+    "accuracy": {
+     "mean": 0.8775151515151516,
+     "std": 0.004267802879016479,
+     "n": 5
+    },
+    "us_per_sample": {
+     "mean": 42.550775430302586,
+     "std": 0.22062575669311718,
+     "n": 5
+    },
+    "models_trained": {
+     "mean": 12.4,
+     "std": 1.2,
+     "n": 5
+    },
+    "post_drift_acc": {
+     "mean": 0.7537999999999999,
+     "std": 0.00976751987172,
+     "n": 5
+    },
+    "detection_delay": {
+     "mean": 121.58,
+     "std": 9.054810875992937,
+     "n": 5
+    },
+    "detection_rate": {
+     "mean": 1.0,
+     "std": 0.0,
+     "n": 5
+    },
+    "recalls": {
+     "mean": 11.8,
+     "std": 2.1354156504062622,
+     "n": 5
+    },
+    "retrieval_precision": {
+     "mean": 0.6127122877122877,
+     "std": 0.05341033906181728,
+     "n": 5
+    },
+    "retrieval_recall": {
+     "mean": 0.4608333333333333,
+     "std": 0.08116341540373964,
+     "n": 5
+    },
+    "false_match_rate": {
+     "mean": 0.1961366459627329,
+     "std": 0.041597445117451275,
+     "n": 5
+    },
+    "missed_match_rate": {
+     "mean": 0.5391666666666667,
+     "std": 0.08116341540373961,
+     "n": 5
+    },
+    "recall_success_rate": {
+     "mean": 0.489035964035964,
+     "std": 0.08600582015652954,
+     "n": 5
+    },
+    "fp_ms": {
+     "mean": 1.2975226466528473,
+     "std": 0.005015701506390945,
+     "n": 5
+    },
+    "bytes_per_concept": {
+     "mean": 1456.0,
+     "std": 0.0,
+     "n": 5
+    }
+   },
+   "_notes": ""
+  },
+  "similar_x_different_y": {
+   "static": {
+    "accuracy": {
+     "mean": 0.4782,
+     "std": 0.0025196119630697933,
+     "n": 5
+    },
+    "us_per_sample": {
+     "mean": 5.074421919998713,
+     "std": 0.06407341434942063,
+     "n": 5
+    },
+    "models_trained": {
+     "mean": 1.0,
+     "std": 0.0,
+     "n": 5
+    },
+    "post_drift_acc": {
+     "mean": 0.4305185185185185,
+     "std": 0.004200725001113433,
+     "n": 5
+    },
+    "detection_delay": null,
+    "detection_rate": {
+     "mean": 0.0,
+     "std": 0.0,
+     "n": 5
+    },
+    "recalls": {
+     "mean": 0.0,
+     "std": 0.0,
+     "n": 5
+    },
+    "retrieval_precision": null,
+    "retrieval_recall": null,
+    "false_match_rate": null,
+    "missed_match_rate": null,
+    "recall_success_rate": null
+   },
+   "retrain": {
+    "accuracy": {
+     "mean": 0.8888666666666666,
+     "std": 0.0062911578160674475,
+     "n": 5
+    },
+    "us_per_sample": {
+     "mean": 11.935018173332235,
+     "std": 0.07731531102983272,
+     "n": 5
+    },
+    "models_trained": {
+     "mean": 10.0,
+     "std": 0.0,
+     "n": 5
+    },
+    "post_drift_acc": {
+     "mean": 0.7013333333333333,
+     "std": 0.00990655932680333,
+     "n": 5
+    },
+    "detection_delay": {
+     "mean": 12.980555555555554,
+     "std": 1.8209090797025564,
+     "n": 5
+    },
+    "detection_rate": {
+     "mean": 0.9777777777777779,
+     "std": 0.04444444444444447,
+     "n": 5
+    },
+    "recalls": {
+     "mean": 0.0,
+     "std": 0.0,
+     "n": 5
+    },
+    "retrieval_precision": null,
+    "retrieval_recall": {
+     "mean": 0.0,
+     "std": 0.0,
+     "n": 5
+    },
+    "false_match_rate": {
+     "mean": 0.0,
+     "std": 0.0,
+     "n": 5
+    },
+    "missed_match_rate": {
+     "mean": 1.0,
+     "std": 0.0,
+     "n": 5
+    },
+    "recall_success_rate": null
+   },
+   "dejastream": {
+    "accuracy": {
+     "mean": 0.91052,
+     "std": 0.002420798766247758,
+     "n": 5
+    },
+    "us_per_sample": {
+     "mean": 11.418888066664294,
+     "std": 0.09852197985531408,
+     "n": 5
+    },
+    "models_trained": {
+     "mean": 3.0,
+     "std": 0.0,
+     "n": 5
+    },
+    "post_drift_acc": {
+     "mean": 0.8019259259259257,
+     "std": 0.006729742757768174,
+     "n": 5
+    },
+    "detection_delay": {
+     "mean": 12.911111111111108,
+     "std": 1.6245037228886277,
+     "n": 5
+    },
+    "detection_rate": {
+     "mean": 1.0,
+     "std": 0.0,
+     "n": 5
+    },
+    "recalls": {
+     "mean": 7.0,
+     "std": 0.0,
+     "n": 5
+    },
+    "retrieval_precision": {
+     "mean": 1.0,
+     "std": 0.0,
+     "n": 5
+    },
+    "retrieval_recall": {
+     "mean": 1.0,
+     "std": 0.0,
+     "n": 5
+    },
+    "false_match_rate": {
+     "mean": 0.0,
+     "std": 0.0,
+     "n": 5
+    },
+    "missed_match_rate": {
+     "mean": 0.0,
+     "std": 0.0,
+     "n": 5
+    },
+    "recall_success_rate": {
+     "mean": 1.0,
+     "std": 0.0,
+     "n": 5
+    },
+    "bytes_per_concept": {
+     "mean": 136.0,
+     "std": 0.0,
+     "n": 5
+    }
+   },
+   "dejastream_mv": {
+    "accuracy": {
+     "mean": 0.90852,
+     "std": 0.0017964904057015615,
+     "n": 5
+    },
+    "us_per_sample": {
+     "mean": 38.173253719996865,
+     "std": 0.10965267447029282,
+     "n": 5
+    },
+    "models_trained": {
+     "mean": 3.0,
+     "std": 0.0,
+     "n": 5
+    },
+    "post_drift_acc": {
+     "mean": 0.7912592592592593,
+     "std": 0.002921938210861652,
+     "n": 5
+    },
+    "detection_delay": {
+     "mean": 12.688888888888888,
+     "std": 1.760190786516698,
+     "n": 5
+    },
+    "detection_rate": {
+     "mean": 1.0,
+     "std": 0.0,
+     "n": 5
+    },
+    "recalls": {
+     "mean": 7.0,
+     "std": 0.0,
+     "n": 5
+    },
+    "retrieval_precision": {
+     "mean": 1.0,
+     "std": 0.0,
+     "n": 5
+    },
+    "retrieval_recall": {
+     "mean": 1.0,
+     "std": 0.0,
+     "n": 5
+    },
+    "false_match_rate": {
+     "mean": 0.0,
+     "std": 0.0,
+     "n": 5
+    },
+    "missed_match_rate": {
+     "mean": 0.0,
+     "std": 0.0,
+     "n": 5
+    },
+    "recall_success_rate": {
+     "mean": 1.0,
+     "std": 0.0,
+     "n": 5
+    },
+    "fp_ms": {
+     "mean": 1.3023679139127162,
+     "std": 0.0017980299395458264,
+     "n": 5
+    },
+    "bytes_per_concept": {
+     "mean": 1456.0,
+     "std": 0.0,
+     "n": 5
+    }
+   },
+   "_notes": "A and Ap are indistinguishable from X alone"
+  },
+  "temporal_only": {
+   "static": {
+    "accuracy": {
+     "mean": 0.9342333333333332,
+     "std": 0.010673357276675212,
+     "n": 5
+    },
+    "us_per_sample": {
+     "mean": 5.1589790166607,
+     "std": 0.03571798257200362,
+     "n": 5
+    },
+    "models_trained": {
+     "mean": 1.0,
+     "std": 0.0,
+     "n": 5
+    },
+    "post_drift_acc": {
+     "mean": 0.9339999999999999,
+     "std": 0.015697249062110005,
+     "n": 5
+    },
+    "detection_delay": null,
+    "detection_rate": {
+     "mean": 0.0,
+     "std": 0.0,
+     "n": 5
+    },
+    "recalls": {
+     "mean": 0.0,
+     "std": 0.0,
+     "n": 5
+    },
+    "retrieval_precision": null,
+    "retrieval_recall": null,
+    "false_match_rate": null,
+    "missed_match_rate": null,
+    "recall_success_rate": null
+   },
+   "retrain": {
+    "accuracy": {
+     "mean": 0.9289999999999999,
+     "std": 0.003086709862908703,
+     "n": 5
+    },
+    "us_per_sample": {
+     "mean": 11.08944643333416,
+     "std": 0.15556134662374424,
+     "n": 5
+    },
+    "models_trained": {
+     "mean": 2.2,
+     "std": 0.7483314773547882,
+     "n": 5
+    },
+    "post_drift_acc": {
+     "mean": 0.9298095238095238,
+     "std": 0.004833743824933163,
+     "n": 5
+    },
+    "detection_delay": {
+     "mean": 259.25,
+     "std": 191.81811045884066,
+     "n": 4
+    },
+    "detection_rate": {
+     "mean": 0.11428571428571428,
+     "std": 0.05714285714285714,
+     "n": 5
+    },
+    "recalls": {
+     "mean": 0.0,
+     "std": 0.0,
+     "n": 5
+    },
+    "retrieval_precision": null,
+    "retrieval_recall": {
+     "mean": 0.0,
+     "std": 0.0,
+     "n": 2
+    },
+    "false_match_rate": {
+     "mean": 0.0,
+     "std": 0.0,
+     "n": 4
+    },
+    "missed_match_rate": {
+     "mean": 1.0,
+     "std": 0.0,
+     "n": 2
+    },
+    "recall_success_rate": null
+   },
+   "dejastream": {
+    "accuracy": {
+     "mean": 0.9321833333333333,
+     "std": 0.0020016659728003374,
+     "n": 5
+    },
+    "us_per_sample": {
+     "mean": 11.495073433331982,
+     "std": 0.05853322445813443,
+     "n": 5
+    },
+    "models_trained": {
+     "mean": 1.0,
+     "std": 0.0,
+     "n": 5
+    },
+    "post_drift_acc": {
+     "mean": 0.9335238095238095,
+     "std": 0.0049997732374882815,
+     "n": 5
+    },
+    "detection_delay": {
+     "mean": 259.25,
+     "std": 191.81811045884066,
+     "n": 4
+    },
+    "detection_rate": {
+     "mean": 0.11428571428571428,
+     "std": 0.05714285714285714,
+     "n": 5
+    },
+    "recalls": {
+     "mean": 0.0,
+     "std": 0.0,
+     "n": 5
+    },
+    "retrieval_precision": null,
+    "retrieval_recall": null,
+    "false_match_rate": null,
+    "missed_match_rate": null,
+    "recall_success_rate": null,
+    "bytes_per_concept": {
+     "mean": 136.0,
+     "std": 0.0,
+     "n": 5
+    }
+   },
+   "dejastream_mv": {
+    "accuracy": {
+     "mean": 0.9310166666666666,
+     "std": 0.0037610577708346213,
+     "n": 5
+    },
+    "us_per_sample": {
+     "mean": 37.231572033325236,
+     "std": 0.42534282480650726,
+     "n": 5
+    },
+    "models_trained": {
+     "mean": 1.6,
+     "std": 0.4898979485566356,
+     "n": 5
+    },
+    "post_drift_acc": {
+     "mean": 0.9325714285714286,
+     "std": 0.0062495351301039516,
+     "n": 5
+    },
+    "detection_delay": {
+     "mean": 322.65,
+     "std": 118.22093723194719,
+     "n": 5
+    },
+    "detection_rate": {
+     "mean": 0.2857142857142857,
+     "std": 0.1564921592871903,
+     "n": 5
+    },
+    "recalls": {
+     "mean": 0.8,
+     "std": 0.7483314773547883,
+     "n": 5
+    },
+    "retrieval_precision": {
+     "mean": 0.16666666666666666,
+     "std": 0.23570226039551584,
+     "n": 3
+    },
+    "retrieval_recall": {
+     "mean": 1.0,
+     "std": 0.0,
+     "n": 1
+    },
+    "false_match_rate": {
+     "mean": 0.4444444444444444,
+     "std": 0.07856742013183862,
+     "n": 3
+    },
+    "missed_match_rate": {
+     "mean": 0.0,
+     "std": 0.0,
+     "n": 1
+    },
+    "recall_success_rate": {
+     "mean": 1.0,
+     "std": 0.0,
+     "n": 3
+    },
+    "fp_ms": {
+     "mean": 1.3087643064362353,
+     "std": 0.004753377408192498,
+     "n": 5
+    },
+    "bytes_per_concept": {
+     "mean": 1456.0,
+     "std": 0.0,
+     "n": 5
+    }
+   },
+   "dejastream_mv[time-weighted]": {
+    "accuracy": {
+     "mean": 0.9319166666666667,
+     "std": 0.0026362852652928254,
+     "n": 5
+    },
+    "us_per_sample": {
+     "mean": 38.124564483333266,
+     "std": 0.20290568049295912,
+     "n": 5
+    },
+    "models_trained": {
+     "mean": 1.4,
+     "std": 0.4898979485566356,
+     "n": 5
+    },
+    "post_drift_acc": {
+     "mean": 0.9333333333333332,
+     "std": 0.005395891609224911,
+     "n": 5
+    },
+    "detection_delay": {
+     "mean": 128.60999999999999,
+     "std": 26.07505321183449,
+     "n": 5
+    },
+    "detection_rate": {
+     "mean": 0.5142857142857142,
+     "std": 0.14568627181693672,
+     "n": 5
+    },
+    "recalls": {
+     "mean": 0.0,
+     "std": 0.0,
+     "n": 5
+    },
+    "retrieval_precision": null,
+    "retrieval_recall": {
+     "mean": 0.0,
+     "std": 0.0,
+     "n": 2
+    },
+    "false_match_rate": {
+     "mean": 0.0,
+     "std": 0.0,
+     "n": 2
+    },
+    "missed_match_rate": {
+     "mean": 1.0,
+     "std": 0.0,
+     "n": 2
+    },
+    "recall_success_rate": null,
+    "fp_ms": {
+     "mean": 1.295856436446771,
+     "std": 0.003103478312600378,
+     "n": 5
+    },
+    "bytes_per_concept": {
+     "mean": 1456.0,
+     "std": 0.0,
+     "n": 5
+    }
+   },
+   "_notes": "a static model is already optimal; this measures concept identification only"
+  },
+  "sea": {
+   "static": {
+    "accuracy": {
+     "mean": 0.8235666666666667,
+     "std": 0.006943102092484764,
+     "n": 5
+    },
+    "us_per_sample": {
+     "mean": 5.154326316661202,
+     "std": 0.01797398018354206,
+     "n": 5
+    },
+    "models_trained": {
+     "mean": 1.0,
+     "std": 0.0,
+     "n": 5
+    },
+    "post_drift_acc": {
+     "mean": 0.822952380952381,
+     "std": 0.006703300706578119,
+     "n": 5
+    },
+    "detection_delay": null,
+    "detection_rate": {
+     "mean": 0.0,
+     "std": 0.0,
+     "n": 5
+    },
+    "recalls": {
+     "mean": 0.0,
+     "std": 0.0,
+     "n": 5
+    },
+    "retrieval_precision": null,
+    "retrieval_recall": null,
+    "false_match_rate": null,
+    "missed_match_rate": null,
+    "recall_success_rate": null
+   },
+   "retrain": {
+    "accuracy": {
+     "mean": 0.8578833333333333,
+     "std": 0.002986357870941345,
+     "n": 5
+    },
+    "us_per_sample": {
+     "mean": 11.909528800000166,
+     "std": 0.2937711149877472,
+     "n": 5
+    },
+    "models_trained": {
+     "mean": 7.8,
+     "std": 1.7204650534085255,
+     "n": 5
+    },
+    "post_drift_acc": {
+     "mean": 0.8312380952380952,
+     "std": 0.011226790116793449,
+     "n": 5
+    },
+    "detection_delay": {
+     "mean": 166.31666666666666,
+     "std": 84.27564561867469,
+     "n": 5
+    },
+    "detection_rate": {
+     "mean": 0.5999999999999999,
+     "std": 0.13997084244475302,
+     "n": 5
+    },
+    "recalls": {
+     "mean": 0.0,
+     "std": 0.0,
+     "n": 5
+    },
+    "retrieval_precision": null,
+    "retrieval_recall": {
+     "mean": 0.0,
+     "std": 0.0,
+     "n": 5
+    },
+    "false_match_rate": {
+     "mean": 0.0,
+     "std": 0.0,
+     "n": 5
+    },
+    "missed_match_rate": {
+     "mean": 1.0,
+     "std": 0.0,
+     "n": 5
+    },
+    "recall_success_rate": null
+   },
+   "dejastream": {
+    "accuracy": {
+     "mean": 0.8573833333333333,
+     "std": 0.003447462835187635,
+     "n": 5
+    },
+    "us_per_sample": {
+     "mean": 11.348113883328399,
+     "std": 0.12131515470682053,
+     "n": 5
+    },
+    "models_trained": {
+     "mean": 2.0,
+     "std": 0.0,
+     "n": 5
+    },
+    "post_drift_acc": {
+     "mean": 0.8245714285714285,
+     "std": 0.015838184004561818,
+     "n": 5
+    },
+    "detection_delay": {
+     "mean": 165.3761904761905,
+     "std": 83.42521961357785,
+     "n": 5
+    },
+    "detection_rate": {
+     "mean": 0.6285714285714286,
+     "std": 0.19378085666072198,
+     "n": 5
+    },
+    "recalls": {
+     "mean": 0.2,
+     "std": 0.4000000000000001,
+     "n": 5
+    },
+    "retrieval_precision": {
+     "mean": 0.0,
+     "std": 0.0,
+     "n": 1
+    },
+    "retrieval_recall": null,
+    "false_match_rate": {
+     "mean": 0.1,
+     "std": 0.20000000000000004,
+     "n": 5
+    },
+    "missed_match_rate": null,
+    "recall_success_rate": {
+     "mean": 1.0,
+     "std": 0.0,
+     "n": 1
+    },
+    "bytes_per_concept": {
+     "mean": 104.0,
+     "std": 0.0,
+     "n": 5
+    }
+   },
+   "dejastream_mv": {
+    "accuracy": {
+     "mean": 0.8582833333333335,
+     "std": 0.00288992502786257,
+     "n": 5
+    },
+    "us_per_sample": {
+     "mean": 33.23460551666433,
+     "std": 0.16969246052119333,
+     "n": 5
+    },
+    "models_trained": {
+     "mean": 1.6,
+     "std": 0.4898979485566356,
+     "n": 5
+    },
+    "post_drift_acc": {
+     "mean": 0.8279047619047619,
+     "std": 0.013966594418009971,
+     "n": 5
+    },
+    "detection_delay": {
+     "mean": 165.14761904761903,
+     "std": 83.33267537155218,
+     "n": 5
+    },
+    "detection_rate": {
+     "mean": 0.6285714285714286,
+     "std": 0.19378085666072198,
+     "n": 5
+    },
+    "recalls": {
+     "mean": 0.0,
+     "std": 0.0,
+     "n": 5
+    },
+    "retrieval_precision": null,
+    "retrieval_recall": null,
+    "false_match_rate": {
+     "mean": 0.0,
+     "std": 0.0,
+     "n": 3
+    },
+    "missed_match_rate": null,
+    "recall_success_rate": null,
+    "fp_ms": {
+     "mean": 0.9908596997809405,
+     "std": 0.0024576678255621106,
+     "n": 5
+    },
+    "bytes_per_concept": {
+     "mean": 1096.0,
+     "std": 0.0,
+     "n": 5
+    }
+   },
+   "_notes": "feature-only fingerprints cannot separate SEA concepts"
+  },
+  "hyperplane": {
+   "static": {
+    "accuracy": {
+     "mean": 0.7157333333333333,
+     "std": 0.025101996379217,
+     "n": 5
+    },
+    "us_per_sample": {
+     "mean": 5.171959679998205,
+     "std": 0.04601414053118547,
+     "n": 5
+    },
+    "models_trained": {
+     "mean": 1.0,
+     "std": 0.0,
+     "n": 5
+    },
+    "post_drift_acc": null,
+    "detection_delay": null,
+    "detection_rate": null,
+    "recalls": {
+     "mean": 0.0,
+     "std": 0.0,
+     "n": 5
+    },
+    "retrieval_precision": null,
+    "retrieval_recall": null,
+    "false_match_rate": null,
+    "missed_match_rate": null,
+    "recall_success_rate": null
+   },
+   "retrain": {
+    "accuracy": {
+     "mean": 0.8957733333333333,
+     "std": 0.0025384509712289825,
+     "n": 5
+    },
+    "us_per_sample": {
+     "mean": 11.344603013330927,
+     "std": 0.14504279358490701,
+     "n": 5
+    },
+    "models_trained": {
+     "mean": 4.0,
+     "std": 0.8944271909999159,
+     "n": 5
+    },
+    "post_drift_acc": null,
+    "detection_delay": null,
+    "detection_rate": null,
+    "recalls": {
+     "mean": 0.0,
+     "std": 0.0,
+     "n": 5
+    },
+    "retrieval_precision": null,
+    "retrieval_recall": {
+     "mean": 0.0,
+     "std": 0.0,
+     "n": 5
+    },
+    "false_match_rate": {
+     "mean": 0.0,
+     "std": 0.0,
+     "n": 5
+    },
+    "missed_match_rate": {
+     "mean": 1.0,
+     "std": 0.0,
+     "n": 5
+    },
+    "recall_success_rate": null
+   },
+   "dejastream": {
+    "accuracy": {
+     "mean": 0.8964000000000001,
+     "std": 0.0024865862364115273,
+     "n": 5
+    },
+    "us_per_sample": {
+     "mean": 11.515118306663984,
+     "std": 0.05132817311614115,
+     "n": 5
+    },
+    "models_trained": {
+     "mean": 1.0,
+     "std": 0.0,
+     "n": 5
+    },
+    "post_drift_acc": null,
+    "detection_delay": null,
+    "detection_rate": null,
+    "recalls": {
+     "mean": 0.0,
+     "std": 0.0,
+     "n": 5
+    },
+    "retrieval_precision": null,
+    "retrieval_recall": null,
+    "false_match_rate": null,
+    "missed_match_rate": null,
+    "recall_success_rate": null,
+    "bytes_per_concept": {
+     "mean": 328.0,
+     "std": 0.0,
+     "n": 5
+    }
+   },
+   "dejastream_mv": {
+    "accuracy": {
+     "mean": 0.8965866666666666,
+     "std": 0.0022609339269917222,
+     "n": 5
+    },
+    "us_per_sample": {
+     "mean": 63.589279266667894,
+     "std": 0.1079726997929154,
+     "n": 5
+    },
+    "models_trained": {
+     "mean": 1.0,
+     "std": 0.0,
+     "n": 5
+    },
+    "post_drift_acc": null,
+    "detection_delay": null,
+    "detection_rate": null,
+    "recalls": {
+     "mean": 0.0,
+     "std": 0.0,
+     "n": 5
+    },
+    "retrieval_precision": null,
+    "retrieval_recall": null,
+    "false_match_rate": null,
+    "missed_match_rate": null,
+    "recall_success_rate": null,
+    "fp_ms": {
+     "mean": 3.49955775973743,
+     "std": 0.004435920851837948,
+     "n": 5
+    },
+    "bytes_per_concept": {
+     "mean": 3784.0,
+     "std": 0.0,
+     "n": 5
+    }
+   },
+   "_notes": "incremental drift, no recurring concepts"
+  }
+ },
+ "strategies": [
+  "static",
+  "retrain",
+  "dejastream",
+  "dejastream_mv"
+ ],
+ "fingerprint_latency": {
+  "n100_d4": {
+   "legacy_ms": 0.03672698500054139,
+   "multiview_ms": 1.1758682949994181
+  },
+  "n300_d4": {
+   "legacy_ms": 0.052250895000724995,
+   "multiview_ms": 1.3676544899999499
+  },
+  "n100_d10": {
+   "legacy_ms": 0.03843227999936971,
+   "multiview_ms": 3.3845760999997765
+  }
+ },
+ "wall_seconds": 46.9
+}

@@ -9,6 +9,7 @@
 \pagestyle{empty}
 \setlength{\parindent}{0pt}
 \input{results_meta.tex}
+\input{results_mv_meta.tex}
 
 % ---------- palette ----------
 \definecolor{layerfill}{HTML}{FFFBD6}
@@ -81,12 +82,13 @@
   \node[todo,anchor=north] (p6) at ($(p5.south)+(0,-1.45)$) {\textbf{Spark Structured Streaming}\\alternative processor (not built; plain Python runs today)};
 
   % ---- layer 4
-  \node[ok,anchor=north] (m1) at ($(c4)+(0,-1.4)$) {\textbf{Fingerprint extractor}\\17 numbers per window: mean, std, class gap, $\mathrm{corr}(x,y)$, label rate};
+  \node[ok,anchor=north] (m1) at ($(c4)+(0,-1.4)$) {\textbf{Fingerprint v1 (baseline)}\\17 numbers per window, nine use the label $y$};
   \node[ok,anchor=north] (m2) at ($(m1.south)+(0,-1.45)$) {\textbf{Scaler}\\running per-dimension std so no dimension dominates};
   \node[ok,anchor=north] (m3) at ($(m2.south)+(0,-1.45)$) {\textbf{Concept repository}\\per concept: fingerprint, model, intra-concept distance $d_{in}$, use count};
   \node[ok,anchor=north] (m4) at ($(m3.south)+(0,-1.45)$) {\textbf{Matcher}\\RMS z-distance $\le \max(0.35,\,3 d_{in})$ and model accuracy $\ge 0.75$};
   \node[ok,anchor=north] (m5) at ($(m4.south)+(0,-1.45)$) {\textbf{Early probe}\\30 samples: any stored model $\ge 90\%$ right? switch now, verify later};
   \node[ok,anchor=north] (m6) at ($(m5.south)+(0,-1.45)$) {\textbf{Base learner}\\numpy logistic regression, batch fit + online SGD};
+  \node[ok,anchor=north,draw=busline,fill=busfill] (m7) at ($(m6.south)+(0,-1.45)$) {\textbf{Multi-view fingerprint (v2)}\\statistics, distributions, temporal (no labels) + predictive (optional); hierarchical matcher; shadow validation and rollback};
 
   % ---- layer 5
   \node[ok,anchor=north] (d1) at ($(c5)+(0,-1.4)$) {\textbf{SQLite} \texttt{store.py}\\tables \texttt{events}, \texttt{metrics}, \texttt{concepts}};
@@ -106,7 +108,7 @@
     \node[layer,fit=(s1)(s4)] (L1) {};
     \node[layer,fit=(t1)(b3)] (L2) {};
     \node[layer,fit=(p1)(p6)] (L3) {};
-    \node[layer,fit=(m1)(m6)] (L4) {};
+    \node[layer,fit=(m1)(m7)] (L4) {};
     \node[layer,fit=(d1)(d4)] (L5) {};
     \node[layer,fit=(v1)(v5)] (L6) {};
   \end{scope}
@@ -237,7 +239,7 @@
 \clearpage
 
 %% ============================================================ PAGE 4
-\pagetitle{4. Concept fingerprinting and pattern matching}{\texttt{fingerprint.py}, \texttt{engine.\_match}: how a window of data becomes a recognisable signature}
+\pagetitle{4. Concept fingerprinting v1 (legacy, kept as baseline)}{\texttt{fingerprint.py}, \texttt{engine.\_match}: 17 numbers, nine of which use the label $y$}
 
 \begin{center}
 \begin{adjustbox}{max width=\textwidth,max height=0.74\textheight}
@@ -287,8 +289,173 @@
 \end{tabular}
 \clearpage
 
-%% ============================================================ PAGE 5
-\pagetitle{5. Measured behaviour}{\nsamples{} samples, \nchanges{} true concept changes, identical stream for all three strategies (\texttt{python run.py bench})}
+%% ============================================================ PAGE 5 (v2) multi-view fingerprint
+\pagetitle{5. Multi-view concept fingerprint (schema 2.0)}{\texttt{mvfp.py}: a fingerprint is evidence about a concept, never an identity. Feature views need no labels; the predictive view is optional.}
+
+\begin{center}
+\begin{adjustbox}{max width=\textwidth,max height=0.72\textheight}
+\begin{tikzpicture}[x=1cm,y=1cm,
+  vw/.style={draw=okline,fill=okfill,rounded corners=3pt,align=left,text width=7.6cm,inner sep=6pt,font=\small,text=ink,line width=.8pt},
+  vp/.style={draw=busline,fill=busfill,rounded corners=3pt,align=left,text width=7.6cm,inner sep=6pt,font=\small,text=ink,line width=.8pt}]
+  \node[ok,text width=5.6cm] (win) at (0,3.2) {\textbf{Window of observations}\\$X$ only, optional timestamps $t$\\numeric and categorical columns, NaN = missing};
+  \node[vp,text width=5.6cm,anchor=north] (lab) at (0,-4.6) {\textbf{Labelled predictions}\\$(\hat y,\ \hat p)$ stored when made; true $y$ attached when it arrives (possibly late); unlabelled rows ignored};
+
+  \node[vw] (st) at (10.4,6.8) {\textbf{$F_{stat}$ statistics}\\mean, std, median, min, max, q01, q10, q25, q75, q90, q99, skew, missing ratio; categorical: frequencies, unique count, missing};
+  \node[vw] (di) at (10.4,3.2) {\textbf{$F_{dist}$ distributions}\\21-point quantile sketch per feature, rank (Spearman) correlations between features};
+  \node[vw] (ti) at (10.4,-0.4) {\textbf{$F_{time}$ temporal}\\trend, autocorrelation at lags 1, 5, 10, volatility, rate of change, seasonal strength, abrupt-change frequency; NaN if too few points or irregular gaps};
+  \begin{scope}[on background layer]\node[layer,fit=(st)(di)(ti),inner sep=12pt] (FX) {};\end{scope}
+  \node[title,anchor=south] at ($(FX.north)+(0,3pt)$) {Feature fingerprint $F_X=(F_{stat},F_{dist},F_{time})$};
+  \node[vp,anchor=north] (pr) at (10.4,-4.6) {\textbf{$F_{pred}$ predictive}\\error rate, calibration error, residual quantiles, class-wise recall, confusion matrix; \emph{behaviour of one model on one stretch of data}};
+
+  \node[draw=okline,fill=white,rounded corners=3pt,line width=.9pt,align=left,inner sep=8pt,font=\small,text width=8.2cm] (rec) at (23,3.4) {\textbf{ConceptRecord} (schema\_version 2.0)\\[2pt]
+   \texttt{concept\_id}\ \ \texttt{"concept\_001"}\\ \texttt{feature\_fingerprint}\ \ $F_X$\\ \texttt{predictive\_fingerprint}\ \ $F_{pred}$ or \texttt{None}\\ \texttt{sample\_count},\ \texttt{uses},\ \texttt{intra}\ (variability)\\ \texttt{model\_id},\ \texttt{model\_history}\\ \texttt{created\_t},\ \texttt{last\_used\_t},\ \texttt{meta}};
+  \node[todo,text width=8.2cm,anchor=north] (ms) at (23,-2.4) {\textbf{Model store} (separate)\\\texttt{model\_id} $\rightarrow$ trained model. Concept identity and model identity are different things.};
+  \draw[flow] (win.east) -- ++(1.2,0) |- (st.west);
+  \draw[flow] (win.east) -- ++(1.2,0) |- (di.west);
+  \draw[flow] (win.east) -- ++(1.2,0) |- (ti.west);
+  \draw[flow] (lab.east) -- ++(1.2,0) |- (pr.west);
+  \draw[flow] (FX.east) -- node[lbl] {always} (rec.west |- FX.east);
+  \draw[flow,dashed] (pr.east) -- node[lbl] {when labels exist} ++(5.6,0) |- (rec.south west);
+  \draw[flow,dashed] (rec.south) -- node[lbl,right] {by id only} (ms.north);
+\end{tikzpicture}
+\end{adjustbox}
+\end{center}
+\vfill
+\begin{tabular}{@{}p{12cm}p{12cm}p{12cm}@{}}
+\textbf{No label leakage.} \texttt{extract\_feature\_fp(X, t)} has no \texttt{y} argument at all, so $F_X$ cannot depend on labels. (The v1 fingerprint used $y$ in 9 of its 17 numbers.) &
+\textbf{Missing is not zero.} A statistic that cannot be computed is NaN. Distances skip it and report lower \emph{completeness}; they never read it as ``identical''. &
+\textbf{Robust by default.} Distances use medians, quantiles and rank correlations; mean, std, min and max are stored but excluded unless asked for, so one outlier cannot dominate.
+\end{tabular}
+\clearpage
+
+%% ============================================================ PAGE 6 (v2) matching
+\pagetitle{6. Hierarchical matching, distance and confidence}{\texttt{matcher.py}, \texttt{similarity.py}: retrieve cheaply, rank carefully, add label evidence last, then decide with a confidence score}
+
+\begin{center}
+\begin{adjustbox}{max width=\textwidth,max height=0.74\textheight}
+\begin{tikzpicture}[x=1cm,y=1cm,
+  lv/.style={draw=okline,fill=okfill,rounded corners=3pt,align=left,text width=8.2cm,inner sep=6pt,font=\small,text=ink,line width=.8pt},
+  dc/.style={draw=ink!60,fill=white,rounded corners=3pt,align=center,text width=5.8cm,inner sep=5pt,font=\small,text=ink,line width=.8pt}]
+  \node[ok,text width=5.2cm] (q) at (0,0) {\textbf{Query} $F_X$\\post-drift window, no labels needed};
+  \node[lv] (l1) at (9.6,4.6) {\textbf{Level 1: global vector}\\median, robust $\sigma$, q10, q90 per feature. One vectorised pass over all concepts $\rightarrow$ top-$K$ ($K{=}5$).};
+  \node[lv] (l2) at (9.6,0) {\textbf{Level 2: feature groups}\\$D_{stat},D_{dist},D_{time}$ for each candidate. Per-feature distances are grouped, then blended: $0.7\cdot$mean $+0.3\cdot$worst group.};
+  \node[lv,fill=busfill,draw=busline] (l3) at (9.6,-4.6) {\textbf{Level 3: predictive evidence}\\$D_{pred}$: the candidate's model on recent labelled samples versus its stored behaviour. Added only when labels exist.};
+  \draw[flow] (q.east) -- ++(1,0) |- (l1.west);
+  \draw[flow] (q.east) -- (l2.west);
+  \draw[flow] (q.east) -- ++(1,0) |- (l3.west);
+  \draw[flow] (l1) -- node[lbl,right] {top-$K$} (l2);
+  \draw[flow] (l2) -- (l3);
+
+  \node[draw=okline,fill=white,rounded corners=3pt,line width=.9pt,align=left,inner sep=8pt,font=\small,text width=9.6cm] (fo) at (23.2,0.6) {%
+   \textbf{Combined distance}\\[2pt]
+   $D=\dfrac{\sum_{k\in\text{available}} w_k D_k}{\sum_{k\in\text{available}} w_k},\quad w=(0.4,\,0.3,\,0.1,\,0.2)$\\[4pt]
+   each $D_k=1-e^{-\max(0,\ \text{raw}-\kappa\nu)/\tau_k}\in[0,1)$\\[2pt]
+   noise floor $\nu=\sqrt{1/n^{\mathrm{eff}}_a+1/n^{\mathrm{eff}}_b}$, $n^{\mathrm{eff}}=n\frac{1-\rho}{1+\rho}$\\[2pt]
+   nothing available $\Rightarrow D=1$ (never 0)\\[2pt]
+   similarity $=1-D$ (or $e^{-3D}$ if configured)};
+  \draw[flow] (l2.east) -- ++(1.2,0) |- (fo.west);
+  \draw[flow] (l3.east) -- ++(1.2,0) |- (fo.west);
+
+  % decision
+  \node[dc] (d0) at (12,-10.6) {\textbf{INSUFFICIENT\_EVIDENCE}\\fewer than 30 samples, or $<$60\% of the feature views computable};
+  \node[dc,draw=bad,fill=bad!8] (d1) at (19,-10.6) {\textbf{NEW\_CONCEPT}\\best $D>\max(0.32,\,2.5\cdot\mathrm{intra})$, or repository empty};
+  \node[dc,draw=busline,fill=busfill] (d2) at (26,-10.6) {\textbf{CANDIDATE\_MATCH}\\within range but ambiguous (runner-up within 0.06) or weak evidence};
+  \node[dc,draw=okline,fill=okfill] (d3) at (33,-10.6) {\textbf{HIGH\_CONFIDENCE\_MATCH}\\$D\le\max(0.18,1.5\,\mathrm{intra})$, margin $\ge0.06$, confidence $\ge0.35$};
+  \draw[flow] (fo.south) -- ++(0,-1.5) -| (d0); \draw[flow] (fo.south) -- ++(0,-1.5) -| (d1);
+  \draw[flow] (fo.south) -- ++(0,-1.5) -| (d2); \draw[flow] (fo.south) -- ++(0,-1.5) -| (d3);
+
+  \node[ok,text width=17cm] (cf) at (14.5,-15.2) {\textbf{Confidence score} (heuristic evidence strength in $[0,1]$, \emph{not a calibrated probability})\\[2pt]
+   $c=\underbrace{\left(1-\tfrac{D}{\mathrm{thr}}\right)}_{\text{closeness}}\cdot\underbrace{\left(\tfrac12+\tfrac12\min\!\left(1,\tfrac{D_2-D_1}{0.15}\right)\right)}_{\text{separation from runner-up}}\cdot\underbrace{\min\!\left(1,\tfrac n{100}\right)\!\left(\tfrac12+\tfrac{\text{completeness}}2\right)}_{\text{sample count, views present}}\cdot\underbrace{\left(1-\tfrac12\tfrac{\mathrm{intra}}{\mathrm{thr}}\right)}_{\text{concept variability}}\cdot\underbrace{0.85\ \text{if no }D_{pred}}_{\text{no label evidence}}$};
+  \node[todo,text width=11cm] (nt) at (30,-15.2) {All thresholds and weights are configuration, chosen from a measured within-concept versus between-concept gap (same concept $\le0.2$, different $\ge0.49$ at 40 samples), not proven universal.};
+\end{tikzpicture}
+\end{adjustbox}
+\end{center}
+\clearpage
+
+%% ============================================================ PAGE 7 (v2) safe recall
+\pagetitle{7. Safe model recall}{\texttt{mv\_engine.py}: a matching fingerprint is a hypothesis. The model is reused only after it proves itself on labelled data.}
+
+\begin{center}
+\begin{adjustbox}{max width=\textwidth,max height=0.76\textheight}
+\begin{tikzpicture}[x=1cm,y=1cm,
+  sx/.style={draw=busline,fill=busfill,rounded corners=3pt,align=center,text width=6.4cm,inner sep=5pt,font=\small,text=ink,line width=.8pt},
+  dd/.style={draw=ink!60,fill=white,rounded corners=3pt,align=center,text width=6.4cm,inner sep=5pt,font=\small,text=ink,line width=.8pt}]
+  \node[ok,text width=6.4cm] (s0) at (0,0) {\textbf{1. Drift signal}\\Page--Hinkley on errors (needs labels) or feature shift $D_X>0.25$ (label free)};
+  \node[sx] (s1) at (9,0) {\textbf{2. Collect}\\$\ge40$ post-drift observations; fingerprint $F_X$ only};
+  \node[sx] (s2) at (18,0) {\textbf{3. Match}\\hierarchical retrieval, four-way decision};
+  \draw[flow] (s0) -- (s1); \draw[flow] (s1) -- (s2);
+
+  \node[dd,draw=todoline,fill=todofill] (i) at (18,-4.2) {\textbf{INSUFFICIENT}\\keep collecting (force new concept after 200)};
+  \node[dd,draw=bad,fill=bad!8] (n) at (27,-4.2) {\textbf{NEW\_CONCEPT}\\wait for 80 labelled samples, train, store};
+  \node[sx] (v) at (9,-4.2) {\textbf{4. Shadow validation}\\candidate models (up to 3, \emph{including the currently active concept}) predict the labelled post-drift samples; compare with the old model};
+  \draw[flow] (s2) -- (v); \draw[flow] (s2) -- (i); \draw[flow] (s2) -- (n);
+
+  \node[dd,draw=busline] (p) at (0,-9) {\textbf{Provisional activation}\\only for HIGH\_CONFIDENCE while $<30$ labels exist: serve the candidate, keep validating};
+  \draw[flow,dashed] (v.south west) -- ++(0,-1.5) -| (p);
+  \node[dd] (cr) at (9,-9.4) {\textbf{5. Acceptance criteria}\\accuracy $\ge0.70$ and $\ge$ old model $+0$, $\ge30$ labelled samples, $D_{pred}\le0.6$ if a stored predictive fingerprint exists};
+  \draw[flow] (v) -- (cr); \draw[flow,dashed] (p.east) -- (cr.west);
+
+  \node[ok,text width=6.4cm] (a) at (-1,-14.6) {\textbf{Accept: recall}\\activate stored model, merge window into the concept, \texttt{uses}$+1$};
+  \node[ok,fill=todofill,draw=todoline,text width=6.4cm] (fa) at (7.5,-14.6) {\textbf{Accept, same concept: false alarm}\\the old model still validates; nothing changes};
+  \node[ok,fill=bad!10,draw=bad,text width=6.4cm] (rb) at (16,-14.6) {\textbf{Reject: rollback}\\restore the previous model, log the rejected concept};
+  \node[ok,fill=bad!10,draw=bad,text width=6.4cm] (nw) at (24.5,-14.6) {\textbf{then: new concept}\\train from labelled buffer; concept and model stored under new ids};
+  \draw[flow] (cr.south) -- ++(0,-1.4) -| (a); \draw[flow] (cr.south) -- ++(0,-1.4) -| (fa);
+  \draw[flow] (cr.south) -- ++(0,-1.4) -| (rb); \draw[flow] (rb) -- (nw);
+\end{tikzpicture}
+\end{adjustbox}
+\end{center}
+\vfill
+\begin{tabular}{@{}p{12cm}p{12cm}p{12cm}@{}}
+\textbf{Why validate the active concept too?} If the data looks like the concept already in use but errors rose (same $X$, different $Y$), only labels can tell. Without this the engine would call every such drift a false alarm. &
+\textbf{Delayed or missing labels.} Matching uses $X$ only and starts immediately. Validation waits for released labels. With no labels at all nothing is activated or trained. &
+\textbf{Tested paths.} recall, failed validation, rollback, too few validation samples, provisional off, strict criteria, delayed labels, repeated transitions (\texttt{tests/test\_recall.py}).
+\end{tabular}
+\clearpage
+
+%% ============================================================ PAGE 8 (research) improved pipeline
+\pagetitle{8. Improved matching pipeline (research milestones M2--M7)}{Every stage below was built, tested and measured. Colour = what the experiments supported (\texttt{results/research/}, \texttt{docs/AUDIT.md}).}
+
+\begin{center}
+\begin{adjustbox}{max width=\textwidth,max height=0.70\textheight}
+\begin{tikzpicture}[x=1cm,y=1cm,
+  sd/.style={draw=okline,fill=okfill,rounded corners=3pt,align=left,text width=7.4cm,inner sep=5pt,font=\footnotesize,text=ink,line width=.8pt},
+  sb/.style={draw=busline,fill=busfill,rounded corners=3pt,align=left,text width=7.4cm,inner sep=5pt,font=\footnotesize,text=ink,line width=.8pt},
+  sg/.style={draw=todoline,fill=todofill,dashed,rounded corners=3pt,align=left,text width=7.4cm,inner sep=5pt,font=\footnotesize,text=todoline!60!black,line width=.8pt}]
+  \node[sd] (s1) at (0,0) {\textbf{1 Drift signal}\\Page--Hinkley on errors; label-free feature shift ($D_X>0.25$)};
+  \node[sd] (s2) at (9,0) {\textbf{2 Feature fingerprint}\\statistics, distribution, temporal; NaN = unavailable; no labels};
+  \node[sb] (s3) at (18,0) {\textbf{3 Level 1 retrieval}\\cached matrix index; \emph{adaptive} $k$ (3--10); full-scan fallback on ``new''. Candidate recall 0.996 vs 0.948};
+  \node[sb] (s4) at (27,0) {\textbf{4 Level 2 views}\\symmetric PSI + $W_1$; tail-ratio term; Fisher-$z$ correlations; \emph{standardised} temporal statistics};
+  \node[sg] (s5) at (0,-4.4) {\textbf{5a Noise model: per-statistic ESS}\\$n_{\mathrm{eff}}$ per statistic (mean, quantile, scale, rank, ACF). \emph{Not better} than the global AR(1) floor; kept opt-in};
+  \node[sg] (s5b) at (9,-4.4) {\textbf{5b Noise model: empirical profile}\\same-concept $P(D)$ from retained data, power-based ``unresolvable'' flag. Best calibration; \emph{not wired into the engine}};
+  \node[sb] (s6) at (18,-4.4) {\textbf{6 Aggregation}\\mean over feature groups (worst-group blend dropped); weights calibrated on separate seeds: held-out top-1 0.865 vs 0.774};
+  \node[sb] (s7) at (27,-4.4) {\textbf{7 Thresholds}\\per-concept conformal quantiles (windowed variability tracker). Better operating point in 3 of 4 conditions};
+  \node[sb] (s8) at (0,-8.8) {\textbf{8 Three quantities}\\similarity, evidence quality, confidence score; optional \emph{calibrated} probability (Brier 0.199 vs 0.426)};
+  \node[sd] (s9) at (9,-8.8) {\textbf{9 Structured explanation}\\decision, margin, views used / missing, noise status, why alternatives lost, evidence still needed};
+  \node[sg] (s10) at (18,-8.8) {\textbf{10 Validation: paired CI}\\task-aware metrics, Bonferroni / split-confirm, point-estimate floor. Controls false accepts (simulation); \emph{no accuracy gain} on streams: opt-in};
+  \node[sd] (s11) at (27,-8.8) {\textbf{11 Safe recall}\\shadow evaluation (stored models never mutated), provisional activation, rollback, false-alarm path};
+  \node[sb] (s12) at (0,-13.2) {\textbf{12 Mergeable memory}\\Chan--Pebay moments, t-digest sketch, per-window history median. Exact std/skew; $\approx$2$\times$ update cost};
+  \node[sg] (s13) at (9,-13.2) {\textbf{13 Eviction}\\LRU / least-used / recurrence score. Score did \emph{not} beat least-used; LRU is worse};
+  \node[sd] (s14) at (18,-13.2) {\textbf{14 Versioned records}\\schema 2.1, update count, model versions, variability history; 2.0 and v1 dumps still load};
+  \node[todo,text width=7.4cm,font=\footnotesize] (s15) at (27,-13.2) {\textbf{Real datasets}\\loaders written and tested on toy files only; nothing downloaded or benchmarked};
+  \foreach \a/\b in {s1/s2,s2/s3,s3/s4}{\draw[flow] (\a) -- (\b);}
+  \draw[flow] (s4.south) -- ++(0,-1.0) -| (s6.north);
+  \draw[flow] (s6) -- (s7); \draw[flow] (s7.south) -- ++(0,-1.0) -| (s8.north);
+  \draw[flow] (s8) -- (s9); \draw[flow] (s9) -- (s10); \draw[flow] (s10) -- (s11);
+  \draw[flow] (s11.south) -- ++(0,-1.0) -| (s14.north);
+  \draw[flow] (s14) -- (s13); \draw[flow] (s13) -- (s12);
+\end{tikzpicture}
+\end{adjustbox}
+\end{center}
+\vspace{4pt}
+\begin{tikzpicture}
+  \node[ok,text width=3.6cm,font=\scriptsize] (a) {unchanged default / safety};
+  \node[topic,right=6pt of a,text width=7.4cm,font=\scriptsize\sffamily,align=center] {improved, opt-in, supported by experiment};
+  \node[todo,text width=11cm,font=\scriptsize,right=6pt of a,xshift=8.0cm] {built, but evidence did not support adopting it (or not wired into the engine)};
+\end{tikzpicture}
+\clearpage
+
+%% ============================================================ PAGE 9 (v1 results)
+\pagetitle{9. Measured behaviour on the demo stream}{\nsamples{} samples, \nchanges{} true concept changes, identical stream for all strategies (\texttt{python run.py bench})}
 
 \begin{center}
 \begin{tikzpicture}
@@ -300,7 +467,8 @@
   \addplot[cstatic] table[col sep=comma,x=t,y=static] {../results/bench_rolling.csv};
   \addplot[cretrain] table[col sep=comma,x=t,y=retrain] {../results/bench_rolling.csv};
   \addplot[cdeja,line width=1.5pt] table[col sep=comma,x=t,y=dejastream] {../results/bench_rolling.csv};
-  \legend{static model,retrain on drift,DejaStream}
+  \addplot[magenta!70!black,dashed,line width=0.9pt] table[col sep=comma,x=t,y=dejastream_mv] {../results/bench_rolling.csv};
+  \legend{static model,retrain on drift,DejaStream v1,DejaStream MV}
   \node[font=\small\bfseries,text=bad!80!black] at (axis cs:750,0.13) {A}; \node[font=\small\bfseries,text=bad!80!black] at (axis cs:2250,0.13) {B}; \node[font=\small\bfseries,text=bad!80!black] at (axis cs:3750,0.13) {C}; \node[font=\small\bfseries,text=bad!80!black] at (axis cs:5250,0.13) {A}; \node[font=\small\bfseries,text=bad!80!black] at (axis cs:6750,0.13) {B}; \node[font=\small\bfseries,text=bad!80!black] at (axis cs:8250,0.13) {D}; \node[font=\small\bfseries,text=bad!80!black] at (axis cs:9750,0.13) {C}; \node[font=\small\bfseries,text=bad!80!black] at (axis cs:11250,0.13) {A}; \node[font=\small\bfseries,text=bad!80!black] at (axis cs:12750,0.13) {D}; \node[font=\small\bfseries,text=bad!80!black] at (axis cs:14250,0.13) {B}; \node[font=\small\bfseries,text=bad!80!black] at (axis cs:15750,0.13) {A};
 \end{axis}
 \end{tikzpicture}
@@ -314,8 +482,40 @@
 {\footnotesize\color{ink!70}Red dashed lines mark the true concept changes; letters show the concept in force. Numbers are read from \texttt{results/bench.json} each time this PDF is built. Synthetic data, single seed: the result shows the mechanism works, not that it generalises to real streams. Detection delay is counted in samples after the true change.}
 \clearpage
 
-%% ============================================================ PAGE 6
-\pagetitle{6. Code map}{Where each box in the diagrams lives in the repository}
+%% ============================================================ PAGE 9 (v2) benchmark
+\pagetitle{10. Multi-view benchmark (schema 2.0 vs v1)}{\mvseeds{} seeds, mean $\pm$ std, synthetic streams only (\texttt{python run.py bench-mv}); full table with all four strategies in \texttt{results/bench\_mv.md}}
+
+\begin{center}
+\begin{adjustbox}{max width=\textwidth}
+\input{results_mv_table.tex}
+\end{adjustbox}
+\end{center}
+\vspace{6pt}
+\begin{center}\input{results_mv_cost.tex}\end{center}
+\vfill
+{\footnotesize\color{ink!70}\textbf{Read with care.} On clean abrupt recurring drift, v1 and MV retrieve equally well and MV is not better. MV helps on noisy and gradual streams (fewer models, higher retrieval recall) and detects gradual and incremental drift sooner, but it is less precise than v1 under incremental drift, costs about 3$\times$ the per-sample time, and cannot separate SEA concepts because their $p(x)$ is identical. Retrieval metrics: a recall is correct if the recalled concept was created under the same true concept; precision, recall and false-match definitions are in \texttt{bench\_mv.py}. Synthetic results do not show real-world generalisation.}
+\clearpage
+
+%% ============================================================ PAGE 11 (research findings)
+\pagetitle{11. Research findings: ablation and fresh-seed confirmation}{Synthetic streams only. Ablation: seeds 1--5, eight scenarios, macro-average. Confirmation: seeds 11--20 (not used to choose anything), 18 scenarios, exact paired permutation tests, Holm-corrected.}
+
+\begin{center}\begin{adjustbox}{max width=\textwidth}
+\input{results_research_macro.tex}
+\end{adjustbox}\end{center}
+\vspace{8pt}
+\begin{center}\begin{adjustbox}{max width=0.8\textwidth}
+\input{results_research_score.tex}
+\end{adjustbox}\end{center}
+\vfill
+\begin{tabular}{@{}p{12cm}p{12cm}p{12cm}@{}}
+\textbf{Hypothesis verdict.} Schema-2.0 multi-view matching beats the v1 fingerprint (significantly higher accuracy in 5 of 18 scenarios, never lower, and it survives missing features). The bundle of improvements added afterwards did \emph{not} beat schema 2.0: no significant gain on any outcome metric, significantly lower accuracy in 3 scenarios and lower match recall in 2, and 2.5$\times$ to 4$\times$ v1's compute. &
+\textbf{What the ablation says.} Removing noise correction (E) raises false matches from 0.5\% to 6.2\%; removing predictive validation (H) drops first-300 accuracy from 78.9\% to 72.0\%. Empirical thresholds (F removes them) cost match recall in the engine; confidence gating (G) changes nothing; paired validation (J), merge mode (K) and extra views (A--C vs D) give no measurable gain. &
+\textbf{Not done.} Real datasets (loaders tested on toy files only), spectral temporal features, KLL sketch, wiring the empirical noise profile and the calibrated probability into the engine. Everything here is synthetic and low-dimensional; it does not show real-world generalisation.
+\end{tabular}
+\clearpage
+
+%% ============================================================ PAGE 10
+\pagetitle{12. Code map}{Where each box in the diagrams lives in the repository}
 \renewcommand{\arraystretch}{1.5}
 \begin{tabular}{@{}p{6.2cm}p{2.2cm}p{20cm}p{3.6cm}@{}}
 \toprule
@@ -326,7 +526,17 @@
 \texttt{dejastream/pipeline.py} & 2--5 & Starts the source, one worker per strategy, the store and the dashboard consumers & \textcolor{okline}{built, run live}\\
 \texttt{dejastream/detector.py} & 3 & Page--Hinkley drift detector on the error stream & \textcolor{okline}{built, tested}\\
 \texttt{dejastream/engine.py} & 3--4 & State machine, quarantine, early probe, repository, matching, three strategies & \textcolor{okline}{built, tested}\\
-\texttt{dejastream/fingerprint.py} & 4 & 17-d fingerprint and running scaler with RMS distance & \textcolor{okline}{built, tested}\\
+\texttt{dejastream/fingerprint.py} & 4 & v1: 17-d fingerprint (uses labels) and running scaler, kept as baseline & \textcolor{okline}{built, tested}\\
+\texttt{dejastream/mvfp.py} & 4 & schema 2.0 feature and predictive fingerprints, serialisation, v1 migration & \textcolor{okline}{built, tested}\\
+\texttt{dejastream/similarity.py} & 4 & per-view distances, noise floors, weighted combination & \textcolor{okline}{built, tested}\\
+\texttt{dejastream/matcher.py} & 4 & bounded repository, hierarchical retrieval, four-way decision, confidence score & \textcolor{okline}{built, tested}\\
+\texttt{dejastream/noise.py} & 4 & statistic-specific effective sample size, empirical same-concept noise profile & \textcolor{okline}{built, tested; profile not used by engine}\\
+\texttt{dejastream/validation.py} & 3--4 & task-aware metrics, paired bootstrap, Bonferroni / split-confirm selection & \textcolor{okline}{built, tested; engine uses classification only}\\
+\texttt{dejastream/memory.py} & 4--5 & mergeable moments, t-digest-style sketch, per-window history, composed fingerprints & \textcolor{okline}{built, tested}\\
+\texttt{dejastream/research/} & 6 & audit, calibration, ablation, paired tests, scaling experiments and report builder & \textcolor{okline}{built, run}\\
+\texttt{dejastream/mv\_engine.py} & 3--4 & drift handling with shadow validation, provisional activation, rollback & \textcolor{okline}{built, tested}\\
+\texttt{dejastream/scenarios.py}, \texttt{bench\_mv.py} & 6 & eight synthetic scenarios, multi-seed benchmark with retrieval metrics & \textcolor{okline}{built, tested}\\
+\texttt{dejastream/datasets.py} & 1 & CSV loader (numeric, categorical, missing); no dataset bundled & \textcolor{okline}{built, loader tested only}\\
 \texttt{dejastream/models.py} & 4 & numpy logistic regression with batch fit and online SGD & \textcolor{okline}{built, tested}\\
 \texttt{dejastream/store.py} & 5 & SQLite tables for events, metrics, concept snapshots & \textcolor{okline}{built, run live}\\
 \texttt{dejastream/server.py}, \texttt{web/index.html} & 6 & HTTP server, canvas charts, repository, bus and event panels & \textcolor{okline}{built, run live}\\
@@ -334,7 +544,7 @@
 \midrule
 Kafka / Redpanda adapter & 2 & Replace \texttt{bus.py} with a real broker client & \textcolor{todoline}{not built}\\
 Spark Structured Streaming processor & 3 & Alternative to the Python worker threads & \textcolor{todoline}{not built}\\
-Real dataset loaders & 1 & Electricity, Airlines, sensor streams in place of the synthetic generator & \textcolor{todoline}{not built}\\
+Real-dataset benchmarks & 1 & Electricity, Airlines: loader exists, no real data run yet & \textcolor{todoline}{not run}\\
 PostgreSQL storage & 5 & Production store in place of SQLite & \textcolor{todoline}{not built}\\
 \bottomrule
 \end{tabular}

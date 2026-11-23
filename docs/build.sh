@@ -3,5 +3,6 @@
 set -euo pipefail
 cd "$(dirname "$0")/.."
 [ -f results/bench.json ] || .venv/bin/python run.py bench
+[ -f results/bench_mv.json ] || .venv/bin/python run.py bench-mv > /dev/null
 python3 docs/make_results_tex.py
 cd docs && latexmk -pdf -interaction=nonstopmode -halt-on-error architecture.tex >/dev/null && echo "built docs/architecture.pdf"

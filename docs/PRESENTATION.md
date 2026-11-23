@@ -50,8 +50,27 @@ About 12 minutes. Every claim below comes from the code or from `python run.py b
 - Not built: Kafka broker, Spark processor, real datasets, PostgreSQL.
 - Next: real datasets, gradual drift, tune thresholds automatically, swap in Kafka.
 
+## 10. Upgrade: multi-view fingerprinting (3 min) [PDF p5-7, p9]
+- Problem with v1: one 17-number vector, nine of which use the label, so identity depended on labels and no "I am not sure" answer existed.
+- v2: statistics + distributions + temporal (feature-only) and a separate optional predictive fingerprint. Missing evidence is NaN, never zero.
+- Matching is hierarchical (fast global retrieval, feature-group ranking, predictive evidence last) and returns one of four decisions with a confidence score (explicitly not a probability).
+- Safe recall: a matching fingerprint is only a hypothesis. Candidate models, including the active one, are shadow-validated on labelled samples; HIGH-confidence matches can be activated provisionally and rolled back.
+- Honest results (5 seeds, synthetic): equal to v1 on clean recurrence, better on noisy streams (fewer models, 73% vs 45% retrieval recall), +2 points accuracy on gradual/incremental drift, but lower retrieval precision under incremental drift (61% vs 76%), about 3x per-sample cost, and blind to SEA-type concepts that share p(x).
+- Two bugs the tests/benchmark found: autocorrelated data looked like constant drift (fixed with effective sample size), all-missing window looked like a perfect match (fixed).
+- Demo: dashboard panels "latest concept match" (per-view distance bars, hatched = no evidence) and "recall decisions and validation".
+
+## 11. Research pass: did the improvements help? (3 min) [PDF p8, p11; docs/RESEARCH.md]
+- We audited the matcher first and found four real defects (merging, selection bias, worst-group aggregation, effective sample size).
+- Then built and measured: noise models, richer distances, adaptive retrieval, conformal thresholds, calibrated confidence, paired validation, exact memory merging.
+- Honest outcome on fresh seeds with exact paired tests: schema-2.0 MV beats v1 (accuracy better in 5 of 18 scenarios, never worse); the improved bundle does **not** beat schema 2.0 (no significant gain, worse in a few). Some parts earned their place (noise correction, predictive validation, exact merging), others did not (per-statistic ESS, score eviction, in-engine empirical thresholds).
+- Lesson worth saying out loud: a better standalone matching operating point can lose recalls inside a pipeline whose validation already removes false matches.
+- Not done: real datasets (needs permission to download).
+
 ## Likely questions
 - *Why not just retrain faster?* A stored model is already fully trained; retraining needs fresh data first.
 - *Is the bus really Kafka?* No. In-process stand-in with topics, offsets, groups, lag; the Kafka swap is listed as not built.
 - *What if two concepts look alike?* The matcher also requires the stored model to score at least 75% on the new buffer.
+- *Did the later improvements help?* Not on these synthetic streams; see the confirmation table (p11). They were tested on seeds that played no part in choosing them.
+- *Is the new fingerprint better?* Not everywhere. See the table: equal on clean recurrence, better on noisy/gradual, worse precision under incremental drift, 3x slower.
+- *Why is confidence not a probability?* It is a hand-built evidence score; it has not been calibrated against observed recall success.
 - *Where do false alarms go?* Matched back to the active concept and logged as `false_alarm`; 2 occurred in the demo run.

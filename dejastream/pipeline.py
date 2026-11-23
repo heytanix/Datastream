@@ -13,7 +13,7 @@ import time
 from collections import defaultdict, deque
 
 from .bus import Bus
-from .engine import STRATEGIES, Engine
+from .strategies import STRATEGIES, make_engine
 from .store import Store
 from .stream import ConceptStream
 
@@ -30,7 +30,7 @@ class Pipeline:
         for t in ("ds.raw", "ds.events", "ds.metrics"):
             self.bus.create_topic(t, retention=100_000 if t == "ds.raw" else 20_000)
         self.store = Store(db_path)
-        self.engines = {s: Engine(s) for s in STRATEGIES}
+        self.engines = {s: make_engine(s) for s in STRATEGIES}
         self.stop = threading.Event()
         self.threads: list[threading.Thread] = []
         self.lock = threading.Lock()
@@ -46,7 +46,7 @@ class Pipeline:
             "active": {s: deque(maxlen=60) for s in STRATEGIES},  # active concept timeline per strategy
             "events": deque(maxlen=40),
             "counts": {s: defaultdict(int) for s in STRATEGIES},
-            "repo": [],
+            "repo": [], "repo_mv": [], "mv": {},
         }
 
     # -- threads ------------------------------------------------------------
@@ -97,10 +97,12 @@ class Pipeline:
                 for e in events:
                     send.send("ds.events", e)
                 if k == METRIC_EVERY:
+                    act = eng.active
                     send.send("ds.metrics", {"t": r["t"], "strategy": strategy, "acc": hits / k,
                                              "models": eng.models_trained, "state": eng.state,
-                                             "active": eng.active.cid if eng.active else None,
-                                             "repo": eng.snapshot()})
+                                             "active": None if act is None else getattr(act, "cid", getattr(act, "index", None)),
+                                             "repo": eng.snapshot(),
+                                             "mv": eng.dash_info() if hasattr(eng, "dash_info") else None})
                     hits, k = 0, 0
 
     def _store(self):
@@ -136,7 +138,7 @@ class Pipeline:
                     elif rec.topic == "ds.events":
                         s["counts"][v["strategy"]][v["kind"]] += 1
                         s["events"].appendleft(v)
-                        if v["kind"] in ("new_concept", "recall", "probe", "false_alarm"):
+                        if v["kind"] in ("new_concept", "recall", "probe", "false_alarm", "provisional", "rollback"):
                             s["active"][v["strategy"]].append((v["t"], v["concept"], v["kind"]))
                     else:
                         st = v["strategy"]
@@ -147,6 +149,8 @@ class Pipeline:
                         s["models"][st] = v["models"]
                         if st == "dejastream":
                             s["repo"] = v["repo"]
+                        elif st == "dejastream_mv":
+                            s["repo_mv"], s["mv"] = v["repo"], v["mv"]
                 now = time.time()
                 if now - mark >= 1:
                     s["rate"] = mt / (now - mark)
@@ -161,6 +165,7 @@ class Pipeline:
             out = {"t": s["t"], "rate": round(s["rate"]), "acc": {k: list(v) for k, v in s["acc"].items()},
                    "summary": summary, "segments": list(s["segments"]),
                    "active": {k: list(v) for k, v in s["active"].items()},
-                   "events": list(s["events"])[:14], "repo": s["repo"]}
+                   "events": [e for e in list(s["events"]) if e["kind"] != "match"][:14],
+                   "repo": s["repo"], "repo_mv": s["repo_mv"], "mv": s["mv"]}
         out["bus"] = self.bus.stats()
         return out
