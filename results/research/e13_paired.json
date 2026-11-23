@@ -1,0 +1,3673 @@
+{
+ "F = D without adaptive thresholds vs MV schema 2.0 (baseline) | accuracy": [
+  {
+   "scenario": "abrupt_recurring",
+   "n": 10,
+   "mean_a": 0.9145939393939393,
+   "mean_b": 0.9145939393939393,
+   "diff": 0.0,
+   "p": 1.0,
+   "p_holm": 1.0
+  },
+  {
+   "scenario": "noisy_recurring",
+   "n": 10,
+   "mean_a": 0.7424909090909091,
+   "mean_b": 0.7422666666666667,
+   "diff": 0.0002242424242424157,
+   "p": 0.4296875,
+   "p_holm": 1.0
+  },
+  {
+   "scenario": "gradual",
+   "n": 10,
+   "mean_a": 0.8619151515151515,
+   "mean_b": 0.8774484848484848,
+   "diff": -0.01553333333333331,
+   "p": 0.001953125,
+   "p_holm": 0.03515625
+  },
+  {
+   "scenario": "incremental",
+   "n": 10,
+   "mean_a": 0.8672363636363636,
+   "mean_b": 0.877060606060606,
+   "diff": -0.009824242424242412,
+   "p": 0.001953125,
+   "p_holm": 0.03515625
+  },
+  {
+   "scenario": "similar_x_different_y",
+   "n": 10,
+   "mean_a": 0.9100733333333333,
+   "mean_b": 0.9100733333333333,
+   "diff": 0.0,
+   "p": 1.0,
+   "p_holm": 1.0
+  },
+  {
+   "scenario": "temporal_only",
+   "n": 10,
+   "mean_a": 0.9338000000000001,
+   "mean_b": 0.9342250000000002,
+   "diff": -0.0004250000000000087,
+   "p": 0.5078125,
+   "p_holm": 1.0
+  },
+  {
+   "scenario": "sea",
+   "n": 10,
+   "mean_a": 0.8628916666666667,
+   "mean_b": 0.8628916666666667,
+   "diff": 0.0,
+   "p": 1.0,
+   "p_holm": 1.0
+  },
+  {
+   "scenario": "hyperplane",
+   "n": 10,
+   "mean_a": 0.8940999999999999,
+   "mean_b": 0.8940999999999999,
+   "diff": 0.0,
+   "p": 1.0,
+   "p_holm": 1.0
+  },
+  {
+   "scenario": "aba",
+   "n": 10,
+   "mean_a": 0.9069555555555555,
+   "mean_b": 0.9069555555555555,
+   "diff": 0.0,
+   "p": 1.0,
+   "p_holm": 1.0
+  },
+  {
+   "scenario": "abca",
+   "n": 10,
+   "mean_a": 0.9056833333333334,
+   "mean_b": 0.9056833333333334,
+   "diff": 0.0,
+   "p": 1.0,
+   "p_holm": 1.0
+  },
+  {
+   "scenario": "aba_noisy",
+   "n": 10,
+   "mean_a": 0.8157333333333332,
+   "mean_b": 0.8174444444444443,
+   "diff": -0.0017111111111111077,
+   "p": 1.0,
+   "p_holm": 1.0
+  },
+  {
+   "scenario": "ab_gradual",
+   "n": 10,
+   "mean_a": 0.8690666666666667,
+   "mean_b": 0.8759111111111111,
+   "diff": -0.006844444444444453,
+   "p": 0.02734375,
+   "p_holm": 0.4375
+  },
+  {
+   "scenario": "diff_x_same_y",
+   "n": 10,
+   "mean_a": 0.9284399999999999,
+   "mean_b": 0.9300266666666668,
+   "diff": -0.0015866666666666585,
+   "p": 0.03125,
+   "p_holm": 0.46875
+  },
+  {
+   "scenario": "same_marginal_diff_corr",
+   "n": 10,
+   "mean_a": 0.9338133333333332,
+   "mean_b": 0.9338133333333332,
+   "diff": 0.0,
+   "p": 1.0,
+   "p_holm": 1.0
+  },
+  {
+   "scenario": "varied_sizes",
+   "n": 10,
+   "mean_a": 0.9099587628865979,
+   "mean_b": 0.9099587628865979,
+   "diff": 0.0,
+   "p": 1.0,
+   "p_holm": 1.0
+  },
+  {
+   "scenario": "overlapping",
+   "n": 10,
+   "mean_a": 0.9113583333333335,
+   "mean_b": 0.9113583333333335,
+   "diff": 0.0,
+   "p": 1.0,
+   "p_holm": 1.0
+  },
+  {
+   "scenario": "imbalanced",
+   "n": 10,
+   "mean_a": 0.9056761904761906,
+   "mean_b": 0.9051238095238097,
+   "diff": 0.0005523809523809486,
+   "p": 1.0,
+   "p_holm": 1.0
+  },
+  {
+   "scenario": "feature_availability",
+   "n": 10,
+   "mean_a": 0.8968095238095237,
+   "mean_b": 0.8968095238095237,
+   "diff": 0.0,
+   "p": 1.0,
+   "p_holm": 1.0
+  }
+ ],
+ "F = D without adaptive thresholds vs MV schema 2.0 (baseline) | post_drift_acc": [
+  {
+   "scenario": "abrupt_recurring",
+   "n": 10,
+   "mean_a": 0.8219333333333335,
+   "mean_b": 0.8219333333333335,
+   "diff": 0.0,
+   "p": 1.0,
+   "p_holm": 1.0
+  },
+  {
+   "scenario": "noisy_recurring",
+   "n": 10,
+   "mean_a": 0.6720999999999999,
+   "mean_b": 0.6707333333333333,
+   "diff": 0.0013666666666666827,
+   "p": 0.30078125,
+   "p_holm": 1.0
+  },
+  {
+   "scenario": "gradual",
+   "n": 10,
+   "mean_a": 0.7169,
+   "mean_b": 0.7218333333333333,
+   "diff": -0.004933333333333312,
+   "p": 0.05859375,
+   "p_holm": 0.9375
+  },
+  {
+   "scenario": "incremental",
+   "n": 10,
+   "mean_a": 0.7589333333333332,
+   "mean_b": 0.7597333333333334,
+   "diff": -0.0008000000000000119,
+   "p": 0.822265625,
+   "p_holm": 1.0
+  },
+  {
+   "scenario": "similar_x_different_y",
+   "n": 10,
+   "mean_a": 0.7967037037037037,
+   "mean_b": 0.7967037037037037,
+   "diff": 0.0,
+   "p": 1.0,
+   "p_holm": 1.0
+  },
+  {
+   "scenario": "temporal_only",
+   "n": 10,
+   "mean_a": 0.9366666666666668,
+   "mean_b": 0.9396190476190476,
+   "diff": -0.002952380952380973,
+   "p": 0.107421875,
+   "p_holm": 1.0
+  },
+  {
+   "scenario": "sea",
+   "n": 10,
+   "mean_a": 0.8313809523809524,
+   "mean_b": 0.8313809523809524,
+   "diff": 0.0,
+   "p": 1.0,
+   "p_holm": 1.0
+  },
+  {
+   "scenario": "aba",
+   "n": 10,
+   "mean_a": 0.8033333333333333,
+   "mean_b": 0.8033333333333333,
+   "diff": 0.0,
+   "p": 1.0,
+   "p_holm": 1.0
+  },
+  {
+   "scenario": "abca",
+   "n": 10,
+   "mean_a": 0.7883333333333333,
+   "mean_b": 0.7883333333333333,
+   "diff": 0.0,
+   "p": 1.0,
+   "p_holm": 1.0
+  },
+  {
+   "scenario": "aba_noisy",
+   "n": 10,
+   "mean_a": 0.7365,
+   "mean_b": 0.7375,
+   "diff": -0.0010000000000000009,
+   "p": 1.0,
+   "p_holm": 1.0
+  },
+  {
+   "scenario": "ab_gradual",
+   "n": 10,
+   "mean_a": 0.7476666666666667,
+   "mean_b": 0.7424999999999999,
+   "diff": 0.005166666666666675,
+   "p": 0.09375,
+   "p_holm": 1.0
+  },
+  {
+   "scenario": "diff_x_same_y",
+   "n": 10,
+   "mean_a": 0.9368333333333332,
+   "mean_b": 0.9336666666666666,
+   "diff": 0.003166666666666695,
+   "p": 0.01171875,
+   "p_holm": 0.19921875
+  },
+  {
+   "scenario": "same_marginal_diff_corr",
+   "n": 10,
+   "mean_a": 0.9409166666666667,
+   "mean_b": 0.9409166666666667,
+   "diff": 0.0,
+   "p": 1.0,
+   "p_holm": 1.0
+  },
+  {
+   "scenario": "varied_sizes",
+   "n": 10,
+   "mean_a": 0.8086111111111111,
+   "mean_b": 0.8086666666666666,
+   "diff": -5.555555555554203e-05,
+   "p": 1.0,
+   "p_holm": 1.0
+  },
+  {
+   "scenario": "overlapping",
+   "n": 10,
+   "mean_a": 0.8104285714285714,
+   "mean_b": 0.8104285714285714,
+   "diff": 0.0,
+   "p": 1.0,
+   "p_holm": 1.0
+  },
+  {
+   "scenario": "imbalanced",
+   "n": 10,
+   "mean_a": 0.7841111111111111,
+   "mean_b": 0.782388888888889,
+   "diff": 0.001722222222222214,
+   "p": 1.0,
+   "p_holm": 1.0
+  },
+  {
+   "scenario": "feature_availability",
+   "n": 10,
+   "mean_a": 0.8086111111111112,
+   "mean_b": 0.8086111111111112,
+   "diff": 0.0,
+   "p": 1.0,
+   "p_holm": 1.0
+  }
+ ],
+ "F = D without adaptive thresholds vs MV schema 2.0 (baseline) | models_trained": [
+  {
+   "scenario": "abrupt_recurring",
+   "n": 10,
+   "mean_a": 4.0,
+   "mean_b": 4.0,
+   "diff": 0.0,
+   "p": 1.0,
+   "p_holm": 1.0
+  },
+  {
+   "scenario": "noisy_recurring",
+   "n": 10,
+   "mean_a": 8.2,
+   "mean_b": 8.6,
+   "diff": -0.4,
+   "p": 0.40625,
+   "p_holm": 1.0
+  },
+  {
+   "scenario": "gradual",
+   "n": 10,
+   "mean_a": 9.3,
+   "mean_b": 12.9,
+   "diff": -3.6,
+   "p": 0.00390625,
+   "p_holm": 0.06640625
+  },
+  {
+   "scenario": "incremental",
+   "n": 10,
+   "mean_a": 9.9,
+   "mean_b": 11.5,
+   "diff": -1.6,
+   "p": 0.03125,
+   "p_holm": 0.46875
+  },
+  {
+   "scenario": "similar_x_different_y",
+   "n": 10,
+   "mean_a": 3.0,
+   "mean_b": 3.0,
+   "diff": 0.0,
+   "p": 1.0,
+   "p_holm": 1.0
+  },
+  {
+   "scenario": "temporal_only",
+   "n": 10,
+   "mean_a": 2.8,
+   "mean_b": 1.4,
+   "diff": 1.4,
+   "p": 0.0078125,
+   "p_holm": 0.125
+  },
+  {
+   "scenario": "sea",
+   "n": 10,
+   "mean_a": 1.6,
+   "mean_b": 1.6,
+   "diff": 0.0,
+   "p": 1.0,
+   "p_holm": 1.0
+  },
+  {
+   "scenario": "hyperplane",
+   "n": 10,
+   "mean_a": 1.0,
+   "mean_b": 1.0,
+   "diff": 0.0,
+   "p": 1.0,
+   "p_holm": 1.0
+  },
+  {
+   "scenario": "aba",
+   "n": 10,
+   "mean_a": 2.0,
+   "mean_b": 2.0,
+   "diff": 0.0,
+   "p": 1.0,
+   "p_holm": 1.0
+  },
+  {
+   "scenario": "abca",
+   "n": 10,
+   "mean_a": 3.0,
+   "mean_b": 3.0,
+   "diff": 0.0,
+   "p": 1.0,
+   "p_holm": 1.0
+  },
+  {
+   "scenario": "aba_noisy",
+   "n": 10,
+   "mean_a": 2.1,
+   "mean_b": 2.1,
+   "diff": 0.0,
+   "p": 1.0,
+   "p_holm": 1.0
+  },
+  {
+   "scenario": "ab_gradual",
+   "n": 10,
+   "mean_a": 2.9,
+   "mean_b": 3.9,
+   "diff": -1.0,
+   "p": 0.03125,
+   "p_holm": 0.46875
+  },
+  {
+   "scenario": "diff_x_same_y",
+   "n": 10,
+   "mean_a": 1.0,
+   "mean_b": 2.7,
+   "diff": -1.7,
+   "p": 0.001953125,
+   "p_holm": 0.03515625
+  },
+  {
+   "scenario": "same_marginal_diff_corr",
+   "n": 10,
+   "mean_a": 1.0,
+   "mean_b": 1.0,
+   "diff": 0.0,
+   "p": 1.0,
+   "p_holm": 1.0
+  },
+  {
+   "scenario": "varied_sizes",
+   "n": 10,
+   "mean_a": 3.0,
+   "mean_b": 3.0,
+   "diff": 0.0,
+   "p": 1.0,
+   "p_holm": 1.0
+  },
+  {
+   "scenario": "overlapping",
+   "n": 10,
+   "mean_a": 4.1,
+   "mean_b": 4.1,
+   "diff": 0.0,
+   "p": 1.0,
+   "p_holm": 1.0
+  },
+  {
+   "scenario": "imbalanced",
+   "n": 10,
+   "mean_a": 3.2,
+   "mean_b": 3.3,
+   "diff": -0.1,
+   "p": 1.0,
+   "p_holm": 1.0
+  },
+  {
+   "scenario": "feature_availability",
+   "n": 10,
+   "mean_a": 3.0,
+   "mean_b": 3.0,
+   "diff": 0.0,
+   "p": 1.0,
+   "p_holm": 1.0
+  }
+ ],
+ "F = D without adaptive thresholds vs MV schema 2.0 (baseline) | retrieval_precision": [
+  {
+   "scenario": "abrupt_recurring",
+   "n": 10,
+   "mean_a": 1.0,
+   "mean_b": 1.0,
+   "diff": 0.0,
+   "p": 1.0,
+   "p_holm": 1.0
+  },
+  {
+   "scenario": "noisy_recurring",
+   "n": 10,
+   "mean_a": 1.0,
+   "mean_b": 1.0,
+   "diff": 0.0,
+   "p": 1.0,
+   "p_holm": 1.0
+  },
+  {
+   "scenario": "gradual",
+   "n": 10,
+   "mean_a": 0.9140476190476191,
+   "mean_b": 0.944047619047619,
+   "diff": -0.030000000000000006,
+   "p": 0.46875,
+   "p_holm": 1.0
+  },
+  {
+   "scenario": "incremental",
+   "n": 10,
+   "mean_a": 0.6688311688311688,
+   "mean_b": 0.699013209013209,
+   "diff": -0.030182040182040192,
+   "p": 0.56640625,
+   "p_holm": 1.0
+  },
+  {
+   "scenario": "similar_x_different_y",
+   "n": 10,
+   "mean_a": 1.0,
+   "mean_b": 1.0,
+   "diff": 0.0,
+   "p": 1.0,
+   "p_holm": 1.0
+  },
+  {
+   "scenario": "aba",
+   "n": 10,
+   "mean_a": 1.0,
+   "mean_b": 1.0,
+   "diff": 0.0,
+   "p": 1.0,
+   "p_holm": 1.0
+  },
+  {
+   "scenario": "abca",
+   "n": 10,
+   "mean_a": 1.0,
+   "mean_b": 1.0,
+   "diff": 0.0,
+   "p": 1.0,
+   "p_holm": 1.0
+  },
+  {
+   "scenario": "aba_noisy",
+   "n": 9,
+   "mean_a": 1.0,
+   "mean_b": 1.0,
+   "diff": 0.0,
+   "p": 1.0,
+   "p_holm": 1.0
+  },
+  {
+   "scenario": "varied_sizes",
+   "n": 10,
+   "mean_a": 1.0,
+   "mean_b": 1.0,
+   "diff": 0.0,
+   "p": 1.0,
+   "p_holm": 1.0
+  },
+  {
+   "scenario": "overlapping",
+   "n": 10,
+   "mean_a": 0.9666666666666666,
+   "mean_b": 0.9666666666666666,
+   "diff": 0.0,
+   "p": 1.0,
+   "p_holm": 1.0
+  },
+  {
+   "scenario": "imbalanced",
+   "n": 10,
+   "mean_a": 1.0,
+   "mean_b": 1.0,
+   "diff": 0.0,
+   "p": 1.0,
+   "p_holm": 1.0
+  },
+  {
+   "scenario": "feature_availability",
+   "n": 10,
+   "mean_a": 1.0,
+   "mean_b": 1.0,
+   "diff": 0.0,
+   "p": 1.0,
+   "p_holm": 1.0
+  }
+ ],
+ "F = D without adaptive thresholds vs MV schema 2.0 (baseline) | retrieval_recall": [
+  {
+   "scenario": "abrupt_recurring",
+   "n": 10,
+   "mean_a": 1.0,
+   "mean_b": 1.0,
+   "diff": 0.0,
+   "p": 1.0,
+   "p_holm": 1.0
+  },
+  {
+   "scenario": "noisy_recurring",
+   "n": 10,
+   "mean_a": 0.5941724941724942,
+   "mean_b": 0.5596181596181596,
+   "diff": 0.034554334554334556,
+   "p": 0.21875,
+   "p_holm": 1.0
+  },
+  {
+   "scenario": "gradual",
+   "n": 10,
+   "mean_a": 0.42833333333333334,
+   "mean_b": 0.3997847985347986,
+   "diff": 0.028548534798534773,
+   "p": 0.51171875,
+   "p_holm": 1.0
+  },
+  {
+   "scenario": "incremental",
+   "n": 10,
+   "mean_a": 0.4291666666666667,
+   "mean_b": 0.49549603174603174,
+   "diff": -0.06632936507936507,
+   "p": 0.203125,
+   "p_holm": 1.0
+  },
+  {
+   "scenario": "similar_x_different_y",
+   "n": 10,
+   "mean_a": 1.0,
+   "mean_b": 1.0,
+   "diff": 0.0,
+   "p": 1.0,
+   "p_holm": 1.0
+  },
+  {
+   "scenario": "aba",
+   "n": 10,
+   "mean_a": 1.0,
+   "mean_b": 1.0,
+   "diff": 0.0,
+   "p": 1.0,
+   "p_holm": 1.0
+  },
+  {
+   "scenario": "abca",
+   "n": 10,
+   "mean_a": 1.0,
+   "mean_b": 1.0,
+   "diff": 0.0,
+   "p": 1.0,
+   "p_holm": 1.0
+  },
+  {
+   "scenario": "aba_noisy",
+   "n": 10,
+   "mean_a": 0.9,
+   "mean_b": 0.9,
+   "diff": 0.0,
+   "p": 1.0,
+   "p_holm": 1.0
+  },
+  {
+   "scenario": "ab_gradual",
+   "n": 10,
+   "mean_a": 0.4,
+   "mean_b": 0.2833333333333333,
+   "diff": 0.1166666666666667,
+   "p": 0.611328125,
+   "p_holm": 1.0
+  },
+  {
+   "scenario": "varied_sizes",
+   "n": 10,
+   "mean_a": 1.0,
+   "mean_b": 1.0,
+   "diff": 0.0,
+   "p": 1.0,
+   "p_holm": 1.0
+  },
+  {
+   "scenario": "overlapping",
+   "n": 10,
+   "mean_a": 0.9416666666666667,
+   "mean_b": 0.9416666666666667,
+   "diff": 0.0,
+   "p": 1.0,
+   "p_holm": 1.0
+  },
+  {
+   "scenario": "imbalanced",
+   "n": 10,
+   "mean_a": 0.9550000000000001,
+   "mean_b": 0.93,
+   "diff": 0.025,
+   "p": 1.0,
+   "p_holm": 1.0
+  },
+  {
+   "scenario": "feature_availability",
+   "n": 10,
+   "mean_a": 1.0,
+   "mean_b": 1.0,
+   "diff": 0.0,
+   "p": 1.0,
+   "p_holm": 1.0
+  }
+ ],
+ "F = D without adaptive thresholds vs MV schema 2.0 (baseline) | false_match_rate": [
+  {
+   "scenario": "abrupt_recurring",
+   "n": 10,
+   "mean_a": 0.0,
+   "mean_b": 0.0,
+   "diff": 0.0,
+   "p": 1.0,
+   "p_holm": 1.0
+  },
+  {
+   "scenario": "noisy_recurring",
+   "n": 10,
+   "mean_a": 0.0,
+   "mean_b": 0.0,
+   "diff": 0.0,
+   "p": 1.0,
+   "p_holm": 1.0
+  },
+  {
+   "scenario": "gradual",
+   "n": 10,
+   "mean_a": 0.04589285714285714,
+   "mean_b": 0.022951066391468867,
+   "diff": 0.02294179075138827,
+   "p": 0.28125,
+   "p_holm": 1.0
+  },
+  {
+   "scenario": "incremental",
+   "n": 10,
+   "mean_a": 0.14026610644257703,
+   "mean_b": 0.1512817617165443,
+   "diff": -0.011015655273967292,
+   "p": 0.552734375,
+   "p_holm": 1.0
+  },
+  {
+   "scenario": "similar_x_different_y",
+   "n": 10,
+   "mean_a": 0.0,
+   "mean_b": 0.0,
+   "diff": 0.0,
+   "p": 1.0,
+   "p_holm": 1.0
+  },
+  {
+   "scenario": "sea",
+   "n": 5,
+   "mean_a": 0.32999999999999996,
+   "mean_b": 0.32999999999999996,
+   "diff": 0.0,
+   "p": 1.0,
+   "p_holm": 1.0
+  },
+  {
+   "scenario": "aba",
+   "n": 10,
+   "mean_a": 0.0,
+   "mean_b": 0.0,
+   "diff": 0.0,
+   "p": 1.0,
+   "p_holm": 1.0
+  },
+  {
+   "scenario": "abca",
+   "n": 10,
+   "mean_a": 0.0,
+   "mean_b": 0.0,
+   "diff": 0.0,
+   "p": 1.0,
+   "p_holm": 1.0
+  },
+  {
+   "scenario": "aba_noisy",
+   "n": 10,
+   "mean_a": 0.0,
+   "mean_b": 0.0,
+   "diff": 0.0,
+   "p": 1.0,
+   "p_holm": 1.0
+  },
+  {
+   "scenario": "ab_gradual",
+   "n": 10,
+   "mean_a": 0.0,
+   "mean_b": 0.0,
+   "diff": 0.0,
+   "p": 1.0,
+   "p_holm": 1.0
+  },
+  {
+   "scenario": "varied_sizes",
+   "n": 10,
+   "mean_a": 0.0,
+   "mean_b": 0.0,
+   "diff": 0.0,
+   "p": 1.0,
+   "p_holm": 1.0
+  },
+  {
+   "scenario": "overlapping",
+   "n": 10,
+   "mean_a": 0.016666666666666666,
+   "mean_b": 0.016666666666666666,
+   "diff": 0.0,
+   "p": 1.0,
+   "p_holm": 1.0
+  },
+  {
+   "scenario": "imbalanced",
+   "n": 10,
+   "mean_a": 0.0,
+   "mean_b": 0.0,
+   "diff": 0.0,
+   "p": 1.0,
+   "p_holm": 1.0
+  },
+  {
+   "scenario": "feature_availability",
+   "n": 10,
+   "mean_a": 0.0,
+   "mean_b": 0.0,
+   "diff": 0.0,
+   "p": 1.0,
+   "p_holm": 1.0
+  }
+ ],
+ "F = D without adaptive thresholds vs MV schema 2.0 (baseline) | missed_match_rate": [
+  {
+   "scenario": "abrupt_recurring",
+   "n": 10,
+   "mean_a": 0.0,
+   "mean_b": 0.0,
+   "diff": 0.0,
+   "p": 1.0,
+   "p_holm": 1.0
+  },
+  {
+   "scenario": "noisy_recurring",
+   "n": 10,
+   "mean_a": 0.40582750582750576,
+   "mean_b": 0.4403818403818403,
+   "diff": -0.034554334554334556,
+   "p": 0.21875,
+   "p_holm": 1.0
+  },
+  {
+   "scenario": "gradual",
+   "n": 10,
+   "mean_a": 0.5716666666666667,
+   "mean_b": 0.6002152014652015,
+   "diff": -0.0285485347985348,
+   "p": 0.51171875,
+   "p_holm": 1.0
+  },
+  {
+   "scenario": "incremental",
+   "n": 10,
+   "mean_a": 0.5708333333333333,
+   "mean_b": 0.5045039682539683,
+   "diff": 0.0663293650793651,
+   "p": 0.203125,
+   "p_holm": 1.0
+  },
+  {
+   "scenario": "similar_x_different_y",
+   "n": 10,
+   "mean_a": 0.0,
+   "mean_b": 0.0,
+   "diff": 0.0,
+   "p": 1.0,
+   "p_holm": 1.0
+  },
+  {
+   "scenario": "aba",
+   "n": 10,
+   "mean_a": 0.0,
+   "mean_b": 0.0,
+   "diff": 0.0,
+   "p": 1.0,
+   "p_holm": 1.0
+  },
+  {
+   "scenario": "abca",
+   "n": 10,
+   "mean_a": 0.0,
+   "mean_b": 0.0,
+   "diff": 0.0,
+   "p": 1.0,
+   "p_holm": 1.0
+  },
+  {
+   "scenario": "aba_noisy",
+   "n": 10,
+   "mean_a": 0.1,
+   "mean_b": 0.1,
+   "diff": 0.0,
+   "p": 1.0,
+   "p_holm": 1.0
+  },
+  {
+   "scenario": "ab_gradual",
+   "n": 10,
+   "mean_a": 0.6,
+   "mean_b": 0.7166666666666667,
+   "diff": -0.11666666666666665,
+   "p": 0.611328125,
+   "p_holm": 1.0
+  },
+  {
+   "scenario": "varied_sizes",
+   "n": 10,
+   "mean_a": 0.0,
+   "mean_b": 0.0,
+   "diff": 0.0,
+   "p": 1.0,
+   "p_holm": 1.0
+  },
+  {
+   "scenario": "overlapping",
+   "n": 10,
+   "mean_a": 0.05833333333333333,
+   "mean_b": 0.05833333333333333,
+   "diff": 0.0,
+   "p": 1.0,
+   "p_holm": 1.0
+  },
+  {
+   "scenario": "imbalanced",
+   "n": 10,
+   "mean_a": 0.045,
+   "mean_b": 0.06999999999999999,
+   "diff": -0.025,
+   "p": 1.0,
+   "p_holm": 1.0
+  },
+  {
+   "scenario": "feature_availability",
+   "n": 10,
+   "mean_a": 0.0,
+   "mean_b": 0.0,
+   "diff": 0.0,
+   "p": 1.0,
+   "p_holm": 1.0
+  }
+ ],
+ "F = D without adaptive thresholds vs MV schema 2.0 (baseline) | candidate_recall@1": [
+  {
+   "scenario": "abrupt_recurring",
+   "n": 10,
+   "mean_a": 1.0,
+   "mean_b": 1.0,
+   "diff": 0.0,
+   "p": 1.0,
+   "p_holm": 1.0
+  },
+  {
+   "scenario": "noisy_recurring",
+   "n": 10,
+   "mean_a": 0.9804294827979039,
+   "mean_b": 0.9807260386672152,
+   "diff": -0.00029655586931129905,
+   "p": 0.875,
+   "p_holm": 1.0
+  },
+  {
+   "scenario": "gradual",
+   "n": 10,
+   "mean_a": 0.5563118580765639,
+   "mean_b": 0.7303487699427598,
+   "diff": -0.1740369118661957,
+   "p": 0.00390625,
+   "p_holm": 0.0625
+  },
+  {
+   "scenario": "incremental",
+   "n": 10,
+   "mean_a": 0.5850831847890671,
+   "mean_b": 0.6368630890952873,
+   "diff": -0.051779904306220106,
+   "p": 0.275390625,
+   "p_holm": 1.0
+  },
+  {
+   "scenario": "similar_x_different_y",
+   "n": 10,
+   "mean_a": 0.6446428571428572,
+   "mean_b": 0.43928571428571433,
+   "diff": 0.20535714285714288,
+   "p": 0.0078125,
+   "p_holm": 0.1171875
+  },
+  {
+   "scenario": "temporal_only",
+   "n": 6,
+   "mean_a": 0.728114478114478,
+   "mean_b": 0.7222222222222222,
+   "diff": 0.005892255892255893,
+   "p": 1.0,
+   "p_holm": 1.0
+  },
+  {
+   "scenario": "sea",
+   "n": 8,
+   "mean_a": 0.8958333333333333,
+   "mean_b": 0.8541666666666666,
+   "diff": 0.041666666666666664,
+   "p": 1.0,
+   "p_holm": 1.0
+  },
+  {
+   "scenario": "hyperplane",
+   "n": 10,
+   "mean_a": 1.0,
+   "mean_b": 1.0,
+   "diff": 0.0,
+   "p": 1.0,
+   "p_holm": 1.0
+  },
+  {
+   "scenario": "aba",
+   "n": 10,
+   "mean_a": 1.0,
+   "mean_b": 1.0,
+   "diff": 0.0,
+   "p": 1.0,
+   "p_holm": 1.0
+  },
+  {
+   "scenario": "abca",
+   "n": 10,
+   "mean_a": 1.0,
+   "mean_b": 1.0,
+   "diff": 0.0,
+   "p": 1.0,
+   "p_holm": 1.0
+  },
+  {
+   "scenario": "aba_noisy",
+   "n": 10,
+   "mean_a": 1.0,
+   "mean_b": 1.0,
+   "diff": 0.0,
+   "p": 1.0,
+   "p_holm": 1.0
+  },
+  {
+   "scenario": "ab_gradual",
+   "n": 10,
+   "mean_a": 0.41666666666666663,
+   "mean_b": 0.65,
+   "diff": -0.2333333333333333,
+   "p": 0.11328125,
+   "p_holm": 1.0
+  },
+  {
+   "scenario": "varied_sizes",
+   "n": 10,
+   "mean_a": 1.0,
+   "mean_b": 1.0,
+   "diff": 0.0,
+   "p": 1.0,
+   "p_holm": 1.0
+  },
+  {
+   "scenario": "overlapping",
+   "n": 10,
+   "mean_a": 0.7649999999999999,
+   "mean_b": 0.715,
+   "diff": 0.05,
+   "p": 0.5,
+   "p_holm": 1.0
+  },
+  {
+   "scenario": "imbalanced",
+   "n": 10,
+   "mean_a": 0.9800000000000001,
+   "mean_b": 0.975,
+   "diff": 0.0050000000000000044,
+   "p": 1.0,
+   "p_holm": 1.0
+  },
+  {
+   "scenario": "feature_availability",
+   "n": 10,
+   "mean_a": 1.0,
+   "mean_b": 1.0,
+   "diff": 0.0,
+   "p": 1.0,
+   "p_holm": 1.0
+  }
+ ],
+ "F = D without adaptive thresholds vs MV schema 2.0 (baseline) | us_per_sample": [
+  {
+   "scenario": "abrupt_recurring",
+   "n": 10,
+   "mean_a": 58.949433048479534,
+   "mean_b": 48.79751144241957,
+   "diff": 10.151921606059961,
+   "p": 0.001953125,
+   "p_holm": 0.03515625
+  },
+  {
+   "scenario": "noisy_recurring",
+   "n": 10,
+   "mean_a": 63.508137581817266,
+   "mean_b": 52.35887590302865,
+   "diff": 11.149261678788621,
+   "p": 0.001953125,
+   "p_holm": 0.03515625
+  },
+  {
+   "scenario": "gradual",
+   "n": 10,
+   "mean_a": 62.280191303039885,
+   "mean_b": 52.827785084865,
+   "diff": 9.452406218174886,
+   "p": 0.001953125,
+   "p_holm": 0.03515625
+  },
+  {
+   "scenario": "incremental",
+   "n": 10,
+   "mean_a": 63.70420106665705,
+   "mean_b": 53.309112357579366,
+   "diff": 10.395088709077697,
+   "p": 0.001953125,
+   "p_holm": 0.03515625
+  },
+  {
+   "scenario": "similar_x_different_y",
+   "n": 10,
+   "mean_a": 60.823348033342576,
+   "mean_b": 49.86993270000312,
+   "diff": 10.953415333339459,
+   "p": 0.001953125,
+   "p_holm": 0.03515625
+  },
+  {
+   "scenario": "temporal_only",
+   "n": 10,
+   "mean_a": 60.5554982416758,
+   "mean_b": 47.93950933333235,
+   "diff": 12.615988908343452,
+   "p": 0.001953125,
+   "p_holm": 0.03515625
+  },
+  {
+   "scenario": "sea",
+   "n": 10,
+   "mean_a": 52.96830335832965,
+   "mean_b": 44.26195736668887,
+   "diff": 8.706345991640772,
+   "p": 0.001953125,
+   "p_holm": 0.03515625
+  },
+  {
+   "scenario": "hyperplane",
+   "n": 10,
+   "mean_a": 92.72410472000048,
+   "mean_b": 74.84340010666224,
+   "diff": 17.880704613338214,
+   "p": 0.001953125,
+   "p_holm": 0.03515625
+  },
+  {
+   "scenario": "aba",
+   "n": 10,
+   "mean_a": 57.814705800006365,
+   "mean_b": 47.16539580003883,
+   "diff": 10.64930999996755,
+   "p": 0.001953125,
+   "p_holm": 0.03515625
+  },
+  {
+   "scenario": "abca",
+   "n": 10,
+   "mean_a": 58.22512258332607,
+   "mean_b": 48.532894666656524,
+   "diff": 9.692227916669555,
+   "p": 0.001953125,
+   "p_holm": 0.03515625
+  },
+  {
+   "scenario": "aba_noisy",
+   "n": 10,
+   "mean_a": 58.80182368887796,
+   "mean_b": 47.924517377739704,
+   "diff": 10.87730631113825,
+   "p": 0.001953125,
+   "p_holm": 0.03515625
+  },
+  {
+   "scenario": "ab_gradual",
+   "n": 10,
+   "mean_a": 58.37549295556528,
+   "mean_b": 49.77928813336298,
+   "diff": 8.596204822202305,
+   "p": 0.001953125,
+   "p_holm": 0.03515625
+  },
+  {
+   "scenario": "diff_x_same_y",
+   "n": 10,
+   "mean_a": 56.621788973340394,
+   "mean_b": 62.5733451866472,
+   "diff": -5.951556213306807,
+   "p": 1.0,
+   "p_holm": 1.0
+  },
+  {
+   "scenario": "same_marginal_diff_corr",
+   "n": 10,
+   "mean_a": 56.7730907866644,
+   "mean_b": 46.66819214666854,
+   "diff": 10.104898639995856,
+   "p": 0.001953125,
+   "p_holm": 0.03515625
+  },
+  {
+   "scenario": "varied_sizes",
+   "n": 10,
+   "mean_a": 59.10572121650982,
+   "mean_b": 48.70771938146494,
+   "diff": 10.398001835044893,
+   "p": 0.001953125,
+   "p_holm": 0.03515625
+  },
+  {
+   "scenario": "overlapping",
+   "n": 10,
+   "mean_a": 60.38882923332191,
+   "mean_b": 50.301246716662725,
+   "diff": 10.087582516659193,
+   "p": 0.001953125,
+   "p_holm": 0.03515625
+  },
+  {
+   "scenario": "imbalanced",
+   "n": 10,
+   "mean_a": 59.3736826000081,
+   "mean_b": 48.50649077142451,
+   "diff": 10.8671918285836,
+   "p": 0.001953125,
+   "p_holm": 0.03515625
+  },
+  {
+   "scenario": "feature_availability",
+   "n": 10,
+   "mean_a": 55.63513624764753,
+   "mean_b": 46.01945590476957,
+   "diff": 9.615680342877955,
+   "p": 0.001953125,
+   "p_holm": 0.03515625
+  }
+ ],
+ "D full multi-view (improved) vs MV schema 2.0 (baseline) | accuracy": [
+  {
+   "scenario": "abrupt_recurring",
+   "n": 10,
+   "mean_a": 0.9143818181818182,
+   "mean_b": 0.9145939393939393,
+   "diff": -0.00021212121212120793,
+   "p": 0.5,
+   "p_holm": 1.0
+  },
+  {
+   "scenario": "noisy_recurring",
+   "n": 10,
+   "mean_a": 0.7406303030303032,
+   "mean_b": 0.7422666666666667,
+   "diff": -0.001636363636363658,
+   "p": 0.005859375,
+   "p_holm": 0.087890625
+  },
+  {
+   "scenario": "gradual",
+   "n": 10,
+   "mean_a": 0.8633272727272729,
+   "mean_b": 0.8774484848484848,
+   "diff": -0.014121212121212123,
+   "p": 0.001953125,
+   "p_holm": 0.03515625
+  },
+  {
+   "scenario": "incremental",
+   "n": 10,
+   "mean_a": 0.8702484848484848,
+   "mean_b": 0.877060606060606,
+   "diff": -0.0068121212121212025,
+   "p": 0.001953125,
+   "p_holm": 0.03515625
+  },
+  {
+   "scenario": "similar_x_different_y",
+   "n": 10,
+   "mean_a": 0.9095933333333333,
+   "mean_b": 0.9100733333333333,
+   "diff": -0.00047999999999999156,
+   "p": 0.5,
+   "p_holm": 1.0
+  },
+  {
+   "scenario": "temporal_only",
+   "n": 10,
+   "mean_a": 0.9329749999999999,
+   "mean_b": 0.9342250000000002,
+   "diff": -0.0012500000000000289,
+   "p": 0.185546875,
+   "p_holm": 1.0
+  },
+  {
+   "scenario": "sea",
+   "n": 10,
+   "mean_a": 0.8629583333333333,
+   "mean_b": 0.8628916666666667,
+   "diff": 6.666666666667042e-05,
+   "p": 0.890625,
+   "p_holm": 1.0
+  },
+  {
+   "scenario": "hyperplane",
+   "n": 10,
+   "mean_a": 0.8940000000000001,
+   "mean_b": 0.8940999999999999,
+   "diff": -0.00010000000000001119,
+   "p": 0.6875,
+   "p_holm": 1.0
+  },
+  {
+   "scenario": "aba",
+   "n": 10,
+   "mean_a": 0.9069555555555555,
+   "mean_b": 0.9069555555555555,
+   "diff": 0.0,
+   "p": 1.0,
+   "p_holm": 1.0
+  },
+  {
+   "scenario": "abca",
+   "n": 10,
+   "mean_a": 0.9053000000000001,
+   "mean_b": 0.9056833333333334,
+   "diff": -0.0003833333333333355,
+   "p": 1.0,
+   "p_holm": 1.0
+  },
+  {
+   "scenario": "aba_noisy",
+   "n": 10,
+   "mean_a": 0.8167111111111109,
+   "mean_b": 0.8174444444444443,
+   "diff": -0.0007333333333333191,
+   "p": 0.25,
+   "p_holm": 1.0
+  },
+  {
+   "scenario": "ab_gradual",
+   "n": 10,
+   "mean_a": 0.8648666666666666,
+   "mean_b": 0.8759111111111111,
+   "diff": -0.011044444444444457,
+   "p": 0.001953125,
+   "p_holm": 0.03515625
+  },
+  {
+   "scenario": "diff_x_same_y",
+   "n": 10,
+   "mean_a": 0.9279866666666665,
+   "mean_b": 0.9300266666666668,
+   "diff": -0.0020400000000000084,
+   "p": 0.01171875,
+   "p_holm": 0.1640625
+  },
+  {
+   "scenario": "same_marginal_diff_corr",
+   "n": 10,
+   "mean_a": 0.9338133333333332,
+   "mean_b": 0.9338133333333332,
+   "diff": 0.0,
+   "p": 1.0,
+   "p_holm": 1.0
+  },
+  {
+   "scenario": "varied_sizes",
+   "n": 10,
+   "mean_a": 0.9097422680412371,
+   "mean_b": 0.9099587628865979,
+   "diff": -0.00021649484536081509,
+   "p": 1.0,
+   "p_holm": 1.0
+  },
+  {
+   "scenario": "overlapping",
+   "n": 10,
+   "mean_a": 0.9119500000000003,
+   "mean_b": 0.9113583333333335,
+   "diff": 0.0005916666666666681,
+   "p": 1.0,
+   "p_holm": 1.0
+  },
+  {
+   "scenario": "imbalanced",
+   "n": 10,
+   "mean_a": 0.903847619047619,
+   "mean_b": 0.9051238095238097,
+   "diff": -0.0012761904761904753,
+   "p": 0.125,
+   "p_holm": 1.0
+  },
+  {
+   "scenario": "feature_availability",
+   "n": 10,
+   "mean_a": 0.8963714285714286,
+   "mean_b": 0.8968095238095237,
+   "diff": -0.0004380952380952374,
+   "p": 0.5,
+   "p_holm": 1.0
+  }
+ ],
+ "D full multi-view (improved) vs MV schema 2.0 (baseline) | post_drift_acc": [
+  {
+   "scenario": "abrupt_recurring",
+   "n": 10,
+   "mean_a": 0.8211333333333334,
+   "mean_b": 0.8219333333333335,
+   "diff": -0.0008000000000000007,
+   "p": 1.0,
+   "p_holm": 1.0
+  },
+  {
+   "scenario": "noisy_recurring",
+   "n": 10,
+   "mean_a": 0.6604666666666665,
+   "mean_b": 0.6707333333333333,
+   "diff": -0.010266666666666669,
+   "p": 0.00390625,
+   "p_holm": 0.06640625
+  },
+  {
+   "scenario": "gradual",
+   "n": 10,
+   "mean_a": 0.7184333333333333,
+   "mean_b": 0.7218333333333333,
+   "diff": -0.003400000000000003,
+   "p": 0.06640625,
+   "p_holm": 0.9296875
+  },
+  {
+   "scenario": "incremental",
+   "n": 10,
+   "mean_a": 0.7646333333333333,
+   "mean_b": 0.7597333333333334,
+   "diff": 0.004899999999999949,
+   "p": 0.216796875,
+   "p_holm": 1.0
+  },
+  {
+   "scenario": "similar_x_different_y",
+   "n": 10,
+   "mean_a": 0.7945185185185186,
+   "mean_b": 0.7967037037037037,
+   "diff": -0.00218518518518519,
+   "p": 0.5,
+   "p_holm": 1.0
+  },
+  {
+   "scenario": "temporal_only",
+   "n": 10,
+   "mean_a": 0.936142857142857,
+   "mean_b": 0.9396190476190476,
+   "diff": -0.0034761904761905103,
+   "p": 0.05078125,
+   "p_holm": 0.76171875
+  },
+  {
+   "scenario": "sea",
+   "n": 10,
+   "mean_a": 0.834047619047619,
+   "mean_b": 0.8313809523809524,
+   "diff": 0.002666666666666617,
+   "p": 0.03125,
+   "p_holm": 0.5
+  },
+  {
+   "scenario": "aba",
+   "n": 10,
+   "mean_a": 0.8033333333333333,
+   "mean_b": 0.8033333333333333,
+   "diff": 0.0,
+   "p": 1.0,
+   "p_holm": 1.0
+  },
+  {
+   "scenario": "abca",
+   "n": 10,
+   "mean_a": 0.7864444444444445,
+   "mean_b": 0.7883333333333333,
+   "diff": -0.0018888888888888955,
+   "p": 1.0,
+   "p_holm": 1.0
+  },
+  {
+   "scenario": "aba_noisy",
+   "n": 10,
+   "mean_a": 0.7333333333333334,
+   "mean_b": 0.7375,
+   "diff": -0.004166666666666663,
+   "p": 1.0,
+   "p_holm": 1.0
+  },
+  {
+   "scenario": "ab_gradual",
+   "n": 10,
+   "mean_a": 0.7428333333333332,
+   "mean_b": 0.7424999999999999,
+   "diff": 0.00033333333333331885,
+   "p": 0.9375,
+   "p_holm": 1.0
+  },
+  {
+   "scenario": "diff_x_same_y",
+   "n": 10,
+   "mean_a": 0.9339166666666665,
+   "mean_b": 0.9336666666666666,
+   "diff": 0.0002500000000000391,
+   "p": 0.900390625,
+   "p_holm": 1.0
+  },
+  {
+   "scenario": "same_marginal_diff_corr",
+   "n": 10,
+   "mean_a": 0.9409166666666667,
+   "mean_b": 0.9409166666666667,
+   "diff": 0.0,
+   "p": 1.0,
+   "p_holm": 1.0
+  },
+  {
+   "scenario": "varied_sizes",
+   "n": 10,
+   "mean_a": 0.8072777777777779,
+   "mean_b": 0.8086666666666666,
+   "diff": -0.001388888888888873,
+   "p": 0.5,
+   "p_holm": 1.0
+  },
+  {
+   "scenario": "overlapping",
+   "n": 10,
+   "mean_a": 0.813,
+   "mean_b": 0.8104285714285714,
+   "diff": 0.002571428571428558,
+   "p": 1.0,
+   "p_holm": 1.0
+  },
+  {
+   "scenario": "imbalanced",
+   "n": 10,
+   "mean_a": 0.7755000000000001,
+   "mean_b": 0.782388888888889,
+   "diff": -0.006888888888888889,
+   "p": 0.125,
+   "p_holm": 1.0
+  },
+  {
+   "scenario": "feature_availability",
+   "n": 10,
+   "mean_a": 0.8068333333333333,
+   "mean_b": 0.8086111111111112,
+   "diff": -0.0017777777777777891,
+   "p": 0.5,
+   "p_holm": 1.0
+  }
+ ],
+ "D full multi-view (improved) vs MV schema 2.0 (baseline) | models_trained": [
+  {
+   "scenario": "abrupt_recurring",
+   "n": 10,
+   "mean_a": 4.2,
+   "mean_b": 4.0,
+   "diff": 0.2,
+   "p": 0.5,
+   "p_holm": 1.0
+  },
+  {
+   "scenario": "noisy_recurring",
+   "n": 10,
+   "mean_a": 11.8,
+   "mean_b": 8.6,
+   "diff": 3.2,
+   "p": 0.00390625,
+   "p_holm": 0.0703125
+  },
+  {
+   "scenario": "gradual",
+   "n": 10,
+   "mean_a": 12.2,
+   "mean_b": 12.9,
+   "diff": -0.7,
+   "p": 0.2421875,
+   "p_holm": 1.0
+  },
+  {
+   "scenario": "incremental",
+   "n": 10,
+   "mean_a": 12.9,
+   "mean_b": 11.5,
+   "diff": 1.4,
+   "p": 0.015625,
+   "p_holm": 0.25
+  },
+  {
+   "scenario": "similar_x_different_y",
+   "n": 10,
+   "mean_a": 3.2,
+   "mean_b": 3.0,
+   "diff": 0.2,
+   "p": 0.5,
+   "p_holm": 1.0
+  },
+  {
+   "scenario": "temporal_only",
+   "n": 10,
+   "mean_a": 2.5,
+   "mean_b": 1.4,
+   "diff": 1.1,
+   "p": 0.00390625,
+   "p_holm": 0.0703125
+  },
+  {
+   "scenario": "sea",
+   "n": 10,
+   "mean_a": 2.6,
+   "mean_b": 1.6,
+   "diff": 1.0,
+   "p": 0.03125,
+   "p_holm": 0.46875
+  },
+  {
+   "scenario": "hyperplane",
+   "n": 10,
+   "mean_a": 1.6,
+   "mean_b": 1.0,
+   "diff": 0.6,
+   "p": 0.0625,
+   "p_holm": 0.8125
+  },
+  {
+   "scenario": "aba",
+   "n": 10,
+   "mean_a": 2.0,
+   "mean_b": 2.0,
+   "diff": 0.0,
+   "p": 1.0,
+   "p_holm": 1.0
+  },
+  {
+   "scenario": "abca",
+   "n": 10,
+   "mean_a": 3.1,
+   "mean_b": 3.0,
+   "diff": 0.1,
+   "p": 1.0,
+   "p_holm": 1.0
+  },
+  {
+   "scenario": "aba_noisy",
+   "n": 10,
+   "mean_a": 2.4,
+   "mean_b": 2.1,
+   "diff": 0.3,
+   "p": 0.25,
+   "p_holm": 1.0
+  },
+  {
+   "scenario": "ab_gradual",
+   "n": 10,
+   "mean_a": 3.4,
+   "mean_b": 3.9,
+   "diff": -0.5,
+   "p": 0.125,
+   "p_holm": 1.0
+  },
+  {
+   "scenario": "diff_x_same_y",
+   "n": 10,
+   "mean_a": 1.7,
+   "mean_b": 2.7,
+   "diff": -1.0,
+   "p": 0.03125,
+   "p_holm": 0.46875
+  },
+  {
+   "scenario": "same_marginal_diff_corr",
+   "n": 10,
+   "mean_a": 1.0,
+   "mean_b": 1.0,
+   "diff": 0.0,
+   "p": 1.0,
+   "p_holm": 1.0
+  },
+  {
+   "scenario": "varied_sizes",
+   "n": 10,
+   "mean_a": 3.1,
+   "mean_b": 3.0,
+   "diff": 0.1,
+   "p": 1.0,
+   "p_holm": 1.0
+  },
+  {
+   "scenario": "overlapping",
+   "n": 10,
+   "mean_a": 4.1,
+   "mean_b": 4.1,
+   "diff": 0.0,
+   "p": 1.0,
+   "p_holm": 1.0
+  },
+  {
+   "scenario": "imbalanced",
+   "n": 10,
+   "mean_a": 3.7,
+   "mean_b": 3.3,
+   "diff": 0.4,
+   "p": 0.125,
+   "p_holm": 1.0
+  },
+  {
+   "scenario": "feature_availability",
+   "n": 10,
+   "mean_a": 3.2,
+   "mean_b": 3.0,
+   "diff": 0.2,
+   "p": 0.5,
+   "p_holm": 1.0
+  }
+ ],
+ "D full multi-view (improved) vs MV schema 2.0 (baseline) | retrieval_precision": [
+  {
+   "scenario": "abrupt_recurring",
+   "n": 10,
+   "mean_a": 1.0,
+   "mean_b": 1.0,
+   "diff": 0.0,
+   "p": 1.0,
+   "p_holm": 1.0
+  },
+  {
+   "scenario": "noisy_recurring",
+   "n": 9,
+   "mean_a": 1.0,
+   "mean_b": 1.0,
+   "diff": 0.0,
+   "p": 1.0,
+   "p_holm": 1.0
+  },
+  {
+   "scenario": "gradual",
+   "n": 9,
+   "mean_a": 0.8999999999999999,
+   "mean_b": 0.9563492063492064,
+   "diff": -0.056349206349206336,
+   "p": 0.375,
+   "p_holm": 1.0
+  },
+  {
+   "scenario": "incremental",
+   "n": 10,
+   "mean_a": 0.7273809523809525,
+   "mean_b": 0.699013209013209,
+   "diff": 0.02836774336774338,
+   "p": 0.693359375,
+   "p_holm": 1.0
+  },
+  {
+   "scenario": "similar_x_different_y",
+   "n": 10,
+   "mean_a": 1.0,
+   "mean_b": 1.0,
+   "diff": 0.0,
+   "p": 1.0,
+   "p_holm": 1.0
+  },
+  {
+   "scenario": "aba",
+   "n": 10,
+   "mean_a": 1.0,
+   "mean_b": 1.0,
+   "diff": 0.0,
+   "p": 1.0,
+   "p_holm": 1.0
+  },
+  {
+   "scenario": "abca",
+   "n": 10,
+   "mean_a": 1.0,
+   "mean_b": 1.0,
+   "diff": 0.0,
+   "p": 1.0,
+   "p_holm": 1.0
+  },
+  {
+   "scenario": "aba_noisy",
+   "n": 8,
+   "mean_a": 1.0,
+   "mean_b": 1.0,
+   "diff": 0.0,
+   "p": 1.0,
+   "p_holm": 1.0
+  },
+  {
+   "scenario": "varied_sizes",
+   "n": 10,
+   "mean_a": 1.0,
+   "mean_b": 1.0,
+   "diff": 0.0,
+   "p": 1.0,
+   "p_holm": 1.0
+  },
+  {
+   "scenario": "overlapping",
+   "n": 10,
+   "mean_a": 1.0,
+   "mean_b": 0.9666666666666666,
+   "diff": 0.03333333333333334,
+   "p": 1.0,
+   "p_holm": 1.0
+  },
+  {
+   "scenario": "imbalanced",
+   "n": 10,
+   "mean_a": 1.0,
+   "mean_b": 1.0,
+   "diff": 0.0,
+   "p": 1.0,
+   "p_holm": 1.0
+  },
+  {
+   "scenario": "feature_availability",
+   "n": 10,
+   "mean_a": 1.0,
+   "mean_b": 1.0,
+   "diff": 0.0,
+   "p": 1.0,
+   "p_holm": 1.0
+  }
+ ],
+ "D full multi-view (improved) vs MV schema 2.0 (baseline) | retrieval_recall": [
+  {
+   "scenario": "abrupt_recurring",
+   "n": 10,
+   "mean_a": 0.975,
+   "mean_b": 1.0,
+   "diff": -0.025,
+   "p": 0.5,
+   "p_holm": 1.0
+  },
+  {
+   "scenario": "noisy_recurring",
+   "n": 10,
+   "mean_a": 0.2953144078144078,
+   "mean_b": 0.5596181596181596,
+   "diff": -0.26430375180375176,
+   "p": 0.005859375,
+   "p_holm": 0.064453125
+  },
+  {
+   "scenario": "gradual",
+   "n": 10,
+   "mean_a": 0.23530303030303026,
+   "mean_b": 0.3997847985347986,
+   "diff": -0.16448176823176824,
+   "p": 0.001953125,
+   "p_holm": 0.025390625
+  },
+  {
+   "scenario": "incremental",
+   "n": 10,
+   "mean_a": 0.27821955821955824,
+   "mean_b": 0.49549603174603174,
+   "diff": -0.21727647352647353,
+   "p": 0.001953125,
+   "p_holm": 0.025390625
+  },
+  {
+   "scenario": "similar_x_different_y",
+   "n": 10,
+   "mean_a": 0.9714285714285715,
+   "mean_b": 1.0,
+   "diff": -0.02857142857142858,
+   "p": 0.5,
+   "p_holm": 1.0
+  },
+  {
+   "scenario": "aba",
+   "n": 10,
+   "mean_a": 1.0,
+   "mean_b": 1.0,
+   "diff": 0.0,
+   "p": 1.0,
+   "p_holm": 1.0
+  },
+  {
+   "scenario": "abca",
+   "n": 10,
+   "mean_a": 0.95,
+   "mean_b": 1.0,
+   "diff": -0.05,
+   "p": 1.0,
+   "p_holm": 1.0
+  },
+  {
+   "scenario": "aba_noisy",
+   "n": 10,
+   "mean_a": 0.7,
+   "mean_b": 0.9,
+   "diff": -0.2,
+   "p": 0.25,
+   "p_holm": 1.0
+  },
+  {
+   "scenario": "ab_gradual",
+   "n": 10,
+   "mean_a": 0.0,
+   "mean_b": 0.2833333333333333,
+   "diff": -0.2833333333333333,
+   "p": 0.0078125,
+   "p_holm": 0.078125
+  },
+  {
+   "scenario": "varied_sizes",
+   "n": 10,
+   "mean_a": 0.975,
+   "mean_b": 1.0,
+   "diff": -0.025,
+   "p": 1.0,
+   "p_holm": 1.0
+  },
+  {
+   "scenario": "overlapping",
+   "n": 10,
+   "mean_a": 0.975,
+   "mean_b": 0.9416666666666667,
+   "diff": 0.03333333333333334,
+   "p": 1.0,
+   "p_holm": 1.0
+  },
+  {
+   "scenario": "imbalanced",
+   "n": 10,
+   "mean_a": 0.835,
+   "mean_b": 0.93,
+   "diff": -0.095,
+   "p": 0.125,
+   "p_holm": 1.0
+  },
+  {
+   "scenario": "feature_availability",
+   "n": 10,
+   "mean_a": 0.9550000000000001,
+   "mean_b": 1.0,
+   "diff": -0.045,
+   "p": 0.5,
+   "p_holm": 1.0
+  }
+ ],
+ "D full multi-view (improved) vs MV schema 2.0 (baseline) | false_match_rate": [
+  {
+   "scenario": "abrupt_recurring",
+   "n": 10,
+   "mean_a": 0.0,
+   "mean_b": 0.0,
+   "diff": 0.0,
+   "p": 1.0,
+   "p_holm": 1.0
+  },
+  {
+   "scenario": "noisy_recurring",
+   "n": 10,
+   "mean_a": 0.0,
+   "mean_b": 0.0,
+   "diff": 0.0,
+   "p": 1.0,
+   "p_holm": 1.0
+  },
+  {
+   "scenario": "gradual",
+   "n": 10,
+   "mean_a": 0.02583333333333333,
+   "mean_b": 0.022951066391468867,
+   "diff": 0.0028822669418644654,
+   "p": 0.75,
+   "p_holm": 1.0
+  },
+  {
+   "scenario": "incremental",
+   "n": 10,
+   "mean_a": 0.07913632119514472,
+   "mean_b": 0.1512817617165443,
+   "diff": -0.0721454405213996,
+   "p": 0.015625,
+   "p_holm": 0.234375
+  },
+  {
+   "scenario": "similar_x_different_y",
+   "n": 10,
+   "mean_a": 0.0,
+   "mean_b": 0.0,
+   "diff": 0.0,
+   "p": 1.0,
+   "p_holm": 1.0
+  },
+  {
+   "scenario": "sea",
+   "n": 5,
+   "mean_a": 0.39166666666666666,
+   "mean_b": 0.32999999999999996,
+   "diff": 0.06166666666666667,
+   "p": 0.75,
+   "p_holm": 1.0
+  },
+  {
+   "scenario": "aba",
+   "n": 10,
+   "mean_a": 0.0,
+   "mean_b": 0.0,
+   "diff": 0.0,
+   "p": 1.0,
+   "p_holm": 1.0
+  },
+  {
+   "scenario": "abca",
+   "n": 10,
+   "mean_a": 0.0,
+   "mean_b": 0.0,
+   "diff": 0.0,
+   "p": 1.0,
+   "p_holm": 1.0
+  },
+  {
+   "scenario": "aba_noisy",
+   "n": 10,
+   "mean_a": 0.0,
+   "mean_b": 0.0,
+   "diff": 0.0,
+   "p": 1.0,
+   "p_holm": 1.0
+  },
+  {
+   "scenario": "ab_gradual",
+   "n": 10,
+   "mean_a": 0.0,
+   "mean_b": 0.0,
+   "diff": 0.0,
+   "p": 1.0,
+   "p_holm": 1.0
+  },
+  {
+   "scenario": "diff_x_same_y",
+   "n": 6,
+   "mean_a": 0.0,
+   "mean_b": 0.0,
+   "diff": 0.0,
+   "p": 1.0,
+   "p_holm": 1.0
+  },
+  {
+   "scenario": "varied_sizes",
+   "n": 10,
+   "mean_a": 0.0,
+   "mean_b": 0.0,
+   "diff": 0.0,
+   "p": 1.0,
+   "p_holm": 1.0
+  },
+  {
+   "scenario": "overlapping",
+   "n": 10,
+   "mean_a": 0.0,
+   "mean_b": 0.016666666666666666,
+   "diff": -0.016666666666666666,
+   "p": 1.0,
+   "p_holm": 1.0
+  },
+  {
+   "scenario": "imbalanced",
+   "n": 10,
+   "mean_a": 0.0,
+   "mean_b": 0.0,
+   "diff": 0.0,
+   "p": 1.0,
+   "p_holm": 1.0
+  },
+  {
+   "scenario": "feature_availability",
+   "n": 10,
+   "mean_a": 0.0,
+   "mean_b": 0.0,
+   "diff": 0.0,
+   "p": 1.0,
+   "p_holm": 1.0
+  }
+ ],
+ "D full multi-view (improved) vs MV schema 2.0 (baseline) | missed_match_rate": [
+  {
+   "scenario": "abrupt_recurring",
+   "n": 10,
+   "mean_a": 0.025,
+   "mean_b": 0.0,
+   "diff": 0.025,
+   "p": 0.5,
+   "p_holm": 1.0
+  },
+  {
+   "scenario": "noisy_recurring",
+   "n": 10,
+   "mean_a": 0.7046855921855922,
+   "mean_b": 0.4403818403818403,
+   "diff": 0.26430375180375176,
+   "p": 0.005859375,
+   "p_holm": 0.064453125
+  },
+  {
+   "scenario": "gradual",
+   "n": 10,
+   "mean_a": 0.7646969696969698,
+   "mean_b": 0.6002152014652015,
+   "diff": 0.16448176823176824,
+   "p": 0.001953125,
+   "p_holm": 0.025390625
+  },
+  {
+   "scenario": "incremental",
+   "n": 10,
+   "mean_a": 0.7217804417804418,
+   "mean_b": 0.5045039682539683,
+   "diff": 0.21727647352647353,
+   "p": 0.001953125,
+   "p_holm": 0.025390625
+  },
+  {
+   "scenario": "similar_x_different_y",
+   "n": 10,
+   "mean_a": 0.02857142857142857,
+   "mean_b": 0.0,
+   "diff": 0.02857142857142857,
+   "p": 0.5,
+   "p_holm": 1.0
+  },
+  {
+   "scenario": "aba",
+   "n": 10,
+   "mean_a": 0.0,
+   "mean_b": 0.0,
+   "diff": 0.0,
+   "p": 1.0,
+   "p_holm": 1.0
+  },
+  {
+   "scenario": "abca",
+   "n": 10,
+   "mean_a": 0.05,
+   "mean_b": 0.0,
+   "diff": 0.05,
+   "p": 1.0,
+   "p_holm": 1.0
+  },
+  {
+   "scenario": "aba_noisy",
+   "n": 10,
+   "mean_a": 0.3,
+   "mean_b": 0.1,
+   "diff": 0.2,
+   "p": 0.25,
+   "p_holm": 1.0
+  },
+  {
+   "scenario": "ab_gradual",
+   "n": 10,
+   "mean_a": 1.0,
+   "mean_b": 0.7166666666666667,
+   "diff": 0.2833333333333333,
+   "p": 0.0078125,
+   "p_holm": 0.078125
+  },
+  {
+   "scenario": "varied_sizes",
+   "n": 10,
+   "mean_a": 0.025,
+   "mean_b": 0.0,
+   "diff": 0.025,
+   "p": 1.0,
+   "p_holm": 1.0
+  },
+  {
+   "scenario": "overlapping",
+   "n": 10,
+   "mean_a": 0.025,
+   "mean_b": 0.05833333333333333,
+   "diff": -0.03333333333333333,
+   "p": 1.0,
+   "p_holm": 1.0
+  },
+  {
+   "scenario": "imbalanced",
+   "n": 10,
+   "mean_a": 0.16499999999999998,
+   "mean_b": 0.06999999999999999,
+   "diff": 0.095,
+   "p": 0.125,
+   "p_holm": 1.0
+  },
+  {
+   "scenario": "feature_availability",
+   "n": 10,
+   "mean_a": 0.045,
+   "mean_b": 0.0,
+   "diff": 0.045,
+   "p": 0.5,
+   "p_holm": 1.0
+  }
+ ],
+ "D full multi-view (improved) vs MV schema 2.0 (baseline) | candidate_recall@1": [
+  {
+   "scenario": "abrupt_recurring",
+   "n": 10,
+   "mean_a": 1.0,
+   "mean_b": 1.0,
+   "diff": 0.0,
+   "p": 1.0,
+   "p_holm": 1.0
+  },
+  {
+   "scenario": "noisy_recurring",
+   "n": 10,
+   "mean_a": 0.9854761904761904,
+   "mean_b": 0.9807260386672152,
+   "diff": 0.004750151808975323,
+   "p": 0.5,
+   "p_holm": 1.0
+  },
+  {
+   "scenario": "gradual",
+   "n": 10,
+   "mean_a": 0.5669119769119769,
+   "mean_b": 0.7303487699427598,
+   "diff": -0.1634367930307828,
+   "p": 0.0078125,
+   "p_holm": 0.1328125
+  },
+  {
+   "scenario": "incremental",
+   "n": 10,
+   "mean_a": 0.6156755744255744,
+   "mean_b": 0.6368630890952873,
+   "diff": -0.021187514669712824,
+   "p": 0.62890625,
+   "p_holm": 1.0
+  },
+  {
+   "scenario": "similar_x_different_y",
+   "n": 10,
+   "mean_a": 0.6303571428571428,
+   "mean_b": 0.43928571428571433,
+   "diff": 0.1910714285714286,
+   "p": 0.0078125,
+   "p_holm": 0.1328125
+  },
+  {
+   "scenario": "temporal_only",
+   "n": 6,
+   "mean_a": 0.7978603603603603,
+   "mean_b": 0.7222222222222222,
+   "diff": 0.07563813813813815,
+   "p": 1.0,
+   "p_holm": 1.0
+  },
+  {
+   "scenario": "sea",
+   "n": 8,
+   "mean_a": 0.7875,
+   "mean_b": 0.8541666666666666,
+   "diff": -0.06666666666666667,
+   "p": 0.5,
+   "p_holm": 1.0
+  },
+  {
+   "scenario": "hyperplane",
+   "n": 10,
+   "mean_a": 1.0,
+   "mean_b": 1.0,
+   "diff": 0.0,
+   "p": 1.0,
+   "p_holm": 1.0
+  },
+  {
+   "scenario": "aba",
+   "n": 10,
+   "mean_a": 1.0,
+   "mean_b": 1.0,
+   "diff": 0.0,
+   "p": 1.0,
+   "p_holm": 1.0
+  },
+  {
+   "scenario": "abca",
+   "n": 10,
+   "mean_a": 1.0,
+   "mean_b": 1.0,
+   "diff": 0.0,
+   "p": 1.0,
+   "p_holm": 1.0
+  },
+  {
+   "scenario": "aba_noisy",
+   "n": 10,
+   "mean_a": 1.0,
+   "mean_b": 1.0,
+   "diff": 0.0,
+   "p": 1.0,
+   "p_holm": 1.0
+  },
+  {
+   "scenario": "ab_gradual",
+   "n": 10,
+   "mean_a": 0.4,
+   "mean_b": 0.65,
+   "diff": -0.25,
+   "p": 0.09765625,
+   "p_holm": 1.0
+  },
+  {
+   "scenario": "diff_x_same_y",
+   "n": 5,
+   "mean_a": 1.0,
+   "mean_b": 1.0,
+   "diff": 0.0,
+   "p": 1.0,
+   "p_holm": 1.0
+  },
+  {
+   "scenario": "varied_sizes",
+   "n": 10,
+   "mean_a": 1.0,
+   "mean_b": 1.0,
+   "diff": 0.0,
+   "p": 1.0,
+   "p_holm": 1.0
+  },
+  {
+   "scenario": "overlapping",
+   "n": 10,
+   "mean_a": 0.77,
+   "mean_b": 0.715,
+   "diff": 0.05500000000000001,
+   "p": 0.375,
+   "p_holm": 1.0
+  },
+  {
+   "scenario": "imbalanced",
+   "n": 10,
+   "mean_a": 0.975,
+   "mean_b": 0.975,
+   "diff": 0.0,
+   "p": 1.0,
+   "p_holm": 1.0
+  },
+  {
+   "scenario": "feature_availability",
+   "n": 10,
+   "mean_a": 1.0,
+   "mean_b": 1.0,
+   "diff": 0.0,
+   "p": 1.0,
+   "p_holm": 1.0
+  }
+ ],
+ "D full multi-view (improved) vs MV schema 2.0 (baseline) | us_per_sample": [
+  {
+   "scenario": "abrupt_recurring",
+   "n": 10,
+   "mean_a": 76.61537408485223,
+   "mean_b": 48.79751144241957,
+   "diff": 27.817862642432658,
+   "p": 0.001953125,
+   "p_holm": 0.03515625
+  },
+  {
+   "scenario": "noisy_recurring",
+   "n": 10,
+   "mean_a": 78.27974528484474,
+   "mean_b": 52.35887590302865,
+   "diff": 25.920869381816097,
+   "p": 0.001953125,
+   "p_holm": 0.03515625
+  },
+  {
+   "scenario": "gradual",
+   "n": 10,
+   "mean_a": 76.9750373393904,
+   "mean_b": 52.827785084865,
+   "diff": 24.1472522545254,
+   "p": 0.001953125,
+   "p_holm": 0.03515625
+  },
+  {
+   "scenario": "incremental",
+   "n": 10,
+   "mean_a": 77.93841524242342,
+   "mean_b": 53.309112357579366,
+   "diff": 24.62930288484406,
+   "p": 0.001953125,
+   "p_holm": 0.03515625
+  },
+  {
+   "scenario": "similar_x_different_y",
+   "n": 10,
+   "mean_a": 76.52353345334025,
+   "mean_b": 49.86993270000312,
+   "diff": 26.653600753337134,
+   "p": 0.001953125,
+   "p_holm": 0.03515625
+  },
+  {
+   "scenario": "temporal_only",
+   "n": 10,
+   "mean_a": 77.05284206667025,
+   "mean_b": 47.93950933333235,
+   "diff": 29.11333273333791,
+   "p": 0.001953125,
+   "p_holm": 0.03515625
+  },
+  {
+   "scenario": "sea",
+   "n": 10,
+   "mean_a": 68.11393774166844,
+   "mean_b": 44.26195736668887,
+   "diff": 23.85198037497958,
+   "p": 0.001953125,
+   "p_holm": 0.03515625
+  },
+  {
+   "scenario": "hyperplane",
+   "n": 10,
+   "mean_a": 135.69252339334224,
+   "mean_b": 74.84340010666224,
+   "diff": 60.84912328667997,
+   "p": 0.001953125,
+   "p_holm": 0.03515625
+  },
+  {
+   "scenario": "aba",
+   "n": 10,
+   "mean_a": 75.02893226667058,
+   "mean_b": 47.16539580003883,
+   "diff": 27.863536466631757,
+   "p": 0.001953125,
+   "p_holm": 0.03515625
+  },
+  {
+   "scenario": "abca",
+   "n": 10,
+   "mean_a": 75.01855303333589,
+   "mean_b": 48.532894666656524,
+   "diff": 26.48565836667937,
+   "p": 0.001953125,
+   "p_holm": 0.03515625
+  },
+  {
+   "scenario": "aba_noisy",
+   "n": 10,
+   "mean_a": 74.56270453330944,
+   "mean_b": 47.924517377739704,
+   "diff": 26.638187155569746,
+   "p": 0.001953125,
+   "p_holm": 0.03515625
+  },
+  {
+   "scenario": "ab_gradual",
+   "n": 10,
+   "mean_a": 73.86147637779585,
+   "mean_b": 49.77928813336298,
+   "diff": 24.082188244432878,
+   "p": 0.001953125,
+   "p_holm": 0.03515625
+  },
+  {
+   "scenario": "diff_x_same_y",
+   "n": 10,
+   "mean_a": 75.4263525333105,
+   "mean_b": 62.5733451866472,
+   "diff": 12.853007346663315,
+   "p": 0.501953125,
+   "p_holm": 0.501953125
+  },
+  {
+   "scenario": "same_marginal_diff_corr",
+   "n": 10,
+   "mean_a": 75.47734086668547,
+   "mean_b": 46.66819214666854,
+   "diff": 28.809148720016918,
+   "p": 0.001953125,
+   "p_holm": 0.03515625
+  },
+  {
+   "scenario": "varied_sizes",
+   "n": 10,
+   "mean_a": 75.9398920721951,
+   "mean_b": 48.70771938146494,
+   "diff": 27.232172690730163,
+   "p": 0.001953125,
+   "p_holm": 0.03515625
+  },
+  {
+   "scenario": "overlapping",
+   "n": 10,
+   "mean_a": 79.27739409167316,
+   "mean_b": 50.301246716662725,
+   "diff": 28.97614737501044,
+   "p": 0.001953125,
+   "p_holm": 0.03515625
+  },
+  {
+   "scenario": "imbalanced",
+   "n": 10,
+   "mean_a": 76.57757405713276,
+   "mean_b": 48.50649077142451,
+   "diff": 28.071083285708266,
+   "p": 0.001953125,
+   "p_holm": 0.03515625
+  },
+  {
+   "scenario": "feature_availability",
+   "n": 10,
+   "mean_a": 71.80491148570755,
+   "mean_b": 46.01945590476957,
+   "diff": 25.78545558093797,
+   "p": 0.001953125,
+   "p_holm": 0.03515625
+  }
+ ],
+ "MV schema 2.0 (baseline) vs v1 (legacy engine) | accuracy": [
+  {
+   "scenario": "abrupt_recurring",
+   "n": 10,
+   "mean_a": 0.9145939393939393,
+   "mean_b": 0.9153515151515151,
+   "diff": -0.0007575757575757458,
+   "p": 0.046875,
+   "p_holm": 0.46875
+  },
+  {
+   "scenario": "noisy_recurring",
+   "n": 10,
+   "mean_a": 0.7422666666666667,
+   "mean_b": 0.7372424242424243,
+   "diff": 0.005024242424242431,
+   "p": 0.001953125,
+   "p_holm": 0.03515625
+  },
+  {
+   "scenario": "gradual",
+   "n": 10,
+   "mean_a": 0.8774484848484848,
+   "mean_b": 0.8542727272727273,
+   "diff": 0.02317575757575756,
+   "p": 0.001953125,
+   "p_holm": 0.03515625
+  },
+  {
+   "scenario": "incremental",
+   "n": 10,
+   "mean_a": 0.877060606060606,
+   "mean_b": 0.8619333333333332,
+   "diff": 0.015127272727272734,
+   "p": 0.001953125,
+   "p_holm": 0.03515625
+  },
+  {
+   "scenario": "similar_x_different_y",
+   "n": 10,
+   "mean_a": 0.9100733333333333,
+   "mean_b": 0.9114066666666666,
+   "diff": -0.001333333333333342,
+   "p": 0.048828125,
+   "p_holm": 0.46875
+  },
+  {
+   "scenario": "temporal_only",
+   "n": 10,
+   "mean_a": 0.9342250000000002,
+   "mean_b": 0.9354583333333333,
+   "diff": -0.0012333333333333306,
+   "p": 0.119140625,
+   "p_holm": 0.833984375
+  },
+  {
+   "scenario": "sea",
+   "n": 10,
+   "mean_a": 0.8628916666666667,
+   "mean_b": 0.86205,
+   "diff": 0.0008416666666666517,
+   "p": 0.001953125,
+   "p_holm": 0.03515625
+  },
+  {
+   "scenario": "hyperplane",
+   "n": 10,
+   "mean_a": 0.8940999999999999,
+   "mean_b": 0.8936266666666667,
+   "diff": 0.0004733333333333367,
+   "p": 0.0234375,
+   "p_holm": 0.2578125
+  },
+  {
+   "scenario": "aba",
+   "n": 10,
+   "mean_a": 0.9069555555555555,
+   "mean_b": 0.9067111111111112,
+   "diff": 0.000244444444444436,
+   "p": 0.740234375,
+   "p_holm": 1.0
+  },
+  {
+   "scenario": "abca",
+   "n": 10,
+   "mean_a": 0.9056833333333334,
+   "mean_b": 0.9060499999999999,
+   "diff": -0.00036666666666665957,
+   "p": 0.56640625,
+   "p_holm": 1.0
+  },
+  {
+   "scenario": "aba_noisy",
+   "n": 10,
+   "mean_a": 0.8174444444444443,
+   "mean_b": 0.8131111111111112,
+   "diff": 0.004333333333333333,
+   "p": 0.013671875,
+   "p_holm": 0.177734375
+  },
+  {
+   "scenario": "ab_gradual",
+   "n": 10,
+   "mean_a": 0.8759111111111111,
+   "mean_b": 0.864311111111111,
+   "diff": 0.01160000000000001,
+   "p": 0.001953125,
+   "p_holm": 0.03515625
+  },
+  {
+   "scenario": "diff_x_same_y",
+   "n": 10,
+   "mean_a": 0.9300266666666668,
+   "mean_b": 0.92836,
+   "diff": 0.0016666666666666718,
+   "p": 0.021484375,
+   "p_holm": 0.2578125
+  },
+  {
+   "scenario": "same_marginal_diff_corr",
+   "n": 10,
+   "mean_a": 0.9338133333333332,
+   "mean_b": 0.9337066666666665,
+   "diff": 0.00010666666666666602,
+   "p": 1.0,
+   "p_holm": 1.0
+  },
+  {
+   "scenario": "varied_sizes",
+   "n": 10,
+   "mean_a": 0.9099587628865979,
+   "mean_b": 0.9103092783505156,
+   "diff": -0.0003505154639175445,
+   "p": 0.80859375,
+   "p_holm": 1.0
+  },
+  {
+   "scenario": "overlapping",
+   "n": 10,
+   "mean_a": 0.9113583333333335,
+   "mean_b": 0.9118583333333333,
+   "diff": -0.0005000000000000004,
+   "p": 0.5859375,
+   "p_holm": 1.0
+  },
+  {
+   "scenario": "imbalanced",
+   "n": 10,
+   "mean_a": 0.9051238095238097,
+   "mean_b": 0.9053142857142857,
+   "diff": -0.00019047619047619647,
+   "p": 0.84765625,
+   "p_holm": 1.0
+  },
+  {
+   "scenario": "feature_availability",
+   "n": 10,
+   "mean_a": 0.8968095238095237,
+   "mean_b": 0.8945047619047619,
+   "diff": 0.002304761904761865,
+   "p": 0.06640625,
+   "p_holm": 0.53125
+  }
+ ],
+ "MV schema 2.0 (baseline) vs v1 (legacy engine) | post_drift_acc": [
+  {
+   "scenario": "abrupt_recurring",
+   "n": 10,
+   "mean_a": 0.8219333333333335,
+   "mean_b": 0.8259666666666666,
+   "diff": -0.004033333333333255,
+   "p": 0.052734375,
+   "p_holm": 0.7109375
+  },
+  {
+   "scenario": "noisy_recurring",
+   "n": 10,
+   "mean_a": 0.6707333333333333,
+   "mean_b": 0.6520333333333334,
+   "diff": 0.018700000000000005,
+   "p": 0.001953125,
+   "p_holm": 0.033203125
+  },
+  {
+   "scenario": "gradual",
+   "n": 10,
+   "mean_a": 0.7218333333333333,
+   "mean_b": 0.7192,
+   "diff": 0.0026333333333333096,
+   "p": 0.25390625,
+   "p_holm": 1.0
+  },
+  {
+   "scenario": "incremental",
+   "n": 10,
+   "mean_a": 0.7597333333333334,
+   "mean_b": 0.7519666666666667,
+   "diff": 0.007766666666666722,
+   "p": 0.05078125,
+   "p_holm": 0.7109375
+  },
+  {
+   "scenario": "similar_x_different_y",
+   "n": 10,
+   "mean_a": 0.7967037037037037,
+   "mean_b": 0.8039259259259259,
+   "diff": -0.007222222222222241,
+   "p": 0.052734375,
+   "p_holm": 0.7109375
+  },
+  {
+   "scenario": "temporal_only",
+   "n": 10,
+   "mean_a": 0.9396190476190476,
+   "mean_b": 0.9417142857142858,
+   "diff": -0.0020952380952381166,
+   "p": 0.0625,
+   "p_holm": 0.7109375
+  },
+  {
+   "scenario": "sea",
+   "n": 10,
+   "mean_a": 0.8313809523809524,
+   "mean_b": 0.8273333333333334,
+   "diff": 0.004047619047619089,
+   "p": 0.015625,
+   "p_holm": 0.25
+  },
+  {
+   "scenario": "aba",
+   "n": 10,
+   "mean_a": 0.8033333333333333,
+   "mean_b": 0.8018333333333333,
+   "diff": 0.0015000000000000234,
+   "p": 0.78125,
+   "p_holm": 1.0
+  },
+  {
+   "scenario": "abca",
+   "n": 10,
+   "mean_a": 0.7883333333333333,
+   "mean_b": 0.7913333333333334,
+   "diff": -0.0029999999999999805,
+   "p": 0.4140625,
+   "p_holm": 1.0
+  },
+  {
+   "scenario": "aba_noisy",
+   "n": 10,
+   "mean_a": 0.7375,
+   "mean_b": 0.7198333333333333,
+   "diff": 0.017666666666666674,
+   "p": 0.041015625,
+   "p_holm": 0.615234375
+  },
+  {
+   "scenario": "ab_gradual",
+   "n": 10,
+   "mean_a": 0.7424999999999999,
+   "mean_b": 0.7435,
+   "diff": -0.0009999999999999898,
+   "p": 0.734375,
+   "p_holm": 1.0
+  },
+  {
+   "scenario": "diff_x_same_y",
+   "n": 10,
+   "mean_a": 0.9336666666666666,
+   "mean_b": 0.9365833333333333,
+   "diff": -0.00291666666666669,
+   "p": 0.0625,
+   "p_holm": 0.7109375
+  },
+  {
+   "scenario": "same_marginal_diff_corr",
+   "n": 10,
+   "mean_a": 0.9409166666666667,
+   "mean_b": 0.9409166666666667,
+   "diff": 0.0,
+   "p": 1.0,
+   "p_holm": 1.0
+  },
+  {
+   "scenario": "varied_sizes",
+   "n": 10,
+   "mean_a": 0.8086666666666666,
+   "mean_b": 0.8123888888888888,
+   "diff": -0.0037222222222222266,
+   "p": 0.33203125,
+   "p_holm": 1.0
+  },
+  {
+   "scenario": "overlapping",
+   "n": 10,
+   "mean_a": 0.8104285714285714,
+   "mean_b": 0.8122857142857143,
+   "diff": -0.0018571428571428795,
+   "p": 0.720703125,
+   "p_holm": 1.0
+  },
+  {
+   "scenario": "imbalanced",
+   "n": 10,
+   "mean_a": 0.782388888888889,
+   "mean_b": 0.7821666666666667,
+   "diff": 0.00022222222222220144,
+   "p": 0.984375,
+   "p_holm": 1.0
+  },
+  {
+   "scenario": "feature_availability",
+   "n": 10,
+   "mean_a": 0.8086111111111112,
+   "mean_b": 0.8019444444444443,
+   "diff": 0.0066666666666667426,
+   "p": 0.3203125,
+   "p_holm": 1.0
+  }
+ ],
+ "MV schema 2.0 (baseline) vs v1 (legacy engine) | models_trained": [
+  {
+   "scenario": "abrupt_recurring",
+   "n": 10,
+   "mean_a": 4.0,
+   "mean_b": 4.0,
+   "diff": 0.0,
+   "p": 1.0,
+   "p_holm": 1.0
+  },
+  {
+   "scenario": "noisy_recurring",
+   "n": 10,
+   "mean_a": 8.6,
+   "mean_b": 12.4,
+   "diff": -3.8,
+   "p": 0.001953125,
+   "p_holm": 0.03515625
+  },
+  {
+   "scenario": "gradual",
+   "n": 10,
+   "mean_a": 12.9,
+   "mean_b": 9.6,
+   "diff": 3.3,
+   "p": 0.005859375,
+   "p_holm": 0.087890625
+  },
+  {
+   "scenario": "incremental",
+   "n": 10,
+   "mean_a": 11.5,
+   "mean_b": 9.9,
+   "diff": 1.6,
+   "p": 0.0078125,
+   "p_holm": 0.109375
+  },
+  {
+   "scenario": "similar_x_different_y",
+   "n": 10,
+   "mean_a": 3.0,
+   "mean_b": 3.0,
+   "diff": 0.0,
+   "p": 1.0,
+   "p_holm": 1.0
+  },
+  {
+   "scenario": "temporal_only",
+   "n": 10,
+   "mean_a": 1.4,
+   "mean_b": 1.0,
+   "diff": 0.4,
+   "p": 0.25,
+   "p_holm": 1.0
+  },
+  {
+   "scenario": "sea",
+   "n": 10,
+   "mean_a": 1.6,
+   "mean_b": 2.1,
+   "diff": -0.5,
+   "p": 0.0625,
+   "p_holm": 0.75
+  },
+  {
+   "scenario": "hyperplane",
+   "n": 10,
+   "mean_a": 1.0,
+   "mean_b": 1.0,
+   "diff": 0.0,
+   "p": 1.0,
+   "p_holm": 1.0
+  },
+  {
+   "scenario": "aba",
+   "n": 10,
+   "mean_a": 2.0,
+   "mean_b": 2.0,
+   "diff": 0.0,
+   "p": 1.0,
+   "p_holm": 1.0
+  },
+  {
+   "scenario": "abca",
+   "n": 10,
+   "mean_a": 3.0,
+   "mean_b": 3.0,
+   "diff": 0.0,
+   "p": 1.0,
+   "p_holm": 1.0
+  },
+  {
+   "scenario": "aba_noisy",
+   "n": 10,
+   "mean_a": 2.1,
+   "mean_b": 2.0,
+   "diff": 0.1,
+   "p": 1.0,
+   "p_holm": 1.0
+  },
+  {
+   "scenario": "ab_gradual",
+   "n": 10,
+   "mean_a": 3.9,
+   "mean_b": 2.9,
+   "diff": 1.0,
+   "p": 0.015625,
+   "p_holm": 0.203125
+  },
+  {
+   "scenario": "diff_x_same_y",
+   "n": 10,
+   "mean_a": 2.7,
+   "mean_b": 1.0,
+   "diff": 1.7,
+   "p": 0.001953125,
+   "p_holm": 0.03515625
+  },
+  {
+   "scenario": "same_marginal_diff_corr",
+   "n": 10,
+   "mean_a": 1.0,
+   "mean_b": 1.0,
+   "diff": 0.0,
+   "p": 1.0,
+   "p_holm": 1.0
+  },
+  {
+   "scenario": "varied_sizes",
+   "n": 10,
+   "mean_a": 3.0,
+   "mean_b": 3.1,
+   "diff": -0.1,
+   "p": 1.0,
+   "p_holm": 1.0
+  },
+  {
+   "scenario": "overlapping",
+   "n": 10,
+   "mean_a": 4.1,
+   "mean_b": 4.0,
+   "diff": 0.1,
+   "p": 1.0,
+   "p_holm": 1.0
+  },
+  {
+   "scenario": "imbalanced",
+   "n": 10,
+   "mean_a": 3.3,
+   "mean_b": 3.0,
+   "diff": 0.3,
+   "p": 0.25,
+   "p_holm": 1.0
+  },
+  {
+   "scenario": "feature_availability",
+   "n": 10,
+   "mean_a": 3.0,
+   "mean_b": 8.3,
+   "diff": -5.3,
+   "p": 0.001953125,
+   "p_holm": 0.03515625
+  }
+ ],
+ "MV schema 2.0 (baseline) vs v1 (legacy engine) | retrieval_precision": [
+  {
+   "scenario": "abrupt_recurring",
+   "n": 10,
+   "mean_a": 1.0,
+   "mean_b": 1.0,
+   "diff": 0.0,
+   "p": 1.0,
+   "p_holm": 1.0
+  },
+  {
+   "scenario": "noisy_recurring",
+   "n": 10,
+   "mean_a": 1.0,
+   "mean_b": 1.0,
+   "diff": 0.0,
+   "p": 1.0,
+   "p_holm": 1.0
+  },
+  {
+   "scenario": "gradual",
+   "n": 9,
+   "mean_a": 0.9378306878306878,
+   "mean_b": 1.0,
+   "diff": -0.06216931216931217,
+   "p": 0.125,
+   "p_holm": 1.0
+  },
+  {
+   "scenario": "incremental",
+   "n": 10,
+   "mean_a": 0.699013209013209,
+   "mean_b": 0.7647619047619048,
+   "diff": -0.06574869574869575,
+   "p": 0.01953125,
+   "p_holm": 0.21484375
+  },
+  {
+   "scenario": "similar_x_different_y",
+   "n": 10,
+   "mean_a": 1.0,
+   "mean_b": 1.0,
+   "diff": 0.0,
+   "p": 1.0,
+   "p_holm": 1.0
+  },
+  {
+   "scenario": "aba",
+   "n": 10,
+   "mean_a": 1.0,
+   "mean_b": 1.0,
+   "diff": 0.0,
+   "p": 1.0,
+   "p_holm": 1.0
+  },
+  {
+   "scenario": "abca",
+   "n": 10,
+   "mean_a": 1.0,
+   "mean_b": 1.0,
+   "diff": 0.0,
+   "p": 1.0,
+   "p_holm": 1.0
+  },
+  {
+   "scenario": "aba_noisy",
+   "n": 8,
+   "mean_a": 1.0,
+   "mean_b": 1.0,
+   "diff": 0.0,
+   "p": 1.0,
+   "p_holm": 1.0
+  },
+  {
+   "scenario": "varied_sizes",
+   "n": 10,
+   "mean_a": 1.0,
+   "mean_b": 1.0,
+   "diff": 0.0,
+   "p": 1.0,
+   "p_holm": 1.0
+  },
+  {
+   "scenario": "overlapping",
+   "n": 10,
+   "mean_a": 0.9666666666666666,
+   "mean_b": 1.0,
+   "diff": -0.03333333333333334,
+   "p": 1.0,
+   "p_holm": 1.0
+  },
+  {
+   "scenario": "imbalanced",
+   "n": 10,
+   "mean_a": 1.0,
+   "mean_b": 1.0,
+   "diff": 0.0,
+   "p": 1.0,
+   "p_holm": 1.0
+  }
+ ],
+ "MV schema 2.0 (baseline) vs v1 (legacy engine) | retrieval_recall": [
+  {
+   "scenario": "abrupt_recurring",
+   "n": 10,
+   "mean_a": 1.0,
+   "mean_b": 1.0,
+   "diff": 0.0,
+   "p": 1.0,
+   "p_holm": 1.0
+  },
+  {
+   "scenario": "noisy_recurring",
+   "n": 10,
+   "mean_a": 0.5596181596181596,
+   "mean_b": 0.3263324175824176,
+   "diff": 0.233285742035742,
+   "p": 0.0078125,
+   "p_holm": 0.09375
+  },
+  {
+   "scenario": "gradual",
+   "n": 10,
+   "mean_a": 0.3997847985347986,
+   "mean_b": 0.28234126984126984,
+   "diff": 0.1174435286935287,
+   "p": 0.046875,
+   "p_holm": 0.46875
+  },
+  {
+   "scenario": "incremental",
+   "n": 10,
+   "mean_a": 0.49549603174603174,
+   "mean_b": 0.4004292929292929,
+   "diff": 0.09506673881673883,
+   "p": 0.02734375,
+   "p_holm": 0.30078125
+  },
+  {
+   "scenario": "similar_x_different_y",
+   "n": 10,
+   "mean_a": 1.0,
+   "mean_b": 1.0,
+   "diff": 0.0,
+   "p": 1.0,
+   "p_holm": 1.0
+  },
+  {
+   "scenario": "aba",
+   "n": 10,
+   "mean_a": 1.0,
+   "mean_b": 1.0,
+   "diff": 0.0,
+   "p": 1.0,
+   "p_holm": 1.0
+  },
+  {
+   "scenario": "abca",
+   "n": 10,
+   "mean_a": 1.0,
+   "mean_b": 1.0,
+   "diff": 0.0,
+   "p": 1.0,
+   "p_holm": 1.0
+  },
+  {
+   "scenario": "aba_noisy",
+   "n": 9,
+   "mean_a": 0.8888888888888888,
+   "mean_b": 1.0,
+   "diff": -0.1111111111111111,
+   "p": 1.0,
+   "p_holm": 1.0
+  },
+  {
+   "scenario": "ab_gradual",
+   "n": 10,
+   "mean_a": 0.2833333333333333,
+   "mean_b": 0.3,
+   "diff": -0.016666666666666698,
+   "p": 1.0,
+   "p_holm": 1.0
+  },
+  {
+   "scenario": "varied_sizes",
+   "n": 10,
+   "mean_a": 1.0,
+   "mean_b": 0.975,
+   "diff": 0.025,
+   "p": 1.0,
+   "p_holm": 1.0
+  },
+  {
+   "scenario": "overlapping",
+   "n": 10,
+   "mean_a": 0.9416666666666667,
+   "mean_b": 1.0,
+   "diff": -0.058333333333333334,
+   "p": 0.5,
+   "p_holm": 1.0
+  },
+  {
+   "scenario": "imbalanced",
+   "n": 10,
+   "mean_a": 0.93,
+   "mean_b": 1.0,
+   "diff": -0.06999999999999999,
+   "p": 0.25,
+   "p_holm": 1.0
+  },
+  {
+   "scenario": "feature_availability",
+   "n": 10,
+   "mean_a": 1.0,
+   "mean_b": 0.0,
+   "diff": 1.0,
+   "p": 0.001953125,
+   "p_holm": 0.025390625
+  }
+ ],
+ "MV schema 2.0 (baseline) vs v1 (legacy engine) | false_match_rate": [
+  {
+   "scenario": "abrupt_recurring",
+   "n": 10,
+   "mean_a": 0.0,
+   "mean_b": 0.0,
+   "diff": 0.0,
+   "p": 1.0,
+   "p_holm": 1.0
+  },
+  {
+   "scenario": "noisy_recurring",
+   "n": 10,
+   "mean_a": 0.0,
+   "mean_b": 0.0,
+   "diff": 0.0,
+   "p": 1.0,
+   "p_holm": 1.0
+  },
+  {
+   "scenario": "gradual",
+   "n": 10,
+   "mean_a": 0.022951066391468867,
+   "mean_b": 0.0,
+   "diff": 0.022951066391468867,
+   "p": 0.125,
+   "p_holm": 1.0
+  },
+  {
+   "scenario": "incremental",
+   "n": 10,
+   "mean_a": 0.1512817617165443,
+   "mean_b": 0.08478937728937727,
+   "diff": 0.06649238442716703,
+   "p": 0.001953125,
+   "p_holm": 0.02734375
+  },
+  {
+   "scenario": "similar_x_different_y",
+   "n": 10,
+   "mean_a": 0.0,
+   "mean_b": 0.0,
+   "diff": 0.0,
+   "p": 1.0,
+   "p_holm": 1.0
+  },
+  {
+   "scenario": "sea",
+   "n": 5,
+   "mean_a": 0.32999999999999996,
+   "mean_b": 0.4,
+   "diff": -0.06999999999999999,
+   "p": 0.75,
+   "p_holm": 1.0
+  },
+  {
+   "scenario": "aba",
+   "n": 10,
+   "mean_a": 0.0,
+   "mean_b": 0.0,
+   "diff": 0.0,
+   "p": 1.0,
+   "p_holm": 1.0
+  },
+  {
+   "scenario": "abca",
+   "n": 10,
+   "mean_a": 0.0,
+   "mean_b": 0.0,
+   "diff": 0.0,
+   "p": 1.0,
+   "p_holm": 1.0
+  },
+  {
+   "scenario": "aba_noisy",
+   "n": 10,
+   "mean_a": 0.0,
+   "mean_b": 0.0,
+   "diff": 0.0,
+   "p": 1.0,
+   "p_holm": 1.0
+  },
+  {
+   "scenario": "ab_gradual",
+   "n": 10,
+   "mean_a": 0.0,
+   "mean_b": 0.0,
+   "diff": 0.0,
+   "p": 1.0,
+   "p_holm": 1.0
+  },
+  {
+   "scenario": "varied_sizes",
+   "n": 10,
+   "mean_a": 0.0,
+   "mean_b": 0.0,
+   "diff": 0.0,
+   "p": 1.0,
+   "p_holm": 1.0
+  },
+  {
+   "scenario": "overlapping",
+   "n": 10,
+   "mean_a": 0.016666666666666666,
+   "mean_b": 0.0,
+   "diff": 0.016666666666666666,
+   "p": 1.0,
+   "p_holm": 1.0
+  },
+  {
+   "scenario": "imbalanced",
+   "n": 10,
+   "mean_a": 0.0,
+   "mean_b": 0.0,
+   "diff": 0.0,
+   "p": 1.0,
+   "p_holm": 1.0
+  },
+  {
+   "scenario": "feature_availability",
+   "n": 10,
+   "mean_a": 0.0,
+   "mean_b": 0.0,
+   "diff": 0.0,
+   "p": 1.0,
+   "p_holm": 1.0
+  }
+ ],
+ "MV schema 2.0 (baseline) vs v1 (legacy engine) | missed_match_rate": [
+  {
+   "scenario": "abrupt_recurring",
+   "n": 10,
+   "mean_a": 0.0,
+   "mean_b": 0.0,
+   "diff": 0.0,
+   "p": 1.0,
+   "p_holm": 1.0
+  },
+  {
+   "scenario": "noisy_recurring",
+   "n": 10,
+   "mean_a": 0.4403818403818403,
+   "mean_b": 0.6736675824175824,
+   "diff": -0.233285742035742,
+   "p": 0.0078125,
+   "p_holm": 0.09375
+  },
+  {
+   "scenario": "gradual",
+   "n": 10,
+   "mean_a": 0.6002152014652015,
+   "mean_b": 0.7176587301587302,
+   "diff": -0.1174435286935287,
+   "p": 0.046875,
+   "p_holm": 0.46875
+  },
+  {
+   "scenario": "incremental",
+   "n": 10,
+   "mean_a": 0.5045039682539683,
+   "mean_b": 0.599570707070707,
+   "diff": -0.09506673881673881,
+   "p": 0.02734375,
+   "p_holm": 0.30078125
+  },
+  {
+   "scenario": "similar_x_different_y",
+   "n": 10,
+   "mean_a": 0.0,
+   "mean_b": 0.0,
+   "diff": 0.0,
+   "p": 1.0,
+   "p_holm": 1.0
+  },
+  {
+   "scenario": "aba",
+   "n": 10,
+   "mean_a": 0.0,
+   "mean_b": 0.0,
+   "diff": 0.0,
+   "p": 1.0,
+   "p_holm": 1.0
+  },
+  {
+   "scenario": "abca",
+   "n": 10,
+   "mean_a": 0.0,
+   "mean_b": 0.0,
+   "diff": 0.0,
+   "p": 1.0,
+   "p_holm": 1.0
+  },
+  {
+   "scenario": "aba_noisy",
+   "n": 9,
+   "mean_a": 0.1111111111111111,
+   "mean_b": 0.0,
+   "diff": 0.1111111111111111,
+   "p": 1.0,
+   "p_holm": 1.0
+  },
+  {
+   "scenario": "ab_gradual",
+   "n": 10,
+   "mean_a": 0.7166666666666667,
+   "mean_b": 0.7,
+   "diff": 0.016666666666666642,
+   "p": 1.0,
+   "p_holm": 1.0
+  },
+  {
+   "scenario": "varied_sizes",
+   "n": 10,
+   "mean_a": 0.0,
+   "mean_b": 0.025,
+   "diff": -0.025,
+   "p": 1.0,
+   "p_holm": 1.0
+  },
+  {
+   "scenario": "overlapping",
+   "n": 10,
+   "mean_a": 0.05833333333333333,
+   "mean_b": 0.0,
+   "diff": 0.05833333333333333,
+   "p": 0.5,
+   "p_holm": 1.0
+  },
+  {
+   "scenario": "imbalanced",
+   "n": 10,
+   "mean_a": 0.06999999999999999,
+   "mean_b": 0.0,
+   "diff": 0.06999999999999999,
+   "p": 0.25,
+   "p_holm": 1.0
+  },
+  {
+   "scenario": "feature_availability",
+   "n": 10,
+   "mean_a": 0.0,
+   "mean_b": 1.0,
+   "diff": -1.0,
+   "p": 0.001953125,
+   "p_holm": 0.025390625
+  }
+ ],
+ "MV schema 2.0 (baseline) vs v1 (legacy engine) | candidate_recall@1": [],
+ "MV schema 2.0 (baseline) vs v1 (legacy engine) | us_per_sample": [
+  {
+   "scenario": "abrupt_recurring",
+   "n": 10,
+   "mean_a": 48.79751144241957,
+   "mean_b": 19.355098151512113,
+   "diff": 29.442413290907457,
+   "p": 0.001953125,
+   "p_holm": 0.03515625
+  },
+  {
+   "scenario": "noisy_recurring",
+   "n": 10,
+   "mean_a": 52.35887590302865,
+   "mean_b": 20.07297225453923,
+   "diff": 32.285903648489416,
+   "p": 0.001953125,
+   "p_holm": 0.03515625
+  },
+  {
+   "scenario": "gradual",
+   "n": 10,
+   "mean_a": 52.827785084865,
+   "mean_b": 20.16076249091742,
+   "diff": 32.66702259394757,
+   "p": 0.001953125,
+   "p_holm": 0.03515625
+  },
+  {
+   "scenario": "incremental",
+   "n": 10,
+   "mean_a": 53.309112357579366,
+   "mean_b": 20.034059490910405,
+   "diff": 33.27505286666896,
+   "p": 0.001953125,
+   "p_holm": 0.03515625
+  },
+  {
+   "scenario": "similar_x_different_y",
+   "n": 10,
+   "mean_a": 49.86993270000312,
+   "mean_b": 19.237316966670427,
+   "diff": 30.63261573333269,
+   "p": 0.001953125,
+   "p_holm": 0.03515625
+  },
+  {
+   "scenario": "temporal_only",
+   "n": 10,
+   "mean_a": 47.93950933333235,
+   "mean_b": 19.41807105000256,
+   "diff": 28.521438283329793,
+   "p": 0.001953125,
+   "p_holm": 0.03515625
+  },
+  {
+   "scenario": "sea",
+   "n": 10,
+   "mean_a": 44.26195736668887,
+   "mean_b": 19.14611087500665,
+   "diff": 25.115846491682227,
+   "p": 0.001953125,
+   "p_holm": 0.03515625
+  },
+  {
+   "scenario": "hyperplane",
+   "n": 10,
+   "mean_a": 74.84340010666224,
+   "mean_b": 19.503855539993918,
+   "diff": 55.33954456666834,
+   "p": 0.001953125,
+   "p_holm": 0.03515625
+  },
+  {
+   "scenario": "aba",
+   "n": 10,
+   "mean_a": 47.16539580003883,
+   "mean_b": 19.44583493332175,
+   "diff": 27.719560866717075,
+   "p": 0.001953125,
+   "p_holm": 0.03515625
+  },
+  {
+   "scenario": "abca",
+   "n": 10,
+   "mean_a": 48.532894666656524,
+   "mean_b": 20.063647966677912,
+   "diff": 28.469246699978612,
+   "p": 0.001953125,
+   "p_holm": 0.03515625
+  },
+  {
+   "scenario": "aba_noisy",
+   "n": 10,
+   "mean_a": 47.924517377739704,
+   "mean_b": 19.347335911111763,
+   "diff": 28.57718146662794,
+   "p": 0.001953125,
+   "p_holm": 0.03515625
+  },
+  {
+   "scenario": "ab_gradual",
+   "n": 10,
+   "mean_a": 49.77928813336298,
+   "mean_b": 20.235622400024216,
+   "diff": 29.54366573333876,
+   "p": 0.001953125,
+   "p_holm": 0.03515625
+  },
+  {
+   "scenario": "diff_x_same_y",
+   "n": 10,
+   "mean_a": 62.5733451866472,
+   "mean_b": 19.319606559984095,
+   "diff": 43.2537386266631,
+   "p": 0.001953125,
+   "p_holm": 0.03515625
+  },
+  {
+   "scenario": "same_marginal_diff_corr",
+   "n": 10,
+   "mean_a": 46.66819214666854,
+   "mean_b": 19.38693473333842,
+   "diff": 27.281257413330117,
+   "p": 0.001953125,
+   "p_holm": 0.03515625
+  },
+  {
+   "scenario": "varied_sizes",
+   "n": 10,
+   "mean_a": 48.70771938146494,
+   "mean_b": 19.588530731985863,
+   "diff": 29.119188649479064,
+   "p": 0.001953125,
+   "p_holm": 0.03515625
+  },
+  {
+   "scenario": "overlapping",
+   "n": 10,
+   "mean_a": 50.301246716662725,
+   "mean_b": 19.575968408344128,
+   "diff": 30.725278308318593,
+   "p": 0.001953125,
+   "p_holm": 0.03515625
+  },
+  {
+   "scenario": "imbalanced",
+   "n": 10,
+   "mean_a": 48.50649077142451,
+   "mean_b": 19.364835923806826,
+   "diff": 29.141654847617684,
+   "p": 0.001953125,
+   "p_holm": 0.03515625
+  },
+  {
+   "scenario": "feature_availability",
+   "n": 10,
+   "mean_a": 46.01945590476957,
+   "mean_b": 20.856668904750787,
+   "diff": 25.16278700001879,
+   "p": 0.001953125,
+   "p_holm": 0.03515625
+  }
+ ]
+}

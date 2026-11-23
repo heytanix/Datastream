@@ -1,0 +1,156 @@
+{
+ "samples": 16500,
+ "seconds": 1.16,
+ "change_points": [
+  [
+   0,
+   "A"
+  ],
+  [
+   1500,
+   "B"
+  ],
+  [
+   3000,
+   "C"
+  ],
+  [
+   4500,
+   "A"
+  ],
+  [
+   6000,
+   "B"
+  ],
+  [
+   7500,
+   "D"
+  ],
+  [
+   9000,
+   "C"
+  ],
+  [
+   10500,
+   "A"
+  ],
+  [
+   12000,
+   "D"
+  ],
+  [
+   13500,
+   "B"
+  ],
+  [
+   15000,
+   "A"
+  ]
+ ],
+ "strategies": {
+  "static": {
+   "accuracy": 0.587,
+   "post_drift_300_acc": 0.564,
+   "segment_acc": [
+    0.906,
+    0.414,
+    0.246,
+    0.9313,
+    0.4073,
+    0.5247,
+    0.2353,
+    0.9407,
+    0.5073,
+    0.412,
+    0.932
+   ],
+   "drifts_detected": 0,
+   "detected_changes": 0,
+   "true_changes": 10,
+   "mean_delay": null,
+   "models_trained": 1,
+   "recalls": 0,
+   "false_alarms": 0,
+   "new_concepts": 1,
+   "repository_size": 1
+  },
+  "retrain": {
+   "accuracy": 0.9058,
+   "post_drift_300_acc": 0.767,
+   "segment_acc": [
+    0.9127,
+    0.8993,
+    0.9033,
+    0.8867,
+    0.9,
+    0.904,
+    0.9107,
+    0.9013,
+    0.9167,
+    0.914,
+    0.9153
+   ],
+   "drifts_detected": 10,
+   "detected_changes": 10,
+   "true_changes": 10,
+   "mean_delay": 13.0,
+   "models_trained": 11,
+   "recalls": 0,
+   "false_alarms": 0,
+   "new_concepts": 11,
+   "repository_size": 11
+  },
+  "dejastream": {
+   "accuracy": 0.9176,
+   "post_drift_300_acc": 0.8317,
+   "segment_acc": [
+    0.9127,
+    0.8993,
+    0.9033,
+    0.914,
+    0.916,
+    0.904,
+    0.928,
+    0.9227,
+    0.934,
+    0.9267,
+    0.9333
+   ],
+   "drifts_detected": 12,
+   "detected_changes": 10,
+   "true_changes": 10,
+   "mean_delay": 13.5,
+   "models_trained": 4,
+   "recalls": 7,
+   "false_alarms": 2,
+   "new_concepts": 4,
+   "repository_size": 4
+  },
+  "dejastream_mv": {
+   "accuracy": 0.9161,
+   "post_drift_300_acc": 0.8237,
+   "segment_acc": [
+    0.9127,
+    0.8993,
+    0.9033,
+    0.9093,
+    0.916,
+    0.904,
+    0.9253,
+    0.9187,
+    0.9293,
+    0.924,
+    0.9347
+   ],
+   "drifts_detected": 11,
+   "detected_changes": 10,
+   "true_changes": 10,
+   "mean_delay": 13.5,
+   "models_trained": 4,
+   "recalls": 7,
+   "false_alarms": 1,
+   "new_concepts": 4,
+   "repository_size": 4
+  }
+ }
+}

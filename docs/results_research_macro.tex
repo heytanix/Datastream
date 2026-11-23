@@ -1,0 +1,15 @@
+\renewcommand{\arraystretch}{1.2}\begin{tabular}{@{}lcccccc@{}}\toprule
+\textbf{Variant} & \textbf{Accuracy \%} & \textbf{First 300 after drift \%} & \textbf{Models trained} & \textbf{Match recall \%} & \textbf{Match precision \%} & \textbf{False-match \%}\\\midrule
+v1 (legacy engine) & 88.4 & 79.4 & 5.4 & 68.2 & 99.3 & 0.2 \\
+MV schema 2.0 (baseline) & 88.7 & 79.3 & 4.7 & 87.7 & 100.0 & 0.0 \\
+A statistical only & 88.4 & 78.9 & 5.0 & 78.0 & 97.4 & 0.8 \\
+B stat + distribution & 88.6 & 79.1 & 5.2 & 80.7 & 99.5 & 0.2 \\
+C stat + dist + temporal & 88.4 & 79.1 & 4.9 & 81.0 & 97.7 & 0.5 \\
+D full multi-view (improved) & 88.4 & 78.9 & 5.3 & 75.6 & 97.6 & 0.5 \\
+E = D without noise correction & 88.5 & 78.5 & 7.5 & 75.6 & 92.7 & 6.2 \\
+F = D without adaptive thresholds & 88.4 & 79.2 & 4.2 & 87.1 & 99.4 & 0.2 \\
+G = D without confidence gating & 88.4 & 78.9 & 5.3 & 75.6 & 97.6 & 0.5 \\
+H = D without predictive validation & 87.0 & 72.0 & 3.9 & 85.5 & 86.8 & 8.1 \\
+J = D + paired validation & 88.3 & 78.9 & 5.5 & 72.0 & 99.1 & 0.2 \\
+K = D with legacy fingerprint merge & 88.3 & 78.8 & 5.4 & 73.6 & 98.6 & 0.3 \\
+\bottomrule\end{tabular}

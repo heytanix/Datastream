@@ -1,0 +1,301 @@
+{
+ "scaling": {
+  "10 | basic, fixed k=5 (schema 2.0)": {
+   "size": 10,
+   "config": "basic, fixed k=5 (schema 2.0)",
+   "level1_ms_mean": 0.07160108,
+   "level1_ms_p95": 0.07908854999999998,
+   "match_ms_mean": 3.4533433933333337,
+   "match_ms_p95": 3.698829449999999,
+   "mean_candidates_scored": 5.0,
+   "repo_bytes_total": 14560,
+   "build_peak_mb": 1.183981,
+   "bytes_per_concept": 1456.0
+  },
+  "10 | basic, adaptive k": {
+   "size": 10,
+   "config": "basic, adaptive k",
+   "level1_ms_mean": 0.07152974666666667,
+   "level1_ms_p95": 0.077468,
+   "match_ms_mean": 2.12266846,
+   "match_ms_p95": 2.1706668,
+   "mean_candidates_scored": 3.0,
+   "repo_bytes_total": 14560,
+   "build_peak_mb": 0.108548,
+   "bytes_per_concept": 1456.0
+  },
+  "10 | shape_corr, adaptive k": {
+   "size": 10,
+   "config": "shape_corr, adaptive k",
+   "level1_ms_mean": 0.11780381333333333,
+   "level1_ms_p95": 0.12483905,
+   "match_ms_mean": 2.2336435066666667,
+   "match_ms_p95": 2.8213368,
+   "mean_candidates_scored": 3.1,
+   "repo_bytes_total": 14560,
+   "build_peak_mb": 0.105346,
+   "bytes_per_concept": 1456.0
+  },
+  "10 | basic adaptive + full-scan fallback": {
+   "size": 10,
+   "config": "basic adaptive + full-scan fallback",
+   "level1_ms_mean": 0.07127870666666666,
+   "level1_ms_p95": 0.07733,
+   "match_ms_mean": 2.12812482,
+   "match_ms_p95": 2.19806075,
+   "mean_candidates_scored": 3.0,
+   "repo_bytes_total": 14560,
+   "build_peak_mb": 0.104806,
+   "bytes_per_concept": 1456.0
+  },
+  "10 | exhaustive level-2 scan": {
+   "size": 10,
+   "config": "exhaustive level-2 scan",
+   "match_ms_mean": 6.5523451999999995,
+   "match_ms_p95": 6.7322076
+  },
+  "50 | basic, fixed k=5 (schema 2.0)": {
+   "size": 50,
+   "config": "basic, fixed k=5 (schema 2.0)",
+   "level1_ms_mean": 0.08495562,
+   "level1_ms_p95": 0.092015,
+   "match_ms_mean": 3.482794793333334,
+   "match_ms_p95": 3.5728001,
+   "mean_candidates_scored": 5.0,
+   "repo_bytes_total": 72800,
+   "build_peak_mb": 0.425059,
+   "bytes_per_concept": 1456.0
+  },
+  "50 | basic, adaptive k": {
+   "size": 50,
+   "config": "basic, adaptive k",
+   "level1_ms_mean": 0.08575689333333335,
+   "level1_ms_p95": 0.09194854999999998,
+   "match_ms_mean": 2.152719853333333,
+   "match_ms_p95": 2.1963865,
+   "mean_candidates_scored": 3.0,
+   "repo_bytes_total": 72800,
+   "build_peak_mb": 0.416861,
+   "bytes_per_concept": 1456.0
+  },
+  "50 | shape_corr, adaptive k": {
+   "size": 50,
+   "config": "shape_corr, adaptive k",
+   "level1_ms_mean": 0.13182442666666666,
+   "level1_ms_p95": 0.13960609999999996,
+   "match_ms_mean": 2.543531386666667,
+   "match_ms_p95": 4.47515624999999,
+   "mean_candidates_scored": 3.56,
+   "repo_bytes_total": 72800,
+   "build_peak_mb": 0.417622,
+   "bytes_per_concept": 1456.0
+  },
+  "50 | basic adaptive + full-scan fallback": {
+   "size": 50,
+   "config": "basic adaptive + full-scan fallback",
+   "level1_ms_mean": 0.08439336,
+   "level1_ms_p95": 0.0903655,
+   "match_ms_mean": 2.1280913933333334,
+   "match_ms_p95": 2.2142991999999992,
+   "mean_candidates_scored": 3.0,
+   "repo_bytes_total": 72800,
+   "build_peak_mb": 0.414847,
+   "bytes_per_concept": 1456.0
+  },
+  "50 | exhaustive level-2 scan": {
+   "size": 50,
+   "config": "exhaustive level-2 scan",
+   "match_ms_mean": 31.935314000000005,
+   "match_ms_p95": 32.0704828
+  },
+  "100 | basic, fixed k=5 (schema 2.0)": {
+   "size": 100,
+   "config": "basic, fixed k=5 (schema 2.0)",
+   "level1_ms_mean": 0.09954704666666667,
+   "level1_ms_p95": 0.10648904999999999,
+   "match_ms_mean": 3.4484174199999997,
+   "match_ms_p95": 3.62268215,
+   "mean_candidates_scored": 5.0,
+   "repo_bytes_total": 145600,
+   "build_peak_mb": 0.826624,
+   "bytes_per_concept": 1456.0
+  },
+  "100 | basic, adaptive k": {
+   "size": 100,
+   "config": "basic, adaptive k",
+   "level1_ms_mean": 0.10082295333333334,
+   "level1_ms_p95": 0.11224704999999999,
+   "match_ms_mean": 2.1371522466666666,
+   "match_ms_p95": 2.1953883499999995,
+   "mean_candidates_scored": 3.0,
+   "repo_bytes_total": 145600,
+   "build_peak_mb": 0.820648,
+   "bytes_per_concept": 1456.0
+  },
+  "100 | shape_corr, adaptive k": {
+   "size": 100,
+   "config": "shape_corr, adaptive k",
+   "level1_ms_mean": 0.14782785333333337,
+   "level1_ms_p95": 0.15676854999999998,
+   "match_ms_mean": 2.945309706666666,
+   "match_ms_p95": 6.7307404,
+   "mean_candidates_scored": 4.166666666666667,
+   "repo_bytes_total": 145600,
+   "build_peak_mb": 0.805014,
+   "bytes_per_concept": 1456.0
+  },
+  "100 | basic adaptive + full-scan fallback": {
+   "size": 100,
+   "config": "basic adaptive + full-scan fallback",
+   "level1_ms_mean": 0.10027909333333333,
+   "level1_ms_p95": 0.10811464999999998,
+   "match_ms_mean": 2.14439956,
+   "match_ms_p95": 2.19592535,
+   "mean_candidates_scored": 3.0,
+   "repo_bytes_total": 145600,
+   "build_peak_mb": 0.813122,
+   "bytes_per_concept": 1456.0
+  },
+  "100 | exhaustive level-2 scan": {
+   "size": 100,
+   "config": "exhaustive level-2 scan",
+   "match_ms_mean": 64.0714638,
+   "match_ms_p95": 65.0575614
+  },
+  "500 | basic, fixed k=5 (schema 2.0)": {
+   "size": 500,
+   "config": "basic, fixed k=5 (schema 2.0)",
+   "level1_ms_mean": 0.21636814666666665,
+   "level1_ms_p95": 0.22797355,
+   "match_ms_mean": 3.5978382000000004,
+   "match_ms_p95": 3.6768661999999996,
+   "mean_candidates_scored": 5.0,
+   "repo_bytes_total": 728000,
+   "build_peak_mb": 4.019433,
+   "bytes_per_concept": 1456.0
+  },
+  "500 | basic, adaptive k": {
+   "size": 500,
+   "config": "basic, adaptive k",
+   "level1_ms_mean": 0.23279284666666664,
+   "level1_ms_p95": 0.24128209999999997,
+   "match_ms_mean": 2.28728978,
+   "match_ms_p95": 2.3184340999999997,
+   "mean_candidates_scored": 3.0,
+   "repo_bytes_total": 728000,
+   "build_peak_mb": 4.018192,
+   "bytes_per_concept": 1456.0
+  },
+  "500 | shape_corr, adaptive k": {
+   "size": 500,
+   "config": "shape_corr, adaptive k",
+   "level1_ms_mean": 0.2877423066666667,
+   "level1_ms_p95": 0.300161,
+   "match_ms_mean": 4.533433966666666,
+   "match_ms_p95": 6.9421403,
+   "mean_candidates_scored": 6.3933333333333335,
+   "repo_bytes_total": 728000,
+   "build_peak_mb": 3.923658,
+   "bytes_per_concept": 1456.0
+  },
+  "500 | basic adaptive + full-scan fallback": {
+   "size": 500,
+   "config": "basic adaptive + full-scan fallback",
+   "level1_ms_mean": 0.21831208,
+   "level1_ms_p95": 0.22633904999999999,
+   "match_ms_mean": 2.284595266666667,
+   "match_ms_p95": 2.3177465,
+   "mean_candidates_scored": 3.0,
+   "repo_bytes_total": 728000,
+   "build_peak_mb": 3.907782,
+   "bytes_per_concept": 1456.0
+  },
+  "500 | exhaustive level-2 scan": {
+   "size": 500,
+   "config": "exhaustive level-2 scan",
+   "match_ms_mean": 320.34371539999995,
+   "match_ms_p95": 321.4064468
+  },
+  "1000 | basic, fixed k=5 (schema 2.0)": {
+   "size": 1000,
+   "config": "basic, fixed k=5 (schema 2.0)",
+   "level1_ms_mean": 0.36761710666666675,
+   "level1_ms_p95": 0.38404505,
+   "match_ms_mean": 3.8241028,
+   "match_ms_p95": 4.111966449999999,
+   "mean_candidates_scored": 5.0,
+   "repo_bytes_total": 1456000,
+   "build_peak_mb": 7.931322,
+   "bytes_per_concept": 1456.0
+  },
+  "1000 | basic, adaptive k": {
+   "size": 1000,
+   "config": "basic, adaptive k",
+   "level1_ms_mean": 0.36705027333333334,
+   "level1_ms_p95": 0.3792965,
+   "match_ms_mean": 2.448461613333333,
+   "match_ms_p95": 2.4932905499999998,
+   "mean_candidates_scored": 3.0,
+   "repo_bytes_total": 1456000,
+   "build_peak_mb": 7.931429,
+   "bytes_per_concept": 1456.0
+  },
+  "1000 | shape_corr, adaptive k": {
+   "size": 1000,
+   "config": "shape_corr, adaptive k",
+   "level1_ms_mean": 0.45820906,
+   "level1_ms_p95": 0.47730249999999996,
+   "match_ms_mean": 5.76952442,
+   "match_ms_p95": 7.18936215,
+   "mean_candidates_scored": 7.973333333333334,
+   "repo_bytes_total": 1456000,
+   "build_peak_mb": 7.888996,
+   "bytes_per_concept": 1456.0
+  },
+  "1000 | basic adaptive + full-scan fallback": {
+   "size": 1000,
+   "config": "basic adaptive + full-scan fallback",
+   "level1_ms_mean": 0.3719370066666667,
+   "level1_ms_p95": 0.39419079999999995,
+   "match_ms_mean": 2.503899086666667,
+   "match_ms_p95": 2.690900599999999,
+   "mean_candidates_scored": 3.0,
+   "repo_bytes_total": 1456000,
+   "build_peak_mb": 7.891103,
+   "bytes_per_concept": 1456.0
+  },
+  "1000 | exhaustive level-2 scan": {
+   "size": 1000,
+   "config": "exhaustive level-2 scan",
+   "match_ms_mean": 648.6673874,
+   "match_ms_p95": 659.3890702
+  }
+ },
+ "fingerprint_cost": {
+  "n=40 d=4": {
+   "legacy_ms_mean": 0.044445303333333325,
+   "multiview_ms_mean": 1.09027165,
+   "multiview_ms_p95": 1.1313453
+  },
+  "n=100 d=4": {
+   "legacy_ms_mean": 0.04946894,
+   "multiview_ms_mean": 1.2028873566666667,
+   "multiview_ms_p95": 1.24689305
+  },
+  "n=300 d=4": {
+   "legacy_ms_mean": 0.06781550333333333,
+   "multiview_ms_mean": 1.4042000933333332,
+   "multiview_ms_p95": 1.455146
+  },
+  "n=100 d=10": {
+   "legacy_ms_mean": 0.05495659333333334,
+   "multiview_ms_mean": 3.4130901233333333,
+   "multiview_ms_p95": 3.48598305
+  },
+  "n=100 d=30": {
+   "legacy_ms_mean": 0.06151851333333333,
+   "multiview_ms_mean": 14.838342933333333,
+   "multiview_ms_p95": 15.062846200000001
+  }
+ }
+}

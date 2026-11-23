@@ -7,14 +7,14 @@ import time
 
 import numpy as np
 
-from .engine import STRATEGIES, Engine
+from .strategies import STRATEGIES, make_engine
 from .stream import ConceptStream
 
 
 def run(seed: int = 7, seg_len: int = 1500, out: str | None = "results/bench.json", verbose: bool = True):
     stream = ConceptStream(seed=seed, seg_len=seg_len)
     cps = stream.change_points()
-    engines = {s: Engine(s) for s in STRATEGIES}
+    engines = {s: make_engine(s) for s in STRATEGIES}
     correct = {s: [] for s in STRATEGIES}
     events = {s: [] for s in STRATEGIES}
     t0 = time.time()

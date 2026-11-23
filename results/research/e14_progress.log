@@ -1,0 +1,36 @@
+[natural] ELEC2 (45,312 rows, natural or static
+[natural] ELEC2 (45,312 rows, natural or retrain
+[natural] ELEC2 (45,312 rows, natural or v1 (legacy engine)
+[natural] ELEC2 (45,312 rows, natural or MV schema 2.0 (baseline)
+[natural] ELEC2 (45,312 rows, natural or D full multi-view (improved)
+[natural] ELEC2 (45,312 rows, natural or F = D without adaptive thresholds
+[natural] Airlines (first 100,000 rows)  static
+[natural] Airlines (first 100,000 rows)  retrain
+[natural] Airlines (first 100,000 rows)  v1 (legacy engine)
+[natural] Airlines (first 100,000 rows)  MV schema 2.0 (baseline)
+[natural] Airlines (first 100,000 rows)  D full multi-view (improved)
+[natural] Airlines (first 100,000 rows)  F = D without adaptive thresholds
+[natural] Intel Berkeley mote 1 (first 6 static
+[natural] Intel Berkeley mote 1 (first 6 retrain
+[natural] Intel Berkeley mote 1 (first 6 v1 (legacy engine)
+[natural] Intel Berkeley mote 1 (first 6 MV schema 2.0 (baseline)
+[natural] Intel Berkeley mote 1 (first 6 D full multi-view (improved)
+[natural] Intel Berkeley mote 1 (first 6 F = D without adaptive thresholds
+[natural] UCI load diagrams, 6 clients ( static
+[natural] UCI load diagrams, 6 clients ( retrain
+[natural] UCI load diagrams, 6 clients ( v1 (legacy engine)
+[natural] UCI load diagrams, 6 clients ( MV schema 2.0 (baseline)
+[natural] UCI load diagrams, 6 clients ( D full multi-view (improved)
+[natural] UCI load diagrams, 6 clients ( F = D without adaptive thresholds
+[constructed] ELEC2 replay A B A B A v1 (legacy engine)
+[constructed] ELEC2 replay A B A B A MV schema 2.0 (baseline)
+[constructed] ELEC2 replay A B A B A D full multi-view (improved)
+[constructed] ELEC2 replay A B A B A F = D without adaptive thresholds
+[constructed] UCI replay A B A B A v1 (legacy engine)
+[constructed] UCI replay A B A B A MV schema 2.0 (baseline)
+[constructed] UCI replay A B A B A D full multi-view (improved)
+[constructed] UCI replay A B A B A F = D without adaptive thresholds
+[constructed] Intel replay A B A B A v1 (legacy engine)
+[constructed] Intel replay A B A B A MV schema 2.0 (baseline)
+[constructed] Intel replay A B A B A D full multi-view (improved)
+[constructed] Intel replay A B A B A F = D without adaptive thresholds

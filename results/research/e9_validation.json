@@ -1,0 +1,3747 @@
+{
+ "protocols": {
+  "null (no candidate better) | n=30": {
+   "legacy point rule (acc>=0.70, >= baseline, pick best)": {
+    "accept_rate": 0.78,
+    "accepts_the_truly_better_one": 0.0,
+    "optimism_of_reported_metric": 0.08974358974358981
+   },
+   "pick_best + paired CI (biased)": {
+    "accept_rate": 0.128,
+    "accepts_the_truly_better_one": 0.0,
+    "optimism_of_reported_metric": 0.13333333333333341
+   },
+   "bonferroni + paired CI": {
+    "accept_rate": 0.048,
+    "accepts_the_truly_better_one": 0.0,
+    "optimism_of_reported_metric": 0.15000000000000005
+   },
+   "split_confirm + paired CI": {
+    "accept_rate": 0.08,
+    "accepts_the_truly_better_one": 0.0,
+    "optimism_of_reported_metric": 0.1133333333333334
+   }
+  },
+  "null (no candidate better) | n=60": {
+   "legacy point rule (acc>=0.70, >= baseline, pick best)": {
+    "accept_rate": 0.744,
+    "accepts_the_truly_better_one": 0.0,
+    "optimism_of_reported_metric": 0.06281362007168463
+   },
+   "pick_best + paired CI (biased)": {
+    "accept_rate": 0.124,
+    "accepts_the_truly_better_one": 0.0,
+    "optimism_of_reported_metric": 0.096236559139785
+   },
+   "bonferroni + paired CI": {
+    "accept_rate": 0.04,
+    "accepts_the_truly_better_one": 0.0,
+    "optimism_of_reported_metric": 0.10833333333333339
+   },
+   "split_confirm + paired CI": {
+    "accept_rate": 0.044,
+    "accepts_the_truly_better_one": 0.0,
+    "optimism_of_reported_metric": 0.0636363636363637
+   }
+  },
+  "null (no candidate better) | n=100": {
+   "legacy point rule (acc>=0.70, >= baseline, pick best)": {
+    "accept_rate": 0.716,
+    "accepts_the_truly_better_one": 0.0,
+    "optimism_of_reported_metric": 0.04782122905027937
+   },
+   "pick_best + paired CI (biased)": {
+    "accept_rate": 0.112,
+    "accepts_the_truly_better_one": 0.0,
+    "optimism_of_reported_metric": 0.07285714285714293
+   },
+   "bonferroni + paired CI": {
+    "accept_rate": 0.052,
+    "accepts_the_truly_better_one": 0.0,
+    "optimism_of_reported_metric": 0.0838461538461539
+   },
+   "split_confirm + paired CI": {
+    "accept_rate": 0.06,
+    "accepts_the_truly_better_one": 0.0,
+    "optimism_of_reported_metric": 0.06666666666666672
+   }
+  },
+  "small gain (+0.05 for one candidate) | n=30": {
+   "legacy point rule (acc>=0.70, >= baseline, pick best)": {
+    "accept_rate": 0.856,
+    "accepts_the_truly_better_one": 0.464,
+    "optimism_of_reported_metric": 0.07040498442367606
+   },
+   "pick_best + paired CI (biased)": {
+    "accept_rate": 0.128,
+    "accepts_the_truly_better_one": 0.084,
+    "optimism_of_reported_metric": 0.1317708333333334
+   },
+   "bonferroni + paired CI": {
+    "accept_rate": 0.064,
+    "accepts_the_truly_better_one": 0.032,
+    "optimism_of_reported_metric": 0.14583333333333337
+   },
+   "split_confirm + paired CI": {
+    "accept_rate": 0.092,
+    "accepts_the_truly_better_one": 0.068,
+    "optimism_of_reported_metric": 0.06304347826086958
+   }
+  },
+  "small gain (+0.05 for one candidate) | n=60": {
+   "legacy point rule (acc>=0.70, >= baseline, pick best)": {
+    "accept_rate": 0.872,
+    "accepts_the_truly_better_one": 0.524,
+    "optimism_of_reported_metric": 0.053363914373088704
+   },
+   "pick_best + paired CI (biased)": {
+    "accept_rate": 0.216,
+    "accepts_the_truly_better_one": 0.156,
+    "optimism_of_reported_metric": 0.07469135802469137
+   },
+   "bonferroni + paired CI": {
+    "accept_rate": 0.08,
+    "accepts_the_truly_better_one": 0.06,
+    "optimism_of_reported_metric": 0.08083333333333335
+   },
+   "split_confirm + paired CI": {
+    "accept_rate": 0.064,
+    "accepts_the_truly_better_one": 0.048,
+    "optimism_of_reported_metric": 0.050000000000000024
+   }
+  },
+  "small gain (+0.05 for one candidate) | n=100": {
+   "legacy point rule (acc>=0.70, >= baseline, pick best)": {
+    "accept_rate": 0.832,
+    "accepts_the_truly_better_one": 0.6,
+    "optimism_of_reported_metric": 0.031153846153846174
+   },
+   "pick_best + paired CI (biased)": {
+    "accept_rate": 0.256,
+    "accepts_the_truly_better_one": 0.184,
+    "optimism_of_reported_metric": 0.05953125000000002
+   },
+   "bonferroni + paired CI": {
+    "accept_rate": 0.136,
+    "accepts_the_truly_better_one": 0.104,
+    "optimism_of_reported_metric": 0.065
+   },
+   "split_confirm + paired CI": {
+    "accept_rate": 0.14,
+    "accepts_the_truly_better_one": 0.116,
+    "optimism_of_reported_metric": 0.03571428571428572
+   }
+  },
+  "large gain (+0.20 for one candidate) | n=30": {
+   "legacy point rule (acc>=0.70, >= baseline, pick best)": {
+    "accept_rate": 0.992,
+    "accepts_the_truly_better_one": 0.984,
+    "optimism_of_reported_metric": 0.005376344086021504
+   },
+   "pick_best + paired CI (biased)": {
+    "accept_rate": 0.572,
+    "accepts_the_truly_better_one": 0.568,
+    "optimism_of_reported_metric": 0.02867132867132867
+   },
+   "bonferroni + paired CI": {
+    "accept_rate": 0.272,
+    "accepts_the_truly_better_one": 0.268,
+    "optimism_of_reported_metric": 0.04117647058823529
+   },
+   "split_confirm + paired CI": {
+    "accept_rate": 0.388,
+    "accepts_the_truly_better_one": 0.388,
+    "optimism_of_reported_metric": 0.006529209621993122
+   }
+  },
+  "large gain (+0.20 for one candidate) | n=60": {
+   "legacy point rule (acc>=0.70, >= baseline, pick best)": {
+    "accept_rate": 1.0,
+    "accepts_the_truly_better_one": 1.0,
+    "optimism_of_reported_metric": 0.0008666666666666401
+   },
+   "pick_best + paired CI (biased)": {
+    "accept_rate": 0.852,
+    "accepts_the_truly_better_one": 0.852,
+    "optimism_of_reported_metric": 0.006807511737089176
+   },
+   "bonferroni + paired CI": {
+    "accept_rate": 0.708,
+    "accepts_the_truly_better_one": 0.708,
+    "optimism_of_reported_metric": 0.011205273069679823
+   },
+   "split_confirm + paired CI": {
+    "accept_rate": 0.54,
+    "accepts_the_truly_better_one": 0.54,
+    "optimism_of_reported_metric": 0.006913580246913579
+   }
+  },
+  "large gain (+0.20 for one candidate) | n=100": {
+   "legacy point rule (acc>=0.70, >= baseline, pick best)": {
+    "accept_rate": 1.0,
+    "accepts_the_truly_better_one": 1.0,
+    "optimism_of_reported_metric": -0.001680000000000013
+   },
+   "pick_best + paired CI (biased)": {
+    "accept_rate": 0.972,
+    "accepts_the_truly_better_one": 0.972,
+    "optimism_of_reported_metric": -4.115226337449797e-05
+   },
+   "bonferroni + paired CI": {
+    "accept_rate": 0.916,
+    "accepts_the_truly_better_one": 0.916,
+    "optimism_of_reported_metric": 0.0022707423580785916
+   },
+   "split_confirm + paired CI": {
+    "accept_rate": 0.824,
+    "accepts_the_truly_better_one": 0.824,
+    "optimism_of_reported_metric": -0.0026213592233009964
+   }
+  }
+ },
+ "streams": {
+  "abrupt_recurring": {
+   "legacy point (acc>=0.70, no uncertainty)": {
+    "accuracy": {
+     "mean": 0.9139878787878789,
+     "std": 0.002271037755855584,
+     "n": 5
+    },
+    "us_per_sample": {
+     "mean": 49.386483999996656,
+     "std": 1.0130864918050437,
+     "n": 5
+    },
+    "models_trained": {
+     "mean": 4.0,
+     "std": 0.0,
+     "n": 5
+    },
+    "post_drift_acc": {
+     "mean": 0.8189333333333334,
+     "std": 0.004606275912033291,
+     "n": 5
+    },
+    "detection_delay": {
+     "mean": 16.92,
+     "std": 2.5458986625551305,
+     "n": 5
+    },
+    "detection_rate": {
+     "mean": 1.0,
+     "std": 0.0,
+     "n": 5
+    },
+    "recalls": {
+     "mean": 7.0,
+     "std": 0.0,
+     "n": 5
+    },
+    "retrieval_precision": {
+     "mean": 1.0,
+     "std": 0.0,
+     "n": 5
+    },
+    "retrieval_recall": {
+     "mean": 1.0,
+     "std": 0.0,
+     "n": 5
+    },
+    "false_match_rate": {
+     "mean": 0.0,
+     "std": 0.0,
+     "n": 5
+    },
+    "missed_match_rate": {
+     "mean": 0.0,
+     "std": 0.0,
+     "n": 5
+    },
+    "recall_success_rate": {
+     "mean": 1.0,
+     "std": 0.0,
+     "n": 5
+    },
+    "candidate_recall@1": {
+     "mean": 1.0,
+     "std": 0.0,
+     "n": 5
+    },
+    "candidate_recall@3": {
+     "mean": 1.0,
+     "std": 0.0,
+     "n": 5
+    },
+    "candidate_recall@5": {
+     "mean": 1.0,
+     "std": 0.0,
+     "n": 5
+    },
+    "high_conf_precision": null,
+    "conf_brier": {
+     "mean": 0.5510019821428571,
+     "std": 0.0195534752571934,
+     "n": 5
+    },
+    "conf_ece": {
+     "mean": 0.7412750000000001,
+     "std": 0.012590983168238142,
+     "n": 5
+    },
+    "match_ms": {
+     "mean": 1.6819674236219064,
+     "std": 0.07291839346719597,
+     "n": 5
+    },
+    "fp_ms": {
+     "mean": 1.3645211149806218,
+     "std": 0.027619087895324794,
+     "n": 5
+    },
+    "bytes_per_concept": {
+     "mean": 1456.0,
+     "std": 0.0,
+     "n": 5
+    }
+   },
+   "paired non-inferiority + bonferroni + significant-majority floor": {
+    "accuracy": {
+     "mean": 0.9139878787878789,
+     "std": 0.002271037755855584,
+     "n": 5
+    },
+    "us_per_sample": {
+     "mean": 51.37623077574641,
+     "std": 0.25247141802105133,
+     "n": 5
+    },
+    "models_trained": {
+     "mean": 4.0,
+     "std": 0.0,
+     "n": 5
+    },
+    "post_drift_acc": {
+     "mean": 0.8189333333333334,
+     "std": 0.004606275912033291,
+     "n": 5
+    },
+    "detection_delay": {
+     "mean": 16.92,
+     "std": 2.5458986625551305,
+     "n": 5
+    },
+    "detection_rate": {
+     "mean": 1.0,
+     "std": 0.0,
+     "n": 5
+    },
+    "recalls": {
+     "mean": 7.0,
+     "std": 0.0,
+     "n": 5
+    },
+    "retrieval_precision": {
+     "mean": 1.0,
+     "std": 0.0,
+     "n": 5
+    },
+    "retrieval_recall": {
+     "mean": 1.0,
+     "std": 0.0,
+     "n": 5
+    },
+    "false_match_rate": {
+     "mean": 0.0,
+     "std": 0.0,
+     "n": 5
+    },
+    "missed_match_rate": {
+     "mean": 0.0,
+     "std": 0.0,
+     "n": 5
+    },
+    "recall_success_rate": {
+     "mean": 1.0,
+     "std": 0.0,
+     "n": 5
+    },
+    "candidate_recall@1": {
+     "mean": 1.0,
+     "std": 0.0,
+     "n": 5
+    },
+    "candidate_recall@3": {
+     "mean": 1.0,
+     "std": 0.0,
+     "n": 5
+    },
+    "candidate_recall@5": {
+     "mean": 1.0,
+     "std": 0.0,
+     "n": 5
+    },
+    "high_conf_precision": null,
+    "conf_brier": {
+     "mean": 0.5510019821428571,
+     "std": 0.0195534752571934,
+     "n": 5
+    },
+    "conf_ece": {
+     "mean": 0.7412750000000001,
+     "std": 0.012590983168238142,
+     "n": 5
+    },
+    "match_ms": {
+     "mean": 1.6793119091165534,
+     "std": 0.047483731616478966,
+     "n": 5
+    },
+    "fp_ms": {
+     "mean": 1.3543533892189514,
+     "std": 0.010298149326578038,
+     "n": 5
+    },
+    "bytes_per_concept": {
+     "mean": 1456.0,
+     "std": 0.0,
+     "n": 5
+    }
+   },
+   "paired non-inferiority + bonferroni + point floor (default)": {
+    "accuracy": {
+     "mean": 0.9139878787878789,
+     "std": 0.002271037755855584,
+     "n": 5
+    },
+    "us_per_sample": {
+     "mean": 50.20455852123136,
+     "std": 0.10257899882419552,
+     "n": 5
+    },
+    "models_trained": {
+     "mean": 4.0,
+     "std": 0.0,
+     "n": 5
+    },
+    "post_drift_acc": {
+     "mean": 0.8189333333333334,
+     "std": 0.004606275912033291,
+     "n": 5
+    },
+    "detection_delay": {
+     "mean": 16.92,
+     "std": 2.5458986625551305,
+     "n": 5
+    },
+    "detection_rate": {
+     "mean": 1.0,
+     "std": 0.0,
+     "n": 5
+    },
+    "recalls": {
+     "mean": 7.0,
+     "std": 0.0,
+     "n": 5
+    },
+    "retrieval_precision": {
+     "mean": 1.0,
+     "std": 0.0,
+     "n": 5
+    },
+    "retrieval_recall": {
+     "mean": 1.0,
+     "std": 0.0,
+     "n": 5
+    },
+    "false_match_rate": {
+     "mean": 0.0,
+     "std": 0.0,
+     "n": 5
+    },
+    "missed_match_rate": {
+     "mean": 0.0,
+     "std": 0.0,
+     "n": 5
+    },
+    "recall_success_rate": {
+     "mean": 1.0,
+     "std": 0.0,
+     "n": 5
+    },
+    "candidate_recall@1": {
+     "mean": 1.0,
+     "std": 0.0,
+     "n": 5
+    },
+    "candidate_recall@3": {
+     "mean": 1.0,
+     "std": 0.0,
+     "n": 5
+    },
+    "candidate_recall@5": {
+     "mean": 1.0,
+     "std": 0.0,
+     "n": 5
+    },
+    "high_conf_precision": null,
+    "conf_brier": {
+     "mean": 0.5510019821428571,
+     "std": 0.0195534752571934,
+     "n": 5
+    },
+    "conf_ece": {
+     "mean": 0.7412750000000001,
+     "std": 0.012590983168238142,
+     "n": 5
+    },
+    "match_ms": {
+     "mean": 1.661100298148416,
+     "std": 0.029283080663530976,
+     "n": 5
+    },
+    "fp_ms": {
+     "mean": 1.3515549712591057,
+     "std": 0.008482939585811772,
+     "n": 5
+    },
+    "bytes_per_concept": {
+     "mean": 1456.0,
+     "std": 0.0,
+     "n": 5
+    }
+   },
+   "paired non-inferiority + bonferroni, no floor": {
+    "accuracy": {
+     "mean": 0.9139878787878789,
+     "std": 0.002271037755855584,
+     "n": 5
+    },
+    "us_per_sample": {
+     "mean": 50.85245970908683,
+     "std": 1.0051993788011673,
+     "n": 5
+    },
+    "models_trained": {
+     "mean": 4.0,
+     "std": 0.0,
+     "n": 5
+    },
+    "post_drift_acc": {
+     "mean": 0.8189333333333334,
+     "std": 0.004606275912033291,
+     "n": 5
+    },
+    "detection_delay": {
+     "mean": 16.92,
+     "std": 2.5458986625551305,
+     "n": 5
+    },
+    "detection_rate": {
+     "mean": 1.0,
+     "std": 0.0,
+     "n": 5
+    },
+    "recalls": {
+     "mean": 7.0,
+     "std": 0.0,
+     "n": 5
+    },
+    "retrieval_precision": {
+     "mean": 1.0,
+     "std": 0.0,
+     "n": 5
+    },
+    "retrieval_recall": {
+     "mean": 1.0,
+     "std": 0.0,
+     "n": 5
+    },
+    "false_match_rate": {
+     "mean": 0.0,
+     "std": 0.0,
+     "n": 5
+    },
+    "missed_match_rate": {
+     "mean": 0.0,
+     "std": 0.0,
+     "n": 5
+    },
+    "recall_success_rate": {
+     "mean": 1.0,
+     "std": 0.0,
+     "n": 5
+    },
+    "candidate_recall@1": {
+     "mean": 1.0,
+     "std": 0.0,
+     "n": 5
+    },
+    "candidate_recall@3": {
+     "mean": 1.0,
+     "std": 0.0,
+     "n": 5
+    },
+    "candidate_recall@5": {
+     "mean": 1.0,
+     "std": 0.0,
+     "n": 5
+    },
+    "high_conf_precision": null,
+    "conf_brier": {
+     "mean": 0.5510019821428571,
+     "std": 0.0195534752571934,
+     "n": 5
+    },
+    "conf_ece": {
+     "mean": 0.7412750000000001,
+     "std": 0.012590983168238142,
+     "n": 5
+    },
+    "match_ms": {
+     "mean": 1.7113113381723948,
+     "std": 0.04999690666236845,
+     "n": 5
+    },
+    "fp_ms": {
+     "mean": 1.3709934191865614,
+     "std": 0.035938276607665055,
+     "n": 5
+    },
+    "bytes_per_concept": {
+     "mean": 1456.0,
+     "std": 0.0,
+     "n": 5
+    }
+   },
+   "paired superiority(0.02) + bonferroni + point floor": {
+    "accuracy": {
+     "mean": 0.9139878787878789,
+     "std": 0.002271037755855584,
+     "n": 5
+    },
+    "us_per_sample": {
+     "mean": 50.000352424236056,
+     "std": 0.24022846591705393,
+     "n": 5
+    },
+    "models_trained": {
+     "mean": 4.0,
+     "std": 0.0,
+     "n": 5
+    },
+    "post_drift_acc": {
+     "mean": 0.8189333333333334,
+     "std": 0.004606275912033291,
+     "n": 5
+    },
+    "detection_delay": {
+     "mean": 16.92,
+     "std": 2.5458986625551305,
+     "n": 5
+    },
+    "detection_rate": {
+     "mean": 1.0,
+     "std": 0.0,
+     "n": 5
+    },
+    "recalls": {
+     "mean": 7.0,
+     "std": 0.0,
+     "n": 5
+    },
+    "retrieval_precision": {
+     "mean": 1.0,
+     "std": 0.0,
+     "n": 5
+    },
+    "retrieval_recall": {
+     "mean": 1.0,
+     "std": 0.0,
+     "n": 5
+    },
+    "false_match_rate": {
+     "mean": 0.0,
+     "std": 0.0,
+     "n": 5
+    },
+    "missed_match_rate": {
+     "mean": 0.0,
+     "std": 0.0,
+     "n": 5
+    },
+    "recall_success_rate": {
+     "mean": 1.0,
+     "std": 0.0,
+     "n": 5
+    },
+    "candidate_recall@1": {
+     "mean": 1.0,
+     "std": 0.0,
+     "n": 5
+    },
+    "candidate_recall@3": {
+     "mean": 1.0,
+     "std": 0.0,
+     "n": 5
+    },
+    "candidate_recall@5": {
+     "mean": 1.0,
+     "std": 0.0,
+     "n": 5
+    },
+    "high_conf_precision": null,
+    "conf_brier": {
+     "mean": 0.5510019821428571,
+     "std": 0.0195534752571934,
+     "n": 5
+    },
+    "conf_ece": {
+     "mean": 0.7412750000000001,
+     "std": 0.012590983168238142,
+     "n": 5
+    },
+    "match_ms": {
+     "mean": 1.6548876999976614,
+     "std": 0.019503998128931527,
+     "n": 5
+    },
+    "fp_ms": {
+     "mean": 1.3438921832454875,
+     "std": 0.006100971035499528,
+     "n": 5
+    },
+    "bytes_per_concept": {
+     "mean": 1456.0,
+     "std": 0.0,
+     "n": 5
+    }
+   },
+   "paired non-inferiority + pick_best (biased) + point floor": {
+    "accuracy": {
+     "mean": 0.9139878787878789,
+     "std": 0.002271037755855584,
+     "n": 5
+    },
+    "us_per_sample": {
+     "mean": 50.203083478768484,
+     "std": 0.37295175447650747,
+     "n": 5
+    },
+    "models_trained": {
+     "mean": 4.0,
+     "std": 0.0,
+     "n": 5
+    },
+    "post_drift_acc": {
+     "mean": 0.8189333333333334,
+     "std": 0.004606275912033291,
+     "n": 5
+    },
+    "detection_delay": {
+     "mean": 16.92,
+     "std": 2.5458986625551305,
+     "n": 5
+    },
+    "detection_rate": {
+     "mean": 1.0,
+     "std": 0.0,
+     "n": 5
+    },
+    "recalls": {
+     "mean": 7.0,
+     "std": 0.0,
+     "n": 5
+    },
+    "retrieval_precision": {
+     "mean": 1.0,
+     "std": 0.0,
+     "n": 5
+    },
+    "retrieval_recall": {
+     "mean": 1.0,
+     "std": 0.0,
+     "n": 5
+    },
+    "false_match_rate": {
+     "mean": 0.0,
+     "std": 0.0,
+     "n": 5
+    },
+    "missed_match_rate": {
+     "mean": 0.0,
+     "std": 0.0,
+     "n": 5
+    },
+    "recall_success_rate": {
+     "mean": 1.0,
+     "std": 0.0,
+     "n": 5
+    },
+    "candidate_recall@1": {
+     "mean": 1.0,
+     "std": 0.0,
+     "n": 5
+    },
+    "candidate_recall@3": {
+     "mean": 1.0,
+     "std": 0.0,
+     "n": 5
+    },
+    "candidate_recall@5": {
+     "mean": 1.0,
+     "std": 0.0,
+     "n": 5
+    },
+    "high_conf_precision": null,
+    "conf_brier": {
+     "mean": 0.5510019821428571,
+     "std": 0.0195534752571934,
+     "n": 5
+    },
+    "conf_ece": {
+     "mean": 0.7412750000000001,
+     "std": 0.012590983168238142,
+     "n": 5
+    },
+    "match_ms": {
+     "mean": 1.667668487276718,
+     "std": 0.052006899565266135,
+     "n": 5
+    },
+    "fp_ms": {
+     "mean": 1.3495761628847305,
+     "std": 0.015925458833511513,
+     "n": 5
+    },
+    "bytes_per_concept": {
+     "mean": 1456.0,
+     "std": 0.0,
+     "n": 5
+    }
+   },
+   "paired non-inferiority + split_confirm + point floor": {
+    "accuracy": {
+     "mean": 0.9079030303030302,
+     "std": 0.0018401101895380786,
+     "n": 5
+    },
+    "us_per_sample": {
+     "mean": 50.73765698181171,
+     "std": 0.9249752127306271,
+     "n": 5
+    },
+    "models_trained": {
+     "mean": 4.0,
+     "std": 0.0,
+     "n": 5
+    },
+    "post_drift_acc": {
+     "mean": 0.7855333333333332,
+     "std": 0.004063933507767473,
+     "n": 5
+    },
+    "detection_delay": {
+     "mean": 17.24,
+     "std": 2.270330372434814,
+     "n": 5
+    },
+    "detection_rate": {
+     "mean": 1.0,
+     "std": 0.0,
+     "n": 5
+    },
+    "recalls": {
+     "mean": 7.0,
+     "std": 0.0,
+     "n": 5
+    },
+    "retrieval_precision": {
+     "mean": 1.0,
+     "std": 0.0,
+     "n": 5
+    },
+    "retrieval_recall": {
+     "mean": 1.0,
+     "std": 0.0,
+     "n": 5
+    },
+    "false_match_rate": {
+     "mean": 0.0,
+     "std": 0.0,
+     "n": 5
+    },
+    "missed_match_rate": {
+     "mean": 0.0,
+     "std": 0.0,
+     "n": 5
+    },
+    "recall_success_rate": {
+     "mean": 1.0,
+     "std": 0.0,
+     "n": 5
+    },
+    "candidate_recall@1": {
+     "mean": 1.0,
+     "std": 0.0,
+     "n": 5
+    },
+    "candidate_recall@3": {
+     "mean": 1.0,
+     "std": 0.0,
+     "n": 5
+    },
+    "candidate_recall@5": {
+     "mean": 1.0,
+     "std": 0.0,
+     "n": 5
+    },
+    "high_conf_precision": null,
+    "conf_brier": {
+     "mean": 0.5560210714285715,
+     "std": 0.021477213023249692,
+     "n": 5
+    },
+    "conf_ece": {
+     "mean": 0.7445642857142858,
+     "std": 0.013927621762497157,
+     "n": 5
+    },
+    "match_ms": {
+     "mean": 1.6906391054461973,
+     "std": 0.04588170469434405,
+     "n": 5
+    },
+    "fp_ms": {
+     "mean": 1.3497516370826232,
+     "std": 0.0275532540011466,
+     "n": 5
+    },
+    "bytes_per_concept": {
+     "mean": 1456.0,
+     "std": 0.0,
+     "n": 5
+    }
+   }
+  },
+  "noisy_recurring": {
+   "legacy point (acc>=0.70, no uncertainty)": {
+    "accuracy": {
+     "mean": 0.7429454545454546,
+     "std": 0.001745454545454568,
+     "n": 5
+    },
+    "us_per_sample": {
+     "mean": 53.29934995151592,
+     "std": 1.9718744715209326,
+     "n": 5
+    },
+    "models_trained": {
+     "mean": 6.6,
+     "std": 1.624807680927192,
+     "n": 5
+    },
+    "post_drift_acc": {
+     "mean": 0.6739333333333333,
+     "std": 0.005178588396250175,
+     "n": 5
+    },
+    "detection_delay": {
+     "mean": 29.580000000000002,
+     "std": 9.138358714780242,
+     "n": 5
+    },
+    "detection_rate": {
+     "mean": 1.0,
+     "std": 0.0,
+     "n": 5
+    },
+    "recalls": {
+     "mean": 6.4,
+     "std": 0.8,
+     "n": 5
+    },
+    "retrieval_precision": {
+     "mean": 1.0,
+     "std": 0.0,
+     "n": 5
+    },
+    "retrieval_recall": {
+     "mean": 0.7305555555555555,
+     "std": 0.14948471163415233,
+     "n": 5
+    },
+    "false_match_rate": {
+     "mean": 0.0,
+     "std": 0.0,
+     "n": 5
+    },
+    "missed_match_rate": {
+     "mean": 0.26944444444444443,
+     "std": 0.14948471163415233,
+     "n": 5
+    },
+    "recall_success_rate": {
+     "mean": 0.8238095238095238,
+     "std": 0.10605265453009564,
+     "n": 5
+    },
+    "candidate_recall@1": {
+     "mean": 0.9913043478260869,
+     "std": 0.017391304347826077,
+     "n": 5
+    },
+    "candidate_recall@3": {
+     "mean": 1.0,
+     "std": 0.0,
+     "n": 5
+    },
+    "candidate_recall@5": {
+     "mean": 1.0,
+     "std": 0.0,
+     "n": 5
+    },
+    "high_conf_precision": null,
+    "conf_brier": {
+     "mean": 0.6568022947299077,
+     "std": 0.03133378334387914,
+     "n": 5
+    },
+    "conf_ece": {
+     "mean": 0.8009875384277558,
+     "std": 0.02702990274414738,
+     "n": 5
+    },
+    "match_ms": {
+     "mean": 1.948422734000125,
+     "std": 0.17747094555316784,
+     "n": 5
+    },
+    "fp_ms": {
+     "mean": 1.3411225686027524,
+     "std": 0.04077771018421859,
+     "n": 5
+    },
+    "bytes_per_concept": {
+     "mean": 1456.0,
+     "std": 0.0,
+     "n": 5
+    }
+   },
+   "paired non-inferiority + bonferroni + significant-majority floor": {
+    "accuracy": {
+     "mean": 0.7419515151515153,
+     "std": 0.0025415265508052804,
+     "n": 5
+    },
+    "us_per_sample": {
+     "mean": 65.57869918788404,
+     "std": 3.0202639900236896,
+     "n": 5
+    },
+    "models_trained": {
+     "mean": 12.4,
+     "std": 2.244994432064365,
+     "n": 5
+    },
+    "post_drift_acc": {
+     "mean": 0.6674666666666667,
+     "std": 0.012448293055676312,
+     "n": 5
+    },
+    "detection_delay": {
+     "mean": 30.119999999999997,
+     "std": 6.144721311825296,
+     "n": 5
+    },
+    "detection_rate": {
+     "mean": 1.0,
+     "std": 0.0,
+     "n": 5
+    },
+    "recalls": {
+     "mean": 3.6,
+     "std": 1.624807680927192,
+     "n": 5
+    },
+    "retrieval_precision": {
+     "mean": 1.0,
+     "std": 0.0,
+     "n": 5
+    },
+    "retrieval_recall": {
+     "mean": 0.3061904761904762,
+     "std": 0.14505921849626896,
+     "n": 5
+    },
+    "false_match_rate": {
+     "mean": 0.0,
+     "std": 0.0,
+     "n": 5
+    },
+    "missed_match_rate": {
+     "mean": 0.6938095238095238,
+     "std": 0.14505921849626896,
+     "n": 5
+    },
+    "recall_success_rate": {
+     "mean": 0.8666666666666668,
+     "std": 0.19436506316151,
+     "n": 5
+    },
+    "candidate_recall@1": {
+     "mean": 0.990909090909091,
+     "std": 0.018181818181818167,
+     "n": 5
+    },
+    "candidate_recall@3": {
+     "mean": 1.0,
+     "std": 0.0,
+     "n": 5
+    },
+    "candidate_recall@5": {
+     "mean": 1.0,
+     "std": 0.0,
+     "n": 5
+    },
+    "high_conf_precision": null,
+    "conf_brier": {
+     "mean": 0.6584901119251336,
+     "std": 0.03535581347235988,
+     "n": 5
+    },
+    "conf_ece": {
+     "mean": 0.80109064171123,
+     "std": 0.03040436549608236,
+     "n": 5
+    },
+    "match_ms": {
+     "mean": 2.21590054045927,
+     "std": 0.04562726922025901,
+     "n": 5
+    },
+    "fp_ms": {
+     "mean": 1.3300268827849948,
+     "std": 0.0017441838043432813,
+     "n": 5
+    },
+    "bytes_per_concept": {
+     "mean": 1456.0,
+     "std": 0.0,
+     "n": 5
+    }
+   },
+   "paired non-inferiority + bonferroni + point floor (default)": {
+    "accuracy": {
+     "mean": 0.7425333333333334,
+     "std": 0.0017195040607326485,
+     "n": 5
+    },
+    "us_per_sample": {
+     "mean": 56.76773749091258,
+     "std": 2.0920120060786846,
+     "n": 5
+    },
+    "models_trained": {
+     "mean": 6.2,
+     "std": 1.469693845669907,
+     "n": 5
+    },
+    "post_drift_acc": {
+     "mean": 0.6711333333333334,
+     "std": 0.00678757033931217,
+     "n": 5
+    },
+    "detection_delay": {
+     "mean": 29.98,
+     "std": 8.942125027083886,
+     "n": 5
+    },
+    "detection_rate": {
+     "mean": 1.0,
+     "std": 0.0,
+     "n": 5
+    },
+    "recalls": {
+     "mean": 5.2,
+     "std": 1.32664991614216,
+     "n": 5
+    },
+    "retrieval_precision": {
+     "mean": 1.0,
+     "std": 0.0,
+     "n": 5
+    },
+    "retrieval_recall": {
+     "mean": 0.7071428571428572,
+     "std": 0.17949759818755803,
+     "n": 5
+    },
+    "false_match_rate": {
+     "mean": 0.0,
+     "std": 0.0,
+     "n": 5
+    },
+    "missed_match_rate": {
+     "mean": 0.2928571428571428,
+     "std": 0.17949759818755803,
+     "n": 5
+    },
+    "recall_success_rate": {
+     "mean": 0.838095238095238,
+     "std": 0.14937511563198214,
+     "n": 5
+    },
+    "candidate_recall@1": {
+     "mean": 0.9913043478260869,
+     "std": 0.017391304347826077,
+     "n": 5
+    },
+    "candidate_recall@3": {
+     "mean": 1.0,
+     "std": 0.0,
+     "n": 5
+    },
+    "candidate_recall@5": {
+     "mean": 1.0,
+     "std": 0.0,
+     "n": 5
+    },
+    "high_conf_precision": null,
+    "conf_brier": {
+     "mean": 0.6521487699173141,
+     "std": 0.0443045181801327,
+     "n": 5
+    },
+    "conf_ece": {
+     "mean": 0.7979768354459134,
+     "std": 0.035343510217094455,
+     "n": 5
+    },
+    "match_ms": {
+     "mean": 1.9915125005708507,
+     "std": 0.11501932915245311,
+     "n": 5
+    },
+    "fp_ms": {
+     "mean": 1.3312081464770118,
+     "std": 0.0062593708408400835,
+     "n": 5
+    },
+    "bytes_per_concept": {
+     "mean": 1456.0,
+     "std": 0.0,
+     "n": 5
+    }
+   },
+   "paired non-inferiority + bonferroni, no floor": {
+    "accuracy": {
+     "mean": 0.7425333333333334,
+     "std": 0.0017195040607326485,
+     "n": 5
+    },
+    "us_per_sample": {
+     "mean": 56.92144481213428,
+     "std": 2.22995332336119,
+     "n": 5
+    },
+    "models_trained": {
+     "mean": 6.0,
+     "std": 1.6733200530681511,
+     "n": 5
+    },
+    "post_drift_acc": {
+     "mean": 0.6712666666666667,
+     "std": 0.006900563584068864,
+     "n": 5
+    },
+    "detection_delay": {
+     "mean": 29.9,
+     "std": 9.034157403986274,
+     "n": 5
+    },
+    "detection_rate": {
+     "mean": 1.0,
+     "std": 0.0,
+     "n": 5
+    },
+    "recalls": {
+     "mean": 5.2,
+     "std": 1.32664991614216,
+     "n": 5
+    },
+    "retrieval_precision": {
+     "mean": 1.0,
+     "std": 0.0,
+     "n": 5
+    },
+    "retrieval_recall": {
+     "mean": 0.7321428571428572,
+     "std": 0.20763488362498048,
+     "n": 5
+    },
+    "false_match_rate": {
+     "mean": 0.0,
+     "std": 0.0,
+     "n": 5
+    },
+    "missed_match_rate": {
+     "mean": 0.2678571428571428,
+     "std": 0.2076348836249805,
+     "n": 5
+    },
+    "recall_success_rate": {
+     "mean": 0.838095238095238,
+     "std": 0.14937511563198214,
+     "n": 5
+    },
+    "candidate_recall@1": {
+     "mean": 0.9913043478260869,
+     "std": 0.017391304347826077,
+     "n": 5
+    },
+    "candidate_recall@3": {
+     "mean": 1.0,
+     "std": 0.0,
+     "n": 5
+    },
+    "candidate_recall@5": {
+     "mean": 1.0,
+     "std": 0.0,
+     "n": 5
+    },
+    "high_conf_precision": null,
+    "conf_brier": {
+     "mean": 0.6469375728158647,
+     "std": 0.03619620540640877,
+     "n": 5
+    },
+    "conf_ece": {
+     "mean": 0.7947913281995366,
+     "std": 0.03119581550918067,
+     "n": 5
+    },
+    "match_ms": {
+     "mean": 1.9018406209028869,
+     "std": 0.11851460871058042,
+     "n": 5
+    },
+    "fp_ms": {
+     "mean": 1.3401433519646795,
+     "std": 0.014353986319849351,
+     "n": 5
+    },
+    "bytes_per_concept": {
+     "mean": 1456.0,
+     "std": 0.0,
+     "n": 5
+    }
+   },
+   "paired superiority(0.02) + bonferroni + point floor": {
+    "accuracy": {
+     "mean": 0.7424969696969698,
+     "std": 0.001648395719515678,
+     "n": 5
+    },
+    "us_per_sample": {
+     "mean": 57.18927469090638,
+     "std": 2.498353221434455,
+     "n": 5
+    },
+    "models_trained": {
+     "mean": 6.4,
+     "std": 1.3564659966250536,
+     "n": 5
+    },
+    "post_drift_acc": {
+     "mean": 0.6709333333333334,
+     "std": 0.006874752520798218,
+     "n": 5
+    },
+    "detection_delay": {
+     "mean": 30.18,
+     "std": 9.235669981111279,
+     "n": 5
+    },
+    "detection_rate": {
+     "mean": 1.0,
+     "std": 0.0,
+     "n": 5
+    },
+    "recalls": {
+     "mean": 4.8,
+     "std": 1.6,
+     "n": 5
+    },
+    "retrieval_precision": {
+     "mean": 1.0,
+     "std": 0.0,
+     "n": 5
+    },
+    "retrieval_recall": {
+     "mean": 0.6607142857142858,
+     "std": 0.19756166694199045,
+     "n": 5
+    },
+    "false_match_rate": {
+     "mean": 0.0,
+     "std": 0.0,
+     "n": 5
+    },
+    "missed_match_rate": {
+     "mean": 0.33928571428571425,
+     "std": 0.19756166694199045,
+     "n": 5
+    },
+    "recall_success_rate": {
+     "mean": 0.8914285714285715,
+     "std": 0.15586493367983836,
+     "n": 5
+    },
+    "candidate_recall@1": {
+     "mean": 0.9913043478260869,
+     "std": 0.017391304347826077,
+     "n": 5
+    },
+    "candidate_recall@3": {
+     "mean": 1.0,
+     "std": 0.0,
+     "n": 5
+    },
+    "candidate_recall@5": {
+     "mean": 1.0,
+     "std": 0.0,
+     "n": 5
+    },
+    "high_conf_precision": null,
+    "conf_brier": {
+     "mean": 0.6512856580732361,
+     "std": 0.045627822556762766,
+     "n": 5
+    },
+    "conf_ece": {
+     "mean": 0.7974664906183271,
+     "std": 0.03635022396524925,
+     "n": 5
+    },
+    "match_ms": {
+     "mean": 1.9923763106339472,
+     "std": 0.11666529100680773,
+     "n": 5
+    },
+    "fp_ms": {
+     "mean": 1.339132268902322,
+     "std": 0.01744515064821105,
+     "n": 5
+    },
+    "bytes_per_concept": {
+     "mean": 1456.0,
+     "std": 0.0,
+     "n": 5
+    }
+   },
+   "paired non-inferiority + pick_best (biased) + point floor": {
+    "accuracy": {
+     "mean": 0.7425333333333334,
+     "std": 0.0017195040607326485,
+     "n": 5
+    },
+    "us_per_sample": {
+     "mean": 56.28253450910658,
+     "std": 1.8380249288630084,
+     "n": 5
+    },
+    "models_trained": {
+     "mean": 6.2,
+     "std": 1.469693845669907,
+     "n": 5
+    },
+    "post_drift_acc": {
+     "mean": 0.6711333333333334,
+     "std": 0.00678757033931217,
+     "n": 5
+    },
+    "detection_delay": {
+     "mean": 29.98,
+     "std": 8.942125027083886,
+     "n": 5
+    },
+    "detection_rate": {
+     "mean": 1.0,
+     "std": 0.0,
+     "n": 5
+    },
+    "recalls": {
+     "mean": 5.2,
+     "std": 1.32664991614216,
+     "n": 5
+    },
+    "retrieval_precision": {
+     "mean": 1.0,
+     "std": 0.0,
+     "n": 5
+    },
+    "retrieval_recall": {
+     "mean": 0.7071428571428572,
+     "std": 0.17949759818755803,
+     "n": 5
+    },
+    "false_match_rate": {
+     "mean": 0.0,
+     "std": 0.0,
+     "n": 5
+    },
+    "missed_match_rate": {
+     "mean": 0.2928571428571428,
+     "std": 0.17949759818755803,
+     "n": 5
+    },
+    "recall_success_rate": {
+     "mean": 0.838095238095238,
+     "std": 0.14937511563198214,
+     "n": 5
+    },
+    "candidate_recall@1": {
+     "mean": 0.9913043478260869,
+     "std": 0.017391304347826077,
+     "n": 5
+    },
+    "candidate_recall@3": {
+     "mean": 1.0,
+     "std": 0.0,
+     "n": 5
+    },
+    "candidate_recall@5": {
+     "mean": 1.0,
+     "std": 0.0,
+     "n": 5
+    },
+    "high_conf_precision": null,
+    "conf_brier": {
+     "mean": 0.6521487699173141,
+     "std": 0.0443045181801327,
+     "n": 5
+    },
+    "conf_ece": {
+     "mean": 0.7979768354459134,
+     "std": 0.035343510217094455,
+     "n": 5
+    },
+    "match_ms": {
+     "mean": 1.9820136436057563,
+     "std": 0.11399058069607247,
+     "n": 5
+    },
+    "fp_ms": {
+     "mean": 1.3293784820980155,
+     "std": 0.00504588973664881,
+     "n": 5
+    },
+    "bytes_per_concept": {
+     "mean": 1456.0,
+     "std": 0.0,
+     "n": 5
+    }
+   },
+   "paired non-inferiority + split_confirm + point floor": {
+    "accuracy": {
+     "mean": 0.7406181818181818,
+     "std": 0.0032441853048201467,
+     "n": 5
+    },
+    "us_per_sample": {
+     "mean": 55.538620727262845,
+     "std": 2.0679987678697014,
+     "n": 5
+    },
+    "models_trained": {
+     "mean": 7.8,
+     "std": 2.7856776554368237,
+     "n": 5
+    },
+    "post_drift_acc": {
+     "mean": 0.6586666666666667,
+     "std": 0.012090400232323911,
+     "n": 5
+    },
+    "detection_delay": {
+     "mean": 32.620000000000005,
+     "std": 9.3081469691878,
+     "n": 5
+    },
+    "detection_rate": {
+     "mean": 1.0,
+     "std": 0.0,
+     "n": 5
+    },
+    "recalls": {
+     "mean": 5.0,
+     "std": 1.5491933384829668,
+     "n": 5
+    },
+    "retrieval_precision": {
+     "mean": 1.0,
+     "std": 0.0,
+     "n": 5
+    },
+    "retrieval_recall": {
+     "mean": 0.6027922077922078,
+     "std": 0.22981927678750916,
+     "n": 5
+    },
+    "false_match_rate": {
+     "mean": 0.0,
+     "std": 0.0,
+     "n": 5
+    },
+    "missed_match_rate": {
+     "mean": 0.39720779220779223,
+     "std": 0.22981927678750919,
+     "n": 5
+    },
+    "recall_success_rate": {
+     "mean": 0.66,
+     "std": 0.14204850501775013,
+     "n": 5
+    },
+    "candidate_recall@1": {
+     "mean": 0.990909090909091,
+     "std": 0.018181818181818167,
+     "n": 5
+    },
+    "candidate_recall@3": {
+     "mean": 1.0,
+     "std": 0.0,
+     "n": 5
+    },
+    "candidate_recall@5": {
+     "mean": 1.0,
+     "std": 0.0,
+     "n": 5
+    },
+    "high_conf_precision": null,
+    "conf_brier": {
+     "mean": 0.6510704948873348,
+     "std": 0.04366570093839382,
+     "n": 5
+    },
+    "conf_ece": {
+     "mean": 0.798288951048951,
+     "std": 0.03551523787859108,
+     "n": 5
+    },
+    "match_ms": {
+     "mean": 1.9250206006737831,
+     "std": 0.15758381965073318,
+     "n": 5
+    },
+    "fp_ms": {
+     "mean": 1.3294186349827484,
+     "std": 0.0035050515613506616,
+     "n": 5
+    },
+    "bytes_per_concept": {
+     "mean": 1456.0,
+     "std": 0.0,
+     "n": 5
+    }
+   }
+  },
+  "similar_x_different_y": {
+   "legacy point (acc>=0.70, no uncertainty)": {
+    "accuracy": {
+     "mean": 0.90852,
+     "std": 0.0017964904057015615,
+     "n": 5
+    },
+    "us_per_sample": {
+     "mean": 49.609925586664765,
+     "std": 0.5832524717901196,
+     "n": 5
+    },
+    "models_trained": {
+     "mean": 3.0,
+     "std": 0.0,
+     "n": 5
+    },
+    "post_drift_acc": {
+     "mean": 0.7912592592592593,
+     "std": 0.002921938210861652,
+     "n": 5
+    },
+    "detection_delay": {
+     "mean": 12.688888888888888,
+     "std": 1.760190786516698,
+     "n": 5
+    },
+    "detection_rate": {
+     "mean": 1.0,
+     "std": 0.0,
+     "n": 5
+    },
+    "recalls": {
+     "mean": 7.0,
+     "std": 0.0,
+     "n": 5
+    },
+    "retrieval_precision": {
+     "mean": 1.0,
+     "std": 0.0,
+     "n": 5
+    },
+    "retrieval_recall": {
+     "mean": 1.0,
+     "std": 0.0,
+     "n": 5
+    },
+    "false_match_rate": {
+     "mean": 0.0,
+     "std": 0.0,
+     "n": 5
+    },
+    "missed_match_rate": {
+     "mean": 0.0,
+     "std": 0.0,
+     "n": 5
+    },
+    "recall_success_rate": {
+     "mean": 1.0,
+     "std": 0.0,
+     "n": 5
+    },
+    "candidate_recall@1": {
+     "mean": 0.6892857142857143,
+     "std": 0.18231784311571742,
+     "n": 5
+    },
+    "candidate_recall@3": {
+     "mean": 1.0,
+     "std": 0.0,
+     "n": 5
+    },
+    "candidate_recall@5": {
+     "mean": 1.0,
+     "std": 0.0,
+     "n": 5
+    },
+    "high_conf_precision": null,
+    "conf_brier": {
+     "mean": 0.4874396464285714,
+     "std": 0.11566071861532028,
+     "n": 5
+    },
+    "conf_ece": {
+     "mean": 0.5372392857142858,
+     "std": 0.1641907534558757,
+     "n": 5
+    },
+    "match_ms": {
+     "mean": 1.3441910910821915,
+     "std": 0.00887837638683801,
+     "n": 5
+    },
+    "fp_ms": {
+     "mean": 1.3520484728528965,
+     "std": 0.016654177761352997,
+     "n": 5
+    },
+    "bytes_per_concept": {
+     "mean": 1456.0,
+     "std": 0.0,
+     "n": 5
+    }
+   },
+   "paired non-inferiority + bonferroni + significant-majority floor": {
+    "accuracy": {
+     "mean": 0.90852,
+     "std": 0.0017964904057015615,
+     "n": 5
+    },
+    "us_per_sample": {
+     "mean": 54.56532182667919,
+     "std": 0.6019934679381695,
+     "n": 5
+    },
+    "models_trained": {
+     "mean": 3.0,
+     "std": 0.0,
+     "n": 5
+    },
+    "post_drift_acc": {
+     "mean": 0.7912592592592593,
+     "std": 0.002921938210861652,
+     "n": 5
+    },
+    "detection_delay": {
+     "mean": 12.688888888888888,
+     "std": 1.760190786516698,
+     "n": 5
+    },
+    "detection_rate": {
+     "mean": 1.0,
+     "std": 0.0,
+     "n": 5
+    },
+    "recalls": {
+     "mean": 7.0,
+     "std": 0.0,
+     "n": 5
+    },
+    "retrieval_precision": {
+     "mean": 1.0,
+     "std": 0.0,
+     "n": 5
+    },
+    "retrieval_recall": {
+     "mean": 1.0,
+     "std": 0.0,
+     "n": 5
+    },
+    "false_match_rate": {
+     "mean": 0.0,
+     "std": 0.0,
+     "n": 5
+    },
+    "missed_match_rate": {
+     "mean": 0.0,
+     "std": 0.0,
+     "n": 5
+    },
+    "recall_success_rate": {
+     "mean": 1.0,
+     "std": 0.0,
+     "n": 5
+    },
+    "candidate_recall@1": {
+     "mean": 0.6892857142857143,
+     "std": 0.18231784311571742,
+     "n": 5
+    },
+    "candidate_recall@3": {
+     "mean": 1.0,
+     "std": 0.0,
+     "n": 5
+    },
+    "candidate_recall@5": {
+     "mean": 1.0,
+     "std": 0.0,
+     "n": 5
+    },
+    "high_conf_precision": null,
+    "conf_brier": {
+     "mean": 0.4874396464285714,
+     "std": 0.11566071861532028,
+     "n": 5
+    },
+    "conf_ece": {
+     "mean": 0.5372392857142858,
+     "std": 0.1641907534558757,
+     "n": 5
+    },
+    "match_ms": {
+     "mean": 1.3320112089200442,
+     "std": 0.012935844485183208,
+     "n": 5
+    },
+    "fp_ms": {
+     "mean": 1.347428858285723,
+     "std": 0.019547570846461297,
+     "n": 5
+    },
+    "bytes_per_concept": {
+     "mean": 1456.0,
+     "std": 0.0,
+     "n": 5
+    }
+   },
+   "paired non-inferiority + bonferroni + point floor (default)": {
+    "accuracy": {
+     "mean": 0.90852,
+     "std": 0.0017964904057015615,
+     "n": 5
+    },
+    "us_per_sample": {
+     "mean": 51.93844857334625,
+     "std": 0.36236918961743914,
+     "n": 5
+    },
+    "models_trained": {
+     "mean": 3.0,
+     "std": 0.0,
+     "n": 5
+    },
+    "post_drift_acc": {
+     "mean": 0.7912592592592593,
+     "std": 0.002921938210861652,
+     "n": 5
+    },
+    "detection_delay": {
+     "mean": 12.688888888888888,
+     "std": 1.760190786516698,
+     "n": 5
+    },
+    "detection_rate": {
+     "mean": 1.0,
+     "std": 0.0,
+     "n": 5
+    },
+    "recalls": {
+     "mean": 7.0,
+     "std": 0.0,
+     "n": 5
+    },
+    "retrieval_precision": {
+     "mean": 1.0,
+     "std": 0.0,
+     "n": 5
+    },
+    "retrieval_recall": {
+     "mean": 1.0,
+     "std": 0.0,
+     "n": 5
+    },
+    "false_match_rate": {
+     "mean": 0.0,
+     "std": 0.0,
+     "n": 5
+    },
+    "missed_match_rate": {
+     "mean": 0.0,
+     "std": 0.0,
+     "n": 5
+    },
+    "recall_success_rate": {
+     "mean": 1.0,
+     "std": 0.0,
+     "n": 5
+    },
+    "candidate_recall@1": {
+     "mean": 0.6892857142857143,
+     "std": 0.18231784311571742,
+     "n": 5
+    },
+    "candidate_recall@3": {
+     "mean": 1.0,
+     "std": 0.0,
+     "n": 5
+    },
+    "candidate_recall@5": {
+     "mean": 1.0,
+     "std": 0.0,
+     "n": 5
+    },
+    "high_conf_precision": null,
+    "conf_brier": {
+     "mean": 0.4874396464285714,
+     "std": 0.11566071861532028,
+     "n": 5
+    },
+    "conf_ece": {
+     "mean": 0.5372392857142858,
+     "std": 0.1641907534558757,
+     "n": 5
+    },
+    "match_ms": {
+     "mean": 1.3346032443930906,
+     "std": 0.012806157431655708,
+     "n": 5
+    },
+    "fp_ms": {
+     "mean": 1.3449434489917163,
+     "std": 0.014407259708117685,
+     "n": 5
+    },
+    "bytes_per_concept": {
+     "mean": 1456.0,
+     "std": 0.0,
+     "n": 5
+    }
+   },
+   "paired non-inferiority + bonferroni, no floor": {
+    "accuracy": {
+     "mean": 0.90852,
+     "std": 0.0017964904057015615,
+     "n": 5
+    },
+    "us_per_sample": {
+     "mean": 51.826439346647625,
+     "std": 0.4727687503093856,
+     "n": 5
+    },
+    "models_trained": {
+     "mean": 3.0,
+     "std": 0.0,
+     "n": 5
+    },
+    "post_drift_acc": {
+     "mean": 0.7912592592592593,
+     "std": 0.002921938210861652,
+     "n": 5
+    },
+    "detection_delay": {
+     "mean": 12.688888888888888,
+     "std": 1.760190786516698,
+     "n": 5
+    },
+    "detection_rate": {
+     "mean": 1.0,
+     "std": 0.0,
+     "n": 5
+    },
+    "recalls": {
+     "mean": 7.0,
+     "std": 0.0,
+     "n": 5
+    },
+    "retrieval_precision": {
+     "mean": 1.0,
+     "std": 0.0,
+     "n": 5
+    },
+    "retrieval_recall": {
+     "mean": 1.0,
+     "std": 0.0,
+     "n": 5
+    },
+    "false_match_rate": {
+     "mean": 0.0,
+     "std": 0.0,
+     "n": 5
+    },
+    "missed_match_rate": {
+     "mean": 0.0,
+     "std": 0.0,
+     "n": 5
+    },
+    "recall_success_rate": {
+     "mean": 1.0,
+     "std": 0.0,
+     "n": 5
+    },
+    "candidate_recall@1": {
+     "mean": 0.6892857142857143,
+     "std": 0.18231784311571742,
+     "n": 5
+    },
+    "candidate_recall@3": {
+     "mean": 1.0,
+     "std": 0.0,
+     "n": 5
+    },
+    "candidate_recall@5": {
+     "mean": 1.0,
+     "std": 0.0,
+     "n": 5
+    },
+    "high_conf_precision": null,
+    "conf_brier": {
+     "mean": 0.4874396464285714,
+     "std": 0.11566071861532028,
+     "n": 5
+    },
+    "conf_ece": {
+     "mean": 0.5372392857142858,
+     "std": 0.1641907534558757,
+     "n": 5
+    },
+    "match_ms": {
+     "mean": 1.3420583111656015,
+     "std": 0.01749025268967745,
+     "n": 5
+    },
+    "fp_ms": {
+     "mean": 1.3459736079553206,
+     "std": 0.01908248419072804,
+     "n": 5
+    },
+    "bytes_per_concept": {
+     "mean": 1456.0,
+     "std": 0.0,
+     "n": 5
+    }
+   },
+   "paired superiority(0.02) + bonferroni + point floor": {
+    "accuracy": {
+     "mean": 0.90852,
+     "std": 0.0017964904057015615,
+     "n": 5
+    },
+    "us_per_sample": {
+     "mean": 51.75151775999741,
+     "std": 0.27889562704770476,
+     "n": 5
+    },
+    "models_trained": {
+     "mean": 3.0,
+     "std": 0.0,
+     "n": 5
+    },
+    "post_drift_acc": {
+     "mean": 0.7912592592592593,
+     "std": 0.002921938210861652,
+     "n": 5
+    },
+    "detection_delay": {
+     "mean": 12.688888888888888,
+     "std": 1.760190786516698,
+     "n": 5
+    },
+    "detection_rate": {
+     "mean": 1.0,
+     "std": 0.0,
+     "n": 5
+    },
+    "recalls": {
+     "mean": 7.0,
+     "std": 0.0,
+     "n": 5
+    },
+    "retrieval_precision": {
+     "mean": 1.0,
+     "std": 0.0,
+     "n": 5
+    },
+    "retrieval_recall": {
+     "mean": 1.0,
+     "std": 0.0,
+     "n": 5
+    },
+    "false_match_rate": {
+     "mean": 0.0,
+     "std": 0.0,
+     "n": 5
+    },
+    "missed_match_rate": {
+     "mean": 0.0,
+     "std": 0.0,
+     "n": 5
+    },
+    "recall_success_rate": {
+     "mean": 1.0,
+     "std": 0.0,
+     "n": 5
+    },
+    "candidate_recall@1": {
+     "mean": 0.6892857142857143,
+     "std": 0.18231784311571742,
+     "n": 5
+    },
+    "candidate_recall@3": {
+     "mean": 1.0,
+     "std": 0.0,
+     "n": 5
+    },
+    "candidate_recall@5": {
+     "mean": 1.0,
+     "std": 0.0,
+     "n": 5
+    },
+    "high_conf_precision": null,
+    "conf_brier": {
+     "mean": 0.4874396464285714,
+     "std": 0.11566071861532028,
+     "n": 5
+    },
+    "conf_ece": {
+     "mean": 0.5372392857142858,
+     "std": 0.1641907534558757,
+     "n": 5
+    },
+    "match_ms": {
+     "mean": 1.3308490422039339,
+     "std": 0.011471458626454769,
+     "n": 5
+    },
+    "fp_ms": {
+     "mean": 1.336332948361188,
+     "std": 0.006280007855549189,
+     "n": 5
+    },
+    "bytes_per_concept": {
+     "mean": 1456.0,
+     "std": 0.0,
+     "n": 5
+    }
+   },
+   "paired non-inferiority + pick_best (biased) + point floor": {
+    "accuracy": {
+     "mean": 0.90852,
+     "std": 0.0017964904057015615,
+     "n": 5
+    },
+    "us_per_sample": {
+     "mean": 51.55272853330341,
+     "std": 0.36395449740405184,
+     "n": 5
+    },
+    "models_trained": {
+     "mean": 3.0,
+     "std": 0.0,
+     "n": 5
+    },
+    "post_drift_acc": {
+     "mean": 0.7912592592592593,
+     "std": 0.002921938210861652,
+     "n": 5
+    },
+    "detection_delay": {
+     "mean": 12.688888888888888,
+     "std": 1.760190786516698,
+     "n": 5
+    },
+    "detection_rate": {
+     "mean": 1.0,
+     "std": 0.0,
+     "n": 5
+    },
+    "recalls": {
+     "mean": 7.0,
+     "std": 0.0,
+     "n": 5
+    },
+    "retrieval_precision": {
+     "mean": 1.0,
+     "std": 0.0,
+     "n": 5
+    },
+    "retrieval_recall": {
+     "mean": 1.0,
+     "std": 0.0,
+     "n": 5
+    },
+    "false_match_rate": {
+     "mean": 0.0,
+     "std": 0.0,
+     "n": 5
+    },
+    "missed_match_rate": {
+     "mean": 0.0,
+     "std": 0.0,
+     "n": 5
+    },
+    "recall_success_rate": {
+     "mean": 1.0,
+     "std": 0.0,
+     "n": 5
+    },
+    "candidate_recall@1": {
+     "mean": 0.6892857142857143,
+     "std": 0.18231784311571742,
+     "n": 5
+    },
+    "candidate_recall@3": {
+     "mean": 1.0,
+     "std": 0.0,
+     "n": 5
+    },
+    "candidate_recall@5": {
+     "mean": 1.0,
+     "std": 0.0,
+     "n": 5
+    },
+    "high_conf_precision": null,
+    "conf_brier": {
+     "mean": 0.4874396464285714,
+     "std": 0.11566071861532028,
+     "n": 5
+    },
+    "conf_ece": {
+     "mean": 0.5372392857142858,
+     "std": 0.1641907534558757,
+     "n": 5
+    },
+    "match_ms": {
+     "mean": 1.3295619444054156,
+     "std": 0.011128947912933318,
+     "n": 5
+    },
+    "fp_ms": {
+     "mean": 1.336538745704726,
+     "std": 0.008313427256939544,
+     "n": 5
+    },
+    "bytes_per_concept": {
+     "mean": 1456.0,
+     "std": 0.0,
+     "n": 5
+    }
+   },
+   "paired non-inferiority + split_confirm + point floor": {
+    "accuracy": {
+     "mean": 0.8985199999999999,
+     "std": 0.0013755968401630897,
+     "n": 5
+    },
+    "us_per_sample": {
+     "mean": 52.52359574666722,
+     "std": 2.813432700192709,
+     "n": 5
+    },
+    "models_trained": {
+     "mean": 3.0,
+     "std": 0.0,
+     "n": 5
+    },
+    "post_drift_acc": {
+     "mean": 0.7355555555555555,
+     "std": 0.003567879875197742,
+     "n": 5
+    },
+    "detection_delay": {
+     "mean": 12.88888888888889,
+     "std": 1.6584985028484698,
+     "n": 5
+    },
+    "detection_rate": {
+     "mean": 1.0,
+     "std": 0.0,
+     "n": 5
+    },
+    "recalls": {
+     "mean": 7.0,
+     "std": 0.0,
+     "n": 5
+    },
+    "retrieval_precision": {
+     "mean": 1.0,
+     "std": 0.0,
+     "n": 5
+    },
+    "retrieval_recall": {
+     "mean": 1.0,
+     "std": 0.0,
+     "n": 5
+    },
+    "false_match_rate": {
+     "mean": 0.0,
+     "std": 0.0,
+     "n": 5
+    },
+    "missed_match_rate": {
+     "mean": 0.0,
+     "std": 0.0,
+     "n": 5
+    },
+    "recall_success_rate": {
+     "mean": 1.0,
+     "std": 0.0,
+     "n": 5
+    },
+    "candidate_recall@1": {
+     "mean": 0.6892857142857143,
+     "std": 0.16428571428571428,
+     "n": 5
+    },
+    "candidate_recall@3": {
+     "mean": 1.0,
+     "std": 0.0,
+     "n": 5
+    },
+    "candidate_recall@5": {
+     "mean": 1.0,
+     "std": 0.0,
+     "n": 5
+    },
+    "high_conf_precision": null,
+    "conf_brier": {
+     "mean": 0.4898995392857143,
+     "std": 0.10055066102913035,
+     "n": 5
+    },
+    "conf_ece": {
+     "mean": 0.5438392857142856,
+     "std": 0.14003573295806335,
+     "n": 5
+    },
+    "match_ms": {
+     "mean": 1.339770139895538,
+     "std": 0.027594782288752038,
+     "n": 5
+    },
+    "fp_ms": {
+     "mean": 1.3818916622502555,
+     "std": 0.08233182746329648,
+     "n": 5
+    },
+    "bytes_per_concept": {
+     "mean": 1456.0,
+     "std": 0.0,
+     "n": 5
+    }
+   }
+  },
+  "sea": {
+   "legacy point (acc>=0.70, no uncertainty)": {
+    "accuracy": {
+     "mean": 0.8582833333333335,
+     "std": 0.00288992502786257,
+     "n": 5
+    },
+    "us_per_sample": {
+     "mean": 44.367882599999575,
+     "std": 0.4802882491070186,
+     "n": 5
+    },
+    "models_trained": {
+     "mean": 1.6,
+     "std": 0.4898979485566356,
+     "n": 5
+    },
+    "post_drift_acc": {
+     "mean": 0.8279047619047619,
+     "std": 0.013966594418009971,
+     "n": 5
+    },
+    "detection_delay": {
+     "mean": 165.14761904761903,
+     "std": 83.33267537155218,
+     "n": 5
+    },
+    "detection_rate": {
+     "mean": 0.6285714285714286,
+     "std": 0.19378085666072198,
+     "n": 5
+    },
+    "recalls": {
+     "mean": 0.0,
+     "std": 0.0,
+     "n": 5
+    },
+    "retrieval_precision": null,
+    "retrieval_recall": null,
+    "false_match_rate": {
+     "mean": 0.0,
+     "std": 0.0,
+     "n": 3
+    },
+    "missed_match_rate": null,
+    "recall_success_rate": null,
+    "candidate_recall@1": {
+     "mean": 0.8,
+     "std": 0.4,
+     "n": 5
+    },
+    "candidate_recall@3": {
+     "mean": 1.0,
+     "std": 0.0,
+     "n": 5
+    },
+    "candidate_recall@5": {
+     "mean": 1.0,
+     "std": 0.0,
+     "n": 5
+    },
+    "high_conf_precision": null,
+    "conf_brier": {
+     "mean": 0.3904045000000001,
+     "std": 0.18520053547924747,
+     "n": 5
+    },
+    "conf_ece": {
+     "mean": 0.5871000000000001,
+     "std": 0.21344516860308646,
+     "n": 5
+    },
+    "match_ms": {
+     "mean": 0.6220091037820649,
+     "std": 0.054697138069948505,
+     "n": 5
+    },
+    "fp_ms": {
+     "mean": 1.0282536017390425,
+     "std": 0.007031285613299969,
+     "n": 5
+    },
+    "bytes_per_concept": {
+     "mean": 1096.0,
+     "std": 0.0,
+     "n": 5
+    }
+   },
+   "paired non-inferiority + bonferroni + significant-majority floor": {
+    "accuracy": {
+     "mean": 0.8583000000000001,
+     "std": 0.0030416552511201424,
+     "n": 5
+    },
+    "us_per_sample": {
+     "mean": 50.219607833317546,
+     "std": 3.6931429810227026,
+     "n": 5
+    },
+    "models_trained": {
+     "mean": 3.6,
+     "std": 1.019803902718557,
+     "n": 5
+    },
+    "post_drift_acc": {
+     "mean": 0.8307619047619049,
+     "std": 0.011844035593425159,
+     "n": 5
+    },
+    "detection_delay": {
+     "mean": 164.34999999999997,
+     "std": 83.1134833291874,
+     "n": 5
+    },
+    "detection_rate": {
+     "mean": 0.5999999999999999,
+     "std": 0.13997084244475302,
+     "n": 5
+    },
+    "recalls": {
+     "mean": 0.4,
+     "std": 0.8000000000000002,
+     "n": 5
+    },
+    "retrieval_precision": {
+     "mean": 0.0,
+     "std": 0.0,
+     "n": 1
+    },
+    "retrieval_recall": {
+     "mean": 0.0,
+     "std": 0.0,
+     "n": 3
+    },
+    "false_match_rate": {
+     "mean": 0.06666666666666667,
+     "std": 0.13333333333333333,
+     "n": 5
+    },
+    "missed_match_rate": {
+     "mean": 1.0,
+     "std": 0.0,
+     "n": 3
+    },
+    "recall_success_rate": {
+     "mean": 0.0,
+     "std": 0.0,
+     "n": 1
+    },
+    "candidate_recall@1": {
+     "mean": 0.6799999999999999,
+     "std": 0.41182520563948005,
+     "n": 5
+    },
+    "candidate_recall@3": {
+     "mean": 1.0,
+     "std": 0.0,
+     "n": 5
+    },
+    "candidate_recall@5": {
+     "mean": 1.0,
+     "std": 0.0,
+     "n": 5
+    },
+    "high_conf_precision": null,
+    "conf_brier": {
+     "mean": 0.39830696000000004,
+     "std": 0.2211921275575295,
+     "n": 5
+    },
+    "conf_ece": {
+     "mean": 0.5217600000000001,
+     "std": 0.2753422786278925,
+     "n": 5
+    },
+    "match_ms": {
+     "mean": 0.9801366800032459,
+     "std": 0.26433573428434076,
+     "n": 5
+    },
+    "fp_ms": {
+     "mean": 1.0318821743781577,
+     "std": 0.009084907535307498,
+     "n": 5
+    },
+    "bytes_per_concept": {
+     "mean": 1096.0,
+     "std": 0.0,
+     "n": 5
+    }
+   },
+   "paired non-inferiority + bonferroni + point floor (default)": {
+    "accuracy": {
+     "mean": 0.8581000000000001,
+     "std": 0.003078329272691751,
+     "n": 5
+    },
+    "us_per_sample": {
+     "mean": 46.13408473333039,
+     "std": 1.1295024579472686,
+     "n": 5
+    },
+    "models_trained": {
+     "mean": 1.8,
+     "std": 0.7483314773547883,
+     "n": 5
+    },
+    "post_drift_acc": {
+     "mean": 0.8274285714285714,
+     "std": 0.014281269149696605,
+     "n": 5
+    },
+    "detection_delay": {
+     "mean": 164.14761904761903,
+     "std": 84.1286516156995,
+     "n": 5
+    },
+    "detection_rate": {
+     "mean": 0.6285714285714286,
+     "std": 0.19378085666072198,
+     "n": 5
+    },
+    "recalls": {
+     "mean": 0.0,
+     "std": 0.0,
+     "n": 5
+    },
+    "retrieval_precision": null,
+    "retrieval_recall": {
+     "mean": 0.0,
+     "std": 0.0,
+     "n": 1
+    },
+    "false_match_rate": {
+     "mean": 0.0,
+     "std": 0.0,
+     "n": 3
+    },
+    "missed_match_rate": {
+     "mean": 1.0,
+     "std": 0.0,
+     "n": 1
+    },
+    "recall_success_rate": null,
+    "candidate_recall@1": {
+     "mean": 0.9,
+     "std": 0.2,
+     "n": 5
+    },
+    "candidate_recall@3": {
+     "mean": 1.0,
+     "std": 0.0,
+     "n": 5
+    },
+    "candidate_recall@5": {
+     "mean": 1.0,
+     "std": 0.0,
+     "n": 5
+    },
+    "high_conf_precision": null,
+    "conf_brier": {
+     "mean": 0.4567312,
+     "std": 0.06026729426197931,
+     "n": 5
+    },
+    "conf_ece": {
+     "mean": 0.6264,
+     "std": 0.1356559619036333,
+     "n": 5
+    },
+    "match_ms": {
+     "mean": 0.6897342357197803,
+     "std": 0.19765342117107476,
+     "n": 5
+    },
+    "fp_ms": {
+     "mean": 1.0267366256990882,
+     "std": 0.006783927075469062,
+     "n": 5
+    },
+    "bytes_per_concept": {
+     "mean": 1096.0,
+     "std": 0.0,
+     "n": 5
+    }
+   },
+   "paired non-inferiority + bonferroni, no floor": {
+    "accuracy": {
+     "mean": 0.8582833333333335,
+     "std": 0.00288992502786257,
+     "n": 5
+    },
+    "us_per_sample": {
+     "mean": 45.77123561666667,
+     "std": 0.5347840639921334,
+     "n": 5
+    },
+    "models_trained": {
+     "mean": 1.6,
+     "std": 0.4898979485566356,
+     "n": 5
+    },
+    "post_drift_acc": {
+     "mean": 0.8279047619047619,
+     "std": 0.013966594418009971,
+     "n": 5
+    },
+    "detection_delay": {
+     "mean": 165.14761904761903,
+     "std": 83.33267537155218,
+     "n": 5
+    },
+    "detection_rate": {
+     "mean": 0.6285714285714286,
+     "std": 0.19378085666072198,
+     "n": 5
+    },
+    "recalls": {
+     "mean": 0.0,
+     "std": 0.0,
+     "n": 5
+    },
+    "retrieval_precision": null,
+    "retrieval_recall": null,
+    "false_match_rate": {
+     "mean": 0.0,
+     "std": 0.0,
+     "n": 3
+    },
+    "missed_match_rate": null,
+    "recall_success_rate": null,
+    "candidate_recall@1": {
+     "mean": 0.8,
+     "std": 0.4,
+     "n": 5
+    },
+    "candidate_recall@3": {
+     "mean": 1.0,
+     "std": 0.0,
+     "n": 5
+    },
+    "candidate_recall@5": {
+     "mean": 1.0,
+     "std": 0.0,
+     "n": 5
+    },
+    "high_conf_precision": null,
+    "conf_brier": {
+     "mean": 0.3904045000000001,
+     "std": 0.18520053547924747,
+     "n": 5
+    },
+    "conf_ece": {
+     "mean": 0.5871000000000001,
+     "std": 0.21344516860308646,
+     "n": 5
+    },
+    "match_ms": {
+     "mean": 0.6260816224350878,
+     "std": 0.05415387065644566,
+     "n": 5
+    },
+    "fp_ms": {
+     "mean": 1.0284829901024186,
+     "std": 0.008717812880689579,
+     "n": 5
+    },
+    "bytes_per_concept": {
+     "mean": 1096.0,
+     "std": 0.0,
+     "n": 5
+    }
+   },
+   "paired superiority(0.02) + bonferroni + point floor": {
+    "accuracy": {
+     "mean": 0.8581000000000001,
+     "std": 0.003078329272691751,
+     "n": 5
+    },
+    "us_per_sample": {
+     "mean": 46.347627383344545,
+     "std": 1.0058348916322626,
+     "n": 5
+    },
+    "models_trained": {
+     "mean": 1.8,
+     "std": 0.7483314773547883,
+     "n": 5
+    },
+    "post_drift_acc": {
+     "mean": 0.8274285714285714,
+     "std": 0.014281269149696605,
+     "n": 5
+    },
+    "detection_delay": {
+     "mean": 164.14761904761903,
+     "std": 84.1286516156995,
+     "n": 5
+    },
+    "detection_rate": {
+     "mean": 0.6285714285714286,
+     "std": 0.19378085666072198,
+     "n": 5
+    },
+    "recalls": {
+     "mean": 0.0,
+     "std": 0.0,
+     "n": 5
+    },
+    "retrieval_precision": null,
+    "retrieval_recall": {
+     "mean": 0.0,
+     "std": 0.0,
+     "n": 1
+    },
+    "false_match_rate": {
+     "mean": 0.0,
+     "std": 0.0,
+     "n": 3
+    },
+    "missed_match_rate": {
+     "mean": 1.0,
+     "std": 0.0,
+     "n": 1
+    },
+    "recall_success_rate": null,
+    "candidate_recall@1": {
+     "mean": 0.9,
+     "std": 0.2,
+     "n": 5
+    },
+    "candidate_recall@3": {
+     "mean": 1.0,
+     "std": 0.0,
+     "n": 5
+    },
+    "candidate_recall@5": {
+     "mean": 1.0,
+     "std": 0.0,
+     "n": 5
+    },
+    "high_conf_precision": null,
+    "conf_brier": {
+     "mean": 0.4567312,
+     "std": 0.06026729426197931,
+     "n": 5
+    },
+    "conf_ece": {
+     "mean": 0.6264,
+     "std": 0.1356559619036333,
+     "n": 5
+    },
+    "match_ms": {
+     "mean": 0.6939254570820733,
+     "std": 0.19355191450561807,
+     "n": 5
+    },
+    "fp_ms": {
+     "mean": 1.0310616049865047,
+     "std": 0.008914597797462686,
+     "n": 5
+    },
+    "bytes_per_concept": {
+     "mean": 1096.0,
+     "std": 0.0,
+     "n": 5
+    }
+   },
+   "paired non-inferiority + pick_best (biased) + point floor": {
+    "accuracy": {
+     "mean": 0.8581000000000001,
+     "std": 0.003078329272691751,
+     "n": 5
+    },
+    "us_per_sample": {
+     "mean": 46.177581483319344,
+     "std": 0.9427123424793412,
+     "n": 5
+    },
+    "models_trained": {
+     "mean": 1.8,
+     "std": 0.7483314773547883,
+     "n": 5
+    },
+    "post_drift_acc": {
+     "mean": 0.8274285714285714,
+     "std": 0.014281269149696605,
+     "n": 5
+    },
+    "detection_delay": {
+     "mean": 164.14761904761903,
+     "std": 84.1286516156995,
+     "n": 5
+    },
+    "detection_rate": {
+     "mean": 0.6285714285714286,
+     "std": 0.19378085666072198,
+     "n": 5
+    },
+    "recalls": {
+     "mean": 0.0,
+     "std": 0.0,
+     "n": 5
+    },
+    "retrieval_precision": null,
+    "retrieval_recall": {
+     "mean": 0.0,
+     "std": 0.0,
+     "n": 1
+    },
+    "false_match_rate": {
+     "mean": 0.0,
+     "std": 0.0,
+     "n": 3
+    },
+    "missed_match_rate": {
+     "mean": 1.0,
+     "std": 0.0,
+     "n": 1
+    },
+    "recall_success_rate": null,
+    "candidate_recall@1": {
+     "mean": 0.9,
+     "std": 0.2,
+     "n": 5
+    },
+    "candidate_recall@3": {
+     "mean": 1.0,
+     "std": 0.0,
+     "n": 5
+    },
+    "candidate_recall@5": {
+     "mean": 1.0,
+     "std": 0.0,
+     "n": 5
+    },
+    "high_conf_precision": null,
+    "conf_brier": {
+     "mean": 0.4567312,
+     "std": 0.06026729426197931,
+     "n": 5
+    },
+    "conf_ece": {
+     "mean": 0.6264,
+     "std": 0.1356559619036333,
+     "n": 5
+    },
+    "match_ms": {
+     "mean": 0.6924402988757224,
+     "std": 0.19740953347575044,
+     "n": 5
+    },
+    "fp_ms": {
+     "mean": 1.0298218426352768,
+     "std": 0.00891731578755782,
+     "n": 5
+    },
+    "bytes_per_concept": {
+     "mean": 1096.0,
+     "std": 0.0,
+     "n": 5
+    }
+   },
+   "paired non-inferiority + split_confirm + point floor": {
+    "accuracy": {
+     "mean": 0.8573166666666667,
+     "std": 0.0032052041016654787,
+     "n": 5
+    },
+    "us_per_sample": {
+     "mean": 45.79086788333673,
+     "std": 0.9104836982790185,
+     "n": 5
+    },
+    "models_trained": {
+     "mean": 1.4,
+     "std": 0.4898979485566356,
+     "n": 5
+    },
+    "post_drift_acc": {
+     "mean": 0.823047619047619,
+     "std": 0.015806654931896726,
+     "n": 5
+    },
+    "detection_delay": {
+     "mean": 164.96904761904761,
+     "std": 83.67195879948314,
+     "n": 5
+    },
+    "detection_rate": {
+     "mean": 0.6285714285714286,
+     "std": 0.19378085666072198,
+     "n": 5
+    },
+    "recalls": {
+     "mean": 0.0,
+     "std": 0.0,
+     "n": 5
+    },
+    "retrieval_precision": null,
+    "retrieval_recall": null,
+    "false_match_rate": {
+     "mean": 0.0,
+     "std": 0.0,
+     "n": 2
+    },
+    "missed_match_rate": null,
+    "recall_success_rate": null,
+    "candidate_recall@1": {
+     "mean": 0.8,
+     "std": 0.4,
+     "n": 5
+    },
+    "candidate_recall@3": {
+     "mean": 1.0,
+     "std": 0.0,
+     "n": 5
+    },
+    "candidate_recall@5": {
+     "mean": 1.0,
+     "std": 0.0,
+     "n": 5
+    },
+    "high_conf_precision": null,
+    "conf_brier": {
+     "mean": 0.384903,
+     "std": 0.18310341064081795,
+     "n": 5
+    },
+    "conf_ece": {
+     "mean": 0.583,
+     "std": 0.21168065570571154,
+     "n": 5
+    },
+    "match_ms": {
+     "mean": 0.6214908267308299,
+     "std": 0.05573308976938151,
+     "n": 5
+    },
+    "fp_ms": {
+     "mean": 1.0254435195995686,
+     "std": 0.007647270842342628,
+     "n": 5
+    },
+    "bytes_per_concept": {
+     "mean": 1096.0,
+     "std": 0.0,
+     "n": 5
+    }
+   }
+  },
+  "gradual": {
+   "legacy point (acc>=0.70, no uncertainty)": {
+    "accuracy": {
+     "mean": 0.8838181818181818,
+     "std": 0.005915722774203561,
+     "n": 5
+    },
+    "us_per_sample": {
+     "mean": 53.848550703024195,
+     "std": 1.536055145663675,
+     "n": 5
+    },
+    "models_trained": {
+     "mean": 13.0,
+     "std": 0.6324555320336759,
+     "n": 5
+    },
+    "post_drift_acc": {
+     "mean": 0.7256666666666668,
+     "std": 0.012348639151294728,
+     "n": 5
+    },
+    "detection_delay": {
+     "mean": 110.44000000000001,
+     "std": 4.03613676676101,
+     "n": 5
+    },
+    "detection_rate": {
+     "mean": 1.0,
+     "std": 0.0,
+     "n": 5
+    },
+    "recalls": {
+     "mean": 6.2,
+     "std": 0.7483314773547882,
+     "n": 5
+    },
+    "retrieval_precision": {
+     "mean": 1.0,
+     "std": 0.0,
+     "n": 5
+    },
+    "retrieval_recall": {
+     "mean": 0.40699579831932775,
+     "std": 0.028117658360413016,
+     "n": 5
+    },
+    "false_match_rate": {
+     "mean": 0.0,
+     "std": 0.0,
+     "n": 5
+    },
+    "missed_match_rate": {
+     "mean": 0.5930042016806722,
+     "std": 0.028117658360413047,
+     "n": 5
+    },
+    "recall_success_rate": {
+     "mean": 0.880952380952381,
+     "std": 0.10858813572372743,
+     "n": 5
+    },
+    "candidate_recall@1": {
+     "mean": 0.7200708061002178,
+     "std": 0.05955430941030613,
+     "n": 5
+    },
+    "candidate_recall@3": {
+     "mean": 0.8891612200435729,
+     "std": 0.057980258349840295,
+     "n": 5
+    },
+    "candidate_recall@5": {
+     "mean": 0.9749019607843138,
+     "std": 0.03083859333543137,
+     "n": 5
+    },
+    "high_conf_precision": null,
+    "conf_brier": {
+     "mean": 0.48992024712820514,
+     "std": 0.06540454540566337,
+     "n": 5
+    },
+    "conf_ece": {
+     "mean": 0.5769693846153846,
+     "std": 0.06675313824220874,
+     "n": 5
+    },
+    "match_ms": {
+     "mean": 2.206660348973754,
+     "std": 0.038813314001827755,
+     "n": 5
+    },
+    "fp_ms": {
+     "mean": 1.3438526861035371,
+     "std": 0.017065971371707435,
+     "n": 5
+    },
+    "bytes_per_concept": {
+     "mean": 1456.0,
+     "std": 0.0,
+     "n": 5
+    }
+   },
+   "paired non-inferiority + bonferroni + significant-majority floor": {
+    "accuracy": {
+     "mean": 0.8821818181818182,
+     "std": 0.006014369081238899,
+     "n": 5
+    },
+    "us_per_sample": {
+     "mean": 63.899104509089895,
+     "std": 3.0661189281638745,
+     "n": 5
+    },
+    "models_trained": {
+     "mean": 15.4,
+     "std": 1.2,
+     "n": 5
+    },
+    "post_drift_acc": {
+     "mean": 0.7272666666666666,
+     "std": 0.014120749114532009,
+     "n": 5
+    },
+    "detection_delay": {
+     "mean": 111.5,
+     "std": 4.240283009422841,
+     "n": 5
+    },
+    "detection_rate": {
+     "mean": 1.0,
+     "std": 0.0,
+     "n": 5
+    },
+    "recalls": {
+     "mean": 3.6,
+     "std": 1.019803902718557,
+     "n": 5
+    },
+    "retrieval_precision": {
+     "mean": 1.0,
+     "std": 0.0,
+     "n": 5
+    },
+    "retrieval_recall": {
+     "mean": 0.24,
+     "std": 0.07065293153644707,
+     "n": 5
+    },
+    "false_match_rate": {
+     "mean": 0.0,
+     "std": 0.0,
+     "n": 5
+    },
+    "missed_match_rate": {
+     "mean": 0.76,
+     "std": 0.07065293153644704,
+     "n": 5
+    },
+    "recall_success_rate": {
+     "mean": 0.9099999999999999,
+     "std": 0.11135528725660043,
+     "n": 5
+    },
+    "candidate_recall@1": {
+     "mean": 0.7230936819172114,
+     "std": 0.06182298703113771,
+     "n": 5
+    },
+    "candidate_recall@3": {
+     "mean": 0.8972984749455337,
+     "std": 0.047938125720049504,
+     "n": 5
+    },
+    "candidate_recall@5": {
+     "mean": 0.9764705882352942,
+     "std": 0.028817526385684453,
+     "n": 5
+    },
+    "high_conf_precision": null,
+    "conf_brier": {
+     "mean": 0.4970673745,
+     "std": 0.067333026713592,
+     "n": 5
+    },
+    "conf_ece": {
+     "mean": 0.5702830238095238,
+     "std": 0.08149388304770332,
+     "n": 5
+    },
+    "match_ms": {
+     "mean": 2.2343186661160095,
+     "std": 0.03936916281322722,
+     "n": 5
+    },
+    "fp_ms": {
+     "mean": 1.3421989299197983,
+     "std": 0.012138433016067391,
+     "n": 5
+    },
+    "bytes_per_concept": {
+     "mean": 1456.0,
+     "std": 0.0,
+     "n": 5
+    }
+   },
+   "paired non-inferiority + bonferroni + point floor (default)": {
+    "accuracy": {
+     "mean": 0.8798787878787879,
+     "std": 0.008992272981291467,
+     "n": 5
+    },
+    "us_per_sample": {
+     "mean": 59.0692105090773,
+     "std": 2.5244821564429003,
+     "n": 5
+    },
+    "models_trained": {
+     "mean": 14.4,
+     "std": 1.8547236990991407,
+     "n": 5
+    },
+    "post_drift_acc": {
+     "mean": 0.7257333333333335,
+     "std": 0.011904060931743727,
+     "n": 5
+    },
+    "detection_delay": {
+     "mean": 112.42,
+     "std": 4.116503370580429,
+     "n": 5
+    },
+    "detection_rate": {
+     "mean": 1.0,
+     "std": 0.0,
+     "n": 5
+    },
+    "recalls": {
+     "mean": 4.6,
+     "std": 1.4966629547095764,
+     "n": 5
+    },
+    "retrieval_precision": {
+     "mean": 0.96,
+     "std": 0.07999999999999999,
+     "n": 5
+    },
+    "retrieval_recall": {
+     "mean": 0.2995238095238095,
+     "std": 0.10678140087906762,
+     "n": 5
+    },
+    "false_match_rate": {
+     "mean": 0.01111111111111111,
+     "std": 0.02222222222222222,
+     "n": 5
+    },
+    "missed_match_rate": {
+     "mean": 0.7004761904761905,
+     "std": 0.10678140087906765,
+     "n": 5
+    },
+    "recall_success_rate": {
+     "mean": 0.8866666666666667,
+     "std": 0.15719768163402129,
+     "n": 5
+    },
+    "candidate_recall@1": {
+     "mean": 0.7450708061002178,
+     "std": 0.058107734404818416,
+     "n": 5
+    },
+    "candidate_recall@3": {
+     "mean": 0.9416612200435729,
+     "std": 0.04358649164292836,
+     "n": 5
+    },
+    "candidate_recall@5": {
+     "mean": 0.9749019607843138,
+     "std": 0.03083859333543137,
+     "n": 5
+    },
+    "high_conf_precision": null,
+    "conf_brier": {
+     "mean": 0.5173236689230769,
+     "std": 0.06366576833255136,
+     "n": 5
+    },
+    "conf_ece": {
+     "mean": 0.6226762610722612,
+     "std": 0.04757607637693707,
+     "n": 5
+    },
+    "match_ms": {
+     "mean": 2.2180604203724754,
+     "std": 0.039363104850169243,
+     "n": 5
+    },
+    "fp_ms": {
+     "mean": 1.3414633140450496,
+     "std": 0.019956302145722152,
+     "n": 5
+    },
+    "bytes_per_concept": {
+     "mean": 1456.0,
+     "std": 0.0,
+     "n": 5
+    }
+   },
+   "paired non-inferiority + bonferroni, no floor": {
+    "accuracy": {
+     "mean": 0.878460606060606,
+     "std": 0.007736581440037272,
+     "n": 5
+    },
+    "us_per_sample": {
+     "mean": 59.66784204846948,
+     "std": 1.856685783506604,
+     "n": 5
+    },
+    "models_trained": {
+     "mean": 15.0,
+     "std": 2.0976176963403033,
+     "n": 5
+    },
+    "post_drift_acc": {
+     "mean": 0.7250000000000001,
+     "std": 0.011583513188052163,
+     "n": 5
+    },
+    "detection_delay": {
+     "mean": 110.88000000000002,
+     "std": 5.323682935712837,
+     "n": 5
+    },
+    "detection_rate": {
+     "mean": 1.0,
+     "std": 0.0,
+     "n": 5
+    },
+    "recalls": {
+     "mean": 4.0,
+     "std": 1.7888543819998317,
+     "n": 5
+    },
+    "retrieval_precision": {
+     "mean": 1.0,
+     "std": 0.0,
+     "n": 5
+    },
+    "retrieval_recall": {
+     "mean": 0.26904761904761904,
+     "std": 0.12632966268248083,
+     "n": 5
+    },
+    "false_match_rate": {
+     "mean": 0.0,
+     "std": 0.0,
+     "n": 5
+    },
+    "missed_match_rate": {
+     "mean": 0.7309523809523809,
+     "std": 0.12632966268248086,
+     "n": 5
+    },
+    "recall_success_rate": {
+     "mean": 0.9666666666666668,
+     "std": 0.06666666666666667,
+     "n": 5
+    },
+    "candidate_recall@1": {
+     "mean": 0.7549392271528494,
+     "std": 0.05128143742209539,
+     "n": 5
+    },
+    "candidate_recall@3": {
+     "mean": 0.9225822726751518,
+     "std": 0.05928398249853398,
+     "n": 5
+    },
+    "candidate_recall@5": {
+     "mean": 0.9749019607843138,
+     "std": 0.03083859333543137,
+     "n": 5
+    },
+    "high_conf_precision": null,
+    "conf_brier": {
+     "mean": 0.5284327449411765,
+     "std": 0.061923164655800576,
+     "n": 5
+    },
+    "conf_ece": {
+     "mean": 0.6309540891265597,
+     "std": 0.041583149587650546,
+     "n": 5
+    },
+    "match_ms": {
+     "mean": 2.22987136985396,
+     "std": 0.036639874873506104,
+     "n": 5
+    },
+    "fp_ms": {
+     "mean": 1.3378498958763116,
+     "std": 0.01898787750968847,
+     "n": 5
+    },
+    "bytes_per_concept": {
+     "mean": 1456.0,
+     "std": 0.0,
+     "n": 5
+    }
+   },
+   "paired superiority(0.02) + bonferroni + point floor": {
+    "accuracy": {
+     "mean": 0.8787757575757575,
+     "std": 0.00877515484285435,
+     "n": 5
+    },
+    "us_per_sample": {
+     "mean": 59.675471466636566,
+     "std": 2.5609691296545374,
+     "n": 5
+    },
+    "models_trained": {
+     "mean": 15.6,
+     "std": 1.8547236990991407,
+     "n": 5
+    },
+    "post_drift_acc": {
+     "mean": 0.7264,
+     "std": 0.011853550804154296,
+     "n": 5
+    },
+    "detection_delay": {
+     "mean": 111.56000000000002,
+     "std": 4.117572100158057,
+     "n": 5
+    },
+    "detection_rate": {
+     "mean": 1.0,
+     "std": 0.0,
+     "n": 5
+    },
+    "recalls": {
+     "mean": 3.4,
+     "std": 1.624807680927192,
+     "n": 5
+    },
+    "retrieval_precision": {
+     "mean": 1.0,
+     "std": 0.0,
+     "n": 5
+    },
+    "retrieval_recall": {
+     "mean": 0.22797619047619047,
+     "std": 0.11078594711017055,
+     "n": 5
+    },
+    "false_match_rate": {
+     "mean": 0.0,
+     "std": 0.0,
+     "n": 5
+    },
+    "missed_match_rate": {
+     "mean": 0.7720238095238094,
+     "std": 0.11078594711017055,
+     "n": 5
+    },
+    "recall_success_rate": {
+     "mean": 0.95,
+     "std": 0.09999999999999999,
+     "n": 5
+    },
+    "candidate_recall@1": {
+     "mean": 0.7520152505446622,
+     "std": 0.05262903669134679,
+     "n": 5
+    },
+    "candidate_recall@3": {
+     "mean": 0.9208278867102397,
+     "std": 0.061719344887420674,
+     "n": 5
+    },
+    "candidate_recall@5": {
+     "mean": 0.9674945533769064,
+     "std": 0.028260834625148928,
+     "n": 5
+    },
+    "high_conf_precision": null,
+    "conf_brier": {
+     "mean": 0.5309371064999999,
+     "std": 0.055690607453838775,
+     "n": 5
+    },
+    "conf_ece": {
+     "mean": 0.6307591969696971,
+     "std": 0.04149862426165154,
+     "n": 5
+    },
+    "match_ms": {
+     "mean": 2.228719973586016,
+     "std": 0.042667329549870486,
+     "n": 5
+    },
+    "fp_ms": {
+     "mean": 1.338808385269445,
+     "std": 0.007539260160722396,
+     "n": 5
+    },
+    "bytes_per_concept": {
+     "mean": 1456.0,
+     "std": 0.0,
+     "n": 5
+    }
+   },
+   "paired non-inferiority + pick_best (biased) + point floor": {
+    "accuracy": {
+     "mean": 0.8799030303030303,
+     "std": 0.009641858543869135,
+     "n": 5
+    },
+    "us_per_sample": {
+     "mean": 57.18929144239871,
+     "std": 1.8889300644218807,
+     "n": 5
+    },
+    "models_trained": {
+     "mean": 14.4,
+     "std": 1.0198039027185568,
+     "n": 5
+    },
+    "post_drift_acc": {
+     "mean": 0.7262666666666667,
+     "std": 0.011618758778611302,
+     "n": 5
+    },
+    "detection_delay": {
+     "mean": 111.93999999999998,
+     "std": 3.751586331140469,
+     "n": 5
+    },
+    "detection_rate": {
+     "mean": 1.0,
+     "std": 0.0,
+     "n": 5
+    },
+    "recalls": {
+     "mean": 4.8,
+     "std": 0.7483314773547882,
+     "n": 5
+    },
+    "retrieval_precision": {
+     "mean": 1.0,
+     "std": 0.0,
+     "n": 5
+    },
+    "retrieval_recall": {
+     "mean": 0.31666666666666665,
+     "std": 0.05374838498865701,
+     "n": 5
+    },
+    "false_match_rate": {
+     "mean": 0.0,
+     "std": 0.0,
+     "n": 5
+    },
+    "missed_match_rate": {
+     "mean": 0.6833333333333333,
+     "std": 0.053748384988657,
+     "n": 5
+    },
+    "recall_success_rate": {
+     "mean": 0.9199999999999999,
+     "std": 0.0979795897113271,
+     "n": 5
+    },
+    "candidate_recall@1": {
+     "mean": 0.7436463046757165,
+     "std": 0.05644399645104676,
+     "n": 5
+    },
+    "candidate_recall@3": {
+     "mean": 0.9413763197586726,
+     "std": 0.04345076732550527,
+     "n": 5
+    },
+    "candidate_recall@5": {
+     "mean": 0.967209653092006,
+     "std": 0.028312215547345095,
+     "n": 5
+    },
+    "high_conf_precision": null,
+    "conf_brier": {
+     "mean": 0.513806772909699,
+     "std": 0.06254643433306717,
+     "n": 5
+    },
+    "conf_ece": {
+     "mean": 0.6214836931184757,
+     "std": 0.04869776721454766,
+     "n": 5
+    },
+    "match_ms": {
+     "mean": 2.2105179228283642,
+     "std": 0.0487980988296553,
+     "n": 5
+    },
+    "fp_ms": {
+     "mean": 1.3337615861283718,
+     "std": 0.009431047742652209,
+     "n": 5
+    },
+    "bytes_per_concept": {
+     "mean": 1456.0,
+     "std": 0.0,
+     "n": 5
+    }
+   },
+   "paired non-inferiority + split_confirm + point floor": {
+    "accuracy": {
+     "mean": 0.8796969696969696,
+     "std": 0.005703413505948416,
+     "n": 5
+    },
+    "us_per_sample": {
+     "mean": 57.54246200000731,
+     "std": 1.6642480881027022,
+     "n": 5
+    },
+    "models_trained": {
+     "mean": 16.2,
+     "std": 1.6,
+     "n": 5
+    },
+    "post_drift_acc": {
+     "mean": 0.7246666666666666,
+     "std": 0.010015543475573893,
+     "n": 5
+    },
+    "detection_delay": {
+     "mean": 111.02000000000001,
+     "std": 3.3385026583784545,
+     "n": 5
+    },
+    "detection_rate": {
+     "mean": 1.0,
+     "std": 0.0,
+     "n": 5
+    },
+    "recalls": {
+     "mean": 3.6,
+     "std": 1.019803902718557,
+     "n": 5
+    },
+    "retrieval_precision": {
+     "mean": 0.96,
+     "std": 0.07999999999999999,
+     "n": 5
+    },
+    "retrieval_recall": {
+     "mean": 0.22067226890756303,
+     "std": 0.05829619573693029,
+     "n": 5
+    },
+    "false_match_rate": {
+     "mean": 0.01,
+     "std": 0.02,
+     "n": 5
+    },
+    "missed_match_rate": {
+     "mean": 0.779327731092437,
+     "std": 0.058296195736930276,
+     "n": 5
+    },
+    "recall_success_rate": {
+     "mean": 0.82,
+     "std": 0.15684387141358122,
+     "n": 5
+    },
+    "candidate_recall@1": {
+     "mean": 0.7513640238704177,
+     "std": 0.0684011880108298,
+     "n": 5
+    },
+    "candidate_recall@3": {
+     "mean": 0.9087880079568059,
+     "std": 0.03335847352752484,
+     "n": 5
+    },
+    "candidate_recall@5": {
+     "mean": 0.9684285308326229,
+     "std": 0.026280023618147384,
+     "n": 5
+    },
+    "high_conf_precision": null,
+    "conf_brier": {
+     "mean": 0.48573932846320345,
+     "std": 0.08018567184888085,
+     "n": 5
+    },
+    "conf_ece": {
+     "mean": 0.5726537662337661,
+     "std": 0.09492779591716245,
+     "n": 5
+    },
+    "match_ms": {
+     "mean": 2.2151243092448305,
+     "std": 0.029573332585612847,
+     "n": 5
+    },
+    "fp_ms": {
+     "mean": 1.3343902188001817,
+     "std": 0.010532778843461236,
+     "n": 5
+    },
+    "bytes_per_concept": {
+     "mean": 1456.0,
+     "std": 0.0,
+     "n": 5
+    }
+   }
+  }
+ }
+}
