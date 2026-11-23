@@ -15,8 +15,10 @@ class LogReg:
 
     def fit(self, X, y, epochs: int = 300, lr: float = 0.3):
         X, y = np.asarray(X, float), np.asarray(y, float)
-        self.mu, self.sd = X.mean(0), X.std(0) + 1e-6
-        Z = (X - self.mu) / self.sd
+        with np.errstate(all="ignore"):                    # all-missing columns: no information, imputed as 0 below
+            mu, sd = np.nanmean(X, 0), np.nanstd(X, 0) + 1e-6
+        self.mu, self.sd = np.nan_to_num(mu), np.where(np.isfinite(sd), sd, 1.0)
+        Z = np.nan_to_num((X - self.mu) / self.sd)             # missing values -> the training mean
         self.w[:], self.b = 0.0, 0.0
         for _ in range(epochs):
             g = self._p(Z) - y
@@ -26,17 +28,21 @@ class LogReg:
         return self
 
     def predict(self, x) -> int:
-        return int(self._p(((x - self.mu) / self.sd)[None, :])[0] > 0.5)
+        return int(self._p(np.nan_to_num((x - self.mu) / self.sd)[None, :])[0] > 0.5)
+
+    def proba(self, x) -> float:
+        """P(y=1 | x)."""
+        return float(self._p(np.nan_to_num((x - self.mu) / self.sd)[None, :])[0])
 
     def partial_fit(self, x, y):
-        z = (x - self.mu) / self.sd
+        z = np.nan_to_num((x - self.mu) / self.sd)
         g = float(self._p(z[None, :])[0]) - y
         self.w -= self.lr * g * z
         self.b -= self.lr * g
         self.seen += 1
 
     def accuracy(self, X, y) -> float:
-        Z = (np.asarray(X) - self.mu) / self.sd
+        Z = np.nan_to_num((np.asarray(X, float) - self.mu) / self.sd)
         return float(((self._p(Z) > 0.5).astype(int) == np.asarray(y)).mean())
 
     def to_dict(self) -> dict:

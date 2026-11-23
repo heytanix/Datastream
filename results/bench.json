@@ -1,6 +1,6 @@
 {
  "samples": 16500,
- "seconds": 0.5,
+ "seconds": 1.64,
  "change_points": [
   [
    0,
@@ -123,6 +123,32 @@
    "models_trained": 4,
    "recalls": 7,
    "false_alarms": 2,
+   "new_concepts": 4,
+   "repository_size": 4
+  },
+  "dejastream_mv": {
+   "accuracy": 0.9161,
+   "post_drift_300_acc": 0.8237,
+   "segment_acc": [
+    0.9127,
+    0.8993,
+    0.9033,
+    0.9093,
+    0.916,
+    0.904,
+    0.9253,
+    0.9187,
+    0.9293,
+    0.924,
+    0.9347
+   ],
+   "drifts_detected": 11,
+   "detected_changes": 10,
+   "true_changes": 10,
+   "mean_delay": 13.5,
+   "models_trained": 4,
+   "recalls": 7,
+   "false_alarms": 1,
    "new_concepts": 4,
    "repository_size": 4
   }

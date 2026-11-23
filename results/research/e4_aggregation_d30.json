@@ -1,0 +1,106 @@
+{
+ "A: unstable noise feature; 9 features shift 0.5": {
+  "mean_worst (0.7/0.3, schema 2.0)": {
+   "auc": 0.9308,
+   "same_q95": 0.3113836047766036
+  },
+  "mean": {
+   "auc": 1.0,
+   "same_q95": 0.0601212016381506
+  },
+  "median": {
+   "auc": 1.0,
+   "same_q95": 0.0
+  },
+  "trimmed (20%)": {
+   "auc": 1.0,
+   "same_q95": 0.013834085553800793
+  },
+  "quantile 0.75": {
+   "auc": 1.0,
+   "same_q95": 0.06944991371819736
+  },
+  "quantile 0.9": {
+   "auc": 1.0,
+   "same_q95": 0.15664089279757024
+  }
+ },
+ "B: unstable noise feature; ONE feature shifts 1.5": {
+  "mean_worst (0.7/0.3, schema 2.0)": {
+   "auc": 0.7032,
+   "same_q95": 0.3125653891441697
+  },
+  "mean": {
+   "auc": 0.9524,
+   "same_q95": 0.05857727752800804
+  },
+  "median": {
+   "auc": 0.5216,
+   "same_q95": 0.0
+  },
+  "trimmed (20%)": {
+   "auc": 0.6578,
+   "same_q95": 0.01790513660836748
+  },
+  "quantile 0.75": {
+   "auc": 0.672,
+   "same_q95": 0.05502966925583886
+  },
+  "quantile 0.9": {
+   "auc": 0.7492,
+   "same_q95": 0.14238994799898047
+  }
+ },
+ "C: no unstable feature; ONE feature shifts 1.5": {
+  "mean_worst (0.7/0.3, schema 2.0)": {
+   "auc": 1.0,
+   "same_q95": 0.0958038436724992
+  },
+  "mean": {
+   "auc": 0.9664,
+   "same_q95": 0.03011511866750051
+  },
+  "median": {
+   "auc": 0.5202,
+   "same_q95": 0.0
+  },
+  "trimmed (20%)": {
+   "auc": 0.6138,
+   "same_q95": 0.012124679821849364
+  },
+  "quantile 0.75": {
+   "auc": 0.6324,
+   "same_q95": 0.04215197306113149
+  },
+  "quantile 0.9": {
+   "auc": 0.6216,
+   "same_q95": 0.105738505558976
+  }
+ },
+ "D: no unstable feature; 9 features shift 0.5": {
+  "mean_worst (0.7/0.3, schema 2.0)": {
+   "auc": 1.0,
+   "same_q95": 0.0979131549944096
+  },
+  "mean": {
+   "auc": 1.0,
+   "same_q95": 0.032159014003694704
+  },
+  "median": {
+   "auc": 1.0,
+   "same_q95": 4.585212777997426e-05
+  },
+  "trimmed (20%)": {
+   "auc": 1.0,
+   "same_q95": 0.013354220114493179
+  },
+  "quantile 0.75": {
+   "auc": 1.0,
+   "same_q95": 0.04809036564985526
+  },
+  "quantile 0.9": {
+   "auc": 1.0,
+   "same_q95": 0.11674388096461025
+  }
+ }
+}

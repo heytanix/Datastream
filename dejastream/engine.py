@@ -37,7 +37,7 @@ class Engine:
     def __init__(self, strategy: str, warmup: int = 150, buffer: int = 80, window: int = 100,
                  match_ratio: float = 3.0, min_match: float = 0.35, fp_shift: float = 1.6,
                  min_model_acc: float = 0.75, probe: int = 30, probe_acc: float = 0.9,
-                 quarantine: int = 30):
+                 quarantine: int = 30, n_features: int = D):
         assert strategy in STRATEGIES
         self.strategy = strategy
         self.warmup, self.buffer_n, self.window = warmup, buffer, window
@@ -49,7 +49,8 @@ class Engine:
         self.pending: deque = deque()
         self.quarantine = quarantine
         self.detector = PageHinkley()
-        self.scaler = Scaler(4 * D + 1)
+        self.n_features = n_features
+        self.scaler = Scaler(4 * n_features + 1)
         self.repo: dict[int, StoredConcept] = {}
         self.active: StoredConcept | None = None
         self.model: LogReg | None = None
@@ -65,7 +66,7 @@ class Engine:
 
     # -- helpers ------------------------------------------------------------
     def _train_concept(self, X, y, t) -> StoredConcept:
-        m = LogReg(D).fit(X, y)
+        m = LogReg(self.n_features).fit(X, y)
         self.models_trained += 1
         fp = fingerprint(X, y)
         self.scaler.update(fp)

@@ -6,9 +6,9 @@
 <title>DejaStream Live</title>
 <style>
 :root{--bg:#f6f7f9;--card:#fff;--ink:#1c2430;--mute:#667085;--line:#e3e7ee;
---static:#8a94a6;--retrain:#d98a1f;--deja:#0f8f7e;--A:#3b6fd4;--B:#e07b24;--C:#2e9a55;--D:#8a4fc7;--bad:#c9423a}
+--static:#8a94a6;--retrain:#d98a1f;--deja:#0f8f7e;--mv:#b4338c;--A:#3b6fd4;--B:#e07b24;--C:#2e9a55;--D:#8a4fc7;--bad:#c9423a}
 @media (prefers-color-scheme:dark){:root{--bg:#0f141b;--card:#171e28;--ink:#e6eaf0;--mute:#8d98aa;--line:#2a3442;
---static:#7d8799;--retrain:#e8a23c;--deja:#2fc4ae;--A:#6e9bf0;--B:#f0a05a;--C:#58c47f;--D:#b384e8}}
+--static:#7d8799;--retrain:#e8a23c;--deja:#2fc4ae;--mv:#ec7fcf;--A:#6e9bf0;--B:#f0a05a;--C:#58c47f;--D:#b384e8}}
 *{box-sizing:border-box}
 body{margin:0;background:var(--bg);color:var(--ink);font:14px/1.45 system-ui,-apple-system,Segoe UI,Roboto,sans-serif}
 header{display:flex;flex-wrap:wrap;gap:8px 24px;align-items:baseline;padding:18px 24px 6px}
@@ -18,13 +18,27 @@ header .live{margin-left:auto;color:var(--mute);font-variant-numeric:tabular-num
 main{display:grid;grid-template-columns:repeat(12,1fr);gap:14px;padding:12px 24px 28px;max-width:1400px;margin:0 auto}
 .card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:14px 16px;min-width:0}
 .card h2{margin:0 0 10px;font-size:13px;font-weight:600;color:var(--mute);text-transform:uppercase;letter-spacing:.05em}
-.kpis{grid-column:span 12;display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.kpis{grid-column:span 12;display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
 .kpi .name{display:flex;align-items:center;gap:8px;font-weight:600}
 .dot{width:10px;height:10px;border-radius:50%;display:inline-block}
 .kpi .big{font-size:34px;font-weight:700;font-variant-numeric:tabular-nums;margin:2px 0}
 .kpi .meta{color:var(--mute);font-size:12.5px}
 .chart{grid-column:span 8}.bus{grid-column:span 4}
 .repo{grid-column:span 7}.events{grid-column:span 5}
+.mvmatch{grid-column:span 7}.mvlog{grid-column:span 5}.mvrepo{grid-column:span 12}
+.badge{display:inline-block;padding:1px 8px;border-radius:10px;font-size:11.5px;font-weight:700;border:1px solid currentColor}
+.b-HIGH_CONFIDENCE_MATCH{color:var(--deja)}.b-CANDIDATE_MATCH{color:var(--A)}.b-NEW_CONCEPT{color:var(--retrain)}.b-INSUFFICIENT_EVIDENCE{color:var(--mute)}
+.cand{display:grid;grid-template-columns:84px 1fr 118px;gap:10px;align-items:center;padding:7px 0;border-bottom:1px solid var(--line)}
+.cand:last-child{border:0}.cand .nm{font-weight:700}.cand .nm small{display:block;color:var(--mute);font-weight:400}
+.meters{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}
+.meter small{display:block;color:var(--mute);font-size:11px}
+.bar{height:8px;border-radius:4px;background:var(--line);overflow:hidden}.bar i{display:block;height:100%}
+.bar.na{background:repeating-linear-gradient(45deg,var(--line),var(--line) 3px,transparent 3px,transparent 6px)}
+.cand .sc{text-align:right;font-variant-numeric:tabular-nums;font-size:12.5px}
+.note{color:var(--mute);font-size:12px;margin-top:8px}
+details{margin-top:6px}details summary{cursor:pointer;color:var(--mute);font-size:12px}
+details pre{margin:6px 0 0;font-size:11.5px;white-space:pre-wrap;color:var(--ink)}
+.k-validation,.k-selection{color:var(--A)}.k-provisional{color:var(--mv)}.k-rollback{color:var(--bad)}.k-match{color:var(--mute)}
 canvas{width:100%;display:block}
 .legend{display:flex;gap:16px;font-size:12.5px;color:var(--mute);margin-top:6px;flex-wrap:wrap}
 .legend span{display:inline-flex;align-items:center;gap:6px}
@@ -35,9 +49,10 @@ th{color:var(--mute);font-weight:500}
 .concept:last-child{border:0}
 .concept.active{background:color-mix(in srgb,var(--deja) 10%,transparent)}
 .concept .id{font-weight:700}.concept .id small{display:block;color:var(--mute);font-weight:400}
-.ev{display:grid;grid-template-columns:54px 82px 1fr;gap:8px;padding:3px 0;border-bottom:1px solid var(--line);font-size:12.5px}
+.ev{display:grid;grid-template-columns:54px 92px 1fr;gap:8px;padding:3px 0;border-bottom:1px solid var(--line);font-size:12.5px}
 .tag{font-weight:600}.k-drift{color:var(--bad)}.k-recall,.k-probe{color:var(--deja)}.k-new_concept{color:var(--retrain)}.k-false_alarm{color:var(--mute)}
-@media (max-width:900px){.chart,.bus,.repo,.events{grid-column:span 12}.kpis{grid-template-columns:1fr}main,header{padding-left:14px;padding-right:14px}}
+@media (max-width:1100px){.kpis{grid-template-columns:repeat(2,1fr)}}
+@media (max-width:900px){.chart,.bus,.repo,.events,.mvmatch,.mvlog,.mvrepo{grid-column:span 12}.kpis{grid-template-columns:1fr}main,header{padding-left:14px;padding-right:14px}}
 </style>
 </head>
 <body>
@@ -54,8 +69,9 @@ th{color:var(--mute);font-weight:500}
     <div class="legend">
       <span><i class="dot" style="background:var(--static)"></i>static</span>
       <span><i class="dot" style="background:var(--retrain)"></i>retrain on drift</span>
-      <span><i class="dot" style="background:var(--deja)"></i>DejaStream</span>
-      <span>strips: top = true concept, bottom = concept DejaStream believes is active</span>
+      <span><i class="dot" style="background:var(--deja)"></i>DejaStream v1</span>
+      <span><i class="dot" style="background:var(--mv)"></i>DejaStream MV</span>
+      <span>strips: top = true concept, bottom = concept DejaStream MV believes is active</span>
     </div>
   </section>
   <section class="card bus">
@@ -65,22 +81,34 @@ th{color:var(--mute);font-weight:500}
     <table id="lag"></table>
   </section>
   <section class="card repo">
-    <h2>Concept repository (fingerprints, z-scored)</h2>
+    <h2>Concept repository, v1 fingerprints (z-scored, uses labels)</h2>
     <div id="repo"></div>
   </section>
   <section class="card events">
     <h2>Event stream</h2>
     <div id="events"></div>
   </section>
+  <section class="card mvmatch">
+    <h2>DejaStream MV: latest concept match (feature-only evidence)</h2>
+    <div id="mvmatch"></div>
+  </section>
+  <section class="card mvlog">
+    <h2>Recall decisions and validation</h2>
+    <div id="mvlog"></div>
+  </section>
+  <section class="card mvrepo">
+    <h2>DejaStream MV: stored concepts (global fingerprint, z-scored across concepts)</h2>
+    <div id="mvrepo"></div>
+  </section>
 </main>
 <script>
 const $=id=>document.getElementById(id);
 const css=n=>getComputedStyle(document.documentElement).getPropertyValue(n).trim();
-const STRAT=[["static","static"],["retrain","retrain"],["dejastream","deja"]];
+const STRAT=[["static","static"],["retrain","retrain"],["dejastream","deja"],["dejastream_mv","mv"]];
 const PAL=["--A","--B","--C","--D","--bad","--static"];
 let S=null;
 
-function fit(c,h){const r=devicePixelRatio||1,w=c.clientWidth;c.width=w*r;c.height=h*r;const g=c.getContext("2d");g.setTransform(r,0,0,r,0,0);return[g,w,h]}
+function fit(c,h){const r=devicePixelRatio||1,w=c.clientWidth;c.width=w*r;c.height=h*r;c.style.height=h+"px";const g=c.getContext("2d");g.setTransform(r,0,0,r,0,0);return[g,w,h]}
 
 function drawAcc(){
   const c=$("acc"),[g,W,H]=fit(c,260);g.clearRect(0,0,W,H);
@@ -102,7 +130,7 @@ function drawAcc(){
   seg.forEach((s,i)=>{const a=s[0],b=i+1<seg.length?seg[i+1][0]:t1;if(b<t0)return;
     const x=X(Math.max(a,t0)),w=X(b)-x;g.fillStyle=css("--"+s[1]);g.fillRect(x,y1,w,sh);
     if(w>14){g.fillStyle="#fff";g.fillText(s[1],x+w/2-4,y1+10)}});
-  const act=(S.active.dejastream||[]),ids=[];
+  const act=(S.active.dejastream_mv||[]),ids=[];
   act.forEach((e,i)=>{
     const a=e[0],nxt=act.slice(i+1).find(n=>n[1]!==e[1]);const b=nxt?nxt[0]:t1;
     if(i>0&&act[i-1][1]===e[1])return; if(b<t0)return;
@@ -113,8 +141,10 @@ function drawAcc(){
 function kpis(){
   $("kpis").innerHTML=STRAT.map(([k,v])=>{
     const s=S.summary[k]||{acc:0,seen:0,models:0,counts:{}},c=s.counts||{};
-    const label={static:"Static model",retrain:"Retrain on drift",dejastream:"DejaStream"}[k];
-    const extra=k==="dejastream"?`${c.recall||0} recalls, ${c.false_alarm||0} false alarms`:k==="retrain"?"every drift trains a new model":"never adapts";
+    const label={static:"Static model",retrain:"Retrain on drift",dejastream:"DejaStream v1",dejastream_mv:"DejaStream MV"}[k];
+    const extra=k==="dejastream"?`${c.recall||0} recalls, ${c.false_alarm||0} false alarms`:
+      k==="dejastream_mv"?`${c.recall||0} recalls, ${c.rollback||0} rollbacks, ${c.false_alarm||0} false alarms`+(S.mv&&S.mv.fp_ms?` · fingerprint ${S.mv.fp_ms.toFixed(2)} ms`:""):
+      k==="retrain"?"every drift trains a new model":"never adapts";
     return `<div class="card kpi"><div class="name"><i class="dot" style="background:var(--${v})"></i>${label}</div>
       <div class="big">${(s.acc*100).toFixed(1)}%</div>
       <div class="meta">${s.models} models trained, ${c.drift||0} drifts handled<br>${extra}</div></div>`}).join("");
@@ -139,6 +169,51 @@ function repoPanel(){
       <div style="color:var(--mute);font-size:12px">created t=${c.created_t} · recalled ${Math.max(c.uses-1,0)}x · intra-concept distance ${c.d_in}</div></div></div>`}).join("");
 }
 
+const COMPS=[["stat","statistics"],["dist","distribution"],["time","temporal"],["pred","predictive"]];
+function meters(c){
+  return `<div class="meters">`+COMPS.map(([k,n])=>{const v=c[k];
+    return `<div class="meter"><small>${n}</small><div class="bar ${v==null?"na":""}" title="${v==null?"unavailable":"distance "+v}"><i style="width:${v==null?0:Math.round(v*100)}%;background:${v>0.5?"var(--bad)":v>0.25?"var(--retrain)":"var(--deja)"}"></i></div></div>`}).join("")+`</div>`;
+}
+function mvPanel(){
+  const el=$("mvmatch"),log=(S.mv&&S.mv.log)||[],m=log.find(e=>e.kind==="match");
+  if(!m){el.innerHTML='<div class="note">no drift handled yet: the next drift will show its candidate ranking here</div>';return}
+  const rows=(m.ranking||[]).map(c=>`<div class="cand"><div class="nm">${c.concept_id.replace("concept_","#")}<small>D ${c.D} · sim ${c.similarity}</small></div>${meters(c.components)}<div class="sc">completeness ${(c.completeness*100).toFixed(0)}%</div></div>`).join("");
+  const x=m.explanation||{},th=x.thresholds||{};
+  const noise=Object.entries(x.noise_assessment||{}).map(([k,v])=>`${k}: ${v.replace("_"," ")}`).join(" · ");
+  const need=(x.additional_evidence_needed||[]).map(t=>`<li>${t}</li>`).join("");
+  el.innerHTML=`<div style="margin-bottom:8px"><span class="badge b-${m.decision}">${m.decision.replace(/_/g," ")}</span>
+    <span class="note"> t=${m.t} · ${m.n} samples</span></div>
+    <div class="note" style="margin:0 0 4px"><b>similarity</b> ${m.similarity} &nbsp;·&nbsp; <b>evidence quality</b> ${m.evidence_quality} &nbsp;·&nbsp; <b>confidence score</b> ${m.confidence}${m.match_probability!=null?` &nbsp;·&nbsp; <b>calibrated probability</b> ${m.match_probability}`:""} <span style="opacity:.7">(a score, not a probability, unless a calibrated value is shown)</span></div>
+    <div class="note" style="margin:0 0 6px">${m.reason}${th.thr_cand!=null?` · match range D ≤ ${th.thr_cand} (${th.source}, ${th.n_obs} reference windows)`:""}${noise?` · noise: ${noise}`:""}</div>
+    ${rows||'<div class="note">repository was empty</div>'}
+    ${need?`<div class="note" style="margin-top:8px"><b>What would improve this decision</b><ul style="margin:4px 0 0 18px;padding:0">${need}</ul></div>`:""}
+    <details><summary>full explanation</summary><pre>${JSON.stringify(x,null,1)}</pre></details>
+    <div class="note">Bars are normalised distances, 0 = identical, 1 = unrelated. Hatched = that view had no evidence (never counted as a match).</div>`;
+}
+function mvLogPanel(){
+  const log=((S.mv&&S.mv.log)||[]).filter(e=>e.kind!=="match").slice(0,9);
+  $("mvlog").innerHTML=log.map(e=>{
+    let d="";
+    if(e.kind==="validation") d=(e.candidates||[]).map(c=>{const k=c.comparison;return `#${c.concept}: ${c.accuracy==null?"n/a":(c.accuracy*100).toFixed(0)+"%"} on ${c.n} (${c.accepted?"accepted":"rejected"}${k?`, Δ ${k.diff>=0?"+":""}${k.diff} [lower bound ${k.ci_low}]`:""})`}).join(" · ")+` · baseline ${e.baseline_acc==null?"n/a":(e.baseline_acc*100).toFixed(0)+"%"}`;
+    else if(e.kind==="selection") d=`chose #${e.concept} on ${e.n_selection} labels; waiting for ${e.fresh_labels_needed} fresh labels to confirm`;
+    else if(e.kind==="recall") d=`concept #${e.concept} · val acc ${(e.val_acc*100).toFixed(0)}%${e.provisional?" · was provisional":""}`;
+    else if(e.kind==="rollback") d=`back to #${e.concept}, rejected #${e.rejected}`;
+    else if(e.kind==="provisional") d=`serving #${e.concept} while validation is pending`;
+    else d=`concept #${e.concept}${e.why?" · by "+e.why:""}${e.reason?" · "+e.reason:""}`;
+    return `<div class="ev"><span>t=${e.t}</span><span class="tag k-${e.kind}">${e.kind.replace("_"," ")}</span><span>${d}</span></div>`}).join("")||'<div class="note">waiting for the first drift</div>';
+}
+function mvRepoPanel(){
+  const el=$("mvrepo");
+  if(!S.repo_mv||!S.repo_mv.length){el.innerHTML='<div class="note">warming up...</div>';return}
+  el.innerHTML=S.repo_mv.map(c=>{
+    const n=c.z.length,w=300,h=34,bw=w/n;
+    const bars=c.z.map((z,i)=>{const hh=Math.min(Math.abs(z),3)/3*(h/2-1);const y=z>=0?h/2-hh:h/2;
+      return `<rect x="${i*bw+1}" y="${y}" width="${bw-2}" height="${Math.max(hh,1)}" fill="${css(PAL[c.id%PAL.length])}"/>`}).join("");
+    return `<div class="concept ${c.active?"active":""}"><div class="id">#${c.id}<small>${c.active?"active":"stored"}</small></div>
+      <div><svg viewBox="0 0 ${w} ${h}" width="100%" height="${h}" preserveAspectRatio="none"><line x1="0" x2="${w}" y1="${h/2}" y2="${h/2}" stroke="${css("--line")}"/>${bars}</svg>
+      <div style="color:var(--mute);font-size:12px">${c.n} samples · recalled ${Math.max(c.uses-1,0)}x · variability ${c.d_in} · ${c.model} · ${c.pred==null?"no predictive fingerprint yet":"model error "+(c.pred*100).toFixed(1)+"%"}</div></div></div>`}).join("");
+}
+
 function evPanel(){
   $("events").innerHTML=S.events.map(e=>`<div class="ev"><span>t=${e.t}</span><span class="tag k-${e.kind}">${e.kind.replace("_"," ")}</span>
     <span>${e.strategy} · concept #${e.concept}${e.why?" · by "+e.why:""}${e.kind==="recall"||e.kind==="new_concept"?" · dist "+e.dist:""}</span></div>`).join("");
@@ -148,7 +223,7 @@ async function tick(){
   try{
     S=await (await fetch("/api/state",{cache:"no-store"})).json();
     $("live").textContent=`sample ${S.t.toLocaleString()} · ${S.rate}/s`;
-    kpis();drawAcc();busPanel();repoPanel();evPanel();
+    kpis();drawAcc();busPanel();repoPanel();evPanel();mvPanel();mvLogPanel();mvRepoPanel();
   }catch(e){$("live").textContent="waiting for server..."}
   setTimeout(tick,400);
 }
