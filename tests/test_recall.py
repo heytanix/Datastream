@@ -78,7 +78,7 @@ class Recall(unittest.TestCase):
         late = [x for x in ev if x["t"] > 3300]
         self.assertTrue(kinds(late, "match"), "X-only evidence is still used for matching")
         self.assertFalse(kinds(late, "recall", "new_concept", "provisional"))
-        self.assertEqual(e.state, "RECOVERING" if e.rec else e.state)
+        self.assertTrue(kinds(late, "recovery_timeout"), "recovery must end instead of waiting for labels forever")
 
     def test_provisional_activation_can_be_disabled(self):
         e = MVEngine(label_delay=60, recall=RecallPolicy(provisional=False))

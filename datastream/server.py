@@ -2,6 +2,7 @@
 from __future__ import annotations
 
 import json
+import logging
 import os
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 
@@ -36,6 +37,7 @@ def make_handler(pipe: Pipeline):
 
 def serve(rate: int = 600, port: int = 8000, seed: int = 7, loops: int = 0, arff: str | None = None, target: str | None = None,
           limit: int | None = None, features: list[str] | None = None):
+    logging.basicConfig(level=logging.INFO, format="%(asctime)s %(levelname)s %(name)s: %(message)s")
     stream, nf = None, 4
     if arff:
         from .datasets import ArffStream

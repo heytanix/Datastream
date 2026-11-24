@@ -11,6 +11,11 @@ On drift:  collect post-drift observations  ->  feature-only fingerprint  ->  hi
   INSUFFICIENT       keep collecting
 Labels may arrive late (``label_delay``) or never (``y=None``): X-only evidence is used immediately,
 label-dependent steps wait for released labels.
+
+Robustness: recovery ends after ``max_recovery`` samples even if labels never arrive (the previous model is kept and a
+``recovery_timeout`` event is raised), buffers hold at most ``max_buffer`` observations, samples whose timestamp does not
+increase (duplicates, replays, out-of-order records) are served a prediction but not learned from, and models of evicted
+concepts are released.
 """
 from __future__ import annotations
 
@@ -76,6 +81,7 @@ class _Recovery:
     X: list = field(default_factory=list)
     t: list = field(default_factory=list)
     lab: list = field(default_factory=list)            # released (x, y) pairs
+    seen: int = 0                                      # observations since the drift (buffers are trimmed, this is not)
     stage: str = "collect"                             # collect | validating | await_train
     last_try: int = 0
     fp: object = None
@@ -98,11 +104,15 @@ class MVEngine:
     def __init__(self, n_features: int = 4, *, warmup: int = 150, window: int = 100, buffer_min: int = 40,
                  train_min: int = 80, max_wait: int = 200, quarantine: int = 30, label_delay: int = 0,
                  shift_threshold: float = 0.25, categorical: tuple = (), match: MatchConfig | None = None,
-                 sim: SimilarityConfig | None = None, recall: RecallPolicy | None = None):
+                 sim: SimilarityConfig | None = None, recall: RecallPolicy | None = None,
+                 max_recovery: int = 2000, max_buffer: int = 1000):
+        if max_buffer < max(buffer_min, train_min, max_wait):
+            raise ValueError("max_buffer must hold at least buffer_min, train_min and max_wait observations")
         self.n_features, self.categorical = n_features, tuple(categorical)
         self.warmup, self.window, self.buffer_min, self.train_min = warmup, window, buffer_min, train_min
         self.max_wait, self.quarantine, self.label_delay = max_wait, quarantine, label_delay
         self.shift_threshold = shift_threshold
+        self.max_recovery, self.max_buffer = max_recovery, max_buffer
         self.policy = recall or RecallPolicy()
         self.repo = ConceptRepository(match, sim)
         self.models: dict[str, LogReg] = {}               # fingerprints live in the repo, models here
@@ -113,7 +123,7 @@ class MVEngine:
         self.models_trained = 0
         self._next_model = 1
         self._delay: deque = deque()
-        self._wu_X: list = []
+        self._wu_X: deque = deque(maxlen=max_buffer)
         self._wu_lab: list = []
         self.win_X: deque = deque(maxlen=window)
         self.win_t: deque = deque(maxlen=window)
@@ -127,6 +137,9 @@ class MVEngine:
         self.match_seconds = 0.0
         self.match_calls = 0
         self.t = 0
+        self._last_t: int | None = None
+        self.rejected = 0                                 # samples ignored because their timestamp did not increase
+        self.timeouts = 0
 
     # -- helpers --------------------------------------------------------------------------------
     @property
@@ -149,6 +162,12 @@ class MVEngine:
         self.models[mid] = m
         return mid, m
 
+    def _release_models(self) -> None:
+        """Drop models whose concept has been evicted from the repository."""
+        keep = {r.model_id for r in self.repo.records.values()}
+        for mid in [k for k in self.models if k not in keep and self.models[k] is not self.model]:
+            del self.models[mid]
+
     def _ev(self, kind: str, cid: str | None, dist: float = 0.0, **extra) -> dict:
         idx = int(cid.rsplit("_", 1)[1]) if cid else None
         e = {"t": int(self.t), "strategy": self.strategy, "kind": kind, "concept": idx, "dist": _f(dist, 3), **extra}
@@ -168,13 +187,16 @@ class MVEngine:
     # -- main entry -----------------------------------------------------------------------------
     def process(self, t: int, x: np.ndarray, y: int | None):
         """Prequential step. ``y`` is the true label (None = never labelled). Returns (prediction, events)."""
-        self.t = t
         x = np.asarray(x, float)
         if self.model is not None:
             proba = self.model.proba(x)
             pred = int(proba > 0.5)
         else:
             pred, proba = 0, 0.5
+        if self._last_t is not None and t <= self._last_t:     # duplicate, replay or out-of-order record
+            self.rejected += 1
+            return pred, []
+        self._last_t = self.t = t
         self._delay.append((t, x, y, pred, proba))
         released = []
         while self._delay and t - self._delay[0][0] >= self.label_delay:
@@ -190,7 +212,9 @@ class MVEngine:
                 fp = self._fp([v for _, v in self._wu_X], [k for k, _ in self._wu_X])
                 rec = self.repo.add(fp, mid, t, X=np.array([v for _, v in self._wu_X]))
                 self.active_id, self.model = rec.concept_id, m
-                self._wu_X, self._wu_lab = [], []
+                self._wu_X.clear()
+                self._wu_lab = []
+                self._release_models()
                 self._resume(t)
                 events.append(self._ev("new_concept", rec.concept_id, 0.0, reason="warm-up"))
         elif self.state == "STABLE":
@@ -237,15 +261,20 @@ class MVEngine:
     # -- recovery -------------------------------------------------------------------------------
     def _recovering(self, t, x, released) -> list[dict]:
         r = self.rec
+        r.seen += 1
         r.X.append(x)
         r.t.append(t)
         r.lab.extend((rr[1], rr[2]) for rr in released)
+        if len(r.X) > self.max_buffer:                   # keep the most recent observations only
+            del r.X[: len(r.X) - self.max_buffer], r.t[: len(r.t) - self.max_buffer]
+        if len(r.lab) > self.max_buffer:
+            del r.lab[: len(r.lab) - self.max_buffer]
         ev: list[dict] = []
         if r.stage in ("validating", "confirming"):
             for rr in released:
                 self._feed(r, rr[1], rr[2])
-        if r.stage == "collect" and len(r.X) >= self.buffer_min and (r.last_try == 0 or len(r.X) - r.last_try >= 10):
-            r.last_try = len(r.X)
+        if r.stage == "collect" and r.seen >= self.buffer_min and (r.last_try == 0 or r.seen - r.last_try >= 10):
+            r.last_try = r.seen
             ev.extend(self._try_match(t))
         if self.rec is not None and r.stage == "await_train" and len(r.lab) >= self.train_min:
             ev.extend(self._train_new(t, "no stored concept matches"))
@@ -253,6 +282,23 @@ class MVEngine:
             ev.extend(self._resolve(t))
         elif self.rec is not None and r.stage == "confirming" and r.baseline.n - r.sel_n >= self._vcfg().confirm_min:
             ev.extend(self._resolve(t))
+        if self.rec is r and r.seen >= self.max_recovery:
+            ev.extend(self._timeout(t))
+        return ev
+
+    def _timeout(self, t) -> list[dict]:
+        """Recovery could not finish (labels missing or too few): keep the previous model rather than wait forever."""
+        r = self.rec
+        ev = []
+        if r.provisional is not None:                    # never keep serving a model that was not validated
+            ev.append(self._ev("rollback", r.prev_id, 0.0, rejected=int(r.provisional.rsplit("_", 1)[1]),
+                               reason="validation timed out"))
+        self.model = r.prev_model
+        self.timeouts += 1
+        ev.append(self._ev("recovery_timeout", r.prev_id, 0.0, samples=r.seen, labels=len(r.lab), stage=r.stage,
+                           best_match=None if r.result is None or r.result.best_id is None else int(r.result.best_id.rsplit("_", 1)[1]),
+                           reason=f"no decision after {r.seen} samples; previous model kept"))
+        self._resume(t)
         return ev
 
     def _try_match(self, t) -> list[dict]:
@@ -265,11 +311,11 @@ class MVEngine:
         self.match_calls += 1
         r.fp, r.result = fp, res
         ev = []
-        if res.decision != Decision.INSUFFICIENT_EVIDENCE or len(r.X) == self.buffer_min:
+        if res.decision != Decision.INSUFFICIENT_EVIDENCE or r.seen == self.buffer_min:
             ev.append(self._ev("match", res.best_id, res.D or 0.0, **res.as_dict(top=5), explanation=res.explanation()))
         d = res.decision
         if d == Decision.INSUFFICIENT_EVIDENCE:
-            if len(r.X) >= self.max_wait:
+            if r.seen >= self.max_wait:
                 r.stage = "await_train"
             return ev
         if d == Decision.NEW_CONCEPT:
@@ -410,6 +456,7 @@ class MVEngine:
         mid, m = self._new_model(X, y)
         rec = self.repo.add(fp, mid, t, protect=r.prev_id, meta={"created_because": why}, X=np.array(r.X))
         self.active_id, self.model = rec.concept_id, m
+        self._release_models()
         self._resume(t)
         return [self._ev("new_concept", rec.concept_id, r.result.D if r.result and r.result.D else 0.0, reason=why)]
 
@@ -427,4 +474,5 @@ class MVEngine:
 
     def dash_info(self) -> dict:
         return {"log": list(self.log)[:12], "fp_ms": 1000 * self.fp_seconds / max(1, self.fp_calls),
-                "state": self.state, "concepts": len(self.repo), "bytes_per_concept": self.repo.memory_per_concept()}
+                "state": self.state, "concepts": len(self.repo), "bytes_per_concept": self.repo.memory_per_concept(),
+                "rejected": self.rejected, "timeouts": self.timeouts}

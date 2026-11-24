@@ -5,9 +5,14 @@
   L3/L4        -> one consumer group per strategy (proc-<name>) runs an Engine
   L5 storage   -> consumer group `store` writes events and metrics to SQLite
   L6 dashboard -> consumer group `dashboard` keeps the live state the web UI polls
+
+Every thread is supervised: an exception is logged, counted and reported in ``snapshot()["health"]`` instead of killing
+the thread silently. A worker skips a record that raises; after ``MAX_CONSECUTIVE_ERRORS`` failures in a row it stops
+and is reported as ``failed``.
 """
 from __future__ import annotations
 
+import logging
 import threading
 import time
 from collections import defaultdict, deque
@@ -19,6 +24,9 @@ from .stream import ConceptStream
 
 METRIC_EVERY = 50
 ROLL = 200
+MAX_CONSECUTIVE_ERRORS = 100
+
+log = logging.getLogger("datastream.pipeline")
 
 
 class Pipeline:
@@ -35,6 +43,7 @@ class Pipeline:
         self.stop = threading.Event()
         self.threads: list[threading.Thread] = []
         self.lock = threading.Lock()
+        self.health: dict[str, dict] = {}
         self.reset_state()
 
     def reset_state(self):
@@ -58,9 +67,26 @@ class Pipeline:
             self._spawn(lambda s=s: self._process(s), f"proc-{s}")
 
     def _spawn(self, fn, name):
-        th = threading.Thread(target=fn, daemon=True, name=name)
+        self.health[name] = {"status": "ok", "errors": 0, "last_error": None}
+
+        def run():
+            try:
+                fn()
+            except Exception as e:                       # a thread must never die without a trace
+                log.exception("thread %s stopped by an unhandled error", name)
+                self._fail(name, e, "failed")
+
+        th = threading.Thread(target=run, daemon=True, name=name)
         th.start()
         self.threads.append(th)
+
+    def _fail(self, name: str, err: Exception, status: str) -> None:
+        with self.lock:
+            h = self.health[name]
+            h["errors"] += 1
+            h["last_error"] = f"{type(err).__name__}: {err}"
+            if h["status"] != "failed":
+                h["status"] = status
 
     def close(self):
         self.stop.set()
@@ -88,11 +114,24 @@ class Pipeline:
         eng = self.engines[strategy]
         cons = self.bus.consumer(f"proc-{strategy}", ["ds.raw"])
         send = self.bus.sender()
-        hits, k = 0, 0
+        name = f"proc-{strategy}"
+        hits, k, streak = 0, 0, 0
         while not self.stop.is_set():
             for rec in cons.poll(0.2):
                 r = rec.value
-                pred, events = eng.process(r["t"], r["x"], r["y"])
+                try:
+                    pred, events = eng.process(r["t"], r["x"], r["y"])
+                except Exception as e:                   # skip the record, keep the worker alive, report it
+                    streak += 1
+                    if self.health[name]["errors"] == 0 or streak % 100 == 0:
+                        log.exception("%s failed on t=%s (%d in a row)", name, r["t"], streak)
+                    self._fail(name, e, "degraded")
+                    if streak >= MAX_CONSECUTIVE_ERRORS:
+                        log.error("%s stopped after %d consecutive errors", name, streak)
+                        self._fail(name, e, "failed")
+                        return
+                    continue
+                streak = 0
                 hits += int(pred == r["y"])
                 k += 1
                 for e in events:
@@ -169,4 +208,16 @@ class Pipeline:
                    "events": [e for e in list(s["events"]) if e["kind"] != "match"][:14],
                    "repo": s["repo"], "repo_mv": s["repo_mv"], "mv": s["mv"]}
         out["bus"] = self.bus.stats()
+        out["health"] = self.health_report()
         return out
+
+    def health_report(self) -> dict:
+        with self.lock:
+            rep = {k: dict(v) for k, v in self.health.items()}
+        for th in self.threads:
+            h = rep.get(th.name)
+            if h is not None:
+                h["alive"] = th.is_alive()
+                if not th.is_alive() and not self.stop.is_set() and th.name != "source" and h["status"] == "ok":
+                    h["status"] = "failed"               # finished without reporting: still not healthy
+        return rep
